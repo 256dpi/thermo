@@ -1,0 +1,242 @@
+// https://github.com/cibernox/ember-power-select/blob/master/app/styles/ember-power-select/variables.scss
+$ember-power-select-default-border-radius: 3px;
+$ember-power-select-border-color: #ddd;
+$ember-power-select-focus-border-color: purple;
+$ember-power-select-highlighted-background: purple;
+
+.ember-power-select-trigger {
+  outline: 0;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.form {
+  background-color: white;
+
+  &__row {
+    margin: 5px 0 15px 0;
+  }
+
+  &__head {
+    display: flex;
+    margin-bottom: 5px;
+
+    &__label {
+      color: #333;
+      margin-right: 5px;
+    }
+
+    &__button {
+      padding: 0 3px;
+      color: #999;
+      cursor: pointer;
+      margin-left: 5px;
+
+      &:hover {
+        color: #666;
+      }
+    }
+  }
+
+  &__hint {
+    margin-top: 5px;
+    color: #999;
+    font-size: 14px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px 7px;
+    background-color: #ddd;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  &__error {
+    color: red;
+  }
+
+  &__string, &__text, &__number {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 16px;
+    resize: vertical;
+
+    &:focus {
+      border-color: purple;
+      outline: 0;
+    }
+  }
+
+  &__text {
+    min-height: 75px;
+  }
+
+  &__well {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #eee;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 16px;
+    color: #333;
+  }
+
+  &__group {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+
+    &__bar {
+      background-color: #eee;
+      padding: 10px 20px;
+      list-style: none;
+
+      &__label {
+        display: inline-block;
+        margin-right: 10px;
+        color: #999;
+      }
+
+      &__button {
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 10px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__content {
+      padding: 15px 20px 10px 20px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    border-spacing: 0;
+
+    &__empty {
+      padding: 5px;
+      color: #999;
+    }
+
+    &__head {
+      padding: 5px;
+      color: #999;
+      font-weight: normal;
+      text-align: left;
+
+      &:not(:first-child) {
+        border-left: 1px solid #ddd;
+      }
+    }
+
+    &__cell {
+      &:not(:first-child) {
+        border-left: 1px solid #ddd;
+      }
+    }
+
+    $self: &;
+    &__row {
+      &:not(:first-child) {
+        #{$self}__cell, #{$self}__head {
+          border-top: 1px solid #ddd;
+        }
+      }
+    }
+
+    &__input {
+      border: 0;
+      padding: 5px;
+      display: block;
+      font-family: monospace;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &__button {
+      padding: 5px 10px;
+      color: #999;
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: #666;
+      }
+    }
+  }
+
+  &__multi {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+
+    &__line {
+      display: flex;
+      border-top: 1px solid #ddd;
+
+      &:first-child {
+        border: 0;
+      }
+
+      &__empty {
+        padding: 5px;
+        color: #999;
+      }
+
+      &__value {
+        border: 0;
+        padding: 5px;
+        display: block;
+        font-family: monospace;
+        font-size: 16px;
+        flex-grow: 1;
+
+        &--border {
+          border-left: 1px solid #ddd;
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      &__button {
+        padding: 5px 10px;
+        color: #999;
+        cursor: pointer;
+        border-left: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{input
+    value=value
+    disabled=disabled
+    placeholder=placeholder
+    class="form__string"
+    type=(if secure "password" "text")}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

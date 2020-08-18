@@ -1,0 +1,25 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+    <div class="form__head__button" {{action "add"}} role="button">{{add}}</div>
+  </div>
+
+  <div class="form__multi">
+    {{#each list as |var index|}}
+      <div class="form__multi__line">
+        {{input class="form__multi__line__value" input=(action "save") value=var.value placeholder=valuePlaceholder}}
+        <div class="form__multi__line__button" {{action "remove" index}} role="button">✖</div>
+      </div>
+    {{else}}
+      <div class="form__multi__line__empty">
+        {{empty}}
+      </div>
+    {{/each}}
+  </div>
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

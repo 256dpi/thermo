@@ -1,0 +1,35 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{#if multiple}}
+    {{#power-select-multiple
+      selected=selected
+      options=options
+      disabled=disabled
+      onchange=(action "select")
+      searchEnabled=false
+      verticalPosition="below"
+    as |item| }}
+      {{get item labelField}}
+    {{/power-select-multiple}}
+  {{else}}
+    {{#power-select
+      selected=selected
+      options=options
+      disabled=disabled
+      onchange=(action "select")
+      searchEnabled=false
+      verticalPosition="below"
+    as |item| }}
+      {{get item labelField}}
+    {{/power-select}}
+  {{/if}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

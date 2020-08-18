@@ -1,0 +1,37 @@
+{{#if session.isAuthenticated}}
+  <div class="nav">
+    <nav class="nav__wrapper">
+      <ul class="nav__list">
+        <li class="nav__list__title">
+          {{link-to blueprint.title "index"}}
+        </li>
+
+        {{#each blueprint.models as |model|}}
+          <li class="nav__list__item">
+            {{link-to model.title "table" model.name}}
+          </li>
+        {{/each}}
+      </ul>
+
+      <ul class="nav__list">
+        <li class="nav__list__item">
+          {{link-to "Jobs" "table" "jobs"}}
+        </li>
+
+        <li class="nav__list__item">
+          {{link-to "Values" "table" "values"}}
+        </li>
+
+        <li class="nav__list__item">
+          <a href="#" {{action "logout"}}>
+            Log Out
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{{/if}}
+
+<div class="content">
+  {{outlet}}
+</div>

@@ -1,0 +1,20 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{input
+    type="number"
+    value=value
+    disabled=disabled
+    placeholder=placeholder
+    min=min
+    max=max
+    class="form__number"}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,18 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{textarea
+    value=value
+    disabled=disabled
+    placeholder=placeholder
+    autoresize=autoResize
+    class="form__text"}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

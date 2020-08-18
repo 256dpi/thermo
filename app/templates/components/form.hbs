@@ -1,0 +1,6 @@
+{{#each config.fields as |field|}}
+  {{inputs/string
+          label=field.title
+          value=(get model field.name)
+          placeholder=field.placeholder}}
+{{/each}}

@@ -1,0 +1,23 @@
+<div class="form__row">
+  <div class="form__group">
+    <div class="form__group__bar">
+      <div class="form__group__bar__label">{{label}}</div>
+
+      {{#each models as |model|}}
+        <div class="form__group__bar__button" {{action "select" model}} role="button">{{get model titleAttr}}</div>
+      {{/each}}
+
+      <div class="form__group__bar__button" {{action "add"}} role="button">Add</div>
+
+      {{#if selected}}
+        <div class="form__group__bar__button" {{action "remove" selected}} role="button">Remove</div>
+      {{/if}}
+    </div>
+
+    {{#if selected}}
+      <div class="form__group__content">
+        {{yield selected}}
+      </div>
+    {{/if}}
+  </div>
+</div>

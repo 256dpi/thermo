@@ -1,0 +1,28 @@
+.nav {
+  background-color: #bbb;
+
+  &__wrapper {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+
+    &__title {
+      color: black;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    &__item {
+      color: black;
+      margin-right: 10px;
+    }
+  }
+}

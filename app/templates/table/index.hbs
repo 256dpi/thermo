@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <th width="1">
+      ID
+    </th>
+
+    {{#each config.fields as |field|}}
+      <th>{{field.title}}</th>
+    {{/each}}
+  </thead>
+
+  <tbody>
+    {{#each model as |item|}}
+      <tr>
+        <td>
+          {{link-to item.id "table.edit" item.id}}
+        </td>
+
+        {{#each config.fields as |field|}}
+          <td>{{get item field.name}}</td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

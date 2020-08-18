@@ -1,0 +1,11 @@
+.subnav {
+  margin: 0 0 20px 0;
+  padding: 0 0 5px 0;
+  list-style: none;
+  display: flex;
+  border-bottom: 1px solid #bbb;
+
+  &__item {
+    margin-right: 10px;
+  }
+}

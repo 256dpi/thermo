@@ -1,0 +1,16 @@
+<div class="dialog">
+  <h1>{{blueprint.title}}</h1>
+
+  {{#inputs/form submit=(action "signIn") error=error button="Sign In"}}
+    {{inputs/string
+      label="Email"
+      value=email
+      placeholder="me@example.com"}}
+
+    {{inputs/string
+      secure=true
+      label="Password"
+      value=password
+      placeholder="****"}}
+  {{/inputs/form}}
+</div>

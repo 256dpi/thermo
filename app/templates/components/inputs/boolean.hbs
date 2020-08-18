@@ -1,0 +1,16 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{input
+    type="checkbox"
+    checked=value
+    disabled=disabled}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>
