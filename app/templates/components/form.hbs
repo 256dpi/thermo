@@ -6,6 +6,17 @@
               value=(get model field.name)
               placeholder=field.placeholder
               redacted=field.redacted}}
+    {{else if (eq field.type "boolean")}}
+      {{inputs/boolean
+              label=field.title
+              value=(get model field.name)}}
+    {{else if (eq field.type "number")}}
+      {{inputs/number
+              label=field.title
+              value=(get model field.name)
+              placeholder=field.placeholder
+              min=field.min
+              max=field.max}}
     {{/if}}
   {{/if}}
 {{/each}}

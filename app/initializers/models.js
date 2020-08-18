@@ -14,13 +14,13 @@ export default {
             model.fields.map(field => {
               switch (field.kind) {
                 case 'value':
-                  return [field.name, attr(field.type)];
+                  return [field.name, attr(field.type, { defaultValue: field.default })];
                 case 'belongs-to':
                   return [field.name, belongsTo(field.type)];
                 case 'has-many':
                   return [field.name, hasMany(field.type)];
                 default:
-                  return [field.name, attr()];
+                  return [field.name, null];
               }
             })
           )

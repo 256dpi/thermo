@@ -20,6 +20,10 @@
           {{#if (eq field.kind "value")}}
             {{#if (eq field.type "string")}}
               <td>{{get item field.name}}</td>
+            {{else if (eq field.type "boolean")}}
+              <td>{{if (get item field.name) "True" "False"}}</td>
+            {{else if (eq field.type "number")}}
+              <td>{{get item field.name}}</td>
             {{/if}}
           {{/if}}
         {{/each}}

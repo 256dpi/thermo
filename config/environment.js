@@ -34,6 +34,34 @@ module.exports = function(environment) {
     },
     models: [
       {
+        name: 'item',
+        title: 'Item',
+        sorting: ['name:asc'],
+        watchable: true,
+        fields: [
+          {
+            name: "name",
+            title: "Name",
+            kind: 'value',
+            type: 'string',
+            placeholder: 'My Item'
+          },
+          {
+            name: "state",
+            title: "State",
+            kind: 'value',
+            type: 'boolean',
+            default: true
+          },
+          {
+            name: "count",
+            title: "Count",
+            kind: 'value',
+            type: 'number'
+          }
+        ]
+      },
+      {
         name: 'user',
         title: 'User',
         sorting: ['name:asc'],

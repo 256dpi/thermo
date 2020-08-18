@@ -18,6 +18,34 @@ func admin() http.Handler {
 		},
 		Models: []thermo.Model{
 			{
+				Name:      "item",
+				Title:     "Item",
+				Sorting:   []string{"name:asc"},
+				Watchable: true,
+				Fields: []thermo.Field{
+					{
+						Name:        "name",
+						Title:       "Name",
+						Kind:        thermo.Value,
+						Type:        thermo.String,
+						Placeholder: "My Item",
+					},
+					{
+						Name:    "state",
+						Title:   "State",
+						Kind:    thermo.Value,
+						Type:    thermo.String,
+						Default: true,
+					},
+					{
+						Name:  "count",
+						Title: "Count",
+						Kind:  thermo.Value,
+						Type:  thermo.Number,
+					},
+				},
+			},
+			{
 				Name:      "user",
 				Title:     "User",
 				Sorting:   []string{"name:asc"},
