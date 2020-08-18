@@ -25,10 +25,13 @@ module.exports = function(environment) {
 
   ENV.blueprint = {
     title: 'Example',
-    apiBaseURL: 'http://0.0.0.0:8000',
-    authNamespace: 'auth',
-    dataNamespace: 'api',
-    clientID: 'main-key',
+    backend: {
+      baseURL: 'http://0.0.0.0:8000',
+      authPath: 'auth',
+      dataPath: 'api',
+      watchPath: 'api/watch',
+      clientID: 'main-key'
+    },
     models: [
       {
         name: 'user',

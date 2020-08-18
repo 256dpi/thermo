@@ -8,8 +8,8 @@ import config from 'thermo/config/environment';
 export default JSONAPIAdapter.extend(DataAdapterMixin, {
   session: service(),
 
-  host: config.blueprint.apiBaseURL,
-  namespace: config.blueprint.dataNamespace,
+  host: config.blueprint.backend.baseURL,
+  namespace: config.blueprint.backend.dataPath,
 
   headers: computed('session.data.authenticated.access_token', function() {
     let headers = {};

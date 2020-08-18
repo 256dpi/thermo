@@ -8,11 +8,14 @@ import (
 
 func admin() http.Handler {
 	return thermo.Build(thermo.Blueprint{
-		Title:         "Example",
-		APIBaseURL:    "http://0.0.0.0:8000",
-		AuthNamespace: "auth",
-		DataNamespace: "api",
-		ClientID:      "main-key",
+		Title: "Example",
+		Backend: thermo.Backend{
+			BaseURL:   "http://0.0.0.0:8000",
+			AuthPath:  "auth",
+			DataPath:  "api",
+			WatchPath: "api/watch",
+			ClientID:  "main-key",
+		},
 		Models: []thermo.Model{
 			{
 				Name:      "user",

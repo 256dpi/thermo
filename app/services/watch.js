@@ -7,5 +7,5 @@ function ws(str) {
 }
 
 export default Watch.extend({
-  watchURL: ws(config.blueprint.apiBaseURL) + '/api/watch'
+  watchURL: ws(config.blueprint.backend.baseURL) + '/' + config.blueprint.backend.watchPath
 });

@@ -6,12 +6,18 @@ import "github.com/256dpi/ember"
 
 // Blueprint configures a thermo application.
 type Blueprint struct {
-	Title         string  `json:"title"`
-	APIBaseURL    string  `json:"apiBaseURL"`
-	AuthNamespace string  `json:"authNamespace"`
-	DataNamespace string  `json:"dataNamespace"`
-	ClientID      string  `json:"clientID"`
-	Models        []Model `json:"models"`
+	Title   string  `json:"title"`
+	Backend Backend `json:"backend"`
+	Models  []Model `json:"models"`
+}
+
+// Backend describes the backend service.
+type Backend struct {
+	BaseURL   string `json:"baseURL"`
+	AuthPath  string `json:"authPath"`
+	DataPath  string `json:"dataPath"`
+	WatchPath string `json:"watchPath"`
+	ClientID  string `json:"clientID"`
 }
 
 // Model describes a model.
