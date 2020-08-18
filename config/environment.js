@@ -40,15 +40,15 @@ module.exports = function(environment) {
         watchable: false,
         fields: [
           {
-            kind: 'value',
             name: 'name',
             title: 'Name',
+            kind: 'value',
             type: 'string'
           },
           {
-            kind: 'value',
             name: 'email',
             title: 'Email',
+            kind: 'value',
             type: 'string'
           }
         ],

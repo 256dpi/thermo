@@ -24,16 +24,16 @@ func admin() http.Handler {
 				Watchable: true,
 				Fields: []thermo.Field{
 					{
-						Kind:  "value",
 						Name:  "name",
 						Title: "Name",
-						Type:  "string",
+						Kind:  thermo.Value,
+						Type:  thermo.String,
 					},
 					{
-						Kind:  "value",
 						Name:  "email",
 						Title: "Email",
-						Type:  "string",
+						Kind:  thermo.Value,
+						Type:  thermo.String,
 					},
 				},
 			},

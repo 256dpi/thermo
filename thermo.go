@@ -31,11 +31,29 @@ type Model struct {
 
 // Field describes a field.
 type Field struct {
-	Kind  string `json:"kind"`
 	Name  string `json:"name"`
 	Title string `json:"title"`
-	Type  string `json:"type"`
+	Kind  Kind   `json:"kind"`
+	Type  Type   `json:"type"`
 }
+
+// Kind describes a field kind.
+type Kind string
+
+// The available field kinds.
+const (
+	Value    Kind = "value"
+	BelongTo Kind = "belongs-to"
+	HasMany  Kind = "has-many"
+)
+
+// Type describes a field type.
+type Type string
+
+// The available field types.
+const (
+	String Type = "string"
+)
 
 // Build will build an ember app based on the provided blueprint.
 func Build(blueprint Blueprint) *ember.App {
