@@ -50,6 +50,13 @@ module.exports = function(environment) {
             title: 'Email',
             kind: 'value',
             type: 'string'
+          },
+          {
+            name: 'password',
+            title: 'Password',
+            kind: 'value',
+            type: 'string',
+            redacted: true
           }
         ],
       }

@@ -1,6 +1,11 @@
 {{#each config.fields as |field|}}
-  {{inputs/string
-          label=field.title
-          value=(get model field.name)
-          placeholder=field.placeholder}}
+  {{#if (eq field.kind "value")}}
+    {{#if (eq field.type "string")}}
+      {{inputs/string
+              label=field.title
+              value=(get model field.name)
+              placeholder=field.placeholder
+              redacted=field.redacted}}
+    {{/if}}
+  {{/if}}
 {{/each}}

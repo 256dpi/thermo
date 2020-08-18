@@ -35,6 +35,13 @@ func admin() http.Handler {
 						Kind:  thermo.Value,
 						Type:  thermo.String,
 					},
+					{
+						Name:     "password",
+						Title:    "Password",
+						Kind:     thermo.Value,
+						Type:     thermo.String,
+						Redacted: true,
+					},
 				},
 			},
 		},

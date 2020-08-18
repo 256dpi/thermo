@@ -31,10 +31,11 @@ type Model struct {
 
 // Field describes a field.
 type Field struct {
-	Name  string `json:"name"`
-	Title string `json:"title"`
-	Kind  Kind   `json:"kind"`
-	Type  Type   `json:"type"`
+	Name     string `json:"name"`
+	Title    string `json:"title"`
+	Kind     Kind   `json:"kind"`
+	Type     Type   `json:"type"`
+	Redacted bool   `json:"redacted"`
 }
 
 // Kind describes a field kind.

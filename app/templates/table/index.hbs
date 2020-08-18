@@ -17,7 +17,11 @@
         </td>
 
         {{#each config.fields as |field|}}
-          <td>{{get item field.name}}</td>
+          {{#if (eq field.kind "value")}}
+            {{#if (eq field.type "string")}}
+              <td>{{get item field.name}}</td>
+            {{/if}}
+          {{/if}}
         {{/each}}
       </tr>
     {{/each}}
