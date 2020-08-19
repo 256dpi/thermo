@@ -56,8 +56,8 @@ type Column struct {
 
 // Field describes a form field.
 type Field struct {
-	Name        string  `json:"name"`
-	Title       string  `json:"title"`
+	Label       string  `json:"label"`
+	Key         string  `json:"key"`
 	Control     Control `json:"control"`
 	Placeholder string  `json:"placeholder"`
 	Redacted    bool    `json:"redacted"`

@@ -62,12 +62,9 @@ module.exports = function(environment) {
           { title: 'Deleted', key: 'deleted', format: 'date' }
         ],
         fields: [
-          { name: 'name', title: 'Name', control: 'string', placeholder: 'My Item' },
-          { name: 'state', title: 'State', control: 'boolean' },
-          { name: 'count', title: 'Count', control: 'number' },
-          { name: 'created', title: 'Created', control: 'date' },
-          { name: 'updated', title: 'Updated', control: 'date' },
-          { name: 'deleted', title: 'Deleted', control: 'date' }
+          { label: 'Name', key: 'name', control: 'string', placeholder: 'My Item' },
+          { label: 'State', key: 'state', control: 'boolean' },
+          { label: 'Count', key: 'count', control: 'number' },
         ]
       },
       {
@@ -86,9 +83,9 @@ module.exports = function(environment) {
           { title: 'Email', key: 'email' }
         ],
         fields: [
-          { name: 'name', title: 'Name', control: 'string' },
-          { name: 'email', title: 'Email', control: 'string' },
-          { name: 'password', title: 'Password', control: 'string', redacted: true }
+          { label: 'Name', key: 'name', control: 'string' },
+          { label: 'Email', key: 'email', control: 'string' },
+          { label: 'Password', key: 'password', control: 'string', redacted: true }
         ]
       }
     ]

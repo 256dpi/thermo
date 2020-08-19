@@ -94,35 +94,20 @@ func admin() http.Handler {
 				},
 				Fields: []thermo.Field{
 					{
-						Name:        "name",
-						Title:       "Name",
+						Label:       "Name",
+						Key:        "name",
 						Control:     thermo.ControlString,
 						Placeholder: "My Item",
 					},
 					{
-						Name:    "state",
-						Title:   "State",
+						Label:   "State",
+						Key:    "state",
 						Control: thermo.ControlString,
 					},
 					{
-						Name:    "count",
-						Title:   "Count",
+						Label:   "Count",
+						Key:    "count",
 						Control: thermo.ControlNumber,
-					},
-					{
-						Name:    "created",
-						Title:   "Created",
-						Control: thermo.ControlDate,
-					},
-					{
-						Name:    "updated",
-						Title:   "Updated",
-						Control: thermo.ControlDate,
-					},
-					{
-						Name:    "deleted",
-						Title:   "Deleted",
-						Control: thermo.ControlDate,
 					},
 				},
 			},
@@ -161,18 +146,18 @@ func admin() http.Handler {
 				},
 				Fields: []thermo.Field{
 					{
-						Name:    "name",
-						Title:   "Name",
+						Label:   "Name",
+						Key:    "name",
 						Control: thermo.ControlString,
 					},
 					{
-						Name:    "email",
-						Title:   "Email",
+						Label:   "Email",
+						Key:    "email",
 						Control: thermo.ControlString,
 					},
 					{
-						Name:     "password",
-						Title:    "Password",
+						Label:    "Password",
+						Key:     "password",
 						Control:  thermo.ControlString,
 						Redacted: true,
 					},
