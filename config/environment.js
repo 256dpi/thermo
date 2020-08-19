@@ -46,6 +46,13 @@ module.exports = function(environment) {
           { name: 'updated', kind: 'value', type: 'date' },
           { name: 'deleted', kind: 'value', type: 'date' }
         ],
+        properties: [
+          {
+            name: 'info',
+            keys: ['state'],
+            body: `this.get('state') ? "Active" : "Inactive"`
+          }
+        ],
         fields: [
           {
             name: 'name',
@@ -97,6 +104,7 @@ module.exports = function(environment) {
           { name: 'email', kind: 'value', type: 'string' },
           { name: 'password', kind: 'value', type: 'string' }
         ],
+        properties: [],
         fields: [
           {
             name: 'name',

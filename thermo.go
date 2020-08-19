@@ -27,6 +27,7 @@ type Model struct {
 	Sorting    []string    `json:"sorting"`
 	Watchable  bool        `json:"watchable"`
 	Attributes []Attribute `json:"attributes"`
+	Properties []Property  `json:"properties"`
 	Fields     []Field     `json:"fields"`
 }
 
@@ -36,6 +37,13 @@ type Attribute struct {
 	Kind    Kind   `json:"kind"`
 	Type    Type   `json:"type"`
 	Default Any    `json:"default"`
+}
+
+// Property describes a dynamic model property.
+type Property struct {
+	Name string   `json:"name"`
+	Keys []string `json:"keys"`
+	Body string   `json:"body"`
 }
 
 // Field describes a field.

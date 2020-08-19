@@ -55,6 +55,13 @@ func admin() http.Handler {
 						Type: thermo.Date,
 					},
 				},
+				Properties: []thermo.Property{
+					{
+						Name: "info",
+						Keys: []string{"state"},
+						Body: `this.get('state') ? "Active" : "Inactive"`,
+					},
+				},
 				Fields: []thermo.Field{
 					{
 						Name:        "name",
