@@ -62,44 +62,12 @@ module.exports = function(environment) {
           { title: 'Deleted', key: 'deleted', format: 'date' }
         ],
         fields: [
-          {
-            name: 'name',
-            title: 'Name',
-            kind: 'value',
-            type: 'string',
-            placeholder: 'My Item'
-          },
-          {
-            name: 'state',
-            title: 'State',
-            kind: 'value',
-            type: 'boolean',
-            default: true
-          },
-          {
-            name: 'count',
-            title: 'Count',
-            kind: 'value',
-            type: 'number'
-          },
-          {
-            name: 'created',
-            title: 'Created',
-            kind: 'value',
-            type: 'date'
-          },
-          {
-            name: 'updated',
-            title: 'Updated',
-            kind: 'value',
-            type: 'date'
-          },
-          {
-            name: 'deleted',
-            title: 'Deleted',
-            kind: 'value',
-            type: 'date'
-          }
+          { name: 'name', title: 'Name', type: 'string', placeholder: 'My Item' },
+          { name: 'state', title: 'State', type: 'boolean' },
+          { name: 'count', title: 'Count', type: 'number' },
+          { name: 'created', title: 'Created', type: 'date' },
+          { name: 'updated', title: 'Updated', type: 'date' },
+          { name: 'deleted', title: 'Deleted', type: 'date' }
         ]
       },
       {
@@ -118,25 +86,9 @@ module.exports = function(environment) {
           { title: 'Email', key: 'email' }
         ],
         fields: [
-          {
-            name: 'name',
-            title: 'Name',
-            kind: 'value',
-            type: 'string'
-          },
-          {
-            name: 'email',
-            title: 'Email',
-            kind: 'value',
-            type: 'string'
-          },
-          {
-            name: 'password',
-            title: 'Password',
-            kind: 'value',
-            type: 'string',
-            redacted: true
-          }
+          { name: 'name', title: 'Name', type: 'string' },
+          { name: 'email', title: 'Email', type: 'string' },
+          { name: 'password', title: 'Password', type: 'string', redacted: true }
         ]
       }
     ]

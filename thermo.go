@@ -58,10 +58,8 @@ type Column struct {
 type Field struct {
 	Name        string  `json:"name"`
 	Title       string  `json:"title"`
-	Kind        Kind    `json:"kind"`
 	Type        Type    `json:"type"`
 	Placeholder string  `json:"placeholder"`
-	Default     Any     `json:"default"`
 	Redacted    bool    `json:"redacted"`
 	Min         float64 `json:"min"`
 	Max         float64 `json:"max"`
