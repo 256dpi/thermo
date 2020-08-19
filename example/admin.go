@@ -22,6 +22,39 @@ func admin() http.Handler {
 				Title:     "Item",
 				Sorting:   []string{"name:asc"},
 				Watchable: true,
+				Attributes: []thermo.Attribute{
+					{
+						Name: "name",
+						Kind: thermo.Value,
+						Type: thermo.String,
+					},
+					{
+						Name:    "state",
+						Kind:    thermo.Value,
+						Type:    thermo.String,
+						Default: true,
+					},
+					{
+						Name: "count",
+						Kind: thermo.Value,
+						Type: thermo.Number,
+					},
+					{
+						Name: "created",
+						Kind: thermo.Value,
+						Type: thermo.Date,
+					},
+					{
+						Name: "updated",
+						Kind: thermo.Value,
+						Type: thermo.Date,
+					},
+					{
+						Name: "deleted",
+						Kind: thermo.Value,
+						Type: thermo.Date,
+					},
+				},
 				Fields: []thermo.Field{
 					{
 						Name:        "name",
@@ -68,6 +101,23 @@ func admin() http.Handler {
 				Title:     "User",
 				Sorting:   []string{"name:asc"},
 				Watchable: true,
+				Attributes: []thermo.Attribute{
+					{
+						Name: "name",
+						Kind: thermo.Value,
+						Type: thermo.String,
+					},
+					{
+						Name: "email",
+						Kind: thermo.Value,
+						Type: thermo.String,
+					},
+					{
+						Name: "password",
+						Kind: thermo.Value,
+						Type: thermo.String,
+					},
+				},
 				Fields: []thermo.Field{
 					{
 						Name:  "name",

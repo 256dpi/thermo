@@ -38,6 +38,14 @@ module.exports = function(environment) {
         title: 'Item',
         sorting: ['name:asc'],
         watchable: true,
+        attributes: [
+          { name: 'name', kind: 'value', type: 'string' },
+          { name: 'state', kind: 'value', type: 'boolean', default: true },
+          { name: 'count', kind: 'value', type: 'number' },
+          { name: 'created', kind: 'value', type: 'date' },
+          { name: 'updated', kind: 'value', type: 'date' },
+          { name: 'deleted', kind: 'value', type: 'date' }
+        ],
         fields: [
           {
             name: 'name',
@@ -84,6 +92,11 @@ module.exports = function(environment) {
         title: 'User',
         sorting: ['name:asc'],
         watchable: false,
+        attributes: [
+          { name: 'name', kind: 'value', type: 'string' },
+          { name: 'email', kind: 'value', type: 'string' },
+          { name: 'password', kind: 'value', type: 'string' }
+        ],
         fields: [
           {
             name: 'name',

@@ -11,7 +11,7 @@ export default {
         name: model.name,
         class: Model.extend(
           Object.fromEntries(
-            model.fields.map(field => {
+            model.attributes.map(field => {
               switch (field.kind) {
                 case 'value':
                   return [field.name, attr(field.type, { defaultValue: field.default })];

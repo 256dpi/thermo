@@ -22,11 +22,20 @@ type Backend struct {
 
 // Model describes a model.
 type Model struct {
-	Name      string   `json:"name"`
-	Title     string   `json:"title"`
-	Sorting   []string `json:"sorting"`
-	Watchable bool     `json:"watchable"`
-	Fields    []Field  `json:"fields"`
+	Name       string      `json:"name"`
+	Title      string      `json:"title"`
+	Sorting    []string    `json:"sorting"`
+	Watchable  bool        `json:"watchable"`
+	Attributes []Attribute `json:"attributes"`
+	Fields     []Field     `json:"fields"`
+}
+
+// Attribute describes a static model attribute.
+type Attribute struct {
+	Name    string `json:"name"`
+	Kind    Kind   `json:"kind"`
+	Type    Type   `json:"type"`
+	Default Any    `json:"default"`
 }
 
 // Field describes a field.
