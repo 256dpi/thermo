@@ -70,9 +70,9 @@ type Kind string
 
 // The available field kinds.
 const (
-	Value     Kind = "value"
-	BelongsTo Kind = "belongs-to"
-	HasMany   Kind = "has-many"
+	KindValue     Kind = "value"
+	KindBelongsTo Kind = "belongs-to"
+	KindHasMany   Kind = "has-many"
 )
 
 // Type describes a field type.
@@ -80,10 +80,10 @@ type Type string
 
 // The available field types.
 const (
-	String  Type = "string"
-	Boolean Type = "boolean"
-	Number  Type = "number"
-	Date    Type = "date"
+	TypeString  Type = "string"
+	TypeBoolean Type = "boolean"
+	TypeNumber  Type = "number"
+	TypeDate    Type = "date"
 )
 
 // Format describes a column format.
