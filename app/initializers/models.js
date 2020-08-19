@@ -3,6 +3,8 @@ import { computed } from '@ember/object';
 
 import config from 'thermo/config/environment';
 
+// TODO: Models are missing in Ember Inspector.
+
 export default {
   name: 'models',
   initialize: function(app) {
