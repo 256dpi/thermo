@@ -1,22 +1,22 @@
 {{#each config.fields as |field|}}
-  {{#if (eq field.type "string")}}
+  {{#if (eq field.control "string")}}
     {{inputs/string
             label=field.title
             value=(get model field.name)
             placeholder=field.placeholder
             redacted=field.redacted}}
-  {{else if (eq field.type "boolean")}}
+  {{else if (eq field.control "boolean")}}
     {{inputs/boolean
             label=field.title
             value=(get model field.name)}}
-  {{else if (eq field.type "number")}}
+  {{else if (eq field.control "number")}}
     {{inputs/number
             label=field.title
             value=(get model field.name)
             placeholder=field.placeholder
             min=field.min
             max=field.max}}
-  {{else if (eq field.type "date")}}
+  {{else if (eq field.control "date")}}
     {{inputs/date
             label=field.title
             value=(get model field.name)

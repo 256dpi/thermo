@@ -58,7 +58,7 @@ type Column struct {
 type Field struct {
 	Name        string  `json:"name"`
 	Title       string  `json:"title"`
-	Type        Type    `json:"type"`
+	Control     Control `json:"control"`
 	Placeholder string  `json:"placeholder"`
 	Redacted    bool    `json:"redacted"`
 	Min         float64 `json:"min"`
@@ -93,6 +93,17 @@ type Format string
 const (
 	FormatBoolean Format = "boolean"
 	FormatDate    Format = "date"
+)
+
+// Control describes a form control.
+type Control string
+
+// The available form controls.
+const (
+	ControlString  Control = "string"
+	ControlBoolean Control = "boolean"
+	ControlNumber  Control = "number"
+	ControlDate    Control = "date"
 )
 
 // Any describes an arbitrary value.
