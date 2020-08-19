@@ -62,7 +62,7 @@ $ember-power-select-highlighted-background: purple;
     color: red;
   }
 
-  &__string, &__text, &__number {
+  &__string, &__text, &__number, &__date {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;

@@ -60,6 +60,7 @@ const (
 	String  Type = "string"
 	Boolean Type = "boolean"
 	Number  Type = "number"
+	Date    Type = "date"
 )
 
 // Any describes an arbitrary value.

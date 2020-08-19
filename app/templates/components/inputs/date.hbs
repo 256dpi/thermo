@@ -1,0 +1,18 @@
+<div class="form__row">
+  <div class="form__head">
+    <label class="form__head__label">{{label}}</label>
+  </div>
+
+  {{input
+    type="datetime-local"
+    value=value
+    disabled=disabled
+    placeholder=placeholder
+    class="form__date"}}
+
+  {{#if hint}}
+    <div class="form__hint">
+      {{hint}}
+    </div>
+  {{/if}}
+</div>

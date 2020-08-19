@@ -58,6 +58,24 @@ module.exports = function(environment) {
             title: "Count",
             kind: 'value',
             type: 'number'
+          },
+          {
+            name: "created",
+            title: "Created",
+            kind: 'value',
+            type: 'date'
+          },
+          {
+            name: "updated",
+            title: "Updated",
+            kind: 'value',
+            type: 'date'
+          },
+          {
+            name: "deleted",
+            title: "Deleted",
+            kind: 'value',
+            type: 'date'
           }
         ]
       },

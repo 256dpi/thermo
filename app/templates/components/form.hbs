@@ -17,6 +17,11 @@
               placeholder=field.placeholder
               min=field.min
               max=field.max}}
+    {{else if (eq field.type "date")}}
+      {{inputs/date
+              label=field.title
+              value=(get model field.name)
+              placeholder=field.placeholder}}
     {{/if}}
   {{/if}}
 {{/each}}

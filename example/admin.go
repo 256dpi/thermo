@@ -43,6 +43,24 @@ func admin() http.Handler {
 						Kind:  thermo.Value,
 						Type:  thermo.Number,
 					},
+					{
+						Name:  "created",
+						Title: "Created",
+						Kind:  thermo.Value,
+						Type:  thermo.Date,
+					},
+					{
+						Name:  "updated",
+						Title: "Updated",
+						Kind:  thermo.Value,
+						Type:  thermo.Date,
+					},
+					{
+						Name:  "deleted",
+						Title: "Deleted",
+						Kind:  thermo.Value,
+						Type:  thermo.Date,
+					},
 				},
 			},
 			{
