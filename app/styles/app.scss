@@ -1,4 +1,4 @@
-@import "normalize";
+@import 'normalize';
 
 body {
   background-color: #fefefe;
@@ -13,11 +13,11 @@ a {
   }
 }
 
-@import "blocks/content";
-@import "blocks/dialog";
-@import "blocks/form";
-@import "blocks/nav";
-@import "blocks/subnav";
-@import "blocks/table";
+@import 'blocks/content';
+@import 'blocks/dialog';
+@import 'blocks/form';
+@import 'blocks/nav';
+@import 'blocks/subnav';
+@import 'blocks/table';
 
-@import "ember-power-select";
+@import 'ember-power-select';

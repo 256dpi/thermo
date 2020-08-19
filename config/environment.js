@@ -40,40 +40,40 @@ module.exports = function(environment) {
         watchable: true,
         fields: [
           {
-            name: "name",
-            title: "Name",
+            name: 'name',
+            title: 'Name',
             kind: 'value',
             type: 'string',
             placeholder: 'My Item'
           },
           {
-            name: "state",
-            title: "State",
+            name: 'state',
+            title: 'State',
             kind: 'value',
             type: 'boolean',
             default: true
           },
           {
-            name: "count",
-            title: "Count",
+            name: 'count',
+            title: 'Count',
             kind: 'value',
             type: 'number'
           },
           {
-            name: "created",
-            title: "Created",
+            name: 'created',
+            title: 'Created',
             kind: 'value',
             type: 'date'
           },
           {
-            name: "updated",
-            title: "Updated",
+            name: 'updated',
+            title: 'Updated',
             kind: 'value',
             type: 'date'
           },
           {
-            name: "deleted",
-            title: "Deleted",
+            name: 'deleted',
+            title: 'Deleted',
             kind: 'value',
             type: 'date'
           }
@@ -104,7 +104,7 @@ module.exports = function(environment) {
             type: 'string',
             redacted: true
           }
-        ],
+        ]
       }
     ]
   };

@@ -62,7 +62,10 @@ $ember-power-select-highlighted-background: purple;
     color: red;
   }
 
-  &__string, &__text, &__number, &__date {
+  &__string,
+  &__text,
+  &__number,
+  &__date {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;
@@ -156,7 +159,8 @@ $ember-power-select-highlighted-background: purple;
     $self: &;
     &__row {
       &:not(:first-child) {
-        #{$self}__cell, #{$self}__head {
+        #{$self}__cell,
+        #{$self}__head {
           border-top: 1px solid #ddd;
         }
       }
