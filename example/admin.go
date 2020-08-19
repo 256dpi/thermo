@@ -62,6 +62,36 @@ func admin() http.Handler {
 						Body: `this.get('state') ? "Active" : "Inactive"`,
 					},
 				},
+				Columns: []thermo.Column{
+					{
+						Title: "Name",
+						Key:   "name",
+					},
+					{
+						Title:  "State",
+						Key:    "state",
+						Format: thermo.FormatBoolean,
+					},
+					{
+						Title: "Count",
+						Key:   "count",
+					},
+					{
+						Title:  "Created",
+						Key:    "created",
+						Format: thermo.FormatDate,
+					},
+					{
+						Title:  "Updated",
+						Key:    "updated",
+						Format: thermo.FormatDate,
+					},
+					{
+						Title:  "Deleted",
+						Key:    "deleted",
+						Format: thermo.FormatDate,
+					},
+				},
 				Fields: []thermo.Field{
 					{
 						Name:        "name",
@@ -123,6 +153,17 @@ func admin() http.Handler {
 						Name: "password",
 						Kind: thermo.Value,
 						Type: thermo.String,
+					},
+				},
+				Properties: []thermo.Property{},
+				Columns: []thermo.Column{
+					{
+						Title: "Name",
+						Key:   "name",
+					},
+					{
+						Title: "Email",
+						Key:   "email",
 					},
 				},
 				Fields: []thermo.Field{

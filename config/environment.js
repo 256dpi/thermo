@@ -53,6 +53,14 @@ module.exports = function(environment) {
             body: `this.get('state') ? "Active" : "Inactive"`
           }
         ],
+        columns: [
+          { title: 'Name', key: 'name' },
+          { title: 'State', key: 'state', format: 'boolean' },
+          { title: 'Count', key: 'count' },
+          { title: 'Created', key: 'created', format: 'date' },
+          { title: 'Updated', key: 'updated', format: 'date' },
+          { title: 'Deleted', key: 'deleted', format: 'date' }
+        ],
         fields: [
           {
             name: 'name',
@@ -105,6 +113,10 @@ module.exports = function(environment) {
           { name: 'password', kind: 'value', type: 'string' }
         ],
         properties: [],
+        columns: [
+          { title: 'Name', key: 'name' },
+          { title: 'Email', key: 'email' }
+        ],
         fields: [
           {
             name: 'name',

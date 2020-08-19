@@ -28,6 +28,7 @@ type Model struct {
 	Watchable  bool        `json:"watchable"`
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`
+	Columns    []Column    `json:"columns"`
 	Fields     []Field     `json:"fields"`
 }
 
@@ -46,7 +47,14 @@ type Property struct {
 	Body string   `json:"body"`
 }
 
-// Field describes a field.
+// Column describes a table column.
+type Column struct {
+	Title  string `json:"title"`
+	Key    string `json:"key"`
+	Format Format `json:"format"`
+}
+
+// Field describes a form field.
 type Field struct {
 	Name        string  `json:"name"`
 	Title       string  `json:"title"`
@@ -78,6 +86,15 @@ const (
 	Boolean Type = "boolean"
 	Number  Type = "number"
 	Date    Type = "date"
+)
+
+// Format describes a column format.
+type Format string
+
+// The available column formats.
+const (
+	FormatBoolean Format = "boolean"
+	FormatDate    Format = "date"
 )
 
 // Any describes an arbitrary value.

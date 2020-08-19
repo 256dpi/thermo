@@ -4,8 +4,8 @@
       ID
     </th>
 
-    {{#each config.fields as |field|}}
-      <th>{{field.title}}</th>
+    {{#each config.columns as |column|}}
+      <th>{{column.title}}</th>
     {{/each}}
   </thead>
 
@@ -16,18 +16,16 @@
           {{link-to item.id "table.edit" item.id}}
         </td>
 
-        {{#each config.fields as |field|}}
-          {{#if (eq field.kind "value")}}
-            {{#if (eq field.type "string")}}
-              <td>{{get item field.name}}</td>
-            {{else if (eq field.type "boolean")}}
-              <td>{{if (get item field.name) "True" "False"}}</td>
-            {{else if (eq field.type "number")}}
-              <td>{{get item field.name}}</td>
-            {{else if (eq field.type "date")}}
-              <td>{{moment-format (get item field.name)}}</td>
+        {{#each config.columns as |column|}}
+          <td>
+            {{#if (eq column.format "boolean")}}
+              {{if (get item column.key) "True" "False"}}
+            {{else if (eq column.format "date")}}
+              {{moment-format (get item column.key)}}
+            {{else}}
+              {{get item column.key}}
             {{/if}}
-          {{/if}}
+          </td>
         {{/each}}
       </tr>
     {{/each}}
