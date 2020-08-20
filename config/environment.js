@@ -44,7 +44,9 @@ module.exports = function(environment) {
           { name: 'count', kind: 'value', type: 'number' },
           { name: 'created', kind: 'value', type: 'date' },
           { name: 'updated', kind: 'value', type: 'date' },
-          { name: 'deleted', kind: 'value', type: 'date' }
+          { name: 'deleted', kind: 'value', type: 'date' },
+          { name: 'create-token', kind: 'value', type: 'string', init: 'Date.now().toString()' },
+          { name: 'update-token', kind: 'value', type: 'string' }
         ],
         properties: [
           {

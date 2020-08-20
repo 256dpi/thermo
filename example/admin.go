@@ -54,6 +54,17 @@ func admin() http.Handler {
 						Kind: thermo.KindValue,
 						Type: thermo.TypeDate,
 					},
+					{
+						Name: "create-token",
+						Kind: thermo.KindValue,
+						Type: thermo.TypeString,
+						Init: "Date.now().toString()",
+					},
+					{
+						Name: "update-token",
+						Kind: thermo.KindValue,
+						Type: thermo.TypeString,
+					},
 				},
 				Properties: []thermo.Property{
 					{

@@ -9,7 +9,16 @@ export default Route.extend(AuthenticatedRouteMixin, AutomaticRollback, {
     const config = this.modelFor('table');
 
     // create record
-    return this.store.createRecord(config.name);
+    const record = this.store.createRecord(config.name);
+
+    // initialize values
+    config.attributes.forEach(attribute => {
+      if(attribute.init) {
+        record.set(attribute.name, eval(attribute.init));
+      }
+    });
+
+    return record;
   },
 
   setupController(controller) {

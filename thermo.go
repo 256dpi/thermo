@@ -34,17 +34,18 @@ type Model struct {
 
 // Attribute describes a static model attribute.
 type Attribute struct {
-	Name    string `json:"name"`
-	Kind    Kind   `json:"kind"`
-	Type    Type   `json:"type"`
-	Default Any    `json:"default"`
+	Name    string     `json:"name"`
+	Kind    Kind       `json:"kind"`
+	Type    Type       `json:"type"`
+	Default Any        `json:"default"`
+	Init    Expression `json:"init"`
 }
 
 // Property describes a dynamic model property.
 type Property struct {
-	Name string   `json:"name"`
-	Keys []string `json:"keys"`
-	Body string   `json:"body"`
+	Name string     `json:"name"`
+	Keys []string   `json:"keys"`
+	Body Expression `json:"body"`
 }
 
 // Column describes a table column.
@@ -108,6 +109,9 @@ const (
 
 // Any describes an arbitrary value.
 type Any = interface{}
+
+// Expression describes a javascript expression.
+type Expression string
 
 // Build will build an ember app based on the provided blueprint.
 func Build(blueprint Blueprint) *ember.App {
