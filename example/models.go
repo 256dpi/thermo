@@ -55,9 +55,9 @@ type Item struct {
 	State       bool        `json:"state"`
 	Count       int         `json:"count"`
 	File        *blaze.Link `json:"file"`
-	Created     time.Time   `json:"created-at" bson:"created_at" coal:"fire-created-timestamp"`
-	Updated     time.Time   `json:"updated-at" bson:"updated_at" coal:"fire-updated-timestamp"`
-	Deleted     *time.Time  `json:"deleted-at" bson:"deleted_at" coal:"fire-soft-delete"`
+	Created     time.Time   `json:"created" coal:"fire-created-timestamp"`
+	Updated     time.Time   `json:"updated" coal:"fire-updated-timestamp"`
+	Deleted     *time.Time  `json:"deleted" coal:"fire-soft-delete"`
 	CreateToken string      `json:"create-token" bson:"create_token" coal:"fire-idempotent-create"`
 	UpdateToken string      `json:"update-token" bson:"update" coal:"fire-consistent-update"`
 }
