@@ -5,31 +5,35 @@
   </div>
 
   <table class="form__table">
-    <tr class="form__table__row">
-      {{#each columns as |column|}}
-        <th class="form__table__head">
-          {{column.name}}
-        </th>
-      {{/each}}
-
-      <th class="form__table__head" width="1"></th>
-    </tr>
-
-    {{#each value as |var index|}}
+    <thead>
       <tr class="form__table__row">
         {{#each columns as |column|}}
-          <td class="form__table__cell">
-            {{input class="form__table__input" value=(get var column.field) placeholder=column.placeholder}}
-          </td>
+          <th class="form__table__head">
+            {{column.name}}
+          </th>
         {{/each}}
 
-        <td class="form__table__cell" width="1">
-          <button class="form__table__button" {{action "remove" index}}>
-            ✖
-          </button>
-        </td>
+        <th class="form__table__head" width="1"></th>
       </tr>
-    {{/each}}
+    </thead>
+
+    <tbody>
+      {{#each value as |var index|}}
+        <tr class="form__table__row">
+          {{#each columns as |column|}}
+            <td class="form__table__cell">
+              {{input class="form__table__input" value=(get var column.field) placeholder=column.placeholder}}
+            </td>
+          {{/each}}
+
+          <td class="form__table__cell" width="1">
+            <button class="form__table__button" {{action "remove" index}}>
+              ✖
+            </button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
   </table>
 
   {{#if hint}}

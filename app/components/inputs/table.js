@@ -4,7 +4,7 @@ import { isArray } from '@ember/array';
 export default Component.extend({
   add: 'Add',
 
-  columns: [], // [{ name, field, default, placeholder }, ...]
+  columns: undefined, // [{ name, field, default, placeholder }, ...]
 
   actions: {
     add() {
