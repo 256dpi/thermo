@@ -35,8 +35,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   deactivate() {
     // get name and config
-    let name = this.get('name');
-    let config = this.getConfig(name);
+    const name = this.get('name');
+    const config = this.getConfig(name);
 
     // unsubscribe if watchable
     if (config.watchable) {

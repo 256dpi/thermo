@@ -6,7 +6,7 @@ import AutomaticRollback from '@256dpi/ember-fire/mixins/automatic-rollback';
 export default Route.extend(AuthenticatedRouteMixin, AutomaticRollback, {
   model(params) {
     // get config
-    let config = this.modelFor('table');
+    const config = this.modelFor('table');
 
     // find record
     return this.store.find(config.name, params.id);

@@ -4,7 +4,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Route.extend(AuthenticatedRouteMixin, {
   model() {
     // get config
-    let config = this.modelFor('table');
+    const config = this.modelFor('table');
 
     // find all
     return this.store.findAll(config.name);
