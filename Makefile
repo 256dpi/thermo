@@ -3,6 +3,7 @@ all: fmt vet lint
 fmt:
 	go fmt .
 	go fmt ./example
+	yarn fmt
 
 vet:
 	go vet .
@@ -11,3 +12,5 @@ vet:
 lint:
 	golint .
 	golint ./example
+	yarn lint:js
+	yarn lint:hbs
