@@ -13,7 +13,7 @@ export default Route.extend(AuthenticatedRouteMixin, AutomaticRollback, {
 
     // initialize values
     config.attributes.forEach(attribute => {
-      if(attribute.init) {
+      if (attribute.init) {
         record.set(attribute.name, eval(attribute.init));
       }
     });

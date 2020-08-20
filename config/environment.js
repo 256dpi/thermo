@@ -59,14 +59,14 @@ module.exports = function(environment) {
           { title: 'Name', key: 'name' },
           { title: 'State', key: 'state', format: 'boolean' },
           { title: 'Count', key: 'count' },
-          { title: 'Created', key: 'created', format: 'date' },
-          { title: 'Updated', key: 'updated', format: 'date' },
-          { title: 'Deleted', key: 'deleted', format: 'date' }
+          { title: 'Created', key: 'created', format: 'absolute-date' },
+          { title: 'Updated', key: 'updated', format: 'relative-date' },
+          { title: 'Deleted', key: 'deleted', format: 'absolute-date' }
         ],
         fields: [
           { label: 'Name', key: 'name', control: 'string', placeholder: 'My Item' },
           { label: 'State', key: 'state', control: 'boolean' },
-          { label: 'Count', key: 'count', control: 'number' },
+          { label: 'Count', key: 'count', control: 'number' }
         ]
       },
       {

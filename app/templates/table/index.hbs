@@ -20,8 +20,10 @@
           <td>
             {{#if (eq column.format "boolean")}}
               {{if (get item column.key) "True" "False"}}
-            {{else if (eq column.format "date")}}
-              {{moment-format (get item column.key)}}
+            {{else if (eq column.format "absolute-date")}}
+              {{moment-format (get item column.key) "YYYY-MM-DD HH:MM:SS"}}
+            {{else if (eq column.format "relative-date")}}
+              {{moment-from-now (get item column.key)}}
             {{else}}
               {{get item column.key}}
             {{/if}}

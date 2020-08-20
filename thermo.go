@@ -92,8 +92,9 @@ type Format string
 
 // The available column formats.
 const (
-	FormatBoolean Format = "boolean"
-	FormatDate    Format = "date"
+	FormatBoolean      Format = "boolean"
+	FormatAbsoluteDate Format = "absolute-date"
+	FormatRelativeDate Format = "relative-date"
 )
 
 // Control describes a form control.

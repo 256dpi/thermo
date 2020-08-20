@@ -90,17 +90,17 @@ func admin() http.Handler {
 					{
 						Title:  "Created",
 						Key:    "created",
-						Format: thermo.FormatDate,
+						Format: thermo.FormatAbsoluteDate,
 					},
 					{
 						Title:  "Updated",
 						Key:    "updated",
-						Format: thermo.FormatDate,
+						Format: thermo.FormatRelativeDate,
 					},
 					{
 						Title:  "Deleted",
 						Key:    "deleted",
-						Format: thermo.FormatDate,
+						Format: thermo.FormatAbsoluteDate,
 					},
 				},
 				Fields: []thermo.Field{
