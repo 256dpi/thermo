@@ -1,9 +1,9 @@
 .nav {
-  background-color: #bbb;
+  background-color: #ddd;
 
   &__wrapper {
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
   }
@@ -17,12 +17,11 @@
     &__title {
       color: black;
       font-weight: bold;
-      margin-right: 10px;
     }
 
     &__item {
       color: black;
-      margin-right: 10px;
+      margin-left: 10px;
     }
   }
 }

@@ -1,8 +1,8 @@
 // https://github.com/cibernox/ember-power-select/blob/master/app/styles/ember-power-select/variables.scss
-$ember-power-select-default-border-radius: 3px;
+$ember-power-select-default-border-radius: 2px;
 $ember-power-select-border-color: #ddd;
-$ember-power-select-focus-border-color: purple;
-$ember-power-select-highlighted-background: purple;
+$ember-power-select-focus-border-color: black;
+$ember-power-select-highlighted-background: black;
 
 .ember-power-select-trigger {
   outline: 0;
@@ -48,7 +48,7 @@ $ember-power-select-highlighted-background: purple;
   &__button {
     box-sizing: border-box;
     border: 0;
-    border-radius: 3px;
+    border-radius: 2px;
     padding: 5px 7px;
     background-color: #ddd;
     cursor: pointer;
@@ -69,14 +69,14 @@ $ember-power-select-highlighted-background: purple;
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;
-    border-radius: 3px;
-    padding: 5px;
+    border-radius: 2px;
+    padding: 5px 10px;
     font-family: monospace;
     font-size: 16px;
     resize: vertical;
 
     &:focus {
-      border-color: purple;
+      border-color: black;
       outline: 0;
     }
   }
