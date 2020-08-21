@@ -196,7 +196,9 @@ func createHandler(store *coal.Store, bucket *lungo.Bucket) http.Handler {
 
 	// add controllers
 	g.Add(itemController(store, queue, storage))
+	g.Add(applicationController(store))
 	g.Add(userController(store))
+	g.Add(tokenController(store))
 	g.Add(jobController(store))
 	g.Add(valueController(store))
 	g.Add(fileController(store))

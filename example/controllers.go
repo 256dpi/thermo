@@ -48,6 +48,19 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 	}
 }
 
+func applicationController(store *coal.Store) *fire.Controller {
+	return &fire.Controller{
+		Model: &flame.Application{},
+		Store: store,
+		Authorizers: fire.L{
+			flame.Callback(true),
+		},
+		Validators: fire.L{
+			fire.RelationshipValidator(&flame.Application{}, catalog),
+		},
+	}
+}
+
 func userController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
 		Model: &flame.User{},
@@ -57,6 +70,19 @@ func userController(store *coal.Store) *fire.Controller {
 		},
 		Validators: fire.L{
 			fire.RelationshipValidator(&flame.User{}, catalog),
+		},
+	}
+}
+
+func tokenController(store *coal.Store) *fire.Controller {
+	return &fire.Controller{
+		Model: &flame.Token{},
+		Store: store,
+		Authorizers: fire.L{
+			flame.Callback(true),
+		},
+		Validators: fire.L{
+			fire.RelationshipValidator(&flame.Token{}, catalog),
 		},
 	}
 }
