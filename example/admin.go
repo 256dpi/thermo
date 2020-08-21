@@ -31,7 +31,7 @@ func admin() http.Handler {
 					{
 						Name:    "state",
 						Kind:    thermo.KindValue,
-						Type:    thermo.TypeString,
+						Type:    thermo.TypeBoolean,
 						Default: true,
 					},
 					{
@@ -113,7 +113,7 @@ func admin() http.Handler {
 					{
 						Label:   "State",
 						Key:     "state",
-						Control: thermo.ControlString,
+						Control: thermo.ControlBoolean,
 					},
 					{
 						Label:   "Count",
