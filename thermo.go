@@ -36,23 +36,23 @@ type Model struct {
 type Attribute struct {
 	Name    string     `json:"name"`
 	Kind    Kind       `json:"kind"`
-	Type    Type       `json:"type"`
-	Default Any        `json:"default"`
-	Init    Expression `json:"init"`
+	Type    Type       `json:"type,omitempty"`
+	Default Any        `json:"default,omitempty"`
+	Init    Expression `json:"init,omitempty"`
 }
 
 // Property describes a dynamic model property.
 type Property struct {
 	Name string     `json:"name"`
-	Keys []string   `json:"keys"`
-	Body Expression `json:"body"`
+	Keys []string   `json:"keys,omitempty"`
+	Body Expression `json:"body,omitempty"`
 }
 
 // Column describes a table column.
 type Column struct {
 	Title  string `json:"title"`
 	Key    string `json:"key"`
-	Format Format `json:"format"`
+	Format Format `json:"format,omitempty"`
 }
 
 // Field describes a form field.
@@ -60,10 +60,10 @@ type Field struct {
 	Label       string  `json:"label"`
 	Key         string  `json:"key"`
 	Control     Control `json:"control"`
-	Placeholder string  `json:"placeholder"`
-	Redacted    bool    `json:"redacted"`
-	Min         float64 `json:"min"`
-	Max         float64 `json:"max"`
+	Placeholder string  `json:"placeholder,omitempty"`
+	Redacted    bool    `json:"redacted,omitempty"`
+	Min         float64 `json:"min,omitempty"`
+	Max         float64 `json:"max,omitempty"`
 }
 
 // Kind describes a field kind.
