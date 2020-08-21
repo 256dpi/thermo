@@ -18,7 +18,11 @@ export default {
               .map(attribute => {
                 switch (attribute.kind) {
                   case 'value':
-                    return [attribute.name, attr(attribute.type, { defaultValue: attribute.default })];
+                    if (attribute.type) {
+                      return [attribute.name, attr(attribute.type, { defaultValue: attribute.default })];
+                    } else {
+                      return [attribute.name, attr({ defaultValue: attribute.default })];
+                    }
                   case 'belongs-to':
                     return [attribute.name, belongsTo(attribute.type)];
                   case 'has-many':
