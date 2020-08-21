@@ -3,6 +3,11 @@ package main
 import (
 	"net/http"
 
+	"github.com/256dpi/fire/axe"
+	"github.com/256dpi/fire/blaze"
+	"github.com/256dpi/fire/flame"
+	"github.com/256dpi/fire/glut"
+
 	"github.com/256dpi/thermo"
 )
 
@@ -122,58 +127,12 @@ func admin() http.Handler {
 					},
 				},
 			},
-			{
-				Name:      "user",
-				Title:     "User",
-				Sorting:   []string{"name:asc"},
-				Watchable: true,
-				Attributes: []thermo.Attribute{
-					{
-						Name: "name",
-						Kind: thermo.KindValue,
-						Type: thermo.TypeString,
-					},
-					{
-						Name: "email",
-						Kind: thermo.KindValue,
-						Type: thermo.TypeString,
-					},
-					{
-						Name: "password",
-						Kind: thermo.KindValue,
-						Type: thermo.TypeString,
-					},
-				},
-				Properties: []thermo.Property{},
-				Columns: []thermo.Column{
-					{
-						Title: "Name",
-						Key:   "name",
-					},
-					{
-						Title: "Email",
-						Key:   "email",
-					},
-				},
-				Fields: []thermo.Field{
-					{
-						Label:   "Name",
-						Key:     "name",
-						Control: thermo.ControlString,
-					},
-					{
-						Label:   "Email",
-						Key:     "email",
-						Control: thermo.ControlString,
-					},
-					{
-						Label:    "Password",
-						Key:      "password",
-						Control:  thermo.ControlString,
-						Redacted: true,
-					},
-				},
-			},
+			thermo.Auto(&flame.Application{}, "application", "Applications"),
+			thermo.Auto(&flame.User{}, "user", "Users"),
+			thermo.Auto(&flame.Token{}, "token", "Tokens"),
+			thermo.Auto(&axe.Model{}, "job", "Jobs"),
+			thermo.Auto(&glut.Model{}, "value", "Values"),
+			thermo.Auto(&blaze.File{}, "file", "Files"),
 		},
 	})
 }
