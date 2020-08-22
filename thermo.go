@@ -105,9 +105,11 @@ type Control string
 // The available form controls.
 const (
 	ControlString  Control = "string"
+	ControlText    Control = "text"
 	ControlBoolean Control = "boolean"
 	ControlNumber  Control = "number"
 	ControlDate    Control = "date"
+	ControlWell    Control = "well"
 )
 
 // Any describes an arbitrary value.

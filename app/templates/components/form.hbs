@@ -6,6 +6,12 @@
             hint=field.hint
             placeholder=field.placeholder
             redacted=field.redacted}}
+  {{else if (eq field.control "string")}}
+    {{inputs/text
+            label=field.label
+            value=(get model field.key)
+            hint=field.hint
+            placeholder=field.placeholder}}
   {{else if (eq field.control "boolean")}}
     {{inputs/boolean
             label=field.label
@@ -25,5 +31,10 @@
             value=(get model field.key)
             hint=field.hint
             placeholder=field.placeholder}}
+  {{else if (eq field.control "well")}}
+    {{inputs/well
+            label=field.label
+            value=(get model field.key)
+            hint=field.hint}}
   {{/if}}
 {{/each}}
