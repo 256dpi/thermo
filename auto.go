@@ -7,6 +7,15 @@ import (
 	"github.com/256dpi/fire/coal"
 )
 
+func unwrap(typ reflect.Type) reflect.Type {
+	// check if pointer
+	if typ.Kind() == reflect.Ptr {
+		return typ.Elem()
+	}
+
+	return typ
+}
+
 // Key will return a model key that is conflict safe. It will use an titelized
 // version of the key for conflicting keys.
 func Key(name string) string {
@@ -62,12 +71,18 @@ func Attributes(model coal.Model) []Attribute {
 			typ = Type(field.RelType)
 		} else {
 			kind = KindValue
-			switch field.Type.Kind() {
+			switch unwrap(field.Type).Kind() {
 			case reflect.String:
 				typ = TypeString
+			case reflect.Bool:
+				typ = TypeBoolean
+			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+				reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+				typ = TypeNumber
 			default:
-				switch field.Type {
-				case reflect.TypeOf(time.Time{}), reflect.TypeOf(&time.Time{}):
+				switch unwrap(field.Type) {
+				case reflect.TypeOf(time.Time{}):
 					typ = TypeDate
 				}
 			}
@@ -104,9 +119,20 @@ func Columns(model coal.Model) []Column {
 		} else if field.ToMany || field.HasMany {
 			// TODO: Add format.
 		} else {
-			switch field.Type {
-			case reflect.TypeOf(time.Time{}), reflect.TypeOf(&time.Time{}):
-				format = FormatAbsoluteDate
+			switch unwrap(field.Type).Kind() {
+			case reflect.String:
+				format = FormatLiteral
+			case reflect.Bool:
+				format = FormatLiteral
+			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+				reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+				format = FormatLiteral
+			default:
+				switch unwrap(field.Type) {
+				case reflect.TypeOf(time.Time{}):
+					format = FormatAbsoluteDate
+				}
 			}
 		}
 
@@ -141,7 +167,7 @@ func Fields(model coal.Model) []Field {
 		} else if field.ToMany || field.HasMany {
 			// TODO: Add control.
 		} else {
-			switch field.Type.Kind() {
+			switch unwrap(field.Type).Kind() {
 			case reflect.String:
 				control = ControlString
 			case reflect.Bool:
@@ -151,8 +177,8 @@ func Fields(model coal.Model) []Field {
 				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
 				control = ControlNumber
 			default:
-				switch field.Type {
-				case reflect.TypeOf(time.Time{}), reflect.TypeOf(&time.Time{}):
+				switch unwrap(field.Type) {
+				case reflect.TypeOf(time.Time{}):
 					control = ControlDate
 				}
 			}

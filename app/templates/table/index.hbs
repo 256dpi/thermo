@@ -18,14 +18,20 @@
 
         {{#each config.columns as |column|}}
           <td>
-            {{#if (eq column.format "boolean")}}
+            {{#if (eq column.format "literal")}}
+              {{get item column.key}}
+            {{else if (eq column.format "boolean")}}
               {{if (get item column.key) "True" "False"}}
             {{else if (eq column.format "absolute-date")}}
-              {{moment-format (get item column.key) "YYYY-MM-DD HH:MM:SS"}}
+              {{#if (get item column.key)}}
+                {{moment-format (get item column.key) "YYYY-MM-DD HH:MM:SS"}}
+              {{/if}}
             {{else if (eq column.format "relative-date")}}
-              {{moment-from-now (get item column.key)}}
+              {{#if (get item column.key)}}
+                {{moment-from-now (get item column.key)}}
+              {{/if}}
             {{else}}
-              {{get item column.key}}
+              {{as-json (get item column.key)}}
             {{/if}}
           </td>
         {{/each}}

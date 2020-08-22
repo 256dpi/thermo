@@ -92,6 +92,7 @@ type Format string
 
 // The available column formats.
 const (
+	FormatLiteral      Format = "literal"
 	FormatBoolean      Format = "boolean"
 	FormatAbsoluteDate Format = "absolute-date"
 	FormatRelativeDate Format = "relative-date"
