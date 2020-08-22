@@ -31,7 +31,7 @@
                 {{moment-from-now (get item column.key)}}
               {{/if}}
             {{else}}
-              {{as-json (get item column.key)}}
+              <pre>{{as-json (get item column.key)}}</pre>
             {{/if}}
           </td>
         {{/each}}
