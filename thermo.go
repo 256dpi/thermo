@@ -60,6 +60,7 @@ type Field struct {
 	Label       string  `json:"label"`
 	Key         string  `json:"key"`
 	Control     Control `json:"control"`
+	Hint        string  `json:"hint"`
 	Placeholder string  `json:"placeholder,omitempty"`
 	Redacted    bool    `json:"redacted,omitempty"`
 	Min         float64 `json:"min,omitempty"`

@@ -3,16 +3,19 @@
     {{inputs/string
             label=field.label
             value=(get model field.key)
+            hint=field.hint
             placeholder=field.placeholder
             redacted=field.redacted}}
   {{else if (eq field.control "boolean")}}
     {{inputs/boolean
             label=field.label
-            value=(get model field.key)}}
+            value=(get model field.key)
+            hint=field.hint}}
   {{else if (eq field.control "number")}}
     {{inputs/number
             label=field.label
             value=(get model field.key)
+            hint=field.hint
             placeholder=field.placeholder
             min=field.min
             max=field.max}}
@@ -20,6 +23,7 @@
     {{inputs/date
             label=field.label
             value=(get model field.key)
+            hint=field.hint
             placeholder=field.placeholder}}
   {{/if}}
 {{/each}}
