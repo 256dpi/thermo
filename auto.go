@@ -46,6 +46,11 @@ func Attributes(model coal.Model) []Attribute {
 	// collect
 	var list []Attribute
 	for _, field := range meta.OrderedFields {
+		// check key
+		if field.JSONKey == "" {
+			continue
+		}
+
 		// get kind and type
 		var kind Kind
 		var typ Type
@@ -87,6 +92,11 @@ func Columns(model coal.Model) []Column {
 	// collect
 	var list []Column
 	for _, field := range meta.OrderedFields {
+		// check key
+		if field.JSONKey == "" {
+			continue
+		}
+
 		// get format
 		var format Format
 		if field.ToOne || field.HasOne {
@@ -119,6 +129,11 @@ func Fields(model coal.Model) []Field {
 	// collect
 	var list []Field
 	for _, field := range meta.OrderedFields {
+		// check key
+		if field.JSONKey == "" {
+			continue
+		}
+
 		// get kind and type
 		var control Control
 		if field.ToOne || field.HasOne {
