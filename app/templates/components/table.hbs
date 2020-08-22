@@ -1,0 +1,41 @@
+<table class="table">
+  <thead>
+    <th width="1">
+      ID
+    </th>
+
+    {{#each config.columns as |column|}}
+      <th>{{column.title}}</th>
+    {{/each}}
+  </thead>
+
+  <tbody>
+    {{#each list as |model|}}
+      <tr>
+        <td>
+          {{link-to model.id "table.edit" model.id}}
+        </td>
+
+        {{#each config.columns as |column|}}
+          <td>
+            {{#if (eq column.format "literal")}}
+              {{get model column.key}}
+            {{else if (eq column.format "boolean")}}
+              {{if (get model column.key) "True" "False"}}
+            {{else if (eq column.format "absolute-date")}}
+              {{#if (get model column.key)}}
+                {{moment-format (get model column.key) "YYYY-MM-DD HH:MM:SS"}}
+              {{/if}}
+            {{else if (eq column.format "relative-date")}}
+              {{#if (get model column.key)}}
+                {{moment-from-now (get model column.key)}}
+              {{/if}}
+            {{else}}
+              <pre>{{as-json (get model column.key)}}</pre>
+            {{/if}}
+          </td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
