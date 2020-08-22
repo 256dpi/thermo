@@ -80,8 +80,8 @@ func admin() http.Handler {
 				},
 				Columns: []thermo.Column{
 					{
-						Title: "Name",
-						Key:   "name",
+						Title:  "Name",
+						Key:    "name",
 						Format: thermo.FormatLiteral,
 					},
 					{
@@ -90,8 +90,8 @@ func admin() http.Handler {
 						Format: thermo.FormatBoolean,
 					},
 					{
-						Title: "Count",
-						Key:   "count",
+						Title:  "Count",
+						Key:    "count",
 						Format: thermo.FormatLiteral,
 					},
 					{

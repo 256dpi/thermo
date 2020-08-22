@@ -1,7 +1,7 @@
 <div class="dialog">
   <h1>{{blueprint.title}}</h1>
 
-  {{#inputs/form submit=(action "signIn") error=error button="Sign In"}}
+  <form class="form" {{action "signIn" on="submit"}}>
     {{inputs/string
       label="Email"
       value=email
@@ -12,5 +12,17 @@
       value=password
       redacted=true
       placeholder="****"}}
-  {{/inputs/form}}
+
+    <div class="form__row">
+      <button type="submit" class="form__button">
+        Sign In
+      </button>
+    </div>
+
+    {{#if error}}
+      <div class="form__error">
+        {{error}}
+      </div>
+    {{/if}}
+  </form>
 </div>

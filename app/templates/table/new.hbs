@@ -1,3 +1,4 @@
-{{#inputs/form submit=(action "create") error=error button="Create"}}
-  {{form config=config model=model}}
-{{/inputs/form}}
+{{form config=config
+       model=model
+       submit=(action "create")
+       error=error button="Create"}}
