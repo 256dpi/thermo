@@ -82,6 +82,7 @@ func admin() http.Handler {
 					{
 						Title: "Name",
 						Key:   "name",
+						Format: thermo.FormatLiteral,
 					},
 					{
 						Title:  "State",
@@ -91,6 +92,7 @@ func admin() http.Handler {
 					{
 						Title: "Count",
 						Key:   "count",
+						Format: thermo.FormatLiteral,
 					},
 					{
 						Title:  "Created",

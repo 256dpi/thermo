@@ -56,9 +56,9 @@ module.exports = function(environment) {
           }
         ],
         columns: [
-          { title: 'Name', key: 'name' },
+          { title: 'Name', key: 'name', format: 'literal' },
           { title: 'State', key: 'state', format: 'boolean' },
-          { title: 'Count', key: 'count' },
+          { title: 'Count', key: 'count', format: 'literal' },
           { title: 'Created', key: 'created', format: 'absolute-date' },
           { title: 'Updated', key: 'updated', format: 'relative-date' },
           { title: 'Deleted', key: 'deleted', format: 'absolute-date' }
@@ -81,8 +81,8 @@ module.exports = function(environment) {
         ],
         properties: [],
         columns: [
-          { title: 'Name', key: 'name' },
-          { title: 'Email', key: 'email' }
+          { title: 'Name', key: 'name', format: 'literal' },
+          { title: 'Email', key: 'email', format: 'literal' }
         ],
         fields: [
           { label: 'Name', key: 'name', control: 'string' },
