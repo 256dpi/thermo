@@ -65,10 +65,10 @@ func Attributes(model coal.Model) []Attribute {
 		var typ Type
 		if field.ToOne || field.HasOne {
 			kind = KindBelongsTo
-			typ = Type(field.RelType)
+			typ = Type(field.RelType) // TODO: Singular?
 		} else if field.ToMany || field.HasMany {
 			kind = KindHasMany
-			typ = Type(field.RelType)
+			typ = Type(field.RelType) // TODO: Singular?
 		} else {
 			kind = KindValue
 			switch unwrap(field.Type).Kind() {
@@ -160,11 +160,16 @@ func Fields(model coal.Model) []Field {
 			continue
 		}
 
+		// check relationships
+		if field.HasOne || field.HasMany {
+			continue
+		}
+
 		// get kind and type
 		var control Control
-		if field.ToOne || field.HasOne {
+		if field.ToOne {
 			// TODO: Add control.
-		} else if field.ToMany || field.HasMany {
+		} else if field.ToMany {
 			// TODO: Add control.
 		} else {
 			switch unwrap(field.Type).Kind() {
