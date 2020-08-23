@@ -16,9 +16,9 @@ func unwrap(typ reflect.Type) reflect.Type {
 	return typ
 }
 
-// Key will return a model key that is conflict safe. It will use an titelized
-// version of the key for conflicting keys.
-func Key(name string) string {
+// Deconflict will return a model key that is conflict safe. It will use an
+// titelized version of the key for conflicting keys.
+func Deconflict(name string) string {
 	// check reserved
 	if name == "data" {
 		return "Data"
@@ -102,7 +102,7 @@ func Attributes(model coal.Model) []Attribute {
 
 		// add attribute
 		list = append(list, Attribute{
-			Name: Key(field.JSONKey),
+			Name: Deconflict(field.JSONKey),
 			Kind: KindValue,
 			Type: typ,
 		})
@@ -169,7 +169,7 @@ func Columns(model coal.Model) []Column {
 		// add column
 		list = append(list, Column{
 			Title:  field.Name,
-			Key:    Key(field.JSONKey),
+			Key:    Deconflict(field.JSONKey),
 			Format: format,
 		})
 	}
@@ -226,7 +226,7 @@ func Fields(model coal.Model) []Field {
 		// add field
 		list = append(list, Field{
 			Label:   field.Name,
-			Key:     Key(field.JSONKey),
+			Key:     Deconflict(field.JSONKey),
 			Control: control,
 		})
 	}
