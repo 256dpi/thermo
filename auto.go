@@ -55,43 +55,55 @@ func Attributes(model coal.Model) []Attribute {
 	// collect
 	var list []Attribute
 	for _, field := range meta.OrderedFields {
-		// check key
-		if field.JSONKey == "" {
+		// skip inaccessible fields
+		if field.JSONKey == "" && field.RelType == "" {
 			continue
 		}
 
-		// get kind and type
-		var kind Kind
-		var typ Type
+		// add to-one and has-one attributes
 		if field.ToOne || field.HasOne {
-			kind = KindBelongsTo
-			typ = Type(field.RelType) // TODO: Singular?
-		} else if field.ToMany || field.HasMany {
-			kind = KindHasMany
-			typ = Type(field.RelType) // TODO: Singular?
-		} else {
-			kind = KindValue
-			switch unwrap(field.Type).Kind() {
-			case reflect.String:
-				typ = TypeString
-			case reflect.Bool:
-				typ = TypeBoolean
-			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
-				reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
-				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
-				typ = TypeNumber
-			default:
-				switch unwrap(field.Type) {
-				case reflect.TypeOf(time.Time{}):
-					typ = TypeDate
-				}
+			list = append(list, Attribute{
+				Name: field.RelName,
+				Kind: KindBelongsTo,
+				Type: Type(field.RelType),
+			})
+
+			continue
+		}
+
+		// add to-many and has-many attributes
+		if field.ToMany || field.HasMany {
+			list = append(list, Attribute{
+				Name: field.RelName,
+				Kind: KindHasMany,
+				Type: Type(field.RelType),
+			})
+
+			continue
+		}
+
+		// get type
+		var typ Type
+		switch unwrap(field.Type).Kind() {
+		case reflect.String:
+			typ = TypeString
+		case reflect.Bool:
+			typ = TypeBoolean
+		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+			reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+			typ = TypeNumber
+		default:
+			switch unwrap(field.Type) {
+			case reflect.TypeOf(time.Time{}):
+				typ = TypeDate
 			}
 		}
 
 		// add attribute
 		list = append(list, Attribute{
 			Name: Key(field.JSONKey),
-			Kind: kind,
+			Kind: KindValue,
 			Type: typ,
 		})
 	}
@@ -107,32 +119,48 @@ func Columns(model coal.Model) []Column {
 	// collect
 	var list []Column
 	for _, field := range meta.OrderedFields {
-		// check key
-		if field.JSONKey == "" {
+		// skip inaccessible fields
+		if field.JSONKey == "" && field.RelType == "" {
+			continue
+		}
+
+		// add to-one and has-one columns
+		if field.ToOne || field.HasOne {
+			list = append(list, Column{
+				Title:  field.Name,
+				Key:    field.RelName,
+				Format: FormatLiteral, // TODO: Proper format.
+			})
+
+			continue
+		}
+
+		// add to-many and has-many columns
+		if field.ToMany || field.HasMany {
+			list = append(list, Column{
+				Title:  field.Name,
+				Key:    field.RelName,
+				Format: FormatLiteral, // TODO: Proper format.
+			})
+
 			continue
 		}
 
 		// get format
 		var format Format
-		if field.ToOne || field.HasOne {
-			// TODO: Add format.
-		} else if field.ToMany || field.HasMany {
-			// TODO: Add format.
-		} else {
-			switch unwrap(field.Type).Kind() {
-			case reflect.String:
-				format = FormatLiteral
-			case reflect.Bool:
-				format = FormatLiteral
-			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
-				reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
-				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
-				format = FormatLiteral
-			default:
-				switch unwrap(field.Type) {
-				case reflect.TypeOf(time.Time{}):
-					format = FormatAbsoluteDate
-				}
+		switch unwrap(field.Type).Kind() {
+		case reflect.String:
+			format = FormatLiteral
+		case reflect.Bool:
+			format = FormatLiteral
+		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+			reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+			format = FormatLiteral
+		default:
+			switch unwrap(field.Type) {
+			case reflect.TypeOf(time.Time{}):
+				format = FormatAbsoluteDate
 			}
 		}
 
@@ -155,37 +183,41 @@ func Fields(model coal.Model) []Field {
 	// collect
 	var list []Field
 	for _, field := range meta.OrderedFields {
-		// check key
-		if field.JSONKey == "" {
+		// skip inaccessible fields
+		if field.JSONKey == "" && field.RelType == "" {
 			continue
 		}
 
-		// check relationships
+		// skip has-one and has-many relationships
 		if field.HasOne || field.HasMany {
 			continue
 		}
 
-		// get kind and type
-		var control Control
+		// add to-one fields
 		if field.ToOne {
-			// TODO: Add control.
-		} else if field.ToMany {
-			// TODO: Add control.
-		} else {
-			switch unwrap(field.Type).Kind() {
-			case reflect.String:
-				control = ControlString
-			case reflect.Bool:
-				control = ControlBoolean
-			case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
-				reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
-				reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
-				control = ControlNumber
-			default:
-				switch unwrap(field.Type) {
-				case reflect.TypeOf(time.Time{}):
-					control = ControlDate
-				}
+			continue // TODO: Add control.
+		}
+
+		// add to-many fields
+		if field.ToMany {
+			continue // TODO: Add control.
+		}
+
+		// get control
+		var control Control
+		switch unwrap(field.Type).Kind() {
+		case reflect.String:
+			control = ControlString
+		case reflect.Bool:
+			control = ControlBoolean
+		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+			reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+			reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+			control = ControlNumber
+		default:
+			switch unwrap(field.Type) {
+			case reflect.TypeOf(time.Time{}):
+				control = ControlDate
 			}
 		}
 

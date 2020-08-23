@@ -1,5 +1,6 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
+import { singularize } from 'ember-inflector';
 
 import config from 'thermo/config/environment';
 
@@ -24,11 +25,11 @@ export default {
                       return [attribute.name, attr({ defaultValue: attribute.default })];
                     }
                   case 'belongs-to':
-                    return [attribute.name, belongsTo(attribute.type)];
+                    return [attribute.name, belongsTo(singularize(attribute.type))];
                   case 'has-many':
-                    return [attribute.name, hasMany(attribute.type)];
+                    return [attribute.name, hasMany(singularize(attribute.type))];
                   default:
-                    return [attribute.name, null];
+                    throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
                 }
               })
               .concat(
