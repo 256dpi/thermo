@@ -129,7 +129,8 @@ func Columns(model coal.Model) []Column {
 			list = append(list, Column{
 				Title:  field.Name,
 				Key:    field.RelName,
-				Format: FormatLiteral, // TODO: Proper format.
+				Format: FormatBelongsTo,
+				Label:  "id",
 			})
 
 			continue
@@ -140,7 +141,8 @@ func Columns(model coal.Model) []Column {
 			list = append(list, Column{
 				Title:  field.Name,
 				Key:    field.RelName,
-				Format: FormatLiteral, // TODO: Proper format.
+				Format: FormatHasMany,
+				Label:  "id",
 			})
 
 			continue

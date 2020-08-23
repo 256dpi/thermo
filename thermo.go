@@ -53,6 +53,7 @@ type Column struct {
 	Title  string `json:"title"`
 	Key    string `json:"key"`
 	Format Format `json:"format,omitempty"`
+	Label  string `json:"label,omitempty"`
 }
 
 // Field describes a form field.
@@ -97,6 +98,8 @@ const (
 	FormatBoolean      Format = "boolean"
 	FormatAbsoluteDate Format = "absolute-date"
 	FormatRelativeDate Format = "relative-date"
+	FormatBelongsTo    Format = "belongs-to"
+	FormatHasMany      Format = "has-many"
 )
 
 // Control describes a form control.

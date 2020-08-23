@@ -18,21 +18,31 @@
 
         {{#each config.columns as |column|}}
           <td>
-            {{#if (eq column.format "literal")}}
-              {{get model column.key}}
-            {{else if (eq column.format "boolean")}}
-              {{if (get model column.key) "True" "False"}}
-            {{else if (eq column.format "absolute-date")}}
-              {{#if (get model column.key)}}
-                {{moment-format (get model column.key) "YYYY-MM-DD HH:MM:SS"}}
+            {{#with (get model column.key) as |value|}}
+              {{#if (eq column.format "literal")}}
+                {{value}}
+              {{else if (eq column.format "boolean")}}
+                {{if value "True" "False"}}
+              {{else if (eq column.format "absolute-date")}}
+                {{#if value}}
+                  {{moment-format value "YYYY-MM-DD HH:MM:SS"}}
+                {{/if}}
+              {{else if (eq column.format "relative-date")}}
+                {{#if value}}
+                  {{moment-from-now value}}
+                {{/if}}
+              {{else if (eq column.format "belongs-to")}}
+                {{#if value}}
+                  {{get value column.label}}
+                {{/if}}
+              {{else if (eq column.format "has-many")}}
+                {{#each value as |model|}}
+                  {{get model column.label}}
+                {{/each}}
+              {{else}}
+                <pre>{{as-json value}}</pre>
               {{/if}}
-            {{else if (eq column.format "relative-date")}}
-              {{#if (get model column.key)}}
-                {{moment-from-now (get model column.key)}}
-              {{/if}}
-            {{else}}
-              <pre>{{as-json (get model column.key)}}</pre>
-            {{/if}}
+            {{/with}}
           </td>
         {{/each}}
       </tr>
