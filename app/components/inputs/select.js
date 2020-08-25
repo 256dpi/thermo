@@ -4,6 +4,10 @@ import EmberObject, { computed } from '@ember/object';
 import Component from '@ember/component';
 
 export default Component.extend({
+  label: '',
+  value: null,
+  hint: null,
+  collection: null,
   disabled: false,
   multiple: false,
   enableEmpty: false,

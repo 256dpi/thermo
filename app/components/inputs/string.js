@@ -1,7 +1,10 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-  redacted: false,
+  label: '',
+  value: null,
+  hint: null,
   disabled: false,
+  redacted: false,
   placeholder: ''
 });
