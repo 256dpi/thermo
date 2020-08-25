@@ -1,5 +1,5 @@
-import Application from '../app';
-import config from '../config/environment';
+import Application from 'thermo/app';
+import config from 'thermo/config/environment';
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
 
