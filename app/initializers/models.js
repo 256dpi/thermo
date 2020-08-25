@@ -1,6 +1,7 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { singularize } from 'ember-inflector';
+import { copy } from '@ember/object/internals';
 
 import config from 'thermo/config/environment';
 
@@ -20,9 +21,23 @@ export default {
                 switch (attribute.kind) {
                   case 'value':
                     if (attribute.type) {
-                      return [attribute.name, attr(attribute.type, { defaultValue: attribute.default })];
+                      return [
+                        attribute.name,
+                        attr(attribute.type, {
+                          defaultValue() {
+                            return copy(attribute.default, true);
+                          }
+                        })
+                      ];
                     } else {
-                      return [attribute.name, attr({ defaultValue: attribute.default })];
+                      return [
+                        attribute.name,
+                        attr({
+                          defaultValue() {
+                            return copy(attribute.default, true);
+                          }
+                        })
+                      ];
                     }
                   case 'belongs-to':
                     return [attribute.name, belongsTo(singularize(attribute.type))];

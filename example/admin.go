@@ -43,6 +43,7 @@ func admin() http.Handler {
 						Name: "count",
 						Kind: thermo.KindValue,
 						Type: thermo.TypeNumber,
+						Default: 0,
 					},
 					{
 						Name: "created",

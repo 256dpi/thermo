@@ -84,15 +84,25 @@ func Attributes(model coal.Model) []Attribute {
 
 		// get type
 		var typ Type
+		var def Any
 		switch unwrap(field.Type).Kind() {
 		case reflect.String:
 			typ = TypeString
+			if !field.Optional {
+				def = ""
+			}
 		case reflect.Bool:
 			typ = TypeBoolean
+			if !field.Optional {
+				def = false
+			}
 		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
 			reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
 			reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
 			typ = TypeNumber
+			if !field.Optional {
+				def = 0
+			}
 		default:
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
@@ -105,6 +115,7 @@ func Attributes(model coal.Model) []Attribute {
 			Name: Deconflict(field.JSONKey),
 			Kind: KindValue,
 			Type: typ,
+			Default: def,
 		})
 	}
 
