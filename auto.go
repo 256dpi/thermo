@@ -112,9 +112,9 @@ func Attributes(model coal.Model) []Attribute {
 
 		// add attribute
 		list = append(list, Attribute{
-			Name: Deconflict(field.JSONKey),
-			Kind: KindValue,
-			Type: typ,
+			Name:    Deconflict(field.JSONKey),
+			Kind:    KindValue,
+			Type:    typ,
 			Default: def,
 		})
 	}
