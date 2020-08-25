@@ -58,14 +58,15 @@ type Column struct {
 
 // Field describes a form field.
 type Field struct {
-	Label       string  `json:"label"`
-	Key         string  `json:"key"`
-	Control     Control `json:"control"`
-	Hint        string  `json:"hint"`
-	Placeholder string  `json:"placeholder,omitempty"`
-	Redacted    bool    `json:"redacted,omitempty"`
-	Min         float64 `json:"min,omitempty"`
-	Max         float64 `json:"max,omitempty"`
+	Label       string     `json:"label"`
+	Key         string     `json:"key"`
+	Hint        string     `json:"hint"`
+	Control     Control    `json:"control"`
+	Placeholder string     `json:"placeholder,omitempty"`
+	Redacted    bool       `json:"redacted,omitempty"`
+	Min         float64    `json:"min,omitempty"`
+	Max         float64    `json:"max,omitempty"`
+	Source      Expression `json:"source,omitempty"`
 }
 
 // Kind describes a field kind.
@@ -112,6 +113,7 @@ const (
 	ControlBoolean Control = "boolean"
 	ControlNumber  Control = "number"
 	ControlDate    Control = "date"
+	ControlSelect  Control = "select"
 	ControlWell    Control = "well"
 )
 

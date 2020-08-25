@@ -32,6 +32,12 @@
               value=(get model field.key)
               hint=field.hint
               placeholder=field.placeholder}}
+    {{else if (eq field.control "select")}}
+      {{inputs/select
+              label=field.label
+              value=(get model field.key)
+              hint=field.hint
+              collection=(evaluate field.source model)}}
     {{else if (eq field.control "well")}}
       {{inputs/well
               label=field.label

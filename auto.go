@@ -208,7 +208,16 @@ func Fields(model coal.Model) []Field {
 
 		// add to-one fields
 		if field.ToOne {
-			continue // TODO: Add control.
+			list = append(list, Field{
+				Label:   field.Name,
+				Key:     field.RelName,
+				Control: ControlSelect,
+				Source: Expression(
+					`return $.store.findAll($.singularize('` + field.RelType + `'))`,
+				),
+			})
+
+			continue
 		}
 
 		// add to-many fields

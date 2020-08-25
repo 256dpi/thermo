@@ -40,9 +40,9 @@ func admin() http.Handler {
 						Default: true,
 					},
 					{
-						Name: "count",
-						Kind: thermo.KindValue,
-						Type: thermo.TypeNumber,
+						Name:    "count",
+						Kind:    thermo.KindValue,
+						Type:    thermo.TypeNumber,
 						Default: 0,
 					},
 					{
