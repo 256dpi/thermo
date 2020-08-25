@@ -8,7 +8,7 @@ export default Component.extend({
 
   list: computed('value.*', {
     get() {
-      return (this.get('value') || []).map(str => {
+      return (this.value || []).map(str => {
         return { value: str };
       });
     },
@@ -22,7 +22,7 @@ export default Component.extend({
   actions: {
     add() {
       // get list
-      let list = this.get('list');
+      let list = this.list;
 
       // check list
       if (!isArray(list)) {
@@ -44,7 +44,7 @@ export default Component.extend({
 
     remove(index) {
       // get list
-      let list = this.get('list');
+      let list = this.list;
 
       // remove item
       list.removeAt(index);

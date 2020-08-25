@@ -9,7 +9,7 @@ export default Component.extend({
   actions: {
     add() {
       // get list
-      let list = this.get('value');
+      let list = this.value;
 
       // check list
       if (!isArray(list)) {
@@ -21,7 +21,7 @@ export default Component.extend({
       let entry = {};
 
       // set defaults
-      for (let column of this.get('columns')) {
+      for (let column of this.columns) {
         entry[column.field] = column.default || null;
       }
 
@@ -30,7 +30,7 @@ export default Component.extend({
     },
 
     remove(index) {
-      this.get('value').removeAt(index);
+      this.value.removeAt(index);
     }
   }
 });

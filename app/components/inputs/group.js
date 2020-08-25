@@ -5,12 +5,12 @@ export default Component.extend({
 
   actions: {
     add() {
-      let num = this.get('models.length');
-      this.get('models').addObject(this.get('factory')(num + 1));
+      let num = this.models.length;
+      this.models.addObject(this.factory(num + 1));
     },
 
     select(model) {
-      if (model === this.get('selected')) {
+      if (model === this.selected) {
         this.set('selected', null);
       } else {
         this.set('selected', model);
@@ -19,7 +19,7 @@ export default Component.extend({
 
     remove(model) {
       // get models
-      let models = this.get('models');
+      let models = this.models;
 
       // remove model
       models.removeAt(models.indexOf(model));

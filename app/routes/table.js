@@ -10,7 +10,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   model(params) {
     // get previous name and config
-    let name = this.get('name');
+    let name = this.name;
     let config = this.getConfig(name);
 
     // unsubscribe if watchable
@@ -35,7 +35,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   deactivate() {
     // get name and config
-    const name = this.get('name');
+    const name = this.name;
     const config = this.getConfig(name);
 
     // unsubscribe if watchable

@@ -6,11 +6,11 @@ export default Component.extend({
 
   actions: {
     submit() {
-      this.get('submit')();
+      this.submit();
     },
 
     delete() {
-      this.get('delete')();
+      this.delete();
     }
   }
 });

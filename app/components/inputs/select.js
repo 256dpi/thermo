@@ -17,48 +17,48 @@ export default Component.extend({
   labelField: 'name',
 
   emptyOption: computed('emptyName', function() {
-    return EmberObject.create({ name: this.get('emptyName') });
+    return EmberObject.create({ name: this.emptyName });
   }),
 
   unsetOption: computed('unsetName', function() {
-    return EmberObject.create({ name: this.get('unsetName') });
+    return EmberObject.create({ name: this.unsetName });
   }),
 
   emptyArray: computed('enableEmpty', 'emptyOption', function() {
-    if (this.get('enableEmpty')) {
-      return A([this.get('emptyOption')]);
+    if (this.enableEmpty) {
+      return A([this.emptyOption]);
     } else {
       return A([]);
     }
   }),
 
   unsetArray: computed('enableUnset', 'unsetOption', function() {
-    if (this.get('enableUnset')) {
-      return A([this.get('unsetOption')]);
+    if (this.enableUnset) {
+      return A([this.unsetOption]);
     } else {
       return A([]);
     }
   }),
 
   selected: computed('value.id', 'enableEmpty', 'enableUnset', 'emptyOption', 'unsetOption', function() {
-    let value = this.get('value');
+    let value = this.value;
 
-    if (value === undefined && this.get('enableEmpty')) {
-      return this.get('emptyOption');
-    } else if (value === null && this.get('enableUnset')) {
-      return this.get('unsetOption');
+    if (value === undefined && this.enableEmpty) {
+      return this.emptyOption;
+    } else if (value === null && this.enableUnset) {
+      return this.unsetOption;
     }
 
-    return this.get('value');
+    return this.value;
   }),
 
   options: union('emptyArray', 'collection', 'unsetArray'),
 
   actions: {
     select(value) {
-      if (value === this.get('emptyOption')) {
+      if (value === this.emptyOption) {
         this.set('value', undefined);
-      } else if (value === this.get('unsetOption')) {
+      } else if (value === this.unsetOption) {
         this.set('value', null);
       } else {
         this.set('value', value);

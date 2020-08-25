@@ -8,8 +8,8 @@ export default Controller.extend(ErrorHandling, {
 
   actions: {
     signIn() {
-      this.get('session')
-        .authenticate('authenticator:oauth2', this.get('email'), this.get('password'))
+      this.session
+        .authenticate('authenticator:oauth2', this.email, this.password)
         .catch(err => {
           this.setError(err);
         });
