@@ -2,6 +2,7 @@ import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { singularize } from 'ember-inflector';
 import { copy } from '@ember/object/internals';
+import { inject as service } from '@ember/service';
 
 import config from 'thermo/config/environment';
 
@@ -10,6 +11,9 @@ export default {
   initialize: function(app) {
     // prepare models
     const models = config.blueprint.models.map(model => {
+      // build header
+      const header = [['context', service()]];
+
       // build attributes
       const attributes = model.attributes.map(attribute => {
         switch (attribute.kind) {
@@ -49,7 +53,7 @@ export default {
 
       return {
         name: model.name,
-        class: Model.extend(Object.fromEntries(attributes.concat(properties)))
+        class: Model.extend(Object.fromEntries(header.concat(attributes, properties)))
       };
     });
 
