@@ -10,48 +10,46 @@ export default {
   initialize: function(app) {
     // prepare models
     const models = config.blueprint.models.map(model => {
+      // build attributes
+      const attributes = model.attributes.map(attribute => {
+        switch (attribute.kind) {
+          case 'value':
+            if (attribute.type) {
+              return [
+                attribute.name,
+                attr(attribute.type, {
+                  defaultValue() {
+                    return copy(attribute.default, true);
+                  }
+                })
+              ];
+            } else {
+              return [
+                attribute.name,
+                attr({
+                  defaultValue() {
+                    return copy(attribute.default, true);
+                  }
+                })
+              ];
+            }
+          case 'belongs-to':
+            return [attribute.name, belongsTo(singularize(attribute.type))];
+          case 'has-many':
+            return [attribute.name, hasMany(singularize(attribute.type))];
+          default:
+            throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
+        }
+      });
+
+      // build properties
+      const properties = model.properties.map(property => {
+        return [property.name, computed(...property.keys, new Function(property.body))];
+      });
+
       return {
         name: model.name,
-        class: Model.extend(
-          Object.fromEntries(
-            model.attributes
-              .map(attribute => {
-                switch (attribute.kind) {
-                  case 'value':
-                    if (attribute.type) {
-                      return [
-                        attribute.name,
-                        attr(attribute.type, {
-                          defaultValue() {
-                            return copy(attribute.default, true);
-                          }
-                        })
-                      ];
-                    } else {
-                      return [
-                        attribute.name,
-                        attr({
-                          defaultValue() {
-                            return copy(attribute.default, true);
-                          }
-                        })
-                      ];
-                    }
-                  case 'belongs-to':
-                    return [attribute.name, belongsTo(singularize(attribute.type))];
-                  case 'has-many':
-                    return [attribute.name, hasMany(singularize(attribute.type))];
-                  default:
-                    throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
-                }
-              })
-              .concat(
-                model.properties.map(property => {
-                  return [property.name, computed(...property.keys, new Function(property.body))];
-                })
-              )
-          )
-        )
+        class: Model.extend(Object.fromEntries(attributes.concat(properties)))
       };
     });
 
