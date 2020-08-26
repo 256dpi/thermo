@@ -48,7 +48,13 @@ export default {
 
       // build properties
       const properties = model.properties.map(property => {
-        return [property.name, computed(...property.keys, new Function(property.body))];
+        const fn = new Function('$', property.body);
+        return [
+          property.name,
+          computed(...property.keys, function() {
+            return fn.call(this, this.context);
+          })
+        ];
       });
 
       return {
