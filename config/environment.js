@@ -52,13 +52,14 @@ module.exports = function(environment) {
           {
             name: 'info',
             keys: ['state'],
-            body: `this.get('state') ? "Active" : "Inactive"`
+            body: `return this.get('state') ? "Active" : "Inactive"`
           }
         ],
         columns: [
           { title: 'Name', key: 'name', format: 'literal' },
           { title: 'State', key: 'state', format: 'boolean' },
           { title: 'Count', key: 'count', format: 'literal' },
+          { title: 'Info', key: 'info', format: 'literal' },
           { title: 'Created', key: 'created', format: 'absolute-date' },
           { title: 'Updated', key: 'updated', format: 'relative-date' },
           { title: 'Deleted', key: 'deleted', format: 'absolute-date' }

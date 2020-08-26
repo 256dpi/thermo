@@ -8,11 +8,9 @@ export default Controller.extend(ErrorHandling, {
 
   actions: {
     signIn() {
-      this.session
-        .authenticate('authenticator:oauth2', this.email, this.password)
-        .catch(err => {
-          this.setError(err);
-        });
+      this.session.authenticate('authenticator:oauth2', this.email, this.password).catch(err => {
+        this.setError(err);
+      });
     }
   }
 });

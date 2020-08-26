@@ -96,6 +96,11 @@ func admin() http.Handler {
 						Format: thermo.FormatLiteral,
 					},
 					{
+						Title:  "Info",
+						Key:    "info",
+						Format: thermo.FormatLiteral,
+					},
+					{
 						Title:  "Created",
 						Key:    "created",
 						Format: thermo.FormatAbsoluteDate,

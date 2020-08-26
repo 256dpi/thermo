@@ -47,10 +47,7 @@ export default {
               })
               .concat(
                 model.properties.map(property => {
-                  return [
-                    property.name,
-                    computed(...property.keys, eval('(function(){ return ' + property.body + '})'))
-                  ];
+                  return [property.name, computed(...property.keys, new Function(property.body))];
                 })
               )
           )
