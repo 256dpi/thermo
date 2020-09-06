@@ -24,74 +24,7 @@ module.exports = function(environment) {
   };
 
   ENV.blueprint = {
-    title: 'Example',
-    backend: {
-      baseURL: 'http://0.0.0.0:8000',
-      authPath: 'auth',
-      dataPath: 'api',
-      watchPath: 'api/watch',
-      clientID: 'main-key'
-    },
-    models: [
-      {
-        name: 'item',
-        title: 'Item',
-        sorting: ['name:asc'],
-        watchable: true,
-        attributes: [
-          { name: 'name', kind: 'value', type: 'string' },
-          { name: 'state', kind: 'value', type: 'boolean', default: true },
-          { name: 'count', kind: 'value', type: 'number' },
-          { name: 'created', kind: 'value', type: 'date' },
-          { name: 'updated', kind: 'value', type: 'date' },
-          { name: 'deleted', kind: 'value', type: 'date' },
-          { name: 'create-token', kind: 'value', type: 'string', init: 'Date.now().toString()' },
-          { name: 'update-token', kind: 'value', type: 'string' }
-        ],
-        properties: [
-          {
-            name: 'info',
-            keys: ['state'],
-            body: `return this.get('state') ? "Active" : "Inactive"`
-          }
-        ],
-        columns: [
-          { title: 'Name', key: 'name', format: 'literal' },
-          { title: 'State', key: 'state', format: 'boolean' },
-          { title: 'Count', key: 'count', format: 'literal' },
-          { title: 'Info', key: 'info', format: 'literal' },
-          { title: 'Created', key: 'created', format: 'absolute-date' },
-          { title: 'Updated', key: 'updated', format: 'relative-date' },
-          { title: 'Deleted', key: 'deleted', format: 'absolute-date' }
-        ],
-        fields: [
-          { label: 'Name', key: 'name', control: 'string', placeholder: 'My Item' },
-          { label: 'State', key: 'state', control: 'boolean' },
-          { label: 'Count', key: 'count', control: 'number' }
-        ]
-      },
-      {
-        name: 'user',
-        title: 'User',
-        sorting: ['name:asc'],
-        watchable: false,
-        attributes: [
-          { name: 'name', kind: 'value', type: 'string' },
-          { name: 'email', kind: 'value', type: 'string' },
-          { name: 'password', kind: 'value', type: 'string' }
-        ],
-        properties: [],
-        columns: [
-          { title: 'Name', key: 'name', format: 'literal' },
-          { title: 'Email', key: 'email', format: 'literal' }
-        ],
-        fields: [
-          { label: 'Name', key: 'name', control: 'string' },
-          { label: 'Email', key: 'email', control: 'string' },
-          { label: 'Password', key: 'password', control: 'string', redacted: true }
-        ]
-      }
-    ]
+    remote: 'http://0.0.0.0:8000/thermo.json'
   };
 
   ENV['ember-simple-auth'] = {
