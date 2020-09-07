@@ -66,7 +66,7 @@ export default {
         const fn = new Function('$', property.body);
         return [
           property.name,
-          computed(...property.keys, function() {
+          computed('context', ...property.keys, function() {
             return fn.call(this, this.context);
           })
         ];
