@@ -11,7 +11,7 @@ export default JSONAPIAdapter.extend(DataAdapterMixin, {
   host: config.blueprint.backend.baseURL,
   namespace: config.blueprint.backend.dataPath,
 
-  headers: computed('session.data.authenticated.access_token', 'session.isAuthenticated', function() {
+  headers: computed('session.{isAuthenticated,data.authenticated.access_token}', function() {
     let headers = {};
     if (this.session.isAuthenticated) {
       headers['Authorization'] = `Bearer ${this.session.data.authenticated.access_token}`;
