@@ -26,6 +26,7 @@ var blueprint = thermo.Blueprint{
 			Name:      "item",
 			Title:     "Item",
 			Sorting:   []string{"name:asc"},
+			PageSize:  5,
 			Watchable: true,
 			Attributes: []thermo.Attribute{
 				{

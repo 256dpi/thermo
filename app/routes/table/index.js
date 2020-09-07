@@ -2,12 +2,28 @@ import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Route.extend(AuthenticatedRouteMixin, {
-  model() {
+  queryParams: {
+    page: {
+      refreshModel: true
+    }
+  },
+
+  model(params) {
     // get config
     const config = this.modelFor('table');
 
-    // find all
-    return this.store.findAll(config.name);
+    // default to first page
+    params.page ||= 1;
+
+    // TODO: Also add sorting and filters.
+
+    // query
+    return this.store.query(config.name, {
+      page: {
+        number: params.page,
+        size: config.pageSize || 25
+      }
+    });
   },
 
   setupController(controller) {

@@ -49,3 +49,19 @@
     {{/each}}
   </tbody>
 </table>
+
+<p class="pagination">
+  {{#if (gt lastPage 1)}}
+    Page: {{page}} |
+  {{/if}}
+
+  {{#if (gt page 1)}}
+    <a href="#" {{action 'set' 1}}>First</a>
+    <a href="#" {{action 'previous'}}>Previous</a>
+  {{/if}}
+
+  {{#if (lt page lastPage)}}
+    <a href="#" {{action 'next'}}>Next</a>
+    <a href="#" {{action 'set' lastPage}}>Last</a>
+  {{/if}}
+</p>
