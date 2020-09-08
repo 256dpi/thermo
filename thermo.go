@@ -25,7 +25,6 @@ type Model struct {
 	Name       string      `json:"name"`
 	Title      string      `json:"title"`
 	Sorting    []string    `json:"sorting"`
-	PageSize   int         `json:"pageSize"`
 	Watchable  bool        `json:"watchable"`
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`

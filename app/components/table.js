@@ -4,7 +4,9 @@ import { computed } from '@ember/object';
 export default Component.extend({
   config: undefined,
   list: undefined,
-  page: 0,
+
+  pageSize: 0,
+  pageNumber: 0,
 
   lastPage: computed('list.links', function() {
     // check list
@@ -36,16 +38,20 @@ export default Component.extend({
   }),
 
   actions: {
-    set(page) {
-      this.set('page', page);
+    setPageSize(size) {
+      this.set('pageSize', parseInt(size));
     },
 
-    previous() {
-      this.decrementProperty('page', 1);
+    setPageNumber(page) {
+      this.set('pageNumber', page);
     },
 
-    next() {
-      this.incrementProperty('page', 1);
+    previousPage() {
+      this.decrementProperty('pageNumber', 1);
+    },
+
+    nextPage() {
+      this.incrementProperty('pageNumber', 1);
     }
   }
 });

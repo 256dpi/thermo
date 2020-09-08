@@ -51,17 +51,23 @@
 </table>
 
 <p class="pagination">
+  <select onchange={{action "setPageSize" value="target.value"}}>
+    {{#each (array 5 10 25 50 100) as |size|}}
+      <option selected={{eq size pageSize}}>{{size}}</option>
+    {{/each}}
+  </select>
+
   {{#if (gt lastPage 1)}}
-    Page: {{page}} |
+    Page {{page}} |
   {{/if}}
 
-  {{#if (gt page 1)}}
-    <a href="#" {{action 'set' 1}}>First</a>
-    <a href="#" {{action 'previous'}}>Previous</a>
+  {{#if (gt pageNumber 1)}}
+    <a href="#" {{action 'setPageNumber' 1}}>First</a>
+    <a href="#" {{action 'previousPage'}}>Previous</a>
   {{/if}}
 
-  {{#if (lt page lastPage)}}
-    <a href="#" {{action 'next'}}>Next</a>
-    <a href="#" {{action 'set' lastPage}}>Last</a>
+  {{#if (lt pageNumber lastPage)}}
+    <a href="#" {{action 'nextPage'}}>Next</a>
+    <a href="#" {{action 'setPageNumber' lastPage}}>Last</a>
   {{/if}}
 </p>
