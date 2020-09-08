@@ -39,7 +39,11 @@ export default Component.extend({
 
   actions: {
     setSort(sort) {
-      this.set('sort', sort);
+      if (sort) {
+        this.set('sort', sort);
+      } else {
+        this.set('sort', null);
+      }
     },
     setPageSize(size) {
       this.set('pageSize', parseInt(size));

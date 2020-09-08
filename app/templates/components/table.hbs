@@ -2,9 +2,10 @@
   <p class="sorting">
     Sorting:
     <select onchange={{action "setSort" value="target.value"}}>
+      <option value="">Natural</option>
       {{#each config.orders as |order|}}
-        <option value={{order.name}}>{{order.title}} ↑</option>
-        <option value="-{{order.name}}">{{order.title}} ↓</option>
+        <option selected={{eq order.name sort}} value={{order.name}}>{{order.title}} ↑</option>
+        <option selected={{eq (concat "-" order.name) sort}} value="-{{order.name}}">{{order.title}} ↓</option>
       {{/each}}
     </select>
   </p>
