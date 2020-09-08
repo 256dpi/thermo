@@ -1,16 +1,15 @@
 import Controller from '@ember/controller';
-import { sort } from '@ember/object/computed';
 
 export default Controller.extend({
   queryParams: [
     {
+      sort: 's',
       pageSize: 'ps',
       pageNumber: 'pn'
     }
   ],
 
+  sort: null,
   pageSize: 25,
-  pageNumber: 1,
-
-  sorted: sort('model', 'config.sorting')
+  pageNumber: 1
 });

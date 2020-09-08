@@ -38,6 +38,9 @@ export default Component.extend({
   }),
 
   actions: {
+    setSort(sort) {
+      this.set('sort', sort);
+    },
     setPageSize(size) {
       this.set('pageSize', parseInt(size));
     },

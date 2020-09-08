@@ -1,3 +1,15 @@
+{{#if (gt config.orders.length 0)}}
+  <p class="sorting">
+    Sorting:
+    <select onchange={{action "setSort" value="target.value"}}>
+      {{#each config.orders as |order|}}
+        <option value={{order.name}}>{{order.title}} ↑</option>
+        <option value="-{{order.name}}">{{order.title}} ↓</option>
+      {{/each}}
+    </select>
+  </p>
+{{/if}}
+
 <table class="table">
   <thead>
     <th width="1">

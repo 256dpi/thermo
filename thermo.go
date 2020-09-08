@@ -24,10 +24,10 @@ type Backend struct {
 type Model struct {
 	Name       string      `json:"name"`
 	Title      string      `json:"title"`
-	Sorting    []string    `json:"sorting"`
 	Watchable  bool        `json:"watchable"`
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`
+	Orders     []Order     `json:"orders"`
 	Columns    []Column    `json:"columns"`
 	Fields     []Field     `json:"fields"`
 }
@@ -46,6 +46,12 @@ type Property struct {
 	Name string     `json:"name"`
 	Keys []string   `json:"keys,omitempty"`
 	Body Expression `json:"body,omitempty"`
+}
+
+// Order describes a sorting order.
+type Order struct {
+	Title string `json:"title"`
+	Name  string `json:"name"`
 }
 
 // Column describes a table column.

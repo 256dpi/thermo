@@ -30,16 +30,10 @@ func Deconflict(name string) string {
 }
 
 // Auto will generate a Model definition for the provided coal.Model.
-func Auto(model coal.Model, name, title string, sorting ...string) Model {
-	// check sorting
-	if len(sorting) == 0 {
-		sorting = []string{"id:asc"}
-	}
-
+func Auto(model coal.Model, name, title string) Model {
 	return Model{
 		Name:       name,
 		Title:      title,
-		Sorting:    sorting,
 		Attributes: Attributes(model),
 		Properties: []Property{},
 		Columns:    Columns(model),

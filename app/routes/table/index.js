@@ -3,6 +3,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 export default Route.extend(AuthenticatedRouteMixin, {
   queryParams: {
+    sort: {
+      refreshModel: true
+    },
     pageSize: {
       refreshModel: true
     },
@@ -15,15 +18,23 @@ export default Route.extend(AuthenticatedRouteMixin, {
     // get config
     const config = this.modelFor('table');
 
-    // TODO: Also add sorting and filters.
+    // TODO: Also add filters.
 
-    // query
-    return this.store.query(config.name, {
+    // prepare query
+    const query = {
       page: {
         size: params.pageSize,
         number: params.pageNumber
       }
-    });
+    };
+
+    // add sorting if available
+    if (params.sort) {
+      query.sort = params.sort;
+    }
+
+    // query
+    return this.store.query(config.name, query);
   },
 
   setupController(controller) {

@@ -11,8 +11,9 @@ import (
 
 func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage) *fire.Controller {
 	return &fire.Controller{
-		Model: &Item{},
-		Store: store,
+		Model:   &Item{},
+		Store:   store,
+		Sorters: []string{"Name", "State", "Count", "Created"},
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},

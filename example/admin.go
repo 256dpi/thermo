@@ -25,7 +25,6 @@ var blueprint = thermo.Blueprint{
 		{
 			Name:      "item",
 			Title:     "Item",
-			Sorting:   []string{"name:asc"},
 			Watchable: true,
 			Attributes: []thermo.Attribute{
 				{
@@ -77,6 +76,24 @@ var blueprint = thermo.Blueprint{
 					Name: "info",
 					Keys: []string{"state"},
 					Body: `this.get('state') ? "Active" : "Inactive"`,
+				},
+			},
+			Orders: []thermo.Order{
+				{
+					Title: "Name",
+					Name:  "name",
+				},
+				{
+					Title: "State",
+					Name:  "state",
+				},
+				{
+					Title: "Count",
+					Name:  "count",
+				},
+				{
+					Title: "Created",
+					Name:  "created",
 				},
 			},
 			Columns: []thermo.Column{
