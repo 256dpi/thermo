@@ -1,14 +1,18 @@
-{{#if session.isAuthenticated}}
+{{#if this.session.isAuthenticated}}
   <div class="nav">
     <nav class="nav__wrapper">
       <ul class="nav__list">
         <li class="nav__list__title">
-          {{link-to blueprint.title "index"}}
+          <LinkTo @route="index">
+            {{this.blueprint.title}}
+          </LinkTo>
         </li>
 
-        {{#each blueprint.models as |model|}}
+        {{#each this.blueprint.models as |model|}}
           <li class="nav__list__item">
-            {{link-to model.title "table" model.name}}
+            <LinkTo @route="table" @model={{model.name}}>
+              {{model.title}}
+            </LinkTo>
           </li>
         {{/each}}
       </ul>

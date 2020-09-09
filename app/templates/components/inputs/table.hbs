@@ -1,13 +1,18 @@
 <div class="form__row">
   <div class="form__head">
-    <label class="form__head__label">{{label}}</label>
-    <div class="form__head__button" {{action "add"}} role="button">{{add}}</div>
+    <label class="form__head__label">
+      {{this.label}}
+    </label>
+
+    <div class="form__head__button" {{action "add"}} role="button">
+      {{this.add}}
+    </div>
   </div>
 
   <table class="form__table">
     <thead>
       <tr class="form__table__row">
-        {{#each columns as |column|}}
+        {{#each this.columns as |column|}}
           <th class="form__table__head">
             {{column.name}}
           </th>
@@ -18,16 +23,16 @@
     </thead>
 
     <tbody>
-      {{#each value as |var index|}}
+      {{#each this.value as |var index|}}
         <tr class="form__table__row">
-          {{#each columns as |column|}}
+          {{#each this.columns as |column|}}
             <td class="form__table__cell">
               {{input class="form__table__input" value=(get var column.field) placeholder=column.placeholder}}
             </td>
           {{/each}}
 
           <td class="form__table__cell" width="1">
-            <button class="form__table__button" {{action "remove" index}}>
+            <button class="form__table__button" type="button" {{action "remove" index}}>
               ✖
             </button>
           </td>
@@ -36,9 +41,9 @@
     </tbody>
   </table>
 
-  {{#if hint}}
+  {{#if this.hint}}
     <div class="form__hint">
-      {{hint}}
+      {{this.hint}}
     </div>
   {{/if}}
 </div>

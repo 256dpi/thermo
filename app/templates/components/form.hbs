@@ -1,27 +1,27 @@
 <form class="form" {{action "submit" on="submit"}}>
-  {{#each config.fields as |field|}}
+  {{#each this.config.fields as |field|}}
     {{#if (eq field.control "string")}}
       {{inputs/string
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint
               placeholder=field.placeholder
               redacted=field.redacted}}
     {{else if (eq field.control "string")}}
       {{inputs/text
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint
               placeholder=field.placeholder}}
     {{else if (eq field.control "boolean")}}
       {{inputs/boolean
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint}}
     {{else if (eq field.control "number")}}
       {{inputs/number
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint
               placeholder=field.placeholder
               min=field.min
@@ -29,38 +29,38 @@
     {{else if (eq field.control "date")}}
       {{inputs/date
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint
               placeholder=field.placeholder}}
     {{else if (eq field.control "select")}}
       {{inputs/select
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint
-              collection=(evaluate field.source model)}}
+              collection=(evaluate field.source this.model)}}
     {{else if (eq field.control "well")}}
       {{inputs/well
               label=field.label
-              value=(get model field.key)
+              value=(get this.model field.key)
               hint=field.hint}}
     {{/if}}
   {{/each}}
 
   <div class="form__row">
     <button class="form__button" type="submit">
-      {{button}}
+      {{this.button}}
     </button>
 
-    {{#if deleteButton}}
-      <button class="form__button" {{action "delete"}}>
-        {{deleteButton}}
+    {{#if this.deleteButton}}
+      <button class="form__button" type="button" {{action "delete"}}>
+        {{this.deleteButton}}
       </button>
     {{/if}}
   </div>
 
-  {{#if error}}
+  {{#if this.error}}
     <div class="form__error">
-      {{error}}
+      {{this.error}}
     </div>
   {{/if}}
 </form>

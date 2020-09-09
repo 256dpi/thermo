@@ -1,15 +1,17 @@
 <div class="form__row">
   <div class="form__head">
-    <label class="form__head__label">{{label}}</label>
+    <label class="form__head__label">
+      {{this.label}}
+    </label>
   </div>
 
   <div class="form__well">
-    {{value}}
+    {{this.value}}
   </div>
 
-  {{#if hint}}
+  {{#if this.hint}}
     <div class="form__hint">
-      {{hint}}
+      {{this.hint}}
     </div>
   {{/if}}
 </div>

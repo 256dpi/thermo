@@ -1,6 +1,6 @@
-{{form config=config
-       model=model
+{{form config=this.config
+       model=this.model
        submit=(action "update")
        delete=(action "delete")
-       error=error button="Update"
+       error=this.error button="Update"
        deleteButton="Delete"}}

@@ -1,27 +1,29 @@
 <div class="dialog">
-  <h1>{{blueprint.title}}</h1>
+  <h1>
+    {{this.blueprint.title}}
+  </h1>
 
   <form class="form" {{action "signIn" on="submit"}}>
     {{inputs/string
       label="Email"
-      value=email
+      value=this.email
       placeholder="me@example.com"}}
 
     {{inputs/string
       label="Password"
-      value=password
+      value=this.password
       redacted=true
       placeholder="****"}}
 
     <div class="form__row">
-      <button type="submit" class="form__button">
+      <button class="form__button" type="submit">
         Sign In
       </button>
     </div>
 
-    {{#if error}}
+    {{#if this.error}}
       <div class="form__error">
-        {{error}}
+        {{this.error}}
       </div>
     {{/if}}
   </form>

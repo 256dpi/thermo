@@ -1,11 +1,11 @@
-{{#if (gt config.orders.length 0)}}
+{{#if (gt this.config.orders.length 0)}}
   <p class="sorting">
     Sorting:
     <select onchange={{action "setSort" value="target.value"}}>
       <option value="">Natural</option>
-      {{#each config.orders as |order|}}
-        <option selected={{eq order.name sort}} value={{order.name}}>{{order.title}} ↑</option>
-        <option selected={{eq (concat "-" order.name) sort}} value="-{{order.name}}">{{order.title}} ↓</option>
+      {{#each this.config.orders as |order|}}
+        <option selected={{eq order.name this.sort}} value={{order.name}}>{{order.title}} ↑</option>
+        <option selected={{eq (concat "-" order.name) this.sort}} value="-{{order.name}}">{{order.title}} ↓</option>
       {{/each}}
     </select>
   </p>
@@ -17,19 +17,19 @@
       ID
     </th>
 
-    {{#each config.columns as |column|}}
+    {{#each this.config.columns as |column|}}
       <th>{{column.title}}</th>
     {{/each}}
   </thead>
 
   <tbody>
-    {{#each list as |model|}}
+    {{#each this.list as |model|}}
       <tr>
         <td>
           {{link-to model.id "table.edit" model.id}}
         </td>
 
-        {{#each config.columns as |column|}}
+        {{#each this.config.columns as |column|}}
           <td>
             {{#with (get model column.key) as |value|}}
               {{#if (eq column.format "literal")}}
@@ -66,21 +66,21 @@
 <p class="pagination">
   <select onchange={{action "setPageSize" value="target.value"}}>
     {{#each (array 5 10 25 50 100) as |size|}}
-      <option selected={{eq size pageSize}}>{{size}}</option>
+      <option selected={{eq size this.pageSize}}>{{size}}</option>
     {{/each}}
   </select>
 
-  {{#if (gt lastPage 1)}}
+  {{#if (gt this.lastPage 1)}}
     Page {{page}} |
   {{/if}}
 
-  {{#if (gt pageNumber 1)}}
+  {{#if (gt this.pageNumber 1)}}
     <a href="#" {{action 'setPageNumber' 1}}>First</a>
     <a href="#" {{action 'previousPage'}}>Previous</a>
   {{/if}}
 
-  {{#if (lt pageNumber lastPage)}}
+  {{#if (lt this.pageNumber this.lastPage)}}
     <a href="#" {{action 'nextPage'}}>Next</a>
-    <a href="#" {{action 'setPageNumber' lastPage}}>Last</a>
+    <a href="#" {{action 'setPageNumber' this.lastPage}}>Last</a>
   {{/if}}
 </p>
