@@ -5,14 +5,13 @@
     </label>
   </div>
 
-  {{input
-    type="number"
-    value=this.value
-    disabled=this.disabled
-    placeholder=this.placeholder
-    min=this.min
-    max=this.max
-    class="form__number"}}
+  <Input class="form__number"
+         @type="number"
+         @value={{this.value}}
+         @disabled={{this.disabled}}
+         @placeholder={{this.placeholder}}
+         @min={{this.min}}
+         @max={{this.max}}/>
 
   {{#if this.hint}}
     <div class="form__hint">

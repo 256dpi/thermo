@@ -5,10 +5,9 @@
     </label>
   </div>
 
-  {{input
-    type="checkbox"
-    checked=this.value
-    disabled=this.disabled}}
+  <Input @type="checkbox"
+         @checked={{this.value}}
+         @disabled={{this.disabled}}/>
 
   {{#if this.hint}}
     <div class="form__hint">

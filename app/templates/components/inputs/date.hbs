@@ -5,11 +5,12 @@
     </label>
   </div>
 
-  {{input
-    type="datetime-local"
-    value=this.value
-    disabled=this.disabled
-    class="form__date"}}
+  <!-- TODO: Does not show existing date... -->
+
+  <Input class="form__date"
+         @type="datetime-local"
+         @value={{this.value}}
+         @disabled={{this.disabled}}/>
 
   {{#if this.hint}}
     <div class="form__hint">

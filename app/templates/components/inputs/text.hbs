@@ -5,12 +5,11 @@
     </label>
   </div>
 
-  {{textarea
-    value=this.value
-    disabled=this.disabled
-    placeholder=this.placeholder
-    autoresize=true
-    class="form__text"}}
+  <Textarea class="form__text"
+            @value={{this.value}}
+            @disabled={{this.disabled}}
+            @placeholder={{this.placeholder}}
+            @autoresize={{true}}/>
 
   {{#if this.hint}}
     <div class="form__hint">

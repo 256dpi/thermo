@@ -5,12 +5,11 @@
     </label>
   </div>
 
-  {{input
-    value=this.value
-    disabled=this.disabled
-    placeholder=this.placeholder
-    class="form__string"
-    type=(if this.redacted "password" "text")}}
+  <Input class="form__string"
+         @type={{if this.redacted "password" "text"}}
+         @value={{this.value}}
+         @disabled={{this.disabled}}
+         @placeholder={{this.placeholder}}/>
 
   {{#if this.hint}}
     <div class="form__hint">
