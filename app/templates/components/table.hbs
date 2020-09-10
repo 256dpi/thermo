@@ -31,7 +31,7 @@
 
         {{#each this.config.columns as |column|}}
           <td>
-            {{#with (get model column.key) as |value|}}
+            {{#let (get model column.key) as |value|}}
               {{#if (eq column.format "literal")}}
                 {{value}}
               {{else if (eq column.format "boolean")}}
@@ -55,7 +55,7 @@
               {{else}}
                 <pre>{{json-excerpt value}}</pre>
               {{/if}}
-            {{/with}}
+            {{/let}}
           </td>
         {{/each}}
       </tr>
