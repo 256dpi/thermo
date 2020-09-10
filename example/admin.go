@@ -18,7 +18,7 @@ var blueprint = thermo.Blueprint{
 		BaseURL:   "http://0.0.0.0:8000",
 		AuthPath:  "auth",
 		DataPath:  "api",
-		WatchPath: "api/watch",
+		WatchPath: "",
 		ClientID:  "main-key",
 	},
 	Menu: thermo.Menu{
