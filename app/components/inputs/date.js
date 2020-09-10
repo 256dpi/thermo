@@ -6,4 +6,8 @@ export default class extends Component {
   hint = null;
   placeholder = null;
   disabled = false;
+
+  get now() {
+    return new Date();
+  }
 }
