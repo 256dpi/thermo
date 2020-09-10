@@ -5,10 +5,13 @@
     </label>
   </div>
 
-  <Input class="form__date"
-         @type="text"
-         @value={{this.stringValue}}
-         @disabled={{this.disabled}}/>
+  <EmberFlatpickr class="form__date"
+                  placeholder={{placeholder}}
+                  @date={{value}}
+                  @onChange={{fn (mut value)}}
+                  @enableTime={{true}}
+                  @time_24hr={{true}}
+                  @allowInput={{not disabled}}/>
 
   {{#if this.hint}}
     <div class="form__hint">
