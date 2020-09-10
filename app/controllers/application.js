@@ -6,5 +6,5 @@ export default class extends Controller {
       // invalidate session
       this.session.invalidate();
     }
-  }
+  };
 }

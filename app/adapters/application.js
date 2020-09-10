@@ -14,8 +14,8 @@ export default class extends JSONAPIAdapter.extend(DataAdapterMixin) {
     // check if authenticated
     if (this.session.isAuthenticated) {
       return {
-        'Authorization': `Bearer ${this.session.data.authenticated.access_token}`,
-      }
+        Authorization: `Bearer ${this.session.data.authenticated.access_token}`
+      };
     }
 
     return {};

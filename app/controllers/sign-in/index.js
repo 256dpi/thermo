@@ -12,5 +12,5 @@ export default class extends Controller.extend(ErrorHandling) {
         this.setError(err);
       });
     }
-  }
+  };
 }
