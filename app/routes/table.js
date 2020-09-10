@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
-  name: null,
+export default class extends Route.extend(AuthenticatedRouteMixin) {
+  name = null;
 
   getConfig(name) {
     return this.blueprint.models.find(model => model.name === name);
-  },
+  }
 
   model(params) {
     // get previous name and config
@@ -31,7 +31,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     this.set('name', name);
 
     return config;
-  },
+  }
 
   deactivate() {
     // get name and config
@@ -43,4 +43,4 @@ export default Route.extend(AuthenticatedRouteMixin, {
       this.watch.unsubscribe(name, {});
     }
   }
-});
+}

@@ -3,7 +3,7 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 
 import AutomaticRollback from '@256dpi/ember-fire/mixins/automatic-rollback';
 
-export default Route.extend(AuthenticatedRouteMixin, AutomaticRollback, {
+export default class extends Route.extend(AuthenticatedRouteMixin, AutomaticRollback) {
   model() {
     // get config
     const config = this.modelFor('table');
@@ -19,12 +19,12 @@ export default Route.extend(AuthenticatedRouteMixin, AutomaticRollback, {
     });
 
     return record;
-  },
+  }
 
   setupController(controller) {
-    this._super(...arguments);
+    super.setupController(...arguments);
 
     // set config on controller
     controller.set('config', this.modelFor('table'));
   }
-});
+}

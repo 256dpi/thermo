@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend(AuthenticatedRouteMixin, {
-  queryParams: {
+export default class extends Route.extend(AuthenticatedRouteMixin) {
+  queryParams = {
     sort: {
       refreshModel: true
     },
@@ -12,7 +12,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     pageNumber: {
       refreshModel: true
     }
-  },
+  };
 
   model(params) {
     // get config
@@ -37,12 +37,12 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
     // query
     return this.store.query(config.name, query);
-  },
+  }
 
   setupController(controller) {
-    this._super(...arguments);
+    super.setupController(...arguments);
 
     // set config on controller
     controller.set('config', this.modelFor('table'));
   }
-});
+}
