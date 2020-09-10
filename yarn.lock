@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@256dpi/ember-fire@^0.1.7":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.1.8.tgz#fde01f8fc6944f768940024adfbf3c20109c37a3"
-  integrity sha512-SWNKZ5TaX7kwQl2fgsde28EV3SnK+aozl5d69SwWOIZXnESpv4WEM01y7ABf9YWZVJBASVmKTBgj24Wj0ymzcg==
+"@256dpi/ember-fire@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.1.9.tgz#7e8ace3e88496ec6cf216860dfee10aef3328b7b"
+  integrity sha512-8FbL6pIM2DeupsH0hPPdDGORd16geTFfHxmCQL8y3V9ZV5zfRyzcZZfcQo7DQmEYNvXK4Rhw1ffEWwlymnhXxA==
   dependencies:
     ember-auto-import "^1.5.3"
     ember-cli-babel "^7.19.0"

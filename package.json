@@ -17,7 +17,7 @@
     "fmt": "prettier --single-quote --print-width 120 --write './{app,config}/**/*.{js,scss}'"
   },
   "dependencies": {
-    "@256dpi/ember-fire": "^0.1.7",
+    "@256dpi/ember-fire": "^0.1.9",
     "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-sass": "^10.0.0",
     "ember-composable-helpers": "^4.0.0",
