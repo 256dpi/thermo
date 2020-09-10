@@ -9,7 +9,7 @@ export default Controller.extend({
     }
   ],
 
-  sort: null,
+  sort: '',
   pageSize: 25,
   pageNumber: 1
 });

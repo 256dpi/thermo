@@ -5,6 +5,7 @@ export default Component.extend({
   config: undefined,
   list: undefined,
 
+  sort: '',
   pageSize: 0,
   pageNumber: 0,
 
