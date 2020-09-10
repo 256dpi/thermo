@@ -33,6 +33,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
       query.sort = params.sort;
     }
 
+    // TODO: What happens when documents are added by watch?
+
     // query
     return this.store.query(config.name, query);
   },

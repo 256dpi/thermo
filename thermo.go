@@ -125,6 +125,8 @@ const (
 // Control describes a form control.
 type Control string
 
+// TODO: Add group, list, table controls.
+
 // The available form controls.
 const (
 	ControlString  Control = "string"
