@@ -8,8 +8,6 @@ import fetch from 'fetch';
 import config from 'thermo/config/environment';
 
 export default {
-  name: 'blueprint',
-
   async initialize(app) {
     // load remote blueprint if available
     if (config.blueprint.remote) {

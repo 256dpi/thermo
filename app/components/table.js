@@ -1,15 +1,16 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 
-export default Component.extend({
-  config: undefined,
-  list: undefined,
+export default class extends Component {
+  config = undefined;
+  list = undefined;
 
-  sort: '',
-  pageSize: 0,
-  pageNumber: 0,
+  sort = '';
+  pageSize = 0;
+  pageNumber = 0;
 
-  lastPage: computed('list.links', function() {
+  @computed('list.links')
+  get lastPage() {
     // check list
     if (!this.list) {
       return 0;
@@ -36,9 +37,9 @@ export default Component.extend({
     }
 
     return 0;
-  }),
+  }
 
-  actions: {
+  actions = {
     setSort(sort) {
       if (sort) {
         this.set('sort', sort);
@@ -46,6 +47,7 @@ export default Component.extend({
         this.set('sort', null);
       }
     },
+
     setPageSize(size) {
       this.set('pageSize', parseInt(size));
     },
@@ -61,5 +63,5 @@ export default Component.extend({
     nextPage() {
       this.incrementProperty('pageNumber', 1);
     }
-  }
-});
+  };
+}
