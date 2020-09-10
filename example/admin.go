@@ -21,6 +21,19 @@ var blueprint = thermo.Blueprint{
 		WatchPath: "api/watch",
 		ClientID:  "main-key",
 	},
+	Menu: thermo.Menu{
+		Left: []thermo.MenuItem{
+			{Title: "Items", Model: "item"},
+		},
+		Right: []thermo.MenuItem{
+			{Title: "Applications", Model: "application"},
+			{Title: "Users", Model: "user"},
+			{Title: "Tokens", Model: "token"},
+			{Title: "Jobs", Model: "job"},
+			{Title: "Values", Model: "value"},
+			{Title: "Files", Model: "file"},
+		},
+	},
 	Models: []thermo.Model{
 		{
 			Name:      "item",

@@ -8,6 +8,7 @@ import "github.com/256dpi/ember"
 type Blueprint struct {
 	Title   string  `json:"title"`
 	Backend Backend `json:"backend"`
+	Menu    Menu    `json:"menu"`
 	Models  []Model `json:"models"`
 }
 
@@ -18,6 +19,18 @@ type Backend struct {
 	DataPath  string `json:"dataPath"`
 	WatchPath string `json:"watchPath"`
 	ClientID  string `json:"clientID"`
+}
+
+// Menu describes a menu.
+type Menu struct {
+	Left  []MenuItem `json:"left"`
+	Right []MenuItem `json:"right"`
+}
+
+// MenuItem describes a menu item.
+type MenuItem struct {
+	Title string `json:"title"`
+	Model string `json:"model"`
 }
 
 // Model describes a model.
