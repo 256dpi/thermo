@@ -53,7 +53,7 @@
                   {{get model column.label}}
                 {{/each}}
               {{else}}
-                <pre>{{as-json value}}</pre>
+                <pre>{{json-excerpt value}}</pre>
               {{/if}}
             {{/with}}
           </td>
