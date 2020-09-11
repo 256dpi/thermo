@@ -1,11 +1,14 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { singularize } from 'ember-inflector';
-import { copy } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import fetch from 'fetch';
 
 import config from 'thermo/config/environment';
+
+function copy(value) {
+  return JSON.parse(JSON.stringify(value));
+}
 
 export default {
   async initialize(app) {
