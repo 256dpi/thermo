@@ -17,11 +17,31 @@
     &__title {
       color: black;
       font-weight: bold;
+
+      a {
+        &:hover {
+          text-decoration: none;
+          color: #333;
+        }
+      }
     }
 
     &__item {
       color: black;
       margin-left: 10px;
+
+      a,
+      button {
+        border: 0;
+        padding: 0;
+        background: 0;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: none;
+          color: #333;
+        }
+      }
     }
   }
 }
