@@ -40,6 +40,10 @@ export default class extends Component {
   }
 
   actions = {
+    expand(value) {
+      alert(JSON.stringify(value, null, '  '));
+    },
+
     setSort(sort) {
       if (sort) {
         this.set('sort', sort);

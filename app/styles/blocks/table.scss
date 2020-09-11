@@ -30,6 +30,11 @@
         max-height: 250px;
         overflow: scroll;
         border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eee;
+        }
       }
     }
   }

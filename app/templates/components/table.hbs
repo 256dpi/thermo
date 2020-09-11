@@ -53,7 +53,7 @@
                   {{get model column.label}}
                 {{/each}}
               {{else}}
-                <pre>{{json-excerpt value}}</pre>
+                <pre {{action "expand" value}}>{{json-excerpt value}}</pre>
               {{/if}}
             {{/let}}
           </td>
