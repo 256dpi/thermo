@@ -7,6 +7,11 @@ import fetch from 'fetch';
 import config from 'thermo/config/environment';
 
 function copy(value) {
+  // check value
+  if (value === undefined) {
+    return undefined;
+  }
+
   return JSON.parse(JSON.stringify(value));
 }
 

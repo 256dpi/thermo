@@ -1,17 +1,17 @@
-{{#if this.label}}
+{{#if @label}}
   <label class="input__label">
-    {{this.label}}
+    {{@label}}
   </label>
 {{/if}}
 
 <Textarea class="input__text"
-          @value={{this.value}}
-          @disabled={{this.disabled}}
-          @placeholder={{this.placeholder}}
+          @value={{@value}}
+          @disabled={{@disabled}}
+          @placeholder={{@placeholder}}
           @autoresize={{true}}/>
 
-{{#if this.hint}}
+{{#if @hint}}
   <div class="input__hint">
-    {{this.hint}}
+    {{@hint}}
   </div>
 {{/if}}

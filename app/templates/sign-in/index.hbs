@@ -5,18 +5,18 @@
 
   <form class="form" {{action "signIn" on="submit"}}>
     <div class="form__row">
-      {{inputs/string
-              label="Email"
-              value=this.email
-              placeholder="me@example.com"}}
+      <Inputs::String
+              @label="Email"
+              @value={{this.email}}
+              @placeholder="user@example.org"/>
     </div>
 
     <div class="form__row">
-      {{inputs/string
-              label="Password"
-              value=this.password
-              redacted=true
-              placeholder="****"}}
+      <Inputs::String
+              @label="Password"
+              @value={{this.password}}
+              @redacted={{true}}
+              @placeholder="****"/>
     </div>
 
     <div class="form__row">

@@ -1,10 +1,3 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-export default class extends Component {
-  label = '';
-  value = null;
-  hint = null;
-  disabled = false;
-  redacted = false;
-  placeholder = '';
-}
+export default class extends Component {}
