@@ -1,6 +1,8 @@
-<label class="input__label">
-  {{this.label}}
-</label>
+{{#if this.label}}
+  <label class="input__label">
+    {{this.label}}
+  </label>
+{{/if}}
 
 <Input @type="checkbox"
        @checked={{this.value}}
