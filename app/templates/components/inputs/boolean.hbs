@@ -1,15 +1,13 @@
-<div class="form__row">
-  <label class="form__head">
-    {{this.label}}
-  </label>
+<label class="form__head">
+  {{this.label}}
+</label>
 
-  <Input @type="checkbox"
-         @checked={{this.value}}
-         @disabled={{this.disabled}}/>
+<Input @type="checkbox"
+       @checked={{this.value}}
+       @disabled={{this.disabled}}/>
 
-  {{#if this.hint}}
-    <div class="form__hint">
-      {{this.hint}}
-    </div>
-  {{/if}}
-</div>
+{{#if this.hint}}
+  <div class="form__hint">
+    {{this.hint}}
+  </div>
+{{/if}}

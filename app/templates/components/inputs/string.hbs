@@ -1,17 +1,15 @@
-<div class="form__row">
-  <label class="form__head">
-    {{this.label}}
-  </label>
+<label class="form__head">
+  {{this.label}}
+</label>
 
-  <Input class="input__string"
-         @type={{if this.redacted "password" "text"}}
-         @value={{this.value}}
-         @disabled={{this.disabled}}
-         @placeholder={{this.placeholder}}/>
+<Input class="input__string"
+       @type={{if this.redacted "password" "text"}}
+       @value={{this.value}}
+       @disabled={{this.disabled}}
+       @placeholder={{this.placeholder}}/>
 
-  {{#if this.hint}}
-    <div class="form__hint">
-      {{this.hint}}
-    </div>
-  {{/if}}
-</div>
+{{#if this.hint}}
+  <div class="form__hint">
+    {{this.hint}}
+  </div>
+{{/if}}

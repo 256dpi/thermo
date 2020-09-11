@@ -1,15 +1,13 @@
-<div class="form__row">
-  <label class="form__head">
-    {{this.label}}
-  </label>
+<label class="form__head">
+  {{this.label}}
+</label>
 
-  <div class="input__well">
-    {{this.value}}
-  </div>
-
-  {{#if this.hint}}
-    <div class="form__hint">
-      {{this.hint}}
-    </div>
-  {{/if}}
+<div class="input__well">
+  {{this.value}}
 </div>
+
+{{#if this.hint}}
+  <div class="form__hint">
+    {{this.hint}}
+  </div>
+{{/if}}

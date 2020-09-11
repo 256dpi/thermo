@@ -1,17 +1,15 @@
-<div class="form__row">
-  <label class="form__head">
-    {{this.label}}
-  </label>
+<label class="form__head">
+  {{this.label}}
+</label>
 
-  <Textarea class="input__text"
-            @value={{this.value}}
-            @disabled={{this.disabled}}
-            @placeholder={{this.placeholder}}
-            @autoresize={{true}}/>
+<Textarea class="input__text"
+          @value={{this.value}}
+          @disabled={{this.disabled}}
+          @placeholder={{this.placeholder}}
+          @autoresize={{true}}/>
 
-  {{#if this.hint}}
-    <div class="form__hint">
-      {{this.hint}}
-    </div>
-  {{/if}}
-</div>
+{{#if this.hint}}
+  <div class="form__hint">
+    {{this.hint}}
+  </div>
+{{/if}}

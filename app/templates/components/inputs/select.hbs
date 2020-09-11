@@ -1,35 +1,33 @@
-<div class="form__row">
-  <label class="form__head">
-    {{this.label}}
-  </label>
+<label class="form__head">
+  {{this.label}}
+</label>
 
-  {{#if this.multiple}}
-    {{#power-select-multiple
-      selected=this.selected
-      options=this.options
-      disabled=this.disabled
-      onchange=(action "select")
-      searchEnabled=false
-      verticalPosition="below"
-    as |item| }}
-      {{get item this.labelField}}
-    {{/power-select-multiple}}
-  {{else}}
-    {{#power-select
-      selected=this.selected
-      options=this.options
-      disabled=this.disabled
-      onchange=(action "select")
-      searchEnabled=false
-      verticalPosition="below"
-    as |item| }}
-      {{get item this.labelField}}
-    {{/power-select}}
-  {{/if}}
+{{#if this.multiple}}
+  {{#power-select-multiple
+    selected=this.selected
+    options=this.options
+    disabled=this.disabled
+    onchange=(action "select")
+    searchEnabled=false
+    verticalPosition="below"
+  as |item| }}
+    {{get item this.labelField}}
+  {{/power-select-multiple}}
+{{else}}
+  {{#power-select
+    selected=this.selected
+    options=this.options
+    disabled=this.disabled
+    onchange=(action "select")
+    searchEnabled=false
+    verticalPosition="below"
+  as |item| }}
+    {{get item this.labelField}}
+  {{/power-select}}
+{{/if}}
 
-  {{#if this.hint}}
-    <div class="form__hint">
-      {{this.hint}}
-    </div>
-  {{/if}}
-</div>
+{{#if this.hint}}
+  <div class="form__hint">
+    {{this.hint}}
+  </div>
+{{/if}}
