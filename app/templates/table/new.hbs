@@ -1,5 +1,5 @@
-{{form config=this.config
-       model=this.model
-       submit=(action "create")
-       error=this.error
-       button="Create"}}
+<Form @config={{this.config}}
+       @model={{this.model}}
+       @submit={{action "create"}}
+       @error={{this.error}}
+       @button="Create"/>

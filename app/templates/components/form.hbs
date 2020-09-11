@@ -1,7 +1,7 @@
 <form class="form" {{action submit on="submit"}}>
-  {{#each this.config.fields as |field|}}
+  {{#each @config.fields as |field|}}
     <div class="form__row">
-      {{#let (get this.model field.key) as |value|}}
+      {{#let (get @model field.key) as |value|}}
         {{#if (eq field.control "string")}}
           <Inputs::String
                   @label={{field.label}}
@@ -39,7 +39,7 @@
                   label=field.label
                   value=(value)
                   hint=field.hint
-                  collection=(evaluate field.source this.model)}}
+                  collection=(evaluate field.source @model)}}
         {{else if (eq field.control "well")}}
           <Inputs::Well
                   @label={{field.label}}
@@ -52,19 +52,19 @@
 
   <div class="form__row">
     <button class="form__button" type="submit">
-      {{this.button}}
+      {{@button}}
     </button>
 
-    {{#if this.deleteButton}}
+    {{#if @deleteButton}}
       <button class="form__button form__button--warning" type="button" {{action delete}}>
-        {{this.deleteButton}}
+        {{@deleteButton}}
       </button>
     {{/if}}
   </div>
 
-  {{#if this.error}}
+  {{#if @error}}
     <div class="form__error">
-      {{this.error}}
+      {{@error}}
     </div>
   {{/if}}
 </form>

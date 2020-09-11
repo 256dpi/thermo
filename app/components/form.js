@@ -1,11 +1,3 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-export default class extends Component {
-  config = undefined;
-  model = undefined;
-  submit = undefined;
-  delete = undefined;
-  error = undefined;
-  button = undefined;
-  deleteButton = undefined;
-}
+export default class extends Component {}
