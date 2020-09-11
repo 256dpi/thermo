@@ -1,4 +1,4 @@
-<form class="form" {{action @submit on="submit"}}>
+<form class="form" {{on "submit" (prevent-default @submit)}}>
   {{#each @config.fields as |field|}}
     <div class="form__row">
       {{#let (get @model field.key) as |value|}}
@@ -56,7 +56,7 @@
     </button>
 
     {{#if @deleteButton}}
-      <button class="form__button form__button--warning" type="button" {{action @delete}}>
+      <button class="form__button form__button--warning" type="button" {{on "click" @delete}}>
         {{@deleteButton}}
       </button>
     {{/if}}
