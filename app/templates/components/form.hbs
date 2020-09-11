@@ -1,50 +1,52 @@
 <form class="form" {{action submit on="submit"}}>
   {{#each this.config.fields as |field|}}
     <div class="form__row">
-      {{#if (eq field.control "string")}}
-        <Inputs::String
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}
-                @placeholder={{field.placeholder}}
-                @redacted={{field.redacted}}/>
-      {{else if (eq field.control "string")}}
-        <Inputs::Text
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}
-                @placeholder={{field.placeholder}}/>
-      {{else if (eq field.control "boolean")}}
-        <Inputs::Boolean
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}/>
-      {{else if (eq field.control "number")}}
-        <Inputs::Number
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}
-                @placeholder={{field.placeholder}}
-                @min={{field.min}}
-                @max={{field.max}}/>
-      {{else if (eq field.control "date")}}
-        <Inputs::Date
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}
-                @placeholder={{field.placeholder}}/>
-      {{else if (eq field.control "select")}}
-        {{inputs/select
-                label=field.label
-                value=(get this.model field.key)
-                hint=field.hint
-                collection=(evaluate field.source this.model)}}
-      {{else if (eq field.control "well")}}
-        <Inputs::Well
-                @label={{field.label}}
-                @value={{get this.model field.key}}
-                @hint={{field.hint}}/>
-      {{/if}}
+      {{#let (get this.model field.key) as |value|}}
+        {{#if (eq field.control "string")}}
+          <Inputs::String
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}
+                  @placeholder={{field.placeholder}}
+                  @redacted={{field.redacted}}/>
+        {{else if (eq field.control "string")}}
+          <Inputs::Text
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}
+                  @placeholder={{field.placeholder}}/>
+        {{else if (eq field.control "boolean")}}
+          <Inputs::Boolean
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}/>
+        {{else if (eq field.control "number")}}
+          <Inputs::Number
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}
+                  @placeholder={{field.placeholder}}
+                  @min={{field.min}}
+                  @max={{field.max}}/>
+        {{else if (eq field.control "date")}}
+          <Inputs::Date
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}
+                  @placeholder={{field.placeholder}}/>
+        {{else if (eq field.control "select")}}
+          {{inputs/select
+                  label=field.label
+                  value=(value)
+                  hint=field.hint
+                  collection=(evaluate field.source this.model)}}
+        {{else if (eq field.control "well")}}
+          <Inputs::Well
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}/>
+        {{/if}}
+      {{/let}}
     </div>
   {{/each}}
 
