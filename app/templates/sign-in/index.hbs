@@ -4,16 +4,20 @@
   </h1>
 
   <form class="form" {{action "signIn" on="submit"}}>
-    {{inputs/string
-      label="Email"
-      value=this.email
-      placeholder="me@example.com"}}
+    <div class="form__row">
+      {{inputs/string
+              label="Email"
+              value=this.email
+              placeholder="me@example.com"}}
+    </div>
 
-    {{inputs/string
-      label="Password"
-      value=this.password
-      redacted=true
-      placeholder="****"}}
+    <div class="form__row">
+      {{inputs/string
+              label="Password"
+              value=this.password
+              redacted=true
+              placeholder="****"}}
+    </div>
 
     <div class="form__row">
       <button class="form__button" type="submit">
