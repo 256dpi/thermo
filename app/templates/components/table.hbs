@@ -1,7 +1,7 @@
 {{#if (gt this.config.orders.length 0)}}
   <p class="sorting">
-    Sorting:
-    <select onchange={{action "setSort" value="target.value"}}>
+    <label>Sorting:</label>
+    <select {{on "change" (event-target-value this.setSort)}}>
       <option value="">Natural</option>
       {{#each this.config.orders as |order|}}
         <option selected={{eq order.name this.sort}} value={{order.name}}>{{order.title}} ↑</option>
@@ -26,7 +26,9 @@
     {{#each this.list as |model|}}
       <tr>
         <td>
-          {{link-to model.id "table.edit" model.id}}
+          <LinkTo @route="table.edit" @model={{model.id}}>
+            {{model.id}}
+          </LinkTo>
         </td>
 
         {{#each this.config.columns as |column|}}
@@ -53,7 +55,7 @@
                   {{get model column.label}}
                 {{/each}}
               {{else}}
-                <pre {{action "expand" value}}>{{json-excerpt value}}</pre>
+                <pre {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
               {{/if}}
             {{/let}}
           </td>
@@ -64,23 +66,34 @@
 </table>
 
 <p class="pagination">
-  <select onchange={{action "setPageSize" value="target.value"}}>
+  <label>Count:</label>
+  <select {{on "change" (event-target-value this.setPageSize)}}>
     {{#each (array 5 10 25 50 100) as |size|}}
       <option selected={{eq size this.pageSize}}>{{size}}</option>
     {{/each}}
   </select>
 
   {{#if (gt this.lastPage 1)}}
-    Page {{page}} |
+    Page {{this.pageNumber}}
   {{/if}}
 
   {{#if (gt this.pageNumber 1)}}
-    <a href="#" {{action 'setPageNumber' 1}}>First</a>
-    <a href="#" {{action 'previousPage'}}>Previous</a>
+    <button type="button" {{on "click" (fn this.setPageNumber 1)}}>
+      First
+    </button>
+
+    <button type="button" {{on "click" this.previousPage}}>
+      Previous
+    </button>
   {{/if}}
 
   {{#if (lt this.pageNumber this.lastPage)}}
-    <a href="#" {{action 'nextPage'}}>Next</a>
-    <a href="#" {{action 'setPageNumber' this.lastPage}}>Last</a>
+    <button type="button" {{on "click" this.nextPage}}>
+      Next
+    </button>
+
+    <button type="button" {{on "click" (fn this.setPageNumber this.lastPage)}}>
+      Last
+    </button>
   {{/if}}
 </p>

@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { action, computed } from '@ember/object';
 
 export default class extends Component {
   config = undefined;
@@ -39,33 +39,31 @@ export default class extends Component {
     return 0;
   }
 
-  actions = {
-    expand(value) {
-      alert(JSON.stringify(value, null, '  '));
-    },
+  @action expand(value) {
+    alert(JSON.stringify(value, null, '  '));
+  }
 
-    setSort(sort) {
-      if (sort) {
-        this.set('sort', sort);
-      } else {
-        this.set('sort', null);
-      }
-    },
-
-    setPageSize(size) {
-      this.set('pageSize', parseInt(size));
-    },
-
-    setPageNumber(page) {
-      this.set('pageNumber', page);
-    },
-
-    previousPage() {
-      this.decrementProperty('pageNumber', 1);
-    },
-
-    nextPage() {
-      this.incrementProperty('pageNumber', 1);
+  @action setSort(sort) {
+    if (sort) {
+      this.set('sort', sort);
+    } else {
+      this.set('sort', null);
     }
-  };
+  }
+
+  @action setPageSize(size) {
+    this.set('pageSize', parseInt(size));
+  }
+
+  @action setPageNumber(page) {
+    this.set('pageNumber', page);
+  }
+
+  @action previousPage() {
+    this.decrementProperty('pageNumber', 1);
+  }
+
+  @action nextPage() {
+    this.incrementProperty('pageNumber', 1);
+  }
 }
