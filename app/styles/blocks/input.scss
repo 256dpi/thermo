@@ -1,0 +1,49 @@
+// https://github.com/cibernox/ember-power-select/blob/master/app/styles/ember-power-select/variables.scss
+$ember-power-select-default-border-radius: 2px;
+$ember-power-select-border-color: #ddd;
+$ember-power-select-focus-border-color: black;
+$ember-power-select-highlighted-background: black;
+
+.ember-power-select-trigger {
+  outline: 0;
+  padding: 5px;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.input {
+  &__string,
+  &__text,
+  &__number,
+  &__date {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: monospace;
+    font-size: 16px;
+    resize: vertical;
+
+    &:focus {
+      border-color: black;
+      outline: 0;
+    }
+  }
+
+  &__text {
+    min-height: 75px;
+  }
+
+  &__well {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #eee;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 16px;
+    color: #333;
+  }
+}
