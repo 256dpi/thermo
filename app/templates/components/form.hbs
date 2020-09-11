@@ -34,8 +34,8 @@
                   @value={{value}}
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}/>
-        {{else if (eq field.control "select")}}
-          {{inputs/select
+        {{else if (eq field.control "reference")}}
+          {{inputs/reference
                   label=field.label
                   value=value
                   hint=field.hint

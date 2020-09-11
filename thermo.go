@@ -125,17 +125,15 @@ const (
 // Control describes a form control.
 type Control string
 
-// TODO: Add group, list, table controls.
-
 // The available form controls.
 const (
-	ControlString  Control = "string"
-	ControlText    Control = "text"
-	ControlBoolean Control = "boolean"
-	ControlNumber  Control = "number"
-	ControlDate    Control = "date"
-	ControlSelect  Control = "select"
-	ControlWell    Control = "well"
+	ControlString    Control = "string"
+	ControlText      Control = "text"
+	ControlBoolean   Control = "boolean"
+	ControlNumber    Control = "number"
+	ControlDate      Control = "date"
+	ControlReference Control = "reference"
+	ControlWell      Control = "well"
 )
 
 // Any describes an arbitrary value.

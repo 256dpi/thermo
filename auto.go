@@ -205,7 +205,7 @@ func Fields(model coal.Model) []Field {
 			list = append(list, Field{
 				Label:   field.Name,
 				Key:     field.RelName,
-				Control: ControlSelect,
+				Control: ControlReference,
 				Source: Expression(
 					`return $.store.findAll($.singularize('` + field.RelType + `'))`,
 				),
