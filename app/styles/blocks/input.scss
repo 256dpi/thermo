@@ -12,6 +12,13 @@ $ember-power-select-highlighted-background: black;
 }
 
 .input {
+  &__label {
+    display: flex;
+    margin-bottom: 5px;
+    color: #333;
+    margin-right: 5px;
+  }
+
   &__string,
   &__text,
   &__number,
@@ -45,5 +52,11 @@ $ember-power-select-highlighted-background: black;
     font-family: monospace;
     font-size: 16px;
     color: #333;
+  }
+
+  &__hint {
+    margin-top: 5px;
+    color: #999;
+    font-size: 14px;
   }
 }
