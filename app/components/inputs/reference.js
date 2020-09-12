@@ -1,53 +1,49 @@
+import Component from '@glimmer/component';
+import EmberObject, { action, computed } from '@ember/object';
 import { union } from '@ember/object/computed';
 import { A } from '@ember/array';
-import EmberObject, { computed } from '@ember/object';
-import Component from '@ember/component';
 
 export default class extends Component {
-  label = '';
-  value = null;
-  hint = null;
-  collection = null;
-  disabled = false;
-  multiple = false;
-  enableEmpty = false;
-  emptyName = 'None';
-  labelField = 'name';
-
-  @computed('emptyName')
-  get emptyOption() {
-    return EmberObject.create({ name: this.emptyName });
+  get labelField() {
+    return this.args.labelField || 'name';
   }
 
-  @computed('enableEmpty', 'emptyOption')
+  @computed('labelField', 'args.emptyLabel')
+  get emptyOption() {
+    return EmberObject.create({
+      [this.labelField]: this.args.emptyLabel || 'None'
+    });
+  }
+
+  @computed('args.enableEmpty', 'emptyOption')
   get emptyArray() {
-    if (this.enableEmpty) {
+    if (this.args.enableEmpty) {
       return A([this.emptyOption]);
     } else {
       return A([]);
     }
   }
 
-  @computed('value.id', 'enableEmpty', 'enableUnset', 'emptyOption')
+  @computed('args.{value.id,enableEmpty}', 'emptyOption')
   get selected() {
     // check value
-    if (this.value === undefined && this.enableEmpty) {
+    if (this.args.value === undefined && this.args.enableEmpty) {
       return this.emptyOption;
     }
 
-    return this.value;
+    return this.args.value;
   }
 
-  @union('emptyArray', 'collection')
+  @union('emptyArray', 'args.collection')
   options;
 
-  actions = {
-    select(value) {
+  @action select(value) {
+    if (this.args.changed) {
       if (value === this.emptyOption) {
-        this.set('value', undefined);
+        this.args.changed(undefined);
       } else {
-        this.set('value', value);
+        this.args.changed(value);
       }
     }
-  };
+  }
 }

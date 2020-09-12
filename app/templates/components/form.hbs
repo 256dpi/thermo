@@ -35,12 +35,13 @@
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}/>
         {{else if (eq field.control "reference")}}
-          {{inputs/reference
-                  label=field.label
-                  value=value
-                  hint=field.hint
-                  collection=(evaluate field.source @model)
-                  multiple=field.multiple}}
+          <Inputs::Reference
+                  @label={{field.label}}
+                  @value={{value}}
+                  @hint={{field.hint}}
+                  @collection={{evaluate field.source @model}}
+                  @multiple={{field.multiple}}
+                  @changed={{fn (mut value)}}/>
         {{else if (eq field.control "well")}}
           <Inputs::Well
                   @label={{field.label}}

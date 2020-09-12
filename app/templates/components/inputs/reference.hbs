@@ -1,15 +1,15 @@
-{{#if this.label}}
+{{#if @label}}
   <label class="input__label">
-    {{this.label}}
+    {{@label}}
   </label>
 {{/if}}
 
-{{#if this.multiple}}
+{{#if @multiple}}
   {{#power-select-multiple
     selected=this.selected
     options=this.options
-    disabled=this.disabled
-    onchange=(action "select")
+    disabled=@disabled
+    onchange=this.select
     searchEnabled=false
     verticalPosition="below"
   as |item| }}
@@ -19,8 +19,8 @@
   {{#power-select
     selected=this.selected
     options=this.options
-    disabled=this.disabled
-    onchange=(action "select")
+    disabled=@disabled
+    onchange=this.select
     searchEnabled=false
     verticalPosition="below"
   as |item| }}
@@ -28,8 +28,8 @@
   {{/power-select}}
 {{/if}}
 
-{{#if this.hint}}
+{{#if @hint}}
   <div class="input__hint">
-    {{this.hint}}
+    {{@hint}}
   </div>
 {{/if}}
