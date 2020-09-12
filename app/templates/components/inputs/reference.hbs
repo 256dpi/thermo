@@ -5,27 +5,27 @@
 {{/if}}
 
 {{#if @multiple}}
-  {{#power-select-multiple
-    selected=this.selected
-    options=this.options
-    disabled=@disabled
-    onchange=this.select
-    searchEnabled=false
-    verticalPosition="below"
-  as |item| }}
+  <PowerSelectMultiple
+    @selected={{this.selected}}
+    @options={{this.options}}
+    @disabled={{@disabled}}
+    @onChange={{this.select}}
+    @searchEnabled={{false}}
+    @verticalPosition="below"
+  as |item|>
     {{get item this.labelField}}
-  {{/power-select-multiple}}
+  </PowerSelectMultiple>
 {{else}}
-  {{#power-select
-    selected=this.selected
-    options=this.options
-    disabled=@disabled
-    onchange=this.select
-    searchEnabled=false
-    verticalPosition="below"
-  as |item| }}
+  <PowerSelect
+    @selected={{this.selected}}
+    @options={{this.options}}
+    @disabled={{@disabled}}
+    @onChange={{this.select}}
+    @searchEnabled={{false}}
+    @verticalPosition="below"
+  as |item|>
     {{get item this.labelField}}
-  {{/power-select}}
+  </PowerSelect>
 {{/if}}
 
 {{#if @hint}}
