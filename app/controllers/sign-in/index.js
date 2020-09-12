@@ -1,16 +1,16 @@
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 import ErrorHandling from '@256dpi/ember-fire/mixins/error-handling';
 
 export default class extends Controller.extend(ErrorHandling) {
-  email = '';
-  password = '';
+  @tracked email = '';
+  @tracked password = '';
 
-  actions = {
-    signIn() {
-      this.session.authenticate('authenticator:oauth2', this.email, this.password).catch(err => {
-        this.setError(err);
-      });
-    }
-  };
+  @action signIn() {
+    this.session.authenticate('authenticator:oauth2', this.email, this.password).catch(err => {
+      this.setError(err);
+    });
+  }
 }
