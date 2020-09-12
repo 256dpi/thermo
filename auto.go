@@ -200,8 +200,8 @@ func Fields(model coal.Model) []Field {
 			continue
 		}
 
-		// add to-one fields
-		if field.ToOne {
+		// add to-one and to-many fields
+		if field.ToOne || field.ToMany {
 			list = append(list, Field{
 				Label:   field.Name,
 				Key:     field.RelName,
@@ -209,14 +209,10 @@ func Fields(model coal.Model) []Field {
 				Source: Expression(
 					`return $.store.findAll($.singularize('` + field.RelType + `'))`,
 				),
+				Multiple: field.ToMany,
 			})
 
 			continue
-		}
-
-		// add to-many fields
-		if field.ToMany {
-			continue // TODO: Add control.
 		}
 
 		// get control

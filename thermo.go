@@ -86,6 +86,7 @@ type Field struct {
 	Min         float64    `json:"min,omitempty"`
 	Max         float64    `json:"max,omitempty"`
 	Source      Expression `json:"source,omitempty"`
+	Multiple    bool       `json:"multiple,omitempty"`
 }
 
 // Kind describes a field kind.

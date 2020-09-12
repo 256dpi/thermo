@@ -39,7 +39,8 @@
                   label=field.label
                   value=value
                   hint=field.hint
-                  collection=(evaluate field.source @model)}}
+                  collection=(evaluate field.source @model)
+                  multiple=field.multiple}}
         {{else if (eq field.control "well")}}
           <Inputs::Well
                   @label={{field.label}}
