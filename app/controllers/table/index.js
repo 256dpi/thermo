@@ -4,12 +4,12 @@ export default class extends Controller {
   queryParams = [
     {
       sort: 's',
-      pageSize: 'ps',
-      pageNumber: 'pn'
+      count: 'c',
+      page: 'p'
     }
   ];
 
   sort = '';
-  pageSize = 25;
-  pageNumber = 1;
+  count = 25;
+  page = 1;
 }

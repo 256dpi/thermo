@@ -1,5 +1,8 @@
-{{table config=this.config
-        list=this.model
-        sort=this.sort
-        pageSize=this.pageSize
-        pageNumber=this.pageNumber}}
+<Table @config={{this.config}}
+       @list={{this.model}}
+       @sort={{this.sort}}
+       @count={{this.count}}
+       @page={{this.page}}
+       @changedSort={{fn (mut this.sort)}}
+       @changedCount={{fn (mut this.count)}}
+       @changedPage={{fn (mut this.page)}}/>

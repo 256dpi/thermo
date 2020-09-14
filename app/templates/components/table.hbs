@@ -1,11 +1,11 @@
-{{#if (gt this.config.orders.length 0)}}
+{{#if (gt @config.orders.length 0)}}
   <p class="sorting">
     <label>Sorting:</label>
-    <select {{on "change" (event-target-value this.setSort)}}>
+    <select {{on "change" (event-target-value this.changeSort)}}>
       <option value="">Natural</option>
-      {{#each this.config.orders as |order|}}
-        <option selected={{eq order.name this.sort}} value={{order.name}}>{{order.title}} ↑</option>
-        <option selected={{eq (concat "-" order.name) this.sort}} value="-{{order.name}}">{{order.title}} ↓</option>
+      {{#each @config.orders as |order|}}
+        <option selected={{eq order.name @sort}} value={{order.name}}>{{order.title}} ↑</option>
+        <option selected={{eq (concat "-" order.name) @sort}} value="-{{order.name}}">{{order.title}} ↓</option>
       {{/each}}
     </select>
   </p>
@@ -17,13 +17,13 @@
       ID
     </th>
 
-    {{#each this.config.columns as |column|}}
+    {{#each @config.columns as |column|}}
       <th>{{column.title}}</th>
     {{/each}}
   </thead>
 
   <tbody>
-    {{#each this.list as |model|}}
+    {{#each @list as |model|}}
       <tr>
         <td>
           <LinkTo @route="table.edit" @model={{model.id}}>
@@ -31,7 +31,7 @@
           </LinkTo>
         </td>
 
-        {{#each this.config.columns as |column|}}
+        {{#each @config.columns as |column|}}
           <td>
             {{#let (get model column.key) as |value|}}
               {{#if (eq column.format "literal")}}
@@ -67,32 +67,32 @@
 
 <p class="pagination">
   <label>Count:</label>
-  <select {{on "change" (event-target-value this.setPageSize)}}>
-    {{#each (array 5 10 25 50 100) as |size|}}
-      <option selected={{eq size this.pageSize}}>{{size}}</option>
+  <select {{on "change" (event-target-value this.changeCount)}}>
+    {{#each (array 5 10 25 50 100) as |num|}}
+      <option selected={{eq num @count}}>{{num}}</option>
     {{/each}}
   </select>
 
   {{#if (gt this.lastPage 1)}}
-    Page {{this.pageNumber}}
+    Page: {{@page}}
   {{/if}}
 
-  {{#if (gt this.pageNumber 1)}}
-    <button type="button" {{on "click" (fn this.setPageNumber 1)}}>
+  {{#if (gt @page 1)}}
+    <button type="button" {{on "click" (fn this.changePage 1 0)}}>
       First
     </button>
 
-    <button type="button" {{on "click" this.previousPage}}>
+    <button type="button" {{on "click" (fn this.changePage @page -1)}}>
       Previous
     </button>
   {{/if}}
 
-  {{#if (lt this.pageNumber this.lastPage)}}
-    <button type="button" {{on "click" this.nextPage}}>
+  {{#if (lt @page this.lastPage)}}
+    <button type="button" {{on "click" (fn this.changePage @page 1)}}>
       Next
     </button>
 
-    <button type="button" {{on "click" (fn this.setPageNumber this.lastPage)}}>
+    <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
       Last
     </button>
   {{/if}}

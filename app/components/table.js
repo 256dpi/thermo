@@ -1,23 +1,16 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { action, computed } from '@ember/object';
 
 export default class extends Component {
-  config = undefined;
-  list = undefined;
-
-  sort = '';
-  pageSize = 0;
-  pageNumber = 0;
-
-  @computed('list.links')
+  @computed('args.list.links')
   get lastPage() {
     // check list
-    if (!this.list) {
+    if (!this.args.list) {
       return 0;
     }
 
     // get links
-    let links = this.list.links;
+    let links = this.args.list.links;
     if (!links.last) {
       return 0;
     }
@@ -43,27 +36,15 @@ export default class extends Component {
     alert(JSON.stringify(value, null, '  '));
   }
 
-  @action setSort(sort) {
-    if (sort) {
-      this.set('sort', sort);
-    } else {
-      this.set('sort', null);
-    }
+  @action changeSort(sort) {
+    this.args.changedSort(sort);
   }
 
-  @action setPageSize(size) {
-    this.set('pageSize', parseInt(size));
+  @action changeCount(size) {
+    this.args.changedCount(parseInt(size));
   }
 
-  @action setPageNumber(page) {
-    this.set('pageNumber', page);
-  }
-
-  @action previousPage() {
-    this.decrementProperty('pageNumber', 1);
-  }
-
-  @action nextPage() {
-    this.incrementProperty('pageNumber', 1);
+  @action changePage(current, delta = 0) {
+    this.args.changedPage(current + delta);
   }
 }

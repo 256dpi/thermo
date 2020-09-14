@@ -6,10 +6,10 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     sort: {
       refreshModel: true
     },
-    pageSize: {
+    count: {
       refreshModel: true
     },
-    pageNumber: {
+    page: {
       refreshModel: true
     }
   };
@@ -23,8 +23,8 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     // prepare query
     const query = {
       page: {
-        size: params.pageSize,
-        number: params.pageNumber
+        size: params.count,
+        number: params.page
       }
     };
 
