@@ -85,8 +85,15 @@ type Field struct {
 	Redacted    bool       `json:"redacted,omitempty"`
 	Min         float64    `json:"min,omitempty"`
 	Max         float64    `json:"max,omitempty"`
+	Options     []Option   `json:"options,omitempty"`
 	Source      Expression `json:"source,omitempty"`
 	Multiple    bool       `json:"multiple,omitempty"`
+}
+
+// Option describes an option.
+type Option struct {
+	Value string `json:"value"`
+	Label string `json:"label"`
 }
 
 // Kind describes a field kind.
@@ -133,6 +140,7 @@ const (
 	ControlBoolean   Control = "boolean"
 	ControlNumber    Control = "number"
 	ControlDate      Control = "date"
+	ControlSelect    Control = "select"
 	ControlReference Control = "reference"
 	ControlWell      Control = "well"
 )

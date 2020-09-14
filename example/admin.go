@@ -163,6 +163,16 @@ var blueprint = thermo.Blueprint{
 					Key:     "count",
 					Control: thermo.ControlNumber,
 				},
+				{
+					Label:   "Foo",
+					Key:     "name",
+					Control: thermo.ControlSelect,
+					Options: []thermo.Option{
+						{Value: "one", Label: "One"},
+						{Value: "two", Label: "Two"},
+						{Value: "three", Label: "Three"},
+					},
+				},
 			},
 		},
 		thermo.Auto(&flame.Application{}, "application", "Applications"),
