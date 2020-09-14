@@ -1,10 +1,11 @@
 {{#if @label}}
-  <label class="input__label">
+  <label class="input__label" for={{guid-for this}}>
     {{@label}}
   </label>
 {{/if}}
 
-<Textarea class="input__text"
+<Textarea id={{guid-for this}}
+          class="input__text"
           @value={{@value}}
           @disabled={{@disabled}}
           @placeholder={{@placeholder}}

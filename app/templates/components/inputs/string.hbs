@@ -1,10 +1,11 @@
 {{#if @label}}
-  <label class="input__label">
+  <label class="input__label" for={{guid-for this}}>
     {{@label}}
   </label>
 {{/if}}
 
-<Input class="input__string"
+<Input id={{guid-for this}}
+       class="input__string"
        @type={{if @redacted "password" "text"}}
        @value={{@value}}
        @disabled={{@disabled}}

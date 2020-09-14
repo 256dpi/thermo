@@ -1,10 +1,11 @@
 {{#if @label}}
-  <label class="input__label">
+  <label class="input__label" for={{guid-for this}}>
     {{@label}}
   </label>
 {{/if}}
 
-<EmberFlatpickr class="input__date"
+<EmberFlatpickr id={{guid-for this}}
+                class="input__date"
                 placeholder={{@placeholder}}
                 @date={{or @value this.now}}
                 @onChange={{fn (mut @value)}}
