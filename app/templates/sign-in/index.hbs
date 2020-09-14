@@ -8,6 +8,7 @@
       <Inputs::String
               @label="Email"
               @value={{this.email}}
+              @changed={{fn (mut this.email)}}
               @placeholder="user@example.org"/>
     </div>
 
@@ -15,6 +16,7 @@
       <Inputs::String
               @label="Password"
               @value={{this.password}}
+              @changed={{fn (mut this.password)}}
               @redacted={{true}}
               @placeholder="****"/>
     </div>
