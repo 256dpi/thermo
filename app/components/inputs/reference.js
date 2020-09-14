@@ -39,11 +39,7 @@ export default class extends Component {
 
   @action select(value) {
     if (this.args.changed) {
-      if (value === this.emptyOption) {
-        this.args.changed(undefined);
-      } else {
-        this.args.changed(value);
-      }
+      this.args.changed(value === this.emptyOption ? undefined : value);
     }
   }
 }

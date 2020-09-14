@@ -4,12 +4,14 @@
   </label>
 {{/if}}
 
-<Textarea id={{guid-for this}}
+<textarea id={{guid-for this}}
           class="input__text"
-          @value={{@value}}
-          @disabled={{@disabled}}
-          @placeholder={{@placeholder}}
-          @autoresize={{true}}/>
+          value={{@value}}
+          disabled={{@disabled}}
+          placeholder={{@placeholder}}
+          {{on "change" this.changed}}/>
+
+<!--TODO: Autoresize -->
 
 {{#if @hint}}
   <div class="input__hint">

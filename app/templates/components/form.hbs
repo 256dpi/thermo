@@ -6,6 +6,7 @@
           <Inputs::String
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}
                   @redacted={{field.redacted}}/>
@@ -13,17 +14,20 @@
           <Inputs::Text
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}/>
         {{else if (eq field.control "boolean")}}
           <Inputs::Boolean
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}/>
         {{else if (eq field.control "number")}}
           <Inputs::Number
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}
                   @min={{field.min}}
@@ -32,23 +36,24 @@
           <Inputs::Date
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @placeholder={{field.placeholder}}/>
         {{else if (eq field.control "select")}}
           <Inputs::Select
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
-                  @options={{field.options}}
-                  @changed={{fn (mut value)}}/>
+                  @options={{field.options}}/>
         {{else if (eq field.control "reference")}}
           <Inputs::Reference
                   @label={{field.label}}
                   @value={{value}}
+                  @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @collection={{evaluate field.source @model}}
-                  @multiple={{field.multiple}}
-                  @changed={{fn (mut value)}}/>
+                  @multiple={{field.multiple}}/>
         {{else if (eq field.control "well")}}
           <Inputs::Well
                   @label={{field.label}}

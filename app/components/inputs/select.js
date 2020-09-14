@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 export default class extends Component {
-  @action changed(value) {
+  @action changed(e) {
     if (this.args.changed) {
-      this.args.changed(value);
+      this.args.changed(e.target.value);
     }
   }
 }

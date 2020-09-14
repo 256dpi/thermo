@@ -8,7 +8,7 @@
                 class="input__date"
                 placeholder={{@placeholder}}
                 @date={{or @value this.now}}
-                @onChange={{fn (mut @value)}}
+                @onChange={{@changed}}
                 @enableTime={{true}}
                 @time_24hr={{true}}
                 @allowInput={{not @disabled}}/>
