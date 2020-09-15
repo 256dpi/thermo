@@ -14,3 +14,7 @@ lint:
 	golint ./example
 	yarn lint:js
 	yarn lint:hbs
+
+build:
+	yarn build
+	go generate
