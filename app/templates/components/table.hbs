@@ -11,6 +11,21 @@
   </p>
 {{/if}}
 
+<p class="filters">
+  {{#each @config.filters as |filter|}}
+    {{#if (eq filter.condition "boolean")}}
+      <Inputs::Boolean
+              @label={{filter.title}}
+              @value={{get @filter filter.key}}
+              @changed={{fn this.setFilter filter.key}}/>
+
+      <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
+        Remove
+      </button>
+    {{/if}}
+  {{/each}}
+</p>
+
 <table class="table">
   <thead>
     <th width="1">

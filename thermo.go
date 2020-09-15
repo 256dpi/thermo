@@ -41,6 +41,7 @@ type Model struct {
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`
 	Orders     []Order     `json:"orders"`
+	Filters    []Filter    `json:"filters"`
 	Columns    []Column    `json:"columns"`
 	Fields     []Field     `json:"fields"`
 }
@@ -65,6 +66,13 @@ type Property struct {
 type Order struct {
 	Title string `json:"title"`
 	Name  string `json:"name"`
+}
+
+// Filter describes a list filter.
+type Filter struct {
+	Title     string    `json:"title"`
+	Key       string    `json:"key"`
+	Condition Condition `json:"condition"`
 }
 
 // Column describes a table column.
@@ -115,6 +123,14 @@ const (
 	TypeBoolean Type = "boolean"
 	TypeNumber  Type = "number"
 	TypeDate    Type = "date"
+)
+
+// Condition describes a filter condition.
+type Condition string
+
+// The available filter conditions.
+const (
+	ConditionBoolean Condition = "boolean"
 )
 
 // Format describes a column format.

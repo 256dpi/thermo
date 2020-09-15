@@ -109,6 +109,13 @@ var blueprint = thermo.Blueprint{
 					Name:  "created",
 				},
 			},
+			Filters: []thermo.Filter{
+				{
+					Title:     "State",
+					Key:       "state",
+					Condition: thermo.ConditionBoolean,
+				},
+			},
 			Columns: []thermo.Column{
 				{
 					Title:  "Name",

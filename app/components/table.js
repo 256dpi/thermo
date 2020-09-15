@@ -40,6 +40,26 @@ export default class extends Component {
     this.args.changedSort(sort);
   }
 
+  @action setFilter(key, value) {
+    // copy filter
+    const ret = {};
+    for (key in this.args.filter) {
+      if (this.args.filter.hasOwnProperty(key)) {
+        ret[key] = this.args.filter[key];
+      }
+    }
+
+    // set value
+    if (value !== undefined) {
+      ret[key] = value;
+    } else {
+      delete ret[key];
+    }
+
+    // call callback
+    this.args.changedFilter(ret);
+  }
+
   @action changeCount(size) {
     this.args.changedCount(parseInt(size));
   }

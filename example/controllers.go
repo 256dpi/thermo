@@ -13,6 +13,7 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 	return &fire.Controller{
 		Model:   &Item{},
 		Store:   store,
+		Filters: []string{"Name", "State", "Count"},
 		Sorters: []string{"Name", "State", "Count", "Created"},
 		Authorizers: fire.L{
 			flame.Callback(true),

@@ -6,6 +6,9 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     sort: {
       refreshModel: true
     },
+    filter: {
+      refreshModel: true
+    },
     count: {
       refreshModel: true
     },
@@ -18,10 +21,15 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     // get config
     const config = this.modelFor('table');
 
-    // TODO: Also add filters.
+    // decode filter
+    let filter = {};
+    try {
+      filter = JSON.parse(decodeURIComponent(params.filter));
+    } catch (e) {}
 
     // prepare query
     const query = {
+      filter: filter,
       page: {
         size: params.count,
         number: params.page

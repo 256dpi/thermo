@@ -1,8 +1,10 @@
 <Table @config={{this.config}}
        @list={{this.model}}
        @sort={{this.sort}}
+       @filter={{this.decodeFilter}}
        @count={{this.count}}
        @page={{this.page}}
        @changedSort={{fn (mut this.sort)}}
+       @changedFilter={{this.encodeFilter}}
        @changedCount={{fn (mut this.count)}}
        @changedPage={{fn (mut this.page)}}/>
