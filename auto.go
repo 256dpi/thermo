@@ -79,6 +79,7 @@ func Attributes(model coal.Model) []Attribute {
 		// get type
 		var typ Type
 		var def Any
+		var init Expression
 		switch unwrap(field.Type).Kind() {
 		case reflect.String:
 			typ = TypeString
@@ -101,6 +102,7 @@ func Attributes(model coal.Model) []Attribute {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				typ = TypeDate
+				init = "new Date()"
 			}
 		}
 
@@ -110,6 +112,7 @@ func Attributes(model coal.Model) []Attribute {
 			Kind:    KindValue,
 			Type:    typ,
 			Default: def,
+			Init:    init,
 		})
 	}
 
