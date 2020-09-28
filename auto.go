@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/256dpi/fire/coal"
+	"github.com/256dpi/fire/stick"
 )
 
 func unwrap(typ reflect.Type) reflect.Type {
@@ -42,13 +43,18 @@ func Auto(model coal.Model, name, title string) Model {
 }
 
 // Attributes will return a list of attributes for the provided coal.Model.
-func Attributes(model coal.Model) []Attribute {
+func Attributes(model coal.Model, only ...string) []Attribute {
 	// get meta
 	meta := coal.GetMeta(model)
 
 	// collect
 	var list []Attribute
 	for _, field := range meta.OrderedFields {
+		// check if skipped
+		if len(only) > 0 && !stick.Contains(only, field.Name) {
+			continue
+		}
+
 		// skip inaccessible fields
 		if field.JSONKey == "" && field.RelType == "" {
 			continue
@@ -117,13 +123,18 @@ func Attributes(model coal.Model) []Attribute {
 }
 
 // Columns will return a list of columns for the provided coal.Model.
-func Columns(model coal.Model) []Column {
+func Columns(model coal.Model, only ...string) []Column {
 	// get meta
 	meta := coal.GetMeta(model)
 
 	// collect
 	var list []Column
 	for _, field := range meta.OrderedFields {
+		// check if skipped
+		if len(only) > 0 && !stick.Contains(only, field.Name) {
+			continue
+		}
+
 		// skip inaccessible fields
 		if field.JSONKey == "" && field.RelType == "" {
 			continue
@@ -183,13 +194,18 @@ func Columns(model coal.Model) []Column {
 }
 
 // Fields will return a list of fields for the provided coal.Model.
-func Fields(model coal.Model) []Field {
+func Fields(model coal.Model, only ...string) []Field {
 	// get meta
 	meta := coal.GetMeta(model)
 
 	// collect
 	var list []Field
 	for _, field := range meta.OrderedFields {
+		// check if skipped
+		if len(only) > 0 && !stick.Contains(only, field.Name) {
+			continue
+		}
+
 		// skip inaccessible fields
 		if field.JSONKey == "" && field.RelType == "" {
 			continue
