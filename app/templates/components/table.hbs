@@ -55,7 +55,7 @@
                 {{if value "True" "False"}}
               {{else if (eq column.format "absolute-date")}}
                 {{#if value}}
-                  {{moment-format value "YYYY-MM-DD HH:MM:SS"}}
+                  {{moment-format value "YYYY-MM-DD HH:mm:ss"}}
                 {{/if}}
               {{else if (eq column.format "relative-date")}}
                 {{#if value}}

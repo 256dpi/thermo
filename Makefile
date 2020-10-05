@@ -18,3 +18,5 @@ lint:
 build:
 	yarn build
 	go generate
+
+.PHONY: build
