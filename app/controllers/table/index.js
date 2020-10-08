@@ -28,4 +28,8 @@ export default class extends Controller {
   @action encodeFilter(filter) {
     this.filter = encodeURIComponent(JSON.stringify(filter));
   }
+
+  @action refresh() {
+    this.route.refresh();
+  }
 }

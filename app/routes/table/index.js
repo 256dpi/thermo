@@ -50,6 +50,9 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
   setupController(controller) {
     super.setupController(...arguments);
 
+    // set route on controller
+    controller.set('route', this);
+
     // set config on controller
     controller.set('config', this.modelFor('table'));
   }

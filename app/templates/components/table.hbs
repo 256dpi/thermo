@@ -1,3 +1,9 @@
+<p>
+  <button type="button" {{on "click" @refresh}}>
+    Refresh
+  </button>
+</p>
+
 {{#if (gt @config.orders.length 0)}}
   <p class="sorting">
     <label>Sorting:</label>
