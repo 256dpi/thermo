@@ -1,0 +1,25 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+
+  &__group {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    > * {
+      margin-left: 5px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

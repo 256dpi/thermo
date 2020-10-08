@@ -1,36 +1,90 @@
-<p>
-  <button type="button" {{on "click" @refresh}}>
-    Refresh
-  </button>
-</p>
+<div class="toolbar">
+  <div class="toolbar__group">
+    <div>
+      Data
+    </div>
 
-{{#if (gt @config.orders.length 0)}}
-  <p class="sorting">
-    <label>Sorting:</label>
-    <select {{on "change" (event-target-value this.changeSort)}}>
-      <option value="">Natural</option>
-      {{#each @config.orders as |order|}}
-        <option selected={{eq order.name @sort}} value={{order.name}}>{{order.title}} ↑</option>
-        <option selected={{eq (concat "-" order.name) @sort}} value="-{{order.name}}">{{order.title}} ↓</option>
+    <button type="button" {{on "click" @refresh}}>
+      Refresh
+    </button>
+  </div>
+
+  <div class="toolbar__group">
+    <label>
+      Count
+    </label>
+
+    <select {{on "change" (event-target-value this.changeCount)}}>
+      {{#each (array 5 10 25 50 100) as |num|}}
+        <option selected={{eq num @count}}>{{num}}</option>
       {{/each}}
     </select>
-  </p>
-{{/if}}
+  </div>
 
-<p class="filters">
-  {{#each @config.filters as |filter|}}
-    {{#if (eq filter.condition "boolean")}}
-      <Inputs::Boolean
-              @label={{filter.title}}
-              @value={{get @filter filter.key}}
-              @changed={{fn this.setFilter filter.key}}/>
+  <div class="toolbar__group">
+    {{#if (gt this.lastPage 1)}}
+      <div>
+        Page {{@page}}
+      </div>
+    {{/if}}
 
-      <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
-        Remove
+    {{#if (gt @page 1)}}
+      <button type="button" {{on "click" (fn this.changePage 1 0)}}>
+        First
+      </button>
+
+      <button type="button" {{on "click" (fn this.changePage @page -1)}}>
+        Previous
       </button>
     {{/if}}
-  {{/each}}
-</p>
+
+    {{#if (lt @page this.lastPage)}}
+      <button type="button" {{on "click" (fn this.changePage @page 1)}}>
+        Next
+      </button>
+
+      <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
+        Last
+      </button>
+    {{/if}}
+  </div>
+
+  {{#if (gt @config.orders.length 0)}}
+    <div class="toolbar__group">
+      <label>
+        Sorting
+      </label>
+
+      <select {{on "change" (event-target-value this.changeSort)}}>
+        <option value="">Natural</option>
+
+        {{#each @config.orders as |order|}}
+          <option selected={{eq order.name @sort}} value={{order.name}}>{{order.title}} ↑</option>
+          <option selected={{eq (concat "-" order.name) @sort}} value="-{{order.name}}">{{order.title}} ↓</option>
+        {{/each}}
+      </select>
+    </div>
+  {{/if}}
+</div>
+
+{{#if (gt @config.filters.length 0)}}
+  <div class="filters">
+    {{#each @config.filters as |filter|}}
+      {{#if (eq filter.condition "boolean")}}
+        <div class="toolbar__item">
+          <Inputs::Boolean
+                  @label={{filter.title}}
+                  @value={{get @filter filter.key}}
+                  @changed={{fn this.setFilter filter.key}}/>
+
+          <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
+            Remove
+          </button>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+{{/if}}
 
 <table class="table">
   <thead>
@@ -85,36 +139,3 @@
     {{/each}}
   </tbody>
 </table>
-
-<p class="pagination">
-  <label>Count:</label>
-  <select {{on "change" (event-target-value this.changeCount)}}>
-    {{#each (array 5 10 25 50 100) as |num|}}
-      <option selected={{eq num @count}}>{{num}}</option>
-    {{/each}}
-  </select>
-
-  {{#if (gt this.lastPage 1)}}
-    Page: {{@page}}
-  {{/if}}
-
-  {{#if (gt @page 1)}}
-    <button type="button" {{on "click" (fn this.changePage 1 0)}}>
-      First
-    </button>
-
-    <button type="button" {{on "click" (fn this.changePage @page -1)}}>
-      Previous
-    </button>
-  {{/if}}
-
-  {{#if (lt @page this.lastPage)}}
-    <button type="button" {{on "click" (fn this.changePage @page 1)}}>
-      Next
-    </button>
-
-    <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
-      Last
-    </button>
-  {{/if}}
-</p>
