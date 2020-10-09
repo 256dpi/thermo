@@ -1,5 +1,5 @@
 // https://github.com/cibernox/ember-power-select/blob/master/app/styles/ember-power-select/variables.scss
-$ember-power-select-default-border-radius: 2px;
+$ember-power-select-default-border-radius: $border-radius;
 $ember-power-select-border-color: #ddd;
 $ember-power-select-focus-border-color: black;
 $ember-power-select-highlighted-background: black;
@@ -21,11 +21,12 @@ $ember-power-select-highlighted-background: black;
   &__string,
   &__text,
   &__number,
-  &__date {
+  &__date,
+  &__select {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #ddd;
-    border-radius: 2px;
+    border-radius: $border-radius;
     padding: 7px 10px;
     font-family: monospace;
     font-size: 16px;
@@ -41,11 +42,24 @@ $ember-power-select-highlighted-background: black;
     min-height: 50px;
   }
 
+  &__select {
+    width: inherit;
+    display: inline-block;
+    padding-right: 30px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' height='10px' width='20px'%3E%3Ctext x='0' y='10' fill='gray'%3E%E2%96%BE%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 1.2em;
+    background-position: right center;
+    background-clip: border-box;
+  }
+
   &__well {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #eee;
-    border-radius: 3px;
+    border-radius: $border-radius;
     background-color: #eee;
     padding: 5px;
     font-family: monospace;
