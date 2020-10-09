@@ -93,7 +93,6 @@ func jobController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
 		Model:     &axe.Model{},
 		Store:     store,
-		Supported: fire.Only(fire.List, fire.Find),
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},
@@ -104,7 +103,6 @@ func valueController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
 		Model:     &glut.Model{},
 		Store:     store,
-		Supported: fire.Only(fire.List, fire.Find),
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},
@@ -115,7 +113,6 @@ func fileController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
 		Model:     &blaze.File{},
 		Store:     store,
-		Supported: fire.Only(fire.List, fire.Find),
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},

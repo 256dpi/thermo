@@ -59,6 +59,13 @@
                   @label={{field.label}}
                   @value={{value}}
                   @hint={{field.hint}}/>
+        {{else}}
+          <Inputs::Json
+                  @label={{field.label}}
+                  @value={{value}}
+                  @changed={{fn (mut value)}}
+                  @hint={{field.hint}}
+                  @placeholder={{field.placeholder}}/>
         {{/if}}
       {{/let}}
     </div>

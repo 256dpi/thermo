@@ -1,0 +1,20 @@
+{{#if @label}}
+  <label class="input__label" for={{guid-for this}}>
+    {{@label}}
+  </label>
+{{/if}}
+
+<textarea id={{guid-for this}}
+          class="input__text"
+          value={{this.value}}
+          disabled={{@disabled}}
+          placeholder={{@placeholder}}
+          {{on "change" this.changed}}/>
+
+<!--TODO: Autoresize -->
+
+{{#if @hint}}
+  <div class="input__hint">
+    {{@hint}}
+  </div>
+{{/if}}
