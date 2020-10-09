@@ -4,10 +4,6 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/256dpi/fire/blaze"
-	"github.com/256dpi/fire/flame"
-	"github.com/256dpi/fire/glut"
-
 	"github.com/256dpi/thermo"
 )
 
@@ -181,12 +177,12 @@ var blueprint = thermo.Blueprint{
 				},
 			},
 		},
-		thermo.Auto(&flame.Application{}, "application", "Applications"),
-		thermo.Auto(&flame.User{}, "user", "Users"),
-		thermo.Auto(&flame.Token{}, "token", "Tokens"),
+		thermo.Applications(),
+		thermo.Users(),
+		thermo.Tokens(),
 		thermo.Jobs(),
-		thermo.Auto(&glut.Model{}, "value", "Values"),
-		thermo.Auto(&blaze.File{}, "file", "Files"),
+		thermo.Values(),
+		thermo.Files(),
 	},
 }
 
