@@ -11,7 +11,7 @@ export default class extends Component {
 
     // get links
     let links = this.args.list.links;
-    if (!links.last) {
+    if (!links || !links.last) {
       return 0;
     }
 

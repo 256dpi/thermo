@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { pluralize } from 'ember-inflector';
 
 export default class extends Route.extend(AuthenticatedRouteMixin) {
   name = null;
@@ -15,7 +16,7 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
 
     // unsubscribe if watchable
     if (config && config.watchable) {
-      this.watch.unsubscribe(name, {});
+      this.watch.unsubscribe(pluralize(name), {});
     }
 
     // get new name amd config
@@ -24,7 +25,7 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
 
     // subscribe if watchable
     if (config && config.watchable) {
-      this.watch.subscribe(name, {});
+      this.watch.subscribe(pluralize(name), {});
     }
 
     // store name
@@ -40,7 +41,7 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
 
     // unsubscribe if watchable
     if (config.watchable) {
-      this.watch.unsubscribe(name, {});
+      this.watch.unsubscribe(pluralize(name), {});
     }
   }
 }

@@ -26,17 +26,19 @@
     </div>
   {{/if}}
 
-  <div class="toolbar__group">
-    <label>
-      Count
-    </label>
+  {{#unless @config.immediate}}
+    <div class="toolbar__group">
+      <label>
+        Count
+      </label>
 
-    <select {{on "change" (event-target-value this.changeCount)}}>
-      {{#each (array 5 10 25 50 100) as |num|}}
-        <option selected={{eq num @count}}>{{num}}</option>
-      {{/each}}
-    </select>
-  </div>
+      <select {{on "change" (event-target-value this.changeCount)}}>
+        {{#each (array 5 10 25 50 100) as |num|}}
+          <option selected={{eq num @count}}>{{num}}</option>
+        {{/each}}
+      </select>
+    </div>
+  {{/unless}}
 
   {{#if (gt this.lastPage 1)}}
     <div class="toolbar__group">

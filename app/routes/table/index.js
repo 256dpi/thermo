@@ -21,6 +21,11 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     // get config
     const config = this.modelFor('table');
 
+    // return full list if immediate
+    if (config.immediate) {
+      return this.store.findAll(config.name);
+    }
+
     // decode filter
     let filter = {};
     try {
