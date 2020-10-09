@@ -91,8 +91,8 @@ func tokenController(store *coal.Store) *fire.Controller {
 
 func jobController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
-		Model:     &axe.Model{},
-		Store:     store,
+		Model: &axe.Model{},
+		Store: store,
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},
@@ -101,8 +101,8 @@ func jobController(store *coal.Store) *fire.Controller {
 
 func valueController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
-		Model:     &glut.Model{},
-		Store:     store,
+		Model: &glut.Model{},
+		Store: store,
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},
@@ -111,8 +111,8 @@ func valueController(store *coal.Store) *fire.Controller {
 
 func fileController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
-		Model:     &blaze.File{},
-		Store:     store,
+		Model: &blaze.File{},
+		Store: store,
 		Authorizers: fire.L{
 			flame.Callback(true),
 		},
