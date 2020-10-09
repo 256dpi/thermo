@@ -9,9 +9,8 @@
           value={{@value}}
           disabled={{@disabled}}
           placeholder={{@placeholder}}
-          {{on "change" this.changed}}/>
-
-<!--TODO: Autoresize -->
+          {{on "change" this.changed}}
+          {{autoresize}}/>
 
 {{#if @hint}}
   <div class="input__hint">
