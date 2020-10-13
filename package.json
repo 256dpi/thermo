@@ -21,16 +21,16 @@
     "ember-autoresize-modifier": "^0.3.0",
     "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-sass": "^10.0.0",
-    "ember-composable-helpers": "^4.0.0",
+    "ember-composable-helpers": "^4.3.0",
     "ember-event-helpers": "^0.1.1",
     "ember-flatpickr": "^3.0.1",
     "ember-moment": "^7.8.1",
-    "ember-power-select": "^4.0.4",
+    "ember-power-select": "^4.0.5",
     "ember-simple-auth": "^1.8.1",
     "ember-truth-helpers": "^2.1.0",
     "normalize.css": "~4.1.1",
     "prettier": "^1.16.4",
-    "sass": "^1.17.2"
+    "sass": "^1.27.0"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
