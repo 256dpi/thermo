@@ -40,7 +40,7 @@ func Values() Model {
 	return model
 }
 
-// Values will return the model for managing blaze.File documents.
+// Files will return the model for managing blaze.File documents.
 func Files() Model {
 	return Auto(&blaze.File{}, "file", "Files")
 }
