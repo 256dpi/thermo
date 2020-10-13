@@ -170,11 +170,7 @@ type Expression string
 
 // Build will build an ember app based on the provided blueprint.
 func Build(blueprint Blueprint) *ember.App {
-	// create app
 	app := ember.MustCreate("thermo", files)
-
-	// set blueprint
 	app.MustSet("blueprint", blueprint)
-
 	return app
 }
