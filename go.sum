@@ -1,6 +1,8 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/256dpi/btree v0.0.0-20200517182607-63d76dfb3721 h1:sqwb677LEbafVHqK7z42khEatC+5E8mQTsGwnEpNxT4=
 github.com/256dpi/btree v0.0.0-20200517182607-63d76dfb3721/go.mod h1:HcRNieBy4k2gr4Q6iilWxJnA64GdbOds4o8Iz2/G1UY=
+github.com/256dpi/embed v0.1.2 h1:pgTFqA5Gc8xiL8/RIf4crdN+z1WpoOwFYLgjTX6lmAw=
+github.com/256dpi/embed v0.1.2/go.mod h1:TyRVYP7Wq8XsgBeEyKGvipB/4xLr2EN9u3BdmIpxd7M=
 github.com/256dpi/ember v0.2.2 h1:f/cXF32gnonlTtmx/T7ocpqzgHviBpkzmM+FLpuJSww=
 github.com/256dpi/ember v0.2.2/go.mod h1:Zd9ZOLQLhdSVv8eGw0o2FSB69+WjjJYSi7havlbLd1w=
 github.com/256dpi/fire v0.29.2 h1:uHrfWuOSCGfeOin2RUXVE41ezZmc1BVKTy4UkANEQZo=

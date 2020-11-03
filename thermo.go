@@ -2,7 +2,7 @@ package thermo
 
 import "github.com/256dpi/ember"
 
-//go:generate embedfiles -strings -pkg thermo -name files -out files.go build/
+//go:generate go run github.com/256dpi/embed -strings -pkg thermo -name files -out files.go build/
 
 // Blueprint configures a thermo application.
 type Blueprint struct {
