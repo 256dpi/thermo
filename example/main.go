@@ -28,10 +28,8 @@ var mainKey = getEnv("MAIN_KEY", "main-key")
 var subKey = getEnv("SUB_KEY", "sub-key")
 
 func main() {
-	// install xo
-	xo.Debug(xo.Config{
-		NoTraceAttributes: true,
-	})
+	// enable xo
+	xo.Debug(xo.DebugConfig{})
 
 	// visualize models
 	err := catalog.Visualize("Example", "models.pdf")
@@ -42,7 +40,9 @@ func main() {
 	// create store
 	var store *coal.Store
 	if mongoURI != "" {
-		store = coal.MustConnect(mongoURI)
+		store = coal.MustConnect(mongoURI, func(err error) {
+			panic(err)
+		})
 	} else {
 		store = coal.MustOpen(nil, "example", func(err error) {
 			panic(err)
