@@ -43,10 +43,8 @@ export default class extends Component {
   @action setFilter(key, value) {
     // copy filter
     const ret = {};
-    for (key in this.args.filter) {
-      if (this.args.filter.hasOwnProperty(key)) {
-        ret[key] = this.args.filter[key];
-      }
+    for (key of Object.keys(this.args.filter)) {
+      ret[key] = this.args.filter[key];
     }
 
     // set value

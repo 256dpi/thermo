@@ -25,7 +25,6 @@ var port = getEnv("PORT", "8000")
 var mongoURI = getEnv("MONGODB_URI", "")
 var secret = getEnv("SECRET", "abcd1234abcd1234")
 var mainKey = getEnv("MAIN_KEY", "main-key")
-var subKey = getEnv("SUB_KEY", "sub-key")
 
 func main() {
 	// enable xo
@@ -122,16 +121,9 @@ func prepareDatabase(store *coal.Store, bucket *lungo.Bucket) error {
 		return err
 	}
 
-	// ensure sub application
-	subKey, err = flame.EnsureApplication(store, "Sub", subKey, "", "http://0.0.0.0:4200/return")
-	if err != nil {
-		return err
-	}
-
 	// log info
 	fmt.Printf("==> Password for user@example.org: user1234\n")
 	fmt.Printf("==> Main application key: %s\n", mainKey)
-	fmt.Printf("==> Sub application key: %s\n", subKey)
 
 	return nil
 }

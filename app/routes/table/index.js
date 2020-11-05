@@ -27,10 +27,12 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     }
 
     // decode filter
-    let filter = {};
+    let filter;
     try {
       filter = JSON.parse(decodeURIComponent(params.filter));
-    } catch (e) {}
+    } catch (e) {
+      filter = {};
+    }
 
     // prepare query
     const query = {
