@@ -143,6 +143,7 @@ const (
 	FormatBoolean      Format = "boolean"
 	FormatAbsoluteDate Format = "absolute-date"
 	FormatRelativeDate Format = "relative-date"
+	FormatProgress     Format = "progress"
 	FormatBelongsTo    Format = "belongs-to"
 	FormatHasMany      Format = "has-many"
 )

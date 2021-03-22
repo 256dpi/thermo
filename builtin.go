@@ -26,6 +26,11 @@ func Tokens() Model {
 // permission to watch documents.
 func Jobs() Model {
 	model := Auto(&axe.Model{}, "job", "Jobs")
+	for i, column := range model.Columns {
+		if column.Key == "progress" {
+			model.Columns[i].Format = FormatProgress
+		}
+	}
 	model.Watchable = true
 	model.Immediate = true
 	return model

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"math/rand"
 	"time"
 
 	"github.com/256dpi/xo"
@@ -157,6 +158,16 @@ func periodicTask(store *coal.Store) *axe.Task {
 			})
 			if err != nil {
 				return err
+			}
+
+			// wait a bit and update progress
+			total := rand.Intn(30)
+			for i := 0; i < total; i++ {
+				err = ctx.Update("Running...", float64(i)/float64(total))
+				if err != nil {
+					return err
+				}
+				time.Sleep(500 * time.Millisecond)
 			}
 
 			return nil
