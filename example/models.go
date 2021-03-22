@@ -76,7 +76,7 @@ func (i *Item) Validate() error {
 
 	// check file
 	if i.File != nil {
-		err := i.File.Validate("file")
+		err := i.File.Validate(false)
 		if err != nil {
 			return err
 		}
