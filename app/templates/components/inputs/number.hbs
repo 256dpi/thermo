@@ -12,6 +12,7 @@
        placeholder={{@placeholder}}
        min={{@min}}
        max={{@max}}
+       step={{or @step "any"}}
        {{on "change" this.changed}}/>
 
 {{#if @hint}}

@@ -94,6 +94,7 @@ type Field struct {
 	Redacted    bool       `json:"redacted,omitempty"`
 	Min         float64    `json:"min,omitempty"`
 	Max         float64    `json:"max,omitempty"`
+	Step        float64    `json:"step,omitempty"`
 	Options     []Option   `json:"options,omitempty"`
 	Source      Expression `json:"source,omitempty"`
 	Multiple    bool       `json:"multiple,omitempty"`
