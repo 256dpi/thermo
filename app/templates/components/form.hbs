@@ -54,7 +54,10 @@
                   @changed={{fn (mut value)}}
                   @hint={{field.hint}}
                   @collection={{evaluate field.source @model}}
-                  @multiple={{field.multiple}}/>
+                  @multiple={{field.multiple}}
+                  @labelKey={{field.labelKey}}
+                  @emptyLabel={{field.emptyLabel}}
+                  @allowEmpty={{field.allowEmpty}}/>
         {{else if (eq field.control "well")}}
           <Inputs::Well
                   @label={{field.label}}

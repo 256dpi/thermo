@@ -233,7 +233,8 @@ func Fields(model coal.Model, only ...string) []Field {
 				Source: Expression(
 					`return $.store.findAll($.singularize('` + field.RelType + `'))`,
 				),
-				Multiple: field.ToMany,
+				Multiple:   field.ToMany,
+				AllowEmpty: field.Optional,
 			})
 
 			continue

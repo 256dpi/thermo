@@ -98,6 +98,9 @@ type Field struct {
 	Options     []Option   `json:"options,omitempty"`
 	Source      Expression `json:"source,omitempty"`
 	Multiple    bool       `json:"multiple,omitempty"`
+	LabelKey    string     `json:"labelKey,omitempty"`
+	EmptyLabel  string     `json:"emptyLabel,omitempty"`
+	AllowEmpty  bool       `json:"allowEmpty,omitempty"`
 }
 
 // Option describes an option.

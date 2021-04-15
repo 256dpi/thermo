@@ -4,30 +4,30 @@ import { union } from '@ember/object/computed';
 import { A } from '@ember/array';
 
 export default class extends Component {
-  get labelField() {
-    return this.args.labelField || 'name';
+  get labelKey() {
+    return this.args.labelKey || 'name';
   }
 
-  @computed('labelField', 'args.emptyLabel')
+  @computed('labelKey', 'args.emptyLabel')
   get emptyOption() {
     return EmberObject.create({
-      [this.labelField]: this.args.emptyLabel || 'None'
+      [this.labelKey]: this.args.emptyLabel || 'None'
     });
   }
 
-  @computed('args.enableEmpty', 'emptyOption')
+  @computed('args.allowEmpty', 'emptyOption')
   get emptyArray() {
-    if (this.args.enableEmpty) {
+    if (this.args.allowEmpty) {
       return A([this.emptyOption]);
     } else {
       return A([]);
     }
   }
 
-  @computed('args.{value.id,enableEmpty}', 'emptyOption')
+  @computed('args.{value.id,allowEmpty}', 'emptyOption')
   get selected() {
     // check value
-    if (this.args.value === undefined && this.args.enableEmpty) {
+    if (this.args.value === undefined && this.args.allowEmpty) {
       return this.emptyOption;
     }
 

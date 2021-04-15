@@ -14,7 +14,7 @@
     @searchEnabled={{false}}
     @verticalPosition="below"
   as |item|>
-    {{get item this.labelField}}
+    {{get item this.labelKey}}
   </PowerSelectMultiple>
 {{else}}
   <PowerSelect
@@ -26,7 +26,7 @@
     @searchEnabled={{false}}
     @verticalPosition="below"
   as |item|>
-    {{get item this.labelField}}
+    {{get item this.labelKey}}
   </PowerSelect>
 {{/if}}
 
