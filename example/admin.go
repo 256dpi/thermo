@@ -180,8 +180,8 @@ var blueprint = thermo.Blueprint{
 		thermo.Applications(),
 		thermo.Users(),
 		thermo.Tokens(),
-		thermo.Jobs(),
-		thermo.Values(),
+		thermo.Jobs(true),
+		thermo.Values(true),
 		thermo.Files(),
 	},
 }
