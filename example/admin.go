@@ -32,7 +32,7 @@ var blueprint = thermo.Blueprint{
 	Models: []thermo.Model{
 		{
 			Name:      "item",
-			Title:     "Item",
+			Title:     "Items",
 			Watchable: true,
 			Attributes: []thermo.Attribute{
 				{
