@@ -12,6 +12,7 @@ var blueprint = thermo.Blueprint{
 	Backend: thermo.Backend{
 		BaseURL:   "http://0.0.0.0:8000",
 		AuthPath:  "auth",
+		AuthScope: "foo",
 		DataPath:  "api",
 		WatchPath: "api/watch",
 		ClientID:  "main-key",

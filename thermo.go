@@ -16,6 +16,7 @@ type Blueprint struct {
 type Backend struct {
 	BaseURL   string `json:"baseURL"`
 	AuthPath  string `json:"authPath"`
+	AuthScope string `json:"authScope"`
 	DataPath  string `json:"dataPath"`
 	WatchPath string `json:"watchPath"`
 	ClientID  string `json:"clientID"`
