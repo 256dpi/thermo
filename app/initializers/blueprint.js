@@ -69,7 +69,7 @@ export default {
               ];
             }
           case 'belongs-to':
-            const belongsToOptions = {};
+            const belongsToOptions = { inverse: null };
             if (attribute.inverse) {
               belongsToOptions['inverse'] = attribute.inverse;
             } else {
@@ -78,9 +78,9 @@ export default {
                 belongsToOptions['inverse'] = reverseInverse;
               }
             }
-            return [attribute.name, belongsTo(singularize(attribute.type)), belongsToOptions];
+            return [attribute.name, belongsTo(singularize(attribute.type), belongsToOptions)];
           case 'has-many':
-            const hasManyOptions = {};
+            const hasManyOptions = { inverse: null };
             if (attribute.inverse) {
               hasManyOptions['inverse'] = attribute.inverse;
             } else {
@@ -89,7 +89,7 @@ export default {
                 hasManyOptions['inverse'] = reverseInverse;
               }
             }
-            return [attribute.name, hasMany(singularize(attribute.type)), hasManyOptions];
+            return [attribute.name, hasMany(singularize(attribute.type), hasManyOptions)];
           default:
             throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
         }
