@@ -30,6 +30,16 @@ export default {
       app.advanceReadiness();
     }
 
+    // build reverse inverse map
+    const reverseInverses = {};
+    config.blueprint.models.forEach(model => {
+      model.attributes.forEach(attribute => {
+        if (attribute.kind === 'has-many' && attribute.inverse) {
+          reverseInverses[`${model.name}#${attribute.inverse}`] = attribute.name;
+        }
+      });
+    });
+
     // prepare models
     const models = config.blueprint.models.map(model => {
       // build header
@@ -59,9 +69,27 @@ export default {
               ];
             }
           case 'belongs-to':
-            return [attribute.name, belongsTo(singularize(attribute.type))];
+            const belongsToOptions = {};
+            if (attribute.inverse) {
+              belongsToOptions['inverse'] = attribute.inverse;
+            } else {
+              const reverseInverse = reverseInverses[`${model.name}#${attribute.name}`];
+              if (reverseInverse) {
+                belongsToOptions['inverse'] = reverseInverse;
+              }
+            }
+            return [attribute.name, belongsTo(singularize(attribute.type)), belongsToOptions];
           case 'has-many':
-            return [attribute.name, hasMany(singularize(attribute.type))];
+            const hasManyOptions = {};
+            if (attribute.inverse) {
+              hasManyOptions['inverse'] = attribute.inverse;
+            } else {
+              const reverseInverse = reverseInverses[`${model.name}#${attribute.name}`];
+              if (reverseInverse) {
+                hasManyOptions['inverse'] = reverseInverse;
+              }
+            }
+            return [attribute.name, hasMany(singularize(attribute.type)), hasManyOptions];
           default:
             throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
         }

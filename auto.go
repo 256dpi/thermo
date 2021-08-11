@@ -71,9 +71,10 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 		// add to-one and has-one attributes
 		if field.ToOne || field.HasOne {
 			list = append(list, Attribute{
-				Name: field.RelName,
-				Kind: KindBelongsTo,
-				Type: Type(field.RelType),
+				Name:    field.RelName,
+				Kind:    KindBelongsTo,
+				Type:    Type(field.RelType),
+				Inverse: field.RelInverse,
 			})
 
 			continue
@@ -82,9 +83,10 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 		// add to-many and has-many attributes
 		if field.ToMany || field.HasMany {
 			list = append(list, Attribute{
-				Name: field.RelName,
-				Kind: KindHasMany,
-				Type: Type(field.RelType),
+				Name:    field.RelName,
+				Kind:    KindHasMany,
+				Type:    Type(field.RelType),
+				Inverse: field.RelInverse,
 			})
 
 			continue

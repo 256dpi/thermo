@@ -53,6 +53,7 @@ type Attribute struct {
 	Name    string     `json:"name"`
 	Kind    Kind       `json:"kind"`
 	Type    Type       `json:"type,omitempty"`
+	Inverse string     `json:"inverse,omitempty"`
 	Default Any        `json:"default,omitempty"`
 	Init    Expression `json:"init,omitempty"`
 }
