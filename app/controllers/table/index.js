@@ -7,15 +7,19 @@ export default class extends Controller {
     {
       sort: 's',
       filter: 'f',
-      count: 'c',
-      page: 'p'
+      pageSize: 'ps',
+      pageNumber: 'pn',
+      pageBefore: 'pb',
+      pageAfter: 'pa'
     }
   ];
 
   @tracked sort = '';
   @tracked filter = '{}';
-  @tracked count = 25;
-  @tracked page = 1;
+  @tracked pageSize = 25;
+  @tracked pageNumber = 0;
+  @tracked pageBefore = '';
+  @tracked pageAfter = '';
 
   get decodeFilter() {
     try {
@@ -27,6 +31,10 @@ export default class extends Controller {
 
   @action encodeFilter(filter) {
     this.filter = encodeURIComponent(JSON.stringify(filter));
+  }
+
+  @action setPageNumber(num) {
+    this.pageNumber = num > 1 ? num : 0;
   }
 
   @action refresh() {

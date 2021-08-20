@@ -9,10 +9,16 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     filter: {
       refreshModel: true
     },
-    count: {
+    pageSize: {
       refreshModel: true
     },
-    page: {
+    pageNumber: {
+      refreshModel: true
+    },
+    pageBefore: {
+      refreshModel: true
+    },
+    pageAfter: {
       refreshModel: true
     }
   };
@@ -38,10 +44,18 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     const query = {
       filter: filter,
       page: {
-        size: params.count,
-        number: params.page
+        size: params.pageSize
       }
     };
+    if (params.pageNumber !== 0) {
+      query.page.number = params.pageNumber;
+    }
+    if (params.pageBefore !== '') {
+      query.page.before = params.pageBefore;
+    }
+    if (params.pageAfter !== '') {
+      query.page.after = params.pageAfter;
+    }
 
     // add sorting if available
     if (params.sort) {

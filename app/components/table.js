@@ -1,35 +1,22 @@
 import Component from '@glimmer/component';
 import { action, computed } from '@ember/object';
+import { parseUrl as parseQuery } from 'query-string';
+
+function getParam(url, name) {
+  return parseQuery(url).query[name];
+}
 
 export default class extends Component {
-  @computed('args.list.links')
+  @computed('args.list.links.self')
+  get currentPage() {
+    // get number from self link
+    return parseInt(getParam(this.args.list.links.self, 'page[number]') || '');
+  }
+
+  @computed('args.list.links.last')
   get lastPage() {
-    // check list
-    if (!this.args.list) {
-      return 0;
-    }
-
-    // get links
-    let links = this.args.list.links;
-    if (!links || !links.last) {
-      return 0;
-    }
-
-    // get query parameters
-    let qps = links.last.split('?')[1].split('&');
-
-    // iterate through them
-    for (let qp of qps) {
-      // get segments
-      let s = qp.split('=');
-
-      // check for last page number
-      if (s[0] === 'page[number]') {
-        return parseInt(s[1]);
-      }
-    }
-
-    return 0;
+    // get number from last link
+    return parseInt(getParam(this.args.list.links.last, 'page[number]') || '');
   }
 
   @action expand(value) {

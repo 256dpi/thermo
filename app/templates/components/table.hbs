@@ -40,33 +40,33 @@
     </div>
   {{/unless}}
 
-  {{#if (gt this.lastPage 1)}}
-    <div class="toolbar__group">
+  <div class="toolbar__group">
+    {{#if (gt this.currentPage 1)}}
+      <button type="button" {{on "click" (fn this.changePage 1 0)}}>
+        First
+      </button>
+
+      <button type="button" {{on "click" (fn this.changePage this.currentPage -1)}}>
+        Previous
+      </button>
+    {{/if}}
+
+    {{#if this.currentPage}}
       <div>
-        Page {{@page}}
+        Page {{this.currentPage}}
       </div>
+    {{/if}}
 
-      {{#if (gt @page 1)}}
-        <button type="button" {{on "click" (fn this.changePage 1 0)}}>
-          First
-        </button>
+    {{#if (lt this.currentPage this.lastPage)}}
+      <button type="button" {{on "click" (fn this.changePage this.currentPage 1)}}>
+        Next
+      </button>
 
-        <button type="button" {{on "click" (fn this.changePage @page -1)}}>
-          Previous
-        </button>
-      {{/if}}
-
-      {{#if (lt @page this.lastPage)}}
-        <button type="button" {{on "click" (fn this.changePage @page 1)}}>
-          Next
-        </button>
-
-        <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
-          Last
-        </button>
-      {{/if}}
-    </div>
-  {{/if}}
+      <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
+        Last
+      </button>
+    {{/if}}
+  </div>
 </div>
 
 {{#if (gt @config.filters.length 0)}}
