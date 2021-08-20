@@ -37,6 +37,16 @@ export default class extends Controller {
     this.pageNumber = num > 1 ? num : 0;
   }
 
+  @action setPageCursor(kind, cursor) {
+    if (kind === 'before') {
+      this.pageBefore = cursor;
+      this.pageAfter = '';
+    } else if (kind === 'after') {
+      this.pageBefore = '';
+      this.pageAfter = cursor === '*' ? '' : cursor;
+    }
+  }
+
   @action refresh() {
     this.route.refresh();
   }

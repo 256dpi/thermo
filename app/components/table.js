@@ -3,20 +3,38 @@ import { action, computed } from '@ember/object';
 import { parseUrl as parseQuery } from 'query-string';
 
 function getParam(url, name) {
-  return parseQuery(url).query[name];
+  return parseQuery(url || '').query[name];
 }
 
 export default class extends Component {
   @computed('args.list.links.self')
   get currentPage() {
-    // get number from self link
     return parseInt(getParam(this.args.list.links.self, 'page[number]') || '');
   }
 
   @computed('args.list.links.last')
   get lastPage() {
-    // get number from last link
     return parseInt(getParam(this.args.list.links.last, 'page[number]') || '');
+  }
+
+  @computed('args.list.links.first')
+  get firstCursor() {
+    return getParam(this.args.list.links.first, 'page[after]');
+  }
+
+  @computed('args.list.links.prev')
+  get previousCursor() {
+    return getParam(this.args.list.links.prev, 'page[before]');
+  }
+
+  @computed('args.list.links.next')
+  get nextCursor() {
+    return getParam(this.args.list.links.next, 'page[after]');
+  }
+
+  @computed('args.list.links.last')
+  get lastCursor() {
+    return getParam(this.args.list.links.last, 'page[before]');
   }
 
   @action expand(value) {
@@ -51,5 +69,9 @@ export default class extends Component {
 
   @action changePage(current, delta = 0) {
     this.args.changedPage(current + delta);
+  }
+
+  @action changeCursor(kind, cursor) {
+    this.args.changedCursor(kind, cursor);
   }
 }

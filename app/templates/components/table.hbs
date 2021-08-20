@@ -66,6 +66,30 @@
         Last
       </button>
     {{/if}}
+
+    {{#if (and this.firstCursor this.previousCursor)}}
+      <button type="button" {{on "click" (fn this.changeCursor "after" this.firstCursor)}}>
+        First
+      </button>
+    {{/if}}
+
+    {{#if this.previousCursor}}
+      <button type="button" {{on "click" (fn this.changeCursor "before" this.previousCursor)}}>
+        Previous
+      </button>
+    {{/if}}
+
+    {{#if this.nextCursor}}
+      <button type="button" {{on "click" (fn this.changeCursor "after" this.nextCursor)}}>
+        Next
+      </button>
+    {{/if}}
+
+    {{#if (and this.lastCursor this.nextCursor)}}
+      <button type="button" {{on "click" (fn this.changeCursor "before" this.lastCursor)}}>
+        Last
+      </button>
+    {{/if}}
   </div>
 </div>
 
