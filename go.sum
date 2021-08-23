@@ -36,10 +36,8 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/256dpi/btree v0.0.0-20200517182607-63d76dfb3721 h1:sqwb677LEbafVHqK7z42khEatC+5E8mQTsGwnEpNxT4=
 github.com/256dpi/btree v0.0.0-20200517182607-63d76dfb3721/go.mod h1:HcRNieBy4k2gr4Q6iilWxJnA64GdbOds4o8Iz2/G1UY=
-github.com/256dpi/embed v0.1.2 h1:pgTFqA5Gc8xiL8/RIf4crdN+z1WpoOwFYLgjTX6lmAw=
-github.com/256dpi/embed v0.1.2/go.mod h1:TyRVYP7Wq8XsgBeEyKGvipB/4xLr2EN9u3BdmIpxd7M=
-github.com/256dpi/ember v0.3.2 h1:z7F538OvwYL+pM7LWwALMQffRFcxYI2M74iXVP6GWxE=
-github.com/256dpi/ember v0.3.2/go.mod h1:Zd9ZOLQLhdSVv8eGw0o2FSB69+WjjJYSi7havlbLd1w=
+github.com/256dpi/ember v0.4.1 h1:RRsldv/qHfouoXknorCJ0YORmYYq4Hk0q8VDHmeViAE=
+github.com/256dpi/ember v0.4.1/go.mod h1:KFKphNzggDT7BmqKn6leSI3YbyRE6J+PAR+eGRXFcuw=
 github.com/256dpi/fire v0.31.2-0.20210820130321-41332e24a314 h1:/YoyJo43EArDnh9CuGqTs+/PzX0ocFM1SyieOtH/I/M=
 github.com/256dpi/fire v0.31.2-0.20210820130321-41332e24a314/go.mod h1:sTcXl99Baaouxdy7d1Elu4fvCyv026lgJezdUXQo6Fg=
 github.com/256dpi/jsonapi/v2 v2.1.0 h1:e/TrvVSVFGtE4PwYRKm0w7M4pINb+mnFpgInnpJP1KU=

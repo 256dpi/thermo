@@ -1,10 +1,9 @@
 module github.com/256dpi/thermo
 
-go 1.14
+go 1.16
 
 require (
-	github.com/256dpi/embed v0.1.2
-	github.com/256dpi/ember v0.3.2
+	github.com/256dpi/ember v0.4.1
 	github.com/256dpi/fire v0.31.2-0.20210820130321-41332e24a314
 	github.com/256dpi/lungo v0.2.9
 	github.com/256dpi/oauth2/v2 v2.1.0

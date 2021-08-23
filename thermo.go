@@ -1,8 +1,13 @@
 package thermo
 
-import "github.com/256dpi/ember"
+import (
+	"embed"
 
-//go:generate go run github.com/256dpi/embed -strings -pkg thermo -name files -out files.go build/
+	"github.com/256dpi/ember"
+)
+
+//go:embed build
+var build embed.FS
 
 // Blueprint configures a thermo application.
 type Blueprint struct {
@@ -176,8 +181,27 @@ type Any = interface{}
 type Expression string
 
 // Build will build an ember app based on the provided blueprint.
-func Build(blueprint Blueprint) *ember.App {
+func Build(blueprint Blueprint) (*ember.App, error) {
+	// get files
+	files, err := ember.Files(build, "build")
+	if err != nil {
+		return nil, err
+	}
+
+	// create app
 	app := ember.MustCreate("thermo", files)
 	app.Set("blueprint", blueprint)
+
+	return app, nil
+}
+
+// MustBuild will call Build and panic on error.
+func MustBuild(blueprint Blueprint) *ember.App {
+	// build app
+	app, err := Build(blueprint)
+	if err != nil {
+		panic(err)
+	}
+
 	return app
 }

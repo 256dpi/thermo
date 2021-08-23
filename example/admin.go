@@ -189,7 +189,7 @@ var blueprint = thermo.Blueprint{
 
 func admin() http.Handler {
 	// build app
-	app := thermo.Build(blueprint)
+	app := thermo.MustBuild(blueprint)
 
 	// serve blueprint for development
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
