@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { parseUrl as parseQuery } from 'query-string';
 
 function getParam(url, name) {
@@ -7,34 +7,28 @@ function getParam(url, name) {
 }
 
 export default class extends Component {
-  @computed('args.list.links.self')
   get currentPage() {
-    return parseInt(getParam(this.args.list.links.self, 'page[number]') || '');
+    return parseInt(getParam(this.args.list.links?.self, 'page[number]') || '');
   }
 
-  @computed('args.list.links.last')
   get lastPage() {
-    return parseInt(getParam(this.args.list.links.last, 'page[number]') || '');
+    return parseInt(getParam(this.args.list.links?.last, 'page[number]') || '');
   }
 
-  @computed('args.list.links.first')
   get firstCursor() {
-    return getParam(this.args.list.links.first, 'page[after]');
+    return getParam(this.args.list.links?.first, 'page[after]');
   }
 
-  @computed('args.list.links.prev')
   get previousCursor() {
-    return getParam(this.args.list.links.prev, 'page[before]');
+    return getParam(this.args.list.links?.prev, 'page[before]');
   }
 
-  @computed('args.list.links.next')
   get nextCursor() {
-    return getParam(this.args.list.links.next, 'page[after]');
+    return getParam(this.args.list.links?.next, 'page[after]');
   }
 
-  @computed('args.list.links.last')
   get lastCursor() {
-    return getParam(this.args.list.links.last, 'page[before]');
+    return getParam(this.args.list.links?.last, 'page[before]');
   }
 
   @action expand(value) {
