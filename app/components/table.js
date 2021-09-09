@@ -36,6 +36,11 @@ export default class extends Component {
   }
 
   @action changeSort(sort) {
+    // clear cursor
+    this.args.changedCursor('after', undefined);
+    this.args.changedCursor('before', undefined);
+
+    // change sort
     this.args.changedSort(sort);
   }
 
