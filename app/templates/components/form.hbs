@@ -76,20 +76,44 @@
   {{/each}}
 
   <div class="form__row">
-    <button class="form__button" type="submit">
-      {{@button}}
+    <button type="submit" class="form__button" disabled={{or @model.isSaving (and (not this.dirty))}}>
+      {{#if @model.isSaving}}
+        Saving...
+      {{else}}
+        {{#if @model.isNew}}
+          Create
+        {{else}}
+          Update
+        {{/if}}
+      {{/if}}
     </button>
 
-    {{#if @deleteButton}}
-      <button class="form__button form__button--warning" type="button" {{on "click" @delete}}>
-        {{@deleteButton}}
+    {{#unless @model.isNew}}
+      <button
+        type="button"
+        class="form__button"
+        disabled={{or (not this.dirty) @model.isSaving}}
+        {{on "click" this.reset}}
+      >
+        Reset
+      </button>
+    {{/unless}}
+
+    {{#if @cancel}}
+      <button type="button" class="form__button" disabled={{@model.isSaving}} {{on "click" this.cancel}}>
+        Cancel
+      </button>
+    {{/if}}
+
+    {{#if @delete}}
+      <button
+        class="form__button form__button--warning"
+        type="button"
+        disabled={{@model.isSaving}}
+        {{on "click" @delete}}
+      >
+        Delete
       </button>
     {{/if}}
   </div>
-
-  {{#if @error}}
-    <div class="form__error">
-      {{@error}}
-    </div>
-  {{/if}}
 </form>

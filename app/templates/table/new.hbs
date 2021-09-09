@@ -1,7 +1,7 @@
 <Form
   @config={{this.config}}
   @model={{this.model}}
-  @submit={{action "create" this.model}}
-  @error={{this.error}}
-  @button="Create"
+  @submit={{queue (save-model this.model) (transition "table")}}
+  @cancel={{transition "table"}}
+  @abandon={{confirm "Abandon?"}}
 />

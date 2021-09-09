@@ -1,9 +1,8 @@
 <Form
   @config={{this.config}}
   @model={{this.model}}
-  @submit={{action "update" this.model}}
-  @delete={{action "delete" this.model}}
-  @error={{this.error}}
-  @button="Update"
-  @deleteButton="Delete"
+  @submit={{queue (save-model this.model) (transition "table")}}
+  @cancel={{transition "table"}}
+  @delete={{confirm "Sure?" (queue (delete-model this.model) (transition "table"))}}
+  @abandon={{confirm "Abandon?"}}
 />
