@@ -29,7 +29,7 @@
     "ember-flatpickr": "^3.0.1",
     "ember-moment": "^7.8.1",
     "ember-power-select": "^4.0.5",
-    "ember-simple-auth": "^1.8.1",
+    "ember-simple-auth": "^4.0.0",
     "ember-truth-helpers": "^2.1.0",
     "normalize.css": "~4.1.1",
     "query-string": "^7.0.1",

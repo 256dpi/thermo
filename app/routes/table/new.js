@@ -1,7 +1,11 @@
 import Route from '@ember/routing/route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default class extends Route.extend(AuthenticatedRouteMixin) {
+export default class extends Route {
+  beforeModel(transition) {
+    // check authentication
+    this.session.requireAuthentication(transition, 'sign-in');
+  }
+
   model() {
     // get config
     const config = this.modelFor('table');

@@ -1,9 +1,16 @@
 import Route from '@ember/routing/route';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import { inject as service } from '@ember/service';
 import { pluralize } from 'ember-inflector';
 
-export default class extends Route.extend(AuthenticatedRouteMixin) {
+export default class extends Route {
+  @service session;
+
   name = null;
+
+  beforeModel(transition) {
+    // check authentication
+    this.session.requireAuthentication(transition, 'sign-in');
+  }
 
   getConfig(name) {
     return this.blueprint.models.find((model) => model.name === name);
