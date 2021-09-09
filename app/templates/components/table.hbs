@@ -40,55 +40,51 @@
     </div>
   {{/unless}}
 
-  {{#if (or this.currentPage this.nextCursor this.previousCursor)}}
+  {{#if this.currentPage}}
     <div class="toolbar__group">
       <div>
         Page
       </div>
 
-      {{#if (gt this.currentPage 1)}}
-        <button type="button" {{on "click" (fn this.changePage 1 0)}}>
-          First
-        </button>
+      <button type="button" {{on "click" (fn this.changePage 1 0)}} disabled={{lte this.currentPage 1}}>
+        First
+      </button>
 
-        <button type="button" {{on "click" (fn this.changePage this.currentPage -1)}}>
-          Previous
-        </button>
-      {{/if}}
+      <button type="button" {{on "click" (fn this.changePage this.currentPage -1)}} disabled={{lte this.currentPage 1}}>
+        Previous
+      </button>
 
-      {{#if (lt this.currentPage this.lastPage)}}
-        <button type="button" {{on "click" (fn this.changePage this.currentPage 1)}}>
-          Next
-        </button>
+      <button type="button" {{on "click" (fn this.changePage this.currentPage 1)}} disabled={{gte this.currentPage this.lastPage}}>
+        Next
+      </button>
 
-        <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}}>
-          Last
-        </button>
-      {{/if}}
+      <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}} disabled={{gte this.currentPage this.lastPage}}>
+        Last
+      </button>
+    </div>
+  {{/if}}
 
-      {{#if (and this.firstCursor this.previousCursor)}}
-        <button type="button" {{on "click" (fn this.changeCursor "after" this.firstCursor)}}>
-          First
-        </button>
-      {{/if}}
+  {{#if (or this.nextCursor this.previousCursor)}}
+    <div class="toolbar__group">
+      <div>
+        Page
+      </div>
 
-      {{#if this.previousCursor}}
-        <button type="button" {{on "click" (fn this.changeCursor "before" this.previousCursor)}}>
-          Previous
-        </button>
-      {{/if}}
+      <button type="button" {{on "click" (fn this.changeCursor "after" this.firstCursor)}} disabled={{not (and this.firstCursor this.previousCursor)}}>
+        First
+      </button>
 
-      {{#if this.nextCursor}}
-        <button type="button" {{on "click" (fn this.changeCursor "after" this.nextCursor)}}>
-          Next
-        </button>
-      {{/if}}
+      <button type="button" {{on "click" (fn this.changeCursor "before" this.previousCursor)}} disabled={{not this.previousCursor}}>
+        Previous
+      </button>
 
-      {{#if (and this.lastCursor this.nextCursor)}}
-        <button type="button" {{on "click" (fn this.changeCursor "before" this.lastCursor)}}>
-          Last
-        </button>
-      {{/if}}
+      <button type="button" {{on "click" (fn this.changeCursor "after" this.nextCursor)}} disabled={{not this.nextCursor}}>
+        Next
+      </button>
+
+      <button type="button" {{on "click" (fn this.changeCursor "before" this.lastCursor)}} disabled={{not (and this.lastCursor this.nextCursor)}}>
+        Last
+      </button>
     </div>
   {{/if}}
 </div>
