@@ -1,11 +1,12 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { pluralize } from 'ember-inflector';
 
 export default class extends Route {
   @service session;
 
-  name = null;
+  @tracked name = null;
 
   beforeModel(transition) {
     // check authentication
@@ -36,7 +37,7 @@ export default class extends Route {
     }
 
     // store name
-    this.set('name', name);
+    this.name = name;
 
     return config;
   }
