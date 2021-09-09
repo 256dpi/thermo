@@ -3,7 +3,7 @@
     {{this.blueprint.title}}
   </h1>
 
-  <form class="form" {{on "submit" (prevent-default this.signIn)}}>
+  <form class="form" {{on "submit" this.authenticate}}>
     <div class="form__row">
       <Inputs::String
         @label="Email"
@@ -28,11 +28,5 @@
         Sign In
       </button>
     </div>
-
-    {{#if this.error}}
-      <div class="form__error">
-        {{this.error}}
-      </div>
-    {{/if}}
   </form>
 </div>

@@ -3,19 +3,31 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-import ErrorHandling from '@256dpi/ember-fire/mixins/error-handling';
-
-export default class extends Controller.extend(ErrorHandling) {
+export default class extends Controller {
+  @service session;
+  @service router;
   @service blueprint;
 
   @tracked email = '';
   @tracked password = '';
 
-  @action signIn() {
-    this.session
-      .authenticate('authenticator:oauth2', this.email, this.password, this.blueprint.backend.authScope)
-      .catch((err) => {
-        this.setError(err);
-      });
+  @action async authenticate(e) {
+    e.preventDefault();
+
+    try {
+      await this.session.authenticate(
+        'authenticator:oauth2',
+        this.email,
+        this.password,
+        this.blueprint.backend.authScope
+      );
+    } catch (error) {
+      alert(error.error || error.responseJSON?.error);
+      return;
+    }
+
+    if (this.session.isAuthenticated) {
+      this.router.transitionTo('index');
+    }
   }
 }
