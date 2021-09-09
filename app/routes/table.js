@@ -6,7 +6,7 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
   name = null;
 
   getConfig(name) {
-    return this.blueprint.models.find(model => model.name === name);
+    return this.blueprint.models.find((model) => model.name === name);
   }
 
   model(params) {

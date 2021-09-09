@@ -4,23 +4,23 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default class extends Route.extend(AuthenticatedRouteMixin) {
   queryParams = {
     sort: {
-      refreshModel: true
+      refreshModel: true,
     },
     filter: {
-      refreshModel: true
+      refreshModel: true,
     },
     pageSize: {
-      refreshModel: true
+      refreshModel: true,
     },
     pageNumber: {
-      refreshModel: true
+      refreshModel: true,
     },
     pageBefore: {
-      refreshModel: true
+      refreshModel: true,
     },
     pageAfter: {
-      refreshModel: true
-    }
+      refreshModel: true,
+    },
   };
 
   model(params) {
@@ -44,8 +44,8 @@ export default class extends Route.extend(AuthenticatedRouteMixin) {
     const query = {
       filter: filter,
       page: {
-        size: params.pageSize
-      }
+        size: params.pageSize,
+      },
     };
     if (params.pageNumber !== 0) {
       query.page.number = params.pageNumber;

@@ -1,7 +1,7 @@
 import { helper } from '@ember/component/helper';
 
 function eventTargetValue([next]) {
-  return function(event) {
+  return function (event) {
     next(event.target.value);
   };
 }

@@ -12,7 +12,7 @@ export default class extends Route.extend(AuthenticatedRouteMixin, AutomaticRoll
     const record = this.store.createRecord(config.name);
 
     // initialize values
-    config.attributes.forEach(attribute => {
+    config.attributes.forEach((attribute) => {
       if (attribute.init) {
         record.set(attribute.name, eval(attribute.init));
       }

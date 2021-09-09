@@ -11,7 +11,7 @@ export default class extends Component {
   @computed('labelKey', 'args.emptyLabel')
   get emptyOption() {
     return EmberObject.create({
-      [this.labelKey]: this.args.emptyLabel || 'None'
+      [this.labelKey]: this.args.emptyLabel || 'None',
     });
   }
 

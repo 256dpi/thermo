@@ -17,7 +17,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "fmt": "prettier --single-quote --print-width 120 --write './{app,config}/**/*.{js,scss}'"
+    "fmt": "prettier -w ."
   },
   "dependencies": {
     "@256dpi/ember-fire": "^0.1.9",

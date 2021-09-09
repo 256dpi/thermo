@@ -54,11 +54,19 @@
         Previous
       </button>
 
-      <button type="button" {{on "click" (fn this.changePage this.currentPage 1)}} disabled={{gte this.currentPage this.lastPage}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changePage this.currentPage 1)}}
+        disabled={{gte this.currentPage this.lastPage}}
+      >
         Next
       </button>
 
-      <button type="button" {{on "click" (fn this.changePage this.lastPage 0)}} disabled={{gte this.currentPage this.lastPage}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changePage this.lastPage 0)}}
+        disabled={{gte this.currentPage this.lastPage}}
+      >
         Last
       </button>
     </div>
@@ -70,19 +78,35 @@
         Page
       </div>
 
-      <button type="button" {{on "click" (fn this.changeCursor "after" this.firstCursor)}} disabled={{not (and this.firstCursor this.previousCursor)}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changeCursor "after" this.firstCursor)}}
+        disabled={{not (and this.firstCursor this.previousCursor)}}
+      >
         First
       </button>
 
-      <button type="button" {{on "click" (fn this.changeCursor "before" this.previousCursor)}} disabled={{not this.previousCursor}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changeCursor "before" this.previousCursor)}}
+        disabled={{not this.previousCursor}}
+      >
         Previous
       </button>
 
-      <button type="button" {{on "click" (fn this.changeCursor "after" this.nextCursor)}} disabled={{not this.nextCursor}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changeCursor "after" this.nextCursor)}}
+        disabled={{not this.nextCursor}}
+      >
         Next
       </button>
 
-      <button type="button" {{on "click" (fn this.changeCursor "before" this.lastCursor)}} disabled={{not (and this.lastCursor this.nextCursor)}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changeCursor "before" this.lastCursor)}}
+        disabled={{not (and this.lastCursor this.nextCursor)}}
+      >
         Last
       </button>
     </div>
@@ -95,9 +119,10 @@
       {{#if (eq filter.condition "boolean")}}
         <div class="filters__group">
           <Inputs::Boolean
-                  @label={{filter.title}}
-                  @value={{get @filter filter.key}}
-                  @changed={{fn this.setFilter filter.key}}/>
+            @label={{filter.title}}
+            @value={{get @filter filter.key}}
+            @changed={{fn this.setFilter filter.key}}
+          />
 
           {{#if (not-eq undefined (get @filter filter.key))}}
             <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
@@ -146,7 +171,7 @@
                   {{moment-from-now value}}
                 {{/if}}
               {{else if (eq column.format "progress")}}
-                <progress value={{value}} max="1"/>
+                <progress value={{value}} max="1"></progress>
               {{else if (eq column.format "belongs-to")}}
                 {{#if value}}
                   {{get value column.label}}

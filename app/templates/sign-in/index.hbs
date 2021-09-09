@@ -6,19 +6,21 @@
   <form class="form" {{on "submit" (prevent-default this.signIn)}}>
     <div class="form__row">
       <Inputs::String
-              @label="Email"
-              @value={{this.email}}
-              @changed={{fn (mut this.email)}}
-              @placeholder="user@example.org"/>
+        @label="Email"
+        @value={{this.email}}
+        @changed={{fn (mut this.email)}}
+        @placeholder="user@example.org"
+      />
     </div>
 
     <div class="form__row">
       <Inputs::String
-              @label="Password"
-              @value={{this.password}}
-              @changed={{fn (mut this.password)}}
-              @redacted={{true}}
-              @placeholder="****"/>
+        @label="Password"
+        @value={{this.password}}
+        @changed={{fn (mut this.password)}}
+        @redacted={{true}}
+        @placeholder="****"
+      />
     </div>
 
     <div class="form__row">

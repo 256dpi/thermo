@@ -10,8 +10,8 @@ export default class extends Controller {
       pageSize: 'ps',
       pageNumber: 'pn',
       pageBefore: 'pb',
-      pageAfter: 'pa'
-    }
+      pageAfter: 'pa',
+    },
   ];
 
   @tracked sort = '';

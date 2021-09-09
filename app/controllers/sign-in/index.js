@@ -14,7 +14,7 @@ export default class extends Controller.extend(ErrorHandling) {
   @action signIn() {
     this.session
       .authenticate('authenticator:oauth2', this.email, this.password, this.blueprint.backend.authScope)
-      .catch(err => {
+      .catch((err) => {
         this.setError(err);
       });
   }

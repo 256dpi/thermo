@@ -7,13 +7,11 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     sassOptions: {
-      includePaths: [
-        path.dirname(require.resolve('normalize.css'))
-      ]
+      includePaths: [path.dirname(require.resolve('normalize.css'))],
     },
     'ember-cli-babel': {
-      includePolyfill: true
-    }
+      includePolyfill: true,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

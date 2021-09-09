@@ -24,11 +24,11 @@ module.exports = function (environment) {
   };
 
   ENV.blueprint = {
-    remote: 'http://0.0.0.0:8000/thermo.json'
+    remote: 'http://0.0.0.0:8000/thermo.json',
   };
 
   ENV['ember-simple-auth'] = {
-    authenticationRoute: 'sign-in'
+    authenticationRoute: 'sign-in',
   };
 
   if (environment === 'development') {

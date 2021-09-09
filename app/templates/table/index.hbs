@@ -1,12 +1,14 @@
-<Table @config={{this.config}}
-       @list={{this.model}}
-       @sort={{this.sort}}
-       @filter={{this.decodeFilter}}
-       @count={{this.pageSize}}
-       @page={{this.pageNumber}}
-       @refresh={{this.refresh}}
-       @changedSort={{fn (mut this.sort)}}
-       @changedFilter={{this.encodeFilter}}
-       @changedCount={{fn (mut this.pageSize)}}
-       @changedPage={{this.setPageNumber}}
-       @changedCursor={{this.setPageCursor}} />
+<Table
+  @config={{this.config}}
+  @list={{this.model}}
+  @sort={{this.sort}}
+  @filter={{this.decodeFilter}}
+  @count={{this.pageSize}}
+  @page={{this.pageNumber}}
+  @refresh={{this.refresh}}
+  @changedSort={{fn (mut this.sort)}}
+  @changedFilter={{this.encodeFilter}}
+  @changedCount={{fn (mut this.pageSize)}}
+  @changedPage={{this.setPageNumber}}
+  @changedCursor={{this.setPageCursor}}
+/>

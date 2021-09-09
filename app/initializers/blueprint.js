@@ -32,8 +32,8 @@ export default {
 
     // build reverse inverse map
     const reverseInverses = {};
-    config.blueprint.models.forEach(model => {
-      model.attributes.forEach(attribute => {
+    config.blueprint.models.forEach((model) => {
+      model.attributes.forEach((attribute) => {
         if (attribute.kind === 'has-many' && attribute.inverse) {
           reverseInverses[`${model.name}#${attribute.inverse}`] = attribute.name;
         }
@@ -41,12 +41,12 @@ export default {
     });
 
     // prepare models
-    const models = config.blueprint.models.map(model => {
+    const models = config.blueprint.models.map((model) => {
       // build header
       const header = [['context', service()]];
 
       // build attributes
-      const attributes = model.attributes.map(attribute => {
+      const attributes = model.attributes.map((attribute) => {
         switch (attribute.kind) {
           case 'value':
             if (attribute.type) {
@@ -55,8 +55,8 @@ export default {
                 attr(attribute.type, {
                   defaultValue() {
                     return copy(attribute.default, true);
-                  }
-                })
+                  },
+                }),
               ];
             } else {
               return [
@@ -64,8 +64,8 @@ export default {
                 attr({
                   defaultValue() {
                     return copy(attribute.default, true);
-                  }
-                })
+                  },
+                }),
               ];
             }
           case 'belongs-to':
@@ -96,24 +96,24 @@ export default {
       });
 
       // build properties
-      const properties = model.properties.map(property => {
+      const properties = model.properties.map((property) => {
         const fn = new Function('$', property.body);
         return [
           property.name,
-          computed('context', ...property.keys, function() {
+          computed('context', ...property.keys, function () {
             return fn.call(this, this.context);
-          })
+          }),
         ];
       });
 
       return {
         name: model.name,
-        class: Model.extend(Object.fromEntries(header.concat(attributes, properties)))
+        class: Model.extend(Object.fromEntries(header.concat(attributes, properties))),
       };
     });
 
     // register models
-    models.forEach(model => {
+    models.forEach((model) => {
       app.register('model:' + model.name, model.class);
     });
 
@@ -121,5 +121,5 @@ export default {
     app.inject('route', 'blueprint', 'service:blueprint');
     app.inject('controller', 'blueprint', 'service:blueprint');
     app.inject('component', 'blueprint', 'service:blueprint');
-  }
+  },
 };

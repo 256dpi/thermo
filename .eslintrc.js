@@ -11,16 +11,12 @@ module.exports = {
     },
   },
   plugins: ['ember'],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:prettier/recommended'],
   env: {
     browser: true,
   },
   rules: {
-    'ember/no-mixins': 'off' // TODO: Remove.
+    'ember/no-mixins': 'off', // TODO: Remove.
   },
   overrides: [
     // node files

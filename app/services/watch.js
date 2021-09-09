@@ -10,5 +10,5 @@ function watchURL() {
 }
 
 export default Watch.extend({
-  watchURL: watchURL()
+  watchURL: watchURL(),
 });

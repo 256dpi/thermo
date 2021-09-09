@@ -4,72 +4,72 @@
       {{#let (get @model field.key) as |value|}}
         {{#if (eq field.control "string")}}
           <Inputs::String
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @placeholder={{field.placeholder}}
-                  @redacted={{field.redacted}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+            @redacted={{field.redacted}}
+          />
         {{else if (eq field.control "string")}}
           <Inputs::Text
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @placeholder={{field.placeholder}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
         {{else if (eq field.control "boolean")}}
-          <Inputs::Boolean
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}/>
+          <Inputs::Boolean @label={{field.label}} @value={{value}} @changed={{fn (mut value)}} @hint={{field.hint}} />
         {{else if (eq field.control "number")}}
           <Inputs::Number
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @placeholder={{field.placeholder}}
-                  @min={{field.min}}
-                  @max={{field.max}}
-                  @step={{field.step}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+            @min={{field.min}}
+            @max={{field.max}}
+            @step={{field.step}}
+          />
         {{else if (eq field.control "date")}}
           <Inputs::Date
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @placeholder={{field.placeholder}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
         {{else if (eq field.control "select")}}
           <Inputs::Select
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @options={{field.options}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @options={{field.options}}
+          />
         {{else if (eq field.control "reference")}}
           <Inputs::Reference
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @collection={{evaluate field.source @model}}
-                  @multiple={{field.multiple}}
-                  @labelKey={{field.labelKey}}
-                  @emptyLabel={{field.emptyLabel}}
-                  @allowEmpty={{field.allowEmpty}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @collection={{evaluate field.source @model}}
+            @multiple={{field.multiple}}
+            @labelKey={{field.labelKey}}
+            @emptyLabel={{field.emptyLabel}}
+            @allowEmpty={{field.allowEmpty}}
+          />
         {{else if (eq field.control "well")}}
-          <Inputs::Well
-                  @label={{field.label}}
-                  @value={{value}}
-                  @hint={{field.hint}}/>
+          <Inputs::Well @label={{field.label}} @value={{value}} @hint={{field.hint}} />
         {{else}}
           <Inputs::Json
-                  @label={{field.label}}
-                  @value={{value}}
-                  @changed={{fn (mut value)}}
-                  @hint={{field.hint}}
-                  @placeholder={{field.placeholder}}/>
+            @label={{field.label}}
+            @value={{value}}
+            @changed={{fn (mut value)}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
         {{/if}}
       {{/let}}
     </div>

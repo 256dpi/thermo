@@ -4,16 +4,18 @@
   </label>
 {{/if}}
 
-<input id={{guid-for this}}
-       class="input__number"
-       type="number"
-       value={{@value}}
-       disabled={{@disabled}}
-       placeholder={{@placeholder}}
-       min={{@min}}
-       max={{@max}}
-       step={{or @step "any"}}
-       {{on "change" this.changed}}/>
+<input
+  id={{guid-for this}}
+  class="input__number"
+  type="number"
+  value={{@value}}
+  disabled={{@disabled}}
+  placeholder={{@placeholder}}
+  min={{@min}}
+  max={{@max}}
+  step={{or @step "any"}}
+  {{on "change" this.changed}}
+/>
 
 {{#if @hint}}
   <div class="input__hint">

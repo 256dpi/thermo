@@ -16,5 +16,5 @@ export default Helper.extend({
 
     // call function
     return fn.call(object, this.context);
-  }
+  },
 });

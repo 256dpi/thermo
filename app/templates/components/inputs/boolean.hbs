@@ -4,11 +4,7 @@
   </label>
 {{/if}}
 
-<input id={{guid-for this}}
-       type="checkbox"
-       checked={{@value}}
-       disabled={{@disabled}}
-       {{on "change" this.changed}}/>
+<input id={{guid-for this}} type="checkbox" checked={{@value}} disabled={{@disabled}} {{on "change" this.changed}} />
 
 {{#if @hint}}
   <div class="input__hint">

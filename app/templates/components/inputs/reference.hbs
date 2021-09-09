@@ -13,7 +13,8 @@
     @onChange={{this.select}}
     @searchEnabled={{false}}
     @verticalPosition="below"
-  as |item|>
+    as |item|
+  >
     {{get item this.labelKey}}
   </PowerSelectMultiple>
 {{else}}
@@ -25,7 +26,8 @@
     @onChange={{this.select}}
     @searchEnabled={{false}}
     @verticalPosition="below"
-  as |item|>
+    as |item|
+  >
     {{get item this.labelKey}}
   </PowerSelect>
 {{/if}}
