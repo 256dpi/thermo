@@ -56,12 +56,6 @@
         </button>
       {{/if}}
 
-      {{#if this.currentPage}}
-        <div>
-          Page {{this.currentPage}}
-        </div>
-      {{/if}}
-
       {{#if (lt this.currentPage this.lastPage)}}
         <button type="button" {{on "click" (fn this.changePage this.currentPage 1)}}>
           Next
