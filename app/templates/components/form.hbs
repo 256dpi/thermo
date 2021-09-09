@@ -1,7 +1,7 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
     <div class="form__row">
-      {{#let (get @model field.key) as |value|}}
+      {{#let (get (or @changeset @model) field.key) as |value|}}
         {{#if (eq field.control "string")}}
           <Inputs::String
             @label={{field.label}}
@@ -54,7 +54,7 @@
             @value={{value}}
             @changed={{fn (mut value)}}
             @hint={{field.hint}}
-            @collection={{evaluate field.source @model}}
+            @collection={{evaluate field.source (or @changeset @model)}}
             @multiple={{field.multiple}}
             @labelKey={{field.labelKey}}
             @emptyLabel={{field.emptyLabel}}
