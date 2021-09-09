@@ -3,8 +3,8 @@ import { inject as service } from '@ember/service';
 
 const cache = {};
 
-export default Helper.extend({
-  context: service(),
+export default class Evaluate extends Helper {
+  @service context;
 
   compute([expression, object]) {
     // get function
@@ -16,5 +16,5 @@ export default Helper.extend({
 
     // call function
     return fn.call(object, this.context);
-  },
-});
+  }
+}
