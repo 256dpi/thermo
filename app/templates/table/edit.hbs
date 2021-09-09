@@ -1,8 +1,8 @@
 <Form
   @config={{this.config}}
   @model={{this.model}}
-  @submit={{queue (save-model this.model) (transition "table")}}
-  @cancel={{transition "table"}}
-  @delete={{confirm "Sure?" (queue (delete-model this.model) (transition "table"))}}
-  @abandon={{confirm "Abandon?"}}
+  @onSubmit={{queue (save-model this.model) (transition "table")}}
+  @onCancel={{transition "table"}}
+  @onDelete={{confirm "Sure?" (queue (delete-model this.model) (transition "table"))}}
+  @onAbandon={{confirm "Abandon?"}}
 />

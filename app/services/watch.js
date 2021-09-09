@@ -8,5 +8,6 @@ export default class extends Watch {
       const baseURL = config.blueprint.backend.baseURL.replace('http://', 'ws://').replace('https://', 'wss://');
       return `${baseURL}/${config.blueprint.backend.watchPath}`;
     }
+    return undefined;
   }
 }

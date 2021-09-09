@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
-// args: model, changeset, submit, delete, cancel, abandon
+// args: model, changeset, onSubmit, onDelete, onCancel, onAbandon
 export default class extends Component {
   @service router;
 
@@ -45,7 +45,7 @@ export default class extends Component {
     }
 
     // call callback
-    this.args.cancel();
+    this.args.onCancel();
   }
 
   routeWillChange(transition) {
@@ -67,13 +67,13 @@ export default class extends Component {
     // handle unsaved new models
     if (this.args.model.isNew) {
       // discard model immediately if true
-      if (this.args.abandon === true) {
+      if (this.args.onAbandon === true) {
         this.args.model.unloadRecord();
         return;
       }
 
       // otherwise ignore if not set
-      if (!this.args.abandon) {
+      if (!this.args.onAbandon) {
         return;
       }
 
@@ -81,7 +81,7 @@ export default class extends Component {
       transition.abort();
 
       // call abandon callback
-      this.args.abandon().then((ok) => {
+      this.args.onAbandon().then((ok) => {
         if (ok) {
           // unload model and retry transition with pass through
           this.args.model.unloadRecord();
@@ -96,13 +96,13 @@ export default class extends Component {
     // handle unsaved changed models
     if (this.dirty) {
       // rollback ack model immediately if true
-      if (this.args.abandon === true) {
+      if (this.args.onAbandon === true) {
         this.reset();
         return;
       }
 
       // otherwise ignore if not set
-      if (!this.args.abandon) {
+      if (!this.args.onAbandon) {
         return;
       }
 
@@ -110,7 +110,7 @@ export default class extends Component {
       transition.abort();
 
       // call abandon callback
-      this.args.abandon().then((ok) => {
+      this.args.onAbandon().then((ok) => {
         if (ok) {
           // rollback model and retry transition with pass through
           this.reset();

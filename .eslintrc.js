@@ -15,9 +15,7 @@ module.exports = {
   env: {
     browser: true,
   },
-  rules: {
-    'ember/no-mixins': 'off', // TODO: Remove.
-  },
+  rules: {},
   overrides: [
     // node files
     {

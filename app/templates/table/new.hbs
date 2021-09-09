@@ -1,7 +1,7 @@
 <Form
   @config={{this.config}}
   @model={{this.model}}
-  @submit={{queue (save-model this.model) (transition "table")}}
-  @cancel={{transition "table"}}
-  @abandon={{confirm "Abandon?"}}
+  @onSubmit={{queue (save-model this.model) (transition "table")}}
+  @onCancel={{transition "table"}}
+  @onAbandon={{confirm "Abandon?"}}
 />
