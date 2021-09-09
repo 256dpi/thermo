@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import EmberObject, { action, computed } from '@ember/object';
+import EmberObject, { action } from '@ember/object';
 import { union } from '@ember/object/computed';
 import { A } from '@ember/array';
 
@@ -8,14 +8,12 @@ export default class extends Component {
     return this.args.labelKey || 'name';
   }
 
-  @computed('labelKey', 'args.emptyLabel')
   get emptyOption() {
     return EmberObject.create({
       [this.labelKey]: this.args.emptyLabel || 'None',
     });
   }
 
-  @computed('args.allowEmpty', 'emptyOption')
   get emptyArray() {
     if (this.args.allowEmpty) {
       return A([this.emptyOption]);
@@ -24,7 +22,6 @@ export default class extends Component {
     }
   }
 
-  @computed('args.{value.id,allowEmpty}', 'emptyOption')
   get selected() {
     // check value
     if (this.args.value === undefined && this.args.allowEmpty) {
