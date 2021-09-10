@@ -27,10 +27,6 @@ module.exports = function (environment) {
     remote: 'http://0.0.0.0:8000/thermo.json',
   };
 
-  ENV['ember-simple-auth'] = {
-    authenticationRoute: 'sign-in',
-  };
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
