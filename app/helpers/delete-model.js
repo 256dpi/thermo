@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-// import { getError } from '@256dpi/ember-fire/utils';
+import { getError } from '@256dpi/ember-fire/utils';
 
 function deleteModel([model]) {
   return async () => {
@@ -14,7 +14,7 @@ function deleteModel([model]) {
       return true;
     } catch (err) {
       // handle error
-      alert(err); // TODO: getError(err));
+      alert(getError(err));
 
       throw new Error('failed');
     }

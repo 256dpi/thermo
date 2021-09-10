@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-// import { getError } from '@256dpi/ember-fire/utils';
+import { getError } from '@256dpi/ember-fire/utils';
 
 function saveModel([model]) {
   return async () => {
@@ -11,7 +11,7 @@ function saveModel([model]) {
       return true;
     } catch (err) {
       // handle error
-      alert(err); // TODO: getError(err));
+      alert(getError(err));
 
       throw new Error('failed');
     }
