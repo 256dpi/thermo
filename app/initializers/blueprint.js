@@ -48,7 +48,7 @@ export default {
       // build attributes
       const attributes = model.attributes.map((attribute) => {
         switch (attribute.kind) {
-          case 'value':
+          case 'value': {
             if (attribute.type) {
               return [
                 attribute.name,
@@ -68,7 +68,8 @@ export default {
                 }),
               ];
             }
-          case 'belongs-to':
+          }
+          case 'belongs-to': {
             const belongsToOptions = { inverse: null };
             if (attribute.inverse) {
               belongsToOptions['inverse'] = attribute.inverse;
@@ -79,7 +80,8 @@ export default {
               }
             }
             return [attribute.name, belongsTo(singularize(attribute.type), belongsToOptions)];
-          case 'has-many':
+          }
+          case 'has-many': {
             const hasManyOptions = { inverse: null };
             if (attribute.inverse) {
               hasManyOptions['inverse'] = attribute.inverse;
@@ -90,6 +92,7 @@ export default {
               }
             }
             return [attribute.name, hasMany(singularize(attribute.type), hasManyOptions)];
+          }
           default:
             throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
         }
