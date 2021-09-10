@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import EmberObject, { action } from '@ember/object';
-import { union } from '@ember/object/computed';
 import { A } from '@ember/array';
 
 export default class extends Component {
@@ -14,14 +13,6 @@ export default class extends Component {
     });
   }
 
-  get emptyArray() {
-    if (this.args.allowEmpty) {
-      return A([this.emptyOption]);
-    } else {
-      return A([]);
-    }
-  }
-
   get selected() {
     // check value
     if (this.args.value === undefined && this.args.allowEmpty) {
@@ -31,12 +22,22 @@ export default class extends Component {
     return this.args.value;
   }
 
-  @union('emptyArray', 'args.collection')
-  options;
+  get options() {
+    // check allow empty
+    if (!this.args.allowEmpty) {
+      return this.args.collection;
+    }
+
+    // prepare options
+    const options = A([this.emptyOption]);
+    options.pushObjects(this.args.collection.toArray());
+
+    return options;
+  }
 
   @action select(value) {
     if (this.args.changed) {
-      this.args.changed(value === this.emptyOption ? undefined : value);
+      this.args.changed(value);
     }
   }
 }
