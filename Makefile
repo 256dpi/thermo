@@ -6,11 +6,9 @@ check:
 	go vet ./example
 	golint .
 	golint ./example
-	yarn lint:js
-	yarn lint:hbs
+	yarn lint
 
 build:
 	yarn build
-	go generate
 
 .PHONY: build
