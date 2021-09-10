@@ -119,10 +119,5 @@ export default {
     models.forEach((model) => {
       app.register('model:' + model.name, model.class);
     });
-
-    // inject service
-    app.inject('route', 'blueprint', 'service:blueprint');
-    app.inject('controller', 'blueprint', 'service:blueprint');
-    app.inject('component', 'blueprint', 'service:blueprint');
   },
 };

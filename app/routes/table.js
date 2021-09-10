@@ -4,7 +4,9 @@ import { tracked } from '@glimmer/tracking';
 import { pluralize } from 'ember-inflector';
 
 export default class extends Route {
+  @service blueprint;
   @service session;
+  @service watch;
 
   @tracked name = null;
 
