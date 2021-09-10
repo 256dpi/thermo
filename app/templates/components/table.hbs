@@ -11,11 +11,11 @@
 
   {{#if (gt @config.orders.length 0)}}
     <div class="toolbar__group">
-      <label>
+      <label for="sorting">
         Sorting
       </label>
 
-      <select {{on "change" (event-target-value this.changeSort)}}>
+      <select id="sorting" {{on "change" (event-target-value this.changeSort)}}>
         <option value="">Natural</option>
 
         {{#each @config.orders as |order|}}
@@ -28,11 +28,11 @@
 
   {{#unless @config.immediate}}
     <div class="toolbar__group">
-      <label>
+      <label for="count">
         Count
       </label>
 
-      <select {{on "change" (event-target-value this.changeCount)}}>
+      <select id="count" {{on "change" (event-target-value this.changeCount)}}>
         {{#each (array 5 10 25 50 100) as |num|}}
           <option selected={{eq num @count}}>{{num}}</option>
         {{/each}}
@@ -181,7 +181,7 @@
                   {{get model column.label}}
                 {{/each}}
               {{else}}
-                <pre {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
+                <pre role="button" {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
               {{/if}}
             {{/let}}
           </td>
