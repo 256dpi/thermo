@@ -54,6 +54,10 @@ var blueprint = thermo.Blueprint{
 					Default: 0,
 				},
 				{
+					Name: "raw",
+					Kind: thermo.KindValue,
+				},
+				{
 					Name: "created",
 					Kind: thermo.KindValue,
 					Type: thermo.TypeDate,
@@ -175,6 +179,10 @@ var blueprint = thermo.Blueprint{
 						{Value: "two", Label: "Two"},
 						{Value: "three", Label: "Three"},
 					},
+				},
+				{
+					Label: "Raw",
+					Key:   "raw",
 				},
 			},
 		},

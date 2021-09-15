@@ -5,6 +5,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/256dpi/xo"
+	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/256dpi/fire/axe"
 	"github.com/256dpi/fire/blaze"
@@ -54,6 +55,7 @@ type Item struct {
 	Name        string      `json:"name"`
 	State       bool        `json:"state"`
 	Count       int         `json:"count"`
+	Raw         bson.M      `json:"raw"`
 	File        *blaze.Link `json:"file"`
 	Created     time.Time   `json:"created" coal:"fire-created-timestamp"`
 	Updated     time.Time   `json:"updated" coal:"fire-updated-timestamp"`
