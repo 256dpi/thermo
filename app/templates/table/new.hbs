@@ -1,7 +1,10 @@
-<Form
-  @config={{this.config}}
-  @model={{this.model}}
-  @onSubmit={{queue (save-model this.model) (transition "table")}}
-  @onCancel={{transition "table"}}
-  @onAbandon={{confirm "Abandon?"}}
-/>
+{{#with (changeset this.model) as |changeset|}}
+  <Form
+    @config={{this.config}}
+    @model={{this.model}}
+    @changeset={{changeset}}
+    @onSubmit={{queue (save-model changeset) (transition "table")}}
+    @onCancel={{transition "table"}}
+    @onAbandon={{confirm "Abandon?"}}
+  />
+{{/with}}
