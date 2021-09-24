@@ -4,8 +4,24 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/256dpi/fire/coal"
+	"github.com/256dpi/fire/stick"
 	"github.com/256dpi/thermo"
 )
+
+type foo struct {
+	coal.Base          `json:"-" bson:",inline" coal:"foos"`
+	Name               string  `json:"name"`
+	SomeBar            coal.ID `json:"-" bson:"some_bar" coal:"some-bar:bars"`
+	stick.NoValidation `json:"-" bson:"-"`
+}
+
+type bar struct {
+	coal.Base          `json:"-" bson:",inline" coal:"bars"`
+	Name               string       `json:"name"`
+	SomeFoo            coal.HasMany `json:"-" bson:"-" coal:"some-foo:foos:some-bar"`
+	stick.NoValidation `json:"-" bson:"-"`
+}
 
 var blueprint = thermo.Blueprint{
 	Title: "Example",
@@ -20,6 +36,8 @@ var blueprint = thermo.Blueprint{
 	Menu: thermo.Menu{
 		Left: []thermo.MenuItem{
 			{Title: "Items", Model: "item"},
+			{Title: "Foos", Model: "foo"},
+			{Title: "Bars", Model: "bar"},
 		},
 		Right: []thermo.MenuItem{
 			{Title: "Applications", Model: "application"},
@@ -186,6 +204,8 @@ var blueprint = thermo.Blueprint{
 				},
 			},
 		},
+		thermo.Auto(&foo{}, "foo", "Foos"),
+		thermo.Auto(&bar{}, "bar", "Bars"),
 		thermo.Applications(),
 		thermo.Users(),
 		thermo.Tokens(),

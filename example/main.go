@@ -195,6 +195,15 @@ func createHandler(store *coal.Store, bucket *lungo.Bucket) http.Handler {
 	g.Add(valueController(store))
 	g.Add(fileController(store))
 
+	g.Add(&fire.Controller{
+		Store: store,
+		Model: &foo{},
+	})
+	g.Add(&fire.Controller{
+		Store: store,
+		Model: &bar{},
+	})
+
 	// add watch action
 	g.Handle("watch", &fire.GroupAction{
 		Authorizers: fire.L{

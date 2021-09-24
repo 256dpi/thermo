@@ -35,7 +35,7 @@ export default {
     config.blueprint.models.forEach((model) => {
       model.attributes.forEach((attribute) => {
         if (attribute.kind === 'has-many' && attribute.inverse) {
-          reverseInverses[`${model.name}#${attribute.inverse}`] = attribute.name;
+          reverseInverses[`${singularize(attribute.type)}#${attribute.inverse}`] = attribute.name;
         }
       });
     });
