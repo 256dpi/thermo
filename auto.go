@@ -2,6 +2,8 @@ package thermo
 
 import (
 	"reflect"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/256dpi/fire/coal"
@@ -28,6 +30,13 @@ func Deconflict(name string) string {
 	}
 
 	return name
+}
+
+var titleRegexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+
+// Title will convert a camel case name to a spaced title.
+func Title(name string) string {
+	return strings.Join(titleRegexp.FindAllString(name, -1), " ")
 }
 
 // Auto will generate a Model definition for the provided coal.Model.
@@ -155,7 +164,7 @@ func Columns(model coal.Model, only ...string) []Column {
 		// add to-one and has-one columns
 		if field.ToOne || field.HasOne {
 			list = append(list, Column{
-				Title:  field.Name,
+				Title:  Title(field.Name),
 				Key:    field.RelName,
 				Format: FormatBelongsTo,
 				Label:  "id",
@@ -167,7 +176,7 @@ func Columns(model coal.Model, only ...string) []Column {
 		// add to-many and has-many columns
 		if field.ToMany || field.HasMany {
 			list = append(list, Column{
-				Title:  field.Name,
+				Title:  Title(field.Name),
 				Key:    field.RelName,
 				Format: FormatHasMany,
 				Label:  "id",
@@ -196,7 +205,7 @@ func Columns(model coal.Model, only ...string) []Column {
 
 		// add column
 		list = append(list, Column{
-			Title:  field.Name,
+			Title:  Title(field.Name),
 			Key:    Deconflict(field.JSONKey),
 			Format: format,
 		})
@@ -231,7 +240,7 @@ func Fields(model coal.Model, only ...string) []Field {
 		// add to-one and to-many fields
 		if field.ToOne || field.ToMany {
 			list = append(list, Field{
-				Label:   field.Name,
+				Label:   Title(field.Name),
 				Key:     field.RelName,
 				Control: ControlReference,
 				Source: Expression(
@@ -264,7 +273,7 @@ func Fields(model coal.Model, only ...string) []Field {
 
 		// add field
 		list = append(list, Field{
-			Label:   field.Name,
+			Label:   Title(field.Name),
 			Key:     Deconflict(field.JSONKey),
 			Control: control,
 		})
