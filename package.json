@@ -20,7 +20,7 @@
     "fmt": "prettier -w ."
   },
   "dependencies": {
-    "@256dpi/ember-fire": "^0.3.1",
+    "@256dpi/ember-fire": "^0.3.3",
     "ember-autoresize-modifier": "^0.3.0",
     "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-sass": "^10.0.0",
@@ -33,7 +33,6 @@
     "ember-simple-auth": "^4.0.0",
     "ember-truth-helpers": "^3.0.0",
     "normalize.css": "~4.1.1",
-    "query-string": "^7.0.1",
     "sass": "^1.27.0"
   },
   "devDependencies": {

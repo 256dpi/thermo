@@ -1,34 +1,34 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { parseUrl as parseQuery } from 'query-string';
-
-function getParam(url, name) {
-  return parseQuery(url || '').query[name];
-}
+import Pagination from '@256dpi/ember-fire/pagination';
 
 export default class extends Component {
+  get pagination() {
+    return new Pagination(this.args.list);
+  }
+
   get currentPage() {
-    return parseInt(getParam(this.args.list.links?.self, 'page[number]') || '');
+    return this.pagination.currentPage;
   }
 
   get lastPage() {
-    return parseInt(getParam(this.args.list.links?.last, 'page[number]') || '');
+    return this.pagination.lastPage;
   }
 
   get firstCursor() {
-    return getParam(this.args.list.links?.first, 'page[after]');
+    return this.pagination.firstCursor;
   }
 
   get previousCursor() {
-    return getParam(this.args.list.links?.prev, 'page[before]');
+    return this.pagination.previousCursor;
   }
 
   get nextCursor() {
-    return getParam(this.args.list.links?.next, 'page[after]');
+    return this.pagination.nextCursor;
   }
 
   get lastCursor() {
-    return getParam(this.args.list.links?.last, 'page[before]');
+    return this.pagination.lastCursor;
   }
 
   @action expand(value) {

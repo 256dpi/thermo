@@ -2,16 +2,17 @@
 # yarn lockfile v1
 
 
-"@256dpi/ember-fire@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.3.1.tgz#0a85beec185b1db9e4ecb505dc48dec489487369"
-  integrity sha512-5/17Y1FwAWRONbzWe8VlhKS6IE8b+YtbCpSdyLmWveyjxS6whs6+0GFpIRF1R/0Zp/Ykl4GZBCm1Qlf1rgeuRQ==
+"@256dpi/ember-fire@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.3.3.tgz#f0edfd640e59f76dd94b0863b804fd6fbe1d25a6"
+  integrity sha512-OXFIgYWFP0dc6qeSeBLyuM3EIEISCkdETMSex3dJ9iFKGaifpsQ9TeXa4opEPUqqYWzOKw29zFRafxkvdg/LWg==
   dependencies:
     "@glimmer/tracking" "^1.0.4"
     ember-auto-import "^1.11.2"
     ember-cli-babel "^7.26.3"
     ember-cli-htmlbars "^5.7.1"
     jwt-decode "^2.2.0"
+    query-string "^7.0.1"
     reconnecting-websocket "^4.1.10"
 
 "@babel/code-frame@7.12.11":
