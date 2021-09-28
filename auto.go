@@ -36,7 +36,19 @@ var titleRegexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
 
 // Title will convert a camel case name to a spaced title.
 func Title(name string) string {
-	return strings.Join(titleRegexp.FindAllString(name, -1), " ")
+	// split
+	segments := titleRegexp.FindAllString(name, -1)
+
+	// build
+	var builder strings.Builder
+	for i, s := range segments {
+		if i > 0 && (len(s) > 1 || len(segments[i-1]) > 1) {
+			builder.WriteString(" ")
+		}
+		builder.WriteString(s)
+	}
+
+	return builder.String()
 }
 
 // Auto will generate a Model definition for the provided coal.Model.
