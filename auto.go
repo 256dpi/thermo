@@ -43,9 +43,11 @@ func Auto(model coal.Model, name, title string) Model {
 }
 
 // Modify is a helper to modify a model and return it.
-func Modify(model Model, fn func(*Model)) Model {
+func Modify(model Model, fns ...func(*Model)) Model {
 	// yield
-	fn(&model)
+	for _, fn := range fns {
+		fn(&model)
+	}
 
 	return model
 }
