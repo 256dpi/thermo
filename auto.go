@@ -32,7 +32,7 @@ func Deconflict(name string) string {
 	return name
 }
 
-var titleRegexp = regexp.MustCompile(`[A-Z][^A-Z]*`)
+var titleRegexp = regexp.MustCompile(`[A-Z0-9][^A-Z0-9]*`)
 
 // Title will convert a camel case name to a spaced title.
 func Title(name string) string {
