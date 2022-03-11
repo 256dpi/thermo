@@ -6,6 +6,7 @@ import (
 
 	"github.com/256dpi/fire/coal"
 	"github.com/256dpi/fire/stick"
+
 	"github.com/256dpi/thermo"
 )
 
@@ -146,9 +147,10 @@ var blueprint = thermo.Blueprint{
 					Format: thermo.FormatBoolean,
 				},
 				{
-					Title:  "Count",
-					Key:    "count",
-					Format: thermo.FormatLiteral,
+					Title:      "Count",
+					Key:        "count",
+					Format:     thermo.FormatExpression,
+					Expression: `return this + " C";`,
 				},
 				{
 					Title:  "Info",

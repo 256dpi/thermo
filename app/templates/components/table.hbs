@@ -180,6 +180,8 @@
                 {{#each value as |model|}}
                   {{get model column.label}}
                 {{/each}}
+              {{else if (eq column.format "expression")}}
+                {{evaluate column.expression value}}
               {{else}}
                 <pre role="button" {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
               {{/if}}

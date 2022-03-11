@@ -85,10 +85,11 @@ type Filter struct {
 
 // Column describes a table column.
 type Column struct {
-	Title  string `json:"title"`
-	Key    string `json:"key"`
-	Format Format `json:"format,omitempty"`
-	Label  string `json:"label,omitempty"`
+	Title      string     `json:"title"`
+	Key        string     `json:"key"`
+	Format     Format     `json:"format,omitempty"`
+	Label      string     `json:"label,omitempty"`
+	Expression Expression `json:"expression,omitempty"`
 }
 
 // Field describes a form field.
@@ -157,6 +158,7 @@ const (
 	FormatProgress     Format = "progress"
 	FormatBelongsTo    Format = "belongs-to"
 	FormatHasMany      Format = "has-many"
+	FormatExpression   Format = "expression"
 )
 
 // Control describes a form control.
