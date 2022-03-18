@@ -73,4 +73,31 @@ export default class extends Component {
   @action changeCursor(kind, cursor) {
     this.args.changedCursor(kind, cursor);
   }
+
+  get selected() {
+    return this.args.list.filter((model) => {
+      return model._selected;
+    });
+  }
+
+  @action toggleAll(on) {
+    // toggle model selection
+    for (let model of this.args.list.toArray()) {
+      model._selected = on;
+    }
+  }
+
+  @action toggleModel(model, on) {
+    // toggle model selection
+    model._selected = on;
+  }
+
+  @action deleteSelected() {
+    // delete selected models
+    for (let model of this.selected.toArray()) {
+      model.destroyRecord().then(() => {
+        model.unloadRecord();
+      });
+    }
+  }
 }

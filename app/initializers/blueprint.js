@@ -1,9 +1,10 @@
-import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+import { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import { singularize } from 'ember-inflector';
 import { inject as service } from '@ember/service';
 import fetch from 'fetch';
 
+import Model from 'thermo/lib/model';
 import config from 'thermo/config/environment';
 
 function copy(value) {

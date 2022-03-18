@@ -111,6 +111,12 @@
       </button>
     </div>
   {{/if}}
+
+  <div class="toolbar__group">
+    <button type="button" disabled={{not this.selected}} {{on "click" (confirm "Sure?" this.deleteSelected)}}>
+      Delete Selected
+    </button>
+  </div>
 </div>
 
 {{#if (gt @config.filters.length 0)}}
@@ -138,6 +144,10 @@
 <table class="table">
   <thead>
     <th width="1">
+      <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} />
+    </th>
+
+    <th width="1">
       ID
     </th>
 
@@ -149,6 +159,14 @@
   <tbody>
     {{#each @list as |model|}}
       <tr>
+        <td>
+          <input
+            type="checkbox"
+            checked={{model._selected}}
+            {{on "click" (event-target-checked (fn this.toggleModel model))}}
+          />
+        </td>
+
         <td>
           <LinkTo @route="table.edit" @model={{model.id}}>
             {{model.id}}
