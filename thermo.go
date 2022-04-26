@@ -88,6 +88,7 @@ type Column struct {
 	Title      string     `json:"title"`
 	Key        string     `json:"key"`
 	Format     Format     `json:"format,omitempty"`
+	Options    []Option   `json:"options,omitempty"`
 	Label      string     `json:"label,omitempty"`
 	Expression Expression `json:"expression,omitempty"`
 }
@@ -153,6 +154,7 @@ type Format string
 const (
 	FormatLiteral      Format = "literal"
 	FormatBoolean      Format = "boolean"
+	FormatMap          Format = "map"
 	FormatAbsoluteDate Format = "absolute-date"
 	FormatRelativeDate Format = "relative-date"
 	FormatProgress     Format = "progress"
@@ -179,7 +181,9 @@ const (
 // Any describes an arbitrary value.
 type Any = interface{}
 
-// Expression describes a javascript expression.
+// Expression describes a javascript expression. The current value can be
+// accessed using `this`, the special variable `$` allows access to the context
+// service.
 type Expression string
 
 // Build will build an ember app based on the provided blueprint.
