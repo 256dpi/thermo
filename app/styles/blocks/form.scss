@@ -2,13 +2,19 @@
   background-color: white;
 
   &__row {
-    margin: 5px 0 15px 0;
+    margin: 5px 0 15px -10px;
+    padding-left: 10px;
+
+    &--dirty {
+      padding-left: 7px;
+      border-left: 3px solid $blue;
+    }
   }
 
   &__button {
     box-sizing: border-box;
     border: 0;
-    border-radius: $border-radius;
+    border-radius: $radius;
     padding: 7px 15px;
     background-color: #eee;
     cursor: pointer;
@@ -18,10 +24,10 @@
     }
 
     &--warning {
-      background-color: #fddacf;
+      background-color: #ffc0c0;
 
       &:hover {
-        background-color: darken(#fddacf, 7);
+        background-color: darken(#ffc0c0, 7);
       }
     }
   }
