@@ -1,81 +1,94 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
-    <div class="form__row">
-      {{#if (eq field.control "string")}}
-        <Inputs::String
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @placeholder={{field.placeholder}}
-          @redacted={{field.redacted}}
-        />
-      {{else if (eq field.control "string")}}
-        <Inputs::Text
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @placeholder={{field.placeholder}}
-        />
-      {{else if (eq field.control "boolean")}}
-        <Inputs::Boolean
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-        />
-      {{else if (eq field.control "number")}}
-        <Inputs::Number
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @placeholder={{field.placeholder}}
-          @min={{field.min}}
-          @max={{field.max}}
-          @step={{field.step}}
-        />
-      {{else if (eq field.control "date")}}
-        <Inputs::Date
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @placeholder={{field.placeholder}}
-        />
-      {{else if (eq field.control "select")}}
-        <Inputs::Select
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @options={{field.options}}
-        />
-      {{else if (eq field.control "reference")}}
-        <Inputs::Reference
-          @label={{field.label}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @collection={{evaluate field.source (or @changeset @model)}}
-          @multiple={{field.multiple}}
-          @labelKey={{field.labelKey}}
-          @emptyLabel={{field.emptyLabel}}
-          @allowEmpty={{field.allowEmpty}}
-        />
-      {{else if (eq field.control "well")}}
-        <Inputs::Well @label={{field.label}} @value={{changeset-get @changeset field.key}} @hint={{field.hint}} />
-      {{else}}
-        <Inputs::Json
-          @label={{field.label}}
-          @value={{changeset-unwrap (changeset-get @changeset field.key)}}
-          @changed={{changeset-set @changeset field.key}}
-          @hint={{field.hint}}
-          @placeholder={{field.placeholder}}
-        />
-      {{/if}}
-    </div>
+    {{#let (guid-for field) as |id|}}
+      <div class="form__row">
+        {{#if field.label}}
+          <label class="input__label" for={{id}}>
+            {{field.label}}
+          </label>
+        {{/if}}
+
+        {{#if (eq field.control "string")}}
+          <Inputs::String
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @placeholder={{field.placeholder}}
+            @redacted={{field.redacted}}
+          />
+        {{else if (eq field.control "string")}}
+          <Inputs::Text
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
+        {{else if (eq field.control "boolean")}}
+          <Inputs::Boolean
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+          />
+        {{else if (eq field.control "number")}}
+          <Inputs::Number
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+            @min={{field.min}}
+            @max={{field.max}}
+            @step={{field.step}}
+          />
+        {{else if (eq field.control "date")}}
+          <Inputs::Date
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
+        {{else if (eq field.control "select")}}
+          <Inputs::Select
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @options={{field.options}}
+          />
+        {{else if (eq field.control "reference")}}
+          <Inputs::Reference
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @collection={{evaluate field.source (or @changeset @model)}}
+            @multiple={{field.multiple}}
+            @labelKey={{field.labelKey}}
+            @emptyLabel={{field.emptyLabel}}
+            @allowEmpty={{field.allowEmpty}}
+          />
+        {{else if (eq field.control "well")}}
+          <Inputs::Well @id={{id}} @value={{changeset-get @changeset field.key}} @hint={{field.hint}} />
+        {{else}}
+          <Inputs::Json
+            @id={{id}}
+            @value={{changeset-unwrap (changeset-get @changeset field.key)}}
+            @changed={{changeset-set @changeset field.key}}
+            @hint={{field.hint}}
+            @placeholder={{field.placeholder}}
+          />
+        {{/if}}
+
+        {{#if field.hint}}
+          <div class="input__hint">
+            {{field.hint}}
+          </div>
+        {{/if}}
+      </div>
+    {{/let}}
   {{/each}}
 
   <div class="form__row">

@@ -1,11 +1,5 @@
-{{#if @label}}
-  <label class="input__label" for={{guid-for this}}>
-    {{@label}}
-  </label>
-{{/if}}
-
 <textarea
-  id={{guid-for this}}
+  id={{@id}}
   class="input__text"
   value={{@value}}
   disabled={{@disabled}}
@@ -13,9 +7,3 @@
   {{on "change" this.changed}}
   {{autoresize}}
 ></textarea>
-
-{{#if @hint}}
-  <div class="input__hint">
-    {{@hint}}
-  </div>
-{{/if}}

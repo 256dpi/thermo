@@ -1,13 +1,1 @@
-{{#if @label}}
-  <label class="input__label" for={{guid-for this}}>
-    {{@label}}
-  </label>
-{{/if}}
-
-<input id={{guid-for this}} type="checkbox" checked={{@value}} disabled={{@disabled}} {{on "change" this.changed}} />
-
-{{#if @hint}}
-  <div class="input__hint">
-    {{@hint}}
-  </div>
-{{/if}}
+<input id={{@id}} type="checkbox" checked={{@value}} disabled={{@disabled}} {{on "change" this.changed}} />

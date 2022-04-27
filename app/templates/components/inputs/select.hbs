@@ -1,19 +1,7 @@
-{{#if @label}}
-  <label class="input__label" for={{guid-for this}}>
-    {{@label}}
-  </label>
-{{/if}}
-
-<select class="input__select" id={{guid-for this}} disabled={{@disabled}} {{on "change" this.changed}}>
+<select class="input__select" id={{@id}} disabled={{@disabled}} {{on "change" this.changed}}>
   {{#each @options as |opt|}}
     <option value={{opt.value}} selected={{eq @value opt.value}}>
       {{opt.label}}
     </option>
   {{/each}}
 </select>
-
-{{#if @hint}}
-  <div class="input__hint">
-    {{@hint}}
-  </div>
-{{/if}}

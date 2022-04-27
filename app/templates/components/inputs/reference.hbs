@@ -1,12 +1,6 @@
-{{#if @label}}
-  <label class="input__label" for={{guid-for this}}>
-    {{@label}}
-  </label>
-{{/if}}
-
 {{#if @multiple}}
   <PowerSelectMultiple
-    @triggerId={{guid-for this}}
+    @triggerId={{@id}}
     @selected={{this.selected}}
     @options={{this.options}}
     @disabled={{@disabled}}
@@ -19,7 +13,7 @@
   </PowerSelectMultiple>
 {{else}}
   <PowerSelect
-    @triggerId={{guid-for this}}
+    @triggerId={{@id}}
     @selected={{this.selected}}
     @options={{this.options}}
     @disabled={{@disabled}}
@@ -30,10 +24,4 @@
   >
     {{get item this.labelKey}}
   </PowerSelect>
-{{/if}}
-
-{{#if @hint}}
-  <div class="input__hint">
-    {{@hint}}
-  </div>
 {{/if}}

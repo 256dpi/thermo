@@ -1,15 +1,3 @@
-{{#if @label}}
-  <label class="input__label" for={{guid-for this}}>
-    {{@label}}
-  </label>
-{{/if}}
-
-<div id={{guid-for this}} class="input__well">
+<div id={{@id}} class="input__well">
   {{@value}}
 </div>
-
-{{#if @hint}}
-  <div class="input__hint">
-    {{@hint}}
-  </div>
-{{/if}}

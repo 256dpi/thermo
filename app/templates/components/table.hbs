@@ -181,7 +181,7 @@
               {{else if (eq column.format "boolean")}}
                 {{if value "True" "False"}}
               {{else if (eq column.format "map")}}
-                {{#let (find-by 'value' value column.options) as |option|}}
+                {{#let (find-by "value" value column.options) as |option|}}
                   {{if option option.label value}}
                 {{/let}}
               {{else if (eq column.format "absolute-date")}}
