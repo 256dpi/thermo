@@ -31,6 +31,11 @@ export default {
       app.advanceReadiness();
     }
 
+    // ensure lists
+    for (const key of ['attributes', 'properties', 'orders', 'filters', 'columns', 'actions', 'fields']) {
+      config.blueprint[key] ||= [];
+    }
+
     // build reverse inverse map
     const reverseInverses = {};
     config.blueprint.models.forEach((model) => {

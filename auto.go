@@ -57,7 +57,6 @@ func Auto(model coal.Model, name, title string) Model {
 		Name:       name,
 		Title:      title,
 		Attributes: Attributes(model),
-		Properties: []Property{},
 		Columns:    Columns(model),
 		Fields:     Fields(model),
 	}
