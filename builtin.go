@@ -25,24 +25,24 @@ func Tokens() Model {
 // Jobs will return the model for managing axe.Model documents. If live is true
 // it requires permission to watch documents.
 func Jobs(live bool) Model {
-	return Modify(Auto(&axe.Model{}, "job", "Jobs"), func(model *Model) {
-		model.Watchable = live
-		model.Immediate = live
-		for i, column := range model.Columns {
-			if column.Key == "progress" {
-				model.Columns[i].Format = FormatProgress
-			}
+	model := Auto(&axe.Model{}, "job", "Jobs")
+	model.Watchable = live
+	model.Immediate = live
+	for i, column := range model.Columns {
+		if column.Key == "progress" {
+			model.Columns[i].Format = FormatProgress
 		}
-	})
+	}
+	return model
 }
 
 // Values will return the model for managing glut.Model documents. If watch is
 // true it requires permission to watch documents.
 func Values(live bool) Model {
-	return Modify(Auto(&glut.Model{}, "value", "Values"), func(model *Model) {
-		model.Watchable = live
-		model.Immediate = live
-	})
+	model := Auto(&glut.Model{}, "value", "Values")
+	model.Watchable = live
+	model.Immediate = live
+	return model
 }
 
 // Files will return the model for managing blaze.File documents.

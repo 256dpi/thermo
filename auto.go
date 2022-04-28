@@ -62,16 +62,6 @@ func Auto(model coal.Model, name, title string) Model {
 	}
 }
 
-// Modify is a helper to modify a model and return it.
-func Modify(model Model, fns ...func(*Model)) Model {
-	// yield
-	for _, fn := range fns {
-		fn(&model)
-	}
-
-	return model
-}
-
 // Attributes will return a list of attributes for the provided coal.Model.
 func Attributes(model coal.Model, only ...string) []Attribute {
 	// get meta
