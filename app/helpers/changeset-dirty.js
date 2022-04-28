@@ -1,8 +1,7 @@
 import { helper } from '@ember/component/helper';
-import { get } from '@ember/object';
 
 export function changesetDirty([value, key]) {
-  return value.change ? get(value.change, key) !== undefined : false;
+  return value.changes.filter((change) => change.key === key).length > 0;
 }
 
 export default helper(changesetDirty);
