@@ -28,9 +28,10 @@
         overflow: scroll;
         border: none;
         cursor: pointer;
+        background-color: #eee;
 
         &:hover {
-          background-color: #eee;
+          background-color: #ddd;
           border-radius: $radius;
         }
       }
