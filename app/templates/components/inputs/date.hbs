@@ -2,7 +2,7 @@
   id={{@id}}
   class="input__date"
   placeholder={{@placeholder}}
-  @date={{or @value this.now}}
+  @date={{or this.value this.now}}
   @onChange={{this.changed}}
   @enableTime={{true}}
   @time_24hr={{true}}
