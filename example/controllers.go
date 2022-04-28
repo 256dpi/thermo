@@ -44,9 +44,6 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 				}
 			}),
 		},
-		IdempotentCreate: true,
-		ConsistentUpdate: true,
-		SoftDelete:       true,
 	}
 }
 
