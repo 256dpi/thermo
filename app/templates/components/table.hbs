@@ -122,13 +122,17 @@
 {{#if (gt @config.filters.length 0)}}
   <div class="filters">
     {{#each @config.filters as |filter|}}
-      {{#if (eq filter.condition "boolean")}}
+      {{#let (guid-for filter) as |id|}}
         <div class="filters__group">
-          <Inputs::Boolean
-            @label={{filter.title}}
-            @value={{get @filter filter.key}}
-            @changed={{fn this.setFilter filter.key}}
-          />
+          {{#if filter.title}}
+            <label class="input__label" for={{id}}>
+              {{filter.title}}
+            </label>
+          {{/if}}
+
+          {{#if (eq filter.condition "boolean")}}
+            <Inputs::Boolean @id={{id}} @value={{get @filter filter.key}} @changed={{fn this.setFilter filter.key}} />
+          {{/if}}
 
           {{#if (not-eq undefined (get @filter filter.key))}}
             <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
@@ -136,7 +140,7 @@
             </button>
           {{/if}}
         </div>
-      {{/if}}
+      {{/let}}
     {{/each}}
   </div>
 {{/if}}
