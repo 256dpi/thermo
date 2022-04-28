@@ -45,6 +45,7 @@ type Model struct {
 	Title      string      `json:"title"`
 	Watchable  bool        `json:"watchable"`
 	Immediate  bool        `json:"immediate"`
+	ListOnly   bool        `json:"listOnly"`
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`
 	Orders     []Order     `json:"orders"`

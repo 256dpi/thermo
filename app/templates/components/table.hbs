@@ -176,9 +176,13 @@
         </td>
 
         <td>
-          <LinkTo @route="table.edit" @model={{model.id}}>
+          {{#unless @config.listOnly}}
+            <LinkTo @route="table.edit" @model={{model.id}}>
+              {{model.id}}
+            </LinkTo>
+          {{else}}
             {{model.id}}
-          </LinkTo>
+          {{/unless}}
         </td>
 
         {{#each @config.columns as |column|}}
