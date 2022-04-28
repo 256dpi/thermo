@@ -50,6 +50,7 @@ type Model struct {
 	Orders     []Order     `json:"orders"`
 	Filters    []Filter    `json:"filters"`
 	Columns    []Column    `json:"columns"`
+	Actions    []Action    `json:"actions"`
 	Fields     []Field     `json:"fields"`
 }
 
@@ -91,6 +92,12 @@ type Column struct {
 	Options    []Option   `json:"options,omitempty"`
 	Label      string     `json:"label,omitempty"`
 	Expression Expression `json:"expression,omitempty"`
+}
+
+// Action describes a row action.
+type Action struct {
+	Title      string     `json:"title"`
+	Expression Expression `json:"expression"`
 }
 
 // Field describes a form field.

@@ -173,6 +173,12 @@ var blueprint = thermo.Blueprint{
 					Format: thermo.FormatAbsoluteDate,
 				},
 			},
+			Actions: []thermo.Action{
+				{
+					Title:      "Add",
+					Expression: `return () => { $.store.callResourceAction("POST", "item", this.id, "add", {}) }`,
+				},
+			},
 			Fields: []thermo.Field{
 				{
 					Label:       "Name",

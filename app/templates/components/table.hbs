@@ -154,6 +154,10 @@
     {{#each @config.columns as |column|}}
       <th>{{column.title}}</th>
     {{/each}}
+
+    {{#if @config.actions.length}}
+      <th>Actions</th>
+    {{/if}}
   </thead>
 
   <tbody>
@@ -210,6 +214,16 @@
             {{/let}}
           </td>
         {{/each}}
+
+        {{#if @config.actions.length}}
+          <td>
+            {{#each @config.actions as |action|}}
+              <button type="button" {{on "click" (fn (evaluate action.expression model))}}>
+                {{action.title}}
+              </button>
+            {{/each}}
+          </td>
+        {{/if}}
       </tr>
     {{/each}}
   </tbody>
