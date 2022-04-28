@@ -52,14 +52,22 @@ func Title(name string) string {
 }
 
 // Auto will generate a Model definition for the provided coal.Model.
-func Auto(model coal.Model, name, title string) Model {
-	return Model{
+func Auto(model coal.Model, name, title string, modifiers ...func(*Model)) Model {
+	// prepare model
+	m := Model{
 		Name:       name,
 		Title:      title,
 		Attributes: Attributes(model),
 		Columns:    Columns(model),
 		Fields:     Fields(model),
 	}
+
+	// run modifiers
+	for _, modifier := range modifiers {
+		modifier(&m)
+	}
+
+	return m
 }
 
 // Attributes will return a list of attributes for the provided coal.Model.
