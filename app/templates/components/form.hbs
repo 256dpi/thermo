@@ -13,6 +13,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
+            @disabled={{field.disabled}}
             @placeholder={{field.placeholder}}
             @redacted={{field.redacted}}
           />
@@ -21,7 +22,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @placeholder={{field.placeholder}}
           />
         {{else if (eq field.control "boolean")}}
@@ -29,14 +30,14 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
           />
         {{else if (eq field.control "number")}}
           <Inputs::Number
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @placeholder={{field.placeholder}}
             @min={{field.min}}
             @max={{field.max}}
@@ -47,7 +48,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @placeholder={{field.placeholder}}
           />
         {{else if (eq field.control "select")}}
@@ -55,7 +56,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @options={{field.options}}
           />
         {{else if (eq field.control "reference")}}
@@ -63,7 +64,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @collection={{evaluate field.source (or @changeset @model)}}
             @multiple={{field.multiple}}
             @labelKey={{field.labelKey}}
@@ -71,13 +72,13 @@
             @allowEmpty={{field.allowEmpty}}
           />
         {{else if (eq field.control "well")}}
-          <Inputs::Well @id={{id}} @value={{changeset-get @changeset field.key}} @hint={{field.hint}} />
+          <Inputs::Well @id={{id}} @value={{changeset-get @changeset field.key}} />
         {{else}}
           <Inputs::Json
             @id={{id}}
             @value={{changeset-unwrap (changeset-get @changeset field.key)}}
             @changed={{changeset-set @changeset field.key}}
-            @hint={{field.hint}}
+            @disabled={{field.disabled}}
             @placeholder={{field.placeholder}}
           />
         {{/if}}

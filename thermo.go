@@ -106,6 +106,7 @@ type Field struct {
 	Key         string     `json:"key"`
 	Hint        string     `json:"hint"`
 	Control     Control    `json:"control"`
+	Disabled    bool       `json:"disabled,omitempty"`
 	Placeholder string     `json:"placeholder,omitempty"`
 	Redacted    bool       `json:"redacted,omitempty"`
 	Min         float64    `json:"min,omitempty"`
