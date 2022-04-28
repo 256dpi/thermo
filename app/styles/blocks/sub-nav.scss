@@ -7,5 +7,16 @@
 
   &__item {
     margin-right: 10px;
+
+    a {
+      &:hover {
+        text-decoration: none;
+        color: #666;
+      }
+
+      &.active {
+        font-weight: bold;
+      }
+    }
   }
 }
