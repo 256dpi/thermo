@@ -107,7 +107,7 @@ var blueprint = thermo.Blueprint{
 				{
 					Name: "info",
 					Keys: []string{"state"},
-					Body: `this.get('state') ? "Active" : "Inactive"`,
+					Body: `return this.get('state') ? "Active" : "Inactive"`,
 				},
 			},
 			Orders: []thermo.Order{
@@ -158,6 +158,10 @@ var blueprint = thermo.Blueprint{
 					Format: thermo.FormatLiteral,
 				},
 				{
+					Title: "Raw",
+					Key:   "raw",
+				},
+				{
 					Title:  "Created",
 					Key:    "created",
 					Format: thermo.FormatAbsoluteDate,
@@ -175,8 +179,17 @@ var blueprint = thermo.Blueprint{
 			},
 			Actions: []thermo.Action{
 				{
-					Title:      "Add",
-					Expression: `return () => { $.store.callResourceAction("POST", "item", this.id, "add", {}) }`,
+					Title: "Flip",
+					Expression: `return async () => {
+						this.state = !this.state;
+						await this.save();
+					}`,
+				},
+				{
+					Title: "Add",
+					Expression: `return () => {
+						$.store.callResourceAction("POST", "item", this.id, "add", {});
+					}`,
 				},
 			},
 			Fields: []thermo.Field{
