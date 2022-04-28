@@ -20,16 +20,9 @@
         color: $blue;
       }
 
-      button {
-        border: 1px solid #999;
-        border-radius: 3px;
-        padding: 3px 6px;
-        background-color: #eee;
-        line-height: 1;
-      }
-
       pre {
         margin: 0;
+        padding: 2px 5px;
         max-width: 1000px;
         max-height: 250px;
         overflow: scroll;
@@ -38,6 +31,7 @@
 
         &:hover {
           background-color: #eee;
+          border-radius: $radius;
         }
       }
     }
