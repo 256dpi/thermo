@@ -32,8 +32,10 @@ export default {
     }
 
     // ensure lists
-    for (const key of ['attributes', 'properties', 'orders', 'filters', 'columns', 'actions', 'fields']) {
-      config.blueprint[key] ||= [];
+    for (const model of config.blueprint.models) {
+      for (const key of ['attributes', 'properties', 'orders', 'filters', 'columns', 'actions', 'fields']) {
+        model[key] ||= [];
+      }
     }
 
     // build reverse inverse map
