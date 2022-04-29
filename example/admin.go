@@ -168,6 +168,11 @@ var blueprint = thermo.Blueprint{
 					Key:   "raw",
 				},
 				{
+					Title:  "File",
+					Key:    "file",
+					Format: thermo.FormatFile,
+				},
+				{
 					Title:  "Created",
 					Key:    "created",
 					Format: thermo.FormatAbsoluteDate,

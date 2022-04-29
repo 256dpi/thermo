@@ -177,6 +177,7 @@ const (
 	FormatBelongsTo    Format = "belongs-to"
 	FormatHasMany      Format = "has-many"
 	FormatExpression   Format = "expression"
+	FormatFile         Format = "file"
 )
 
 // Control describes a form control.

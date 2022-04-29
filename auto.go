@@ -213,6 +213,8 @@ func Columns(model coal.Model, only ...string) []Column {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				format = FormatAbsoluteDate
+			case reflect.TypeOf(blaze.Link{}):
+				format = FormatFile
 			}
 		}
 
