@@ -63,7 +63,7 @@ type Attribute struct {
 	Name    string     `json:"name"`
 	Kind    Kind       `json:"kind"`
 	Type    Type       `json:"type,omitempty"`
-	Inverse string     `json:"inverse,omitempty"`
+	Inverse string     `json:"inverse,omitempty"` // belongs-to, has-many
 	Default Any        `json:"default,omitempty"`
 	Init    Expression `json:"init,omitempty"`
 }
@@ -91,11 +91,11 @@ type Filter struct {
 // Column describes a table column.
 type Column struct {
 	Title      string     `json:"title"`
-	Key        string     `json:"key"`
+	Key        string     `json:"key,omitempty"` // leave empty for model based expression
 	Format     Format     `json:"format,omitempty"`
 	Options    []Option   `json:"options,omitempty"`
-	Label      string     `json:"label,omitempty"`
-	Expression Expression `json:"expression,omitempty"`
+	Label      string     `json:"label,omitempty"`      // belongs-to, has-many
+	Expression Expression `json:"expression,omitempty"` // expression
 }
 
 // Action describes a row action.
@@ -112,17 +112,17 @@ type Field struct {
 	Hint        string     `json:"hint"`
 	Control     Control    `json:"control"`
 	Disabled    bool       `json:"disabled,omitempty"`
-	Placeholder string     `json:"placeholder,omitempty"`
-	Redacted    bool       `json:"redacted,omitempty"`
-	Min         float64    `json:"min,omitempty"`
-	Max         float64    `json:"max,omitempty"`
-	Step        float64    `json:"step,omitempty"`
-	Options     []Option   `json:"options,omitempty"`
-	Source      Expression `json:"source,omitempty"`
-	Multiple    bool       `json:"multiple,omitempty"` // file
-	LabelKey    string     `json:"labelKey,omitempty"`
-	EmptyLabel  string     `json:"emptyLabel,omitempty"`
-	AllowEmpty  bool       `json:"allowEmpty,omitempty"`
+	Placeholder string     `json:"placeholder,omitempty"` // string, text, number, date, undefined
+	Redacted    bool       `json:"redacted,omitempty"`    // string
+	Min         float64    `json:"min,omitempty"`         // number
+	Max         float64    `json:"max,omitempty"`         // number
+	Step        float64    `json:"step,omitempty"`        // number
+	Options     []Option   `json:"options,omitempty"`     // select
+	Source      Expression `json:"source,omitempty"`      // reference
+	Multiple    bool       `json:"multiple,omitempty"`    // file
+	LabelKey    string     `json:"labelKey,omitempty"`    // reference, file
+	EmptyLabel  string     `json:"emptyLabel,omitempty"`  // reference
+	AllowEmpty  bool       `json:"allowEmpty,omitempty"`  // reference
 	PreviewFile bool       `json:"previewFile,omitempty"` // file
 	AcceptMedia string     `json:"acceptMedia,omitempty"` // file
 }
