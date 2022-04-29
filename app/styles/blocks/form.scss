@@ -11,6 +11,11 @@
     }
   }
 
+  &__line {
+    border-top: 1px solid #aaa;
+    margin: 15px 0;
+  }
+
   &__button {
     box-sizing: border-box;
     border: 0;

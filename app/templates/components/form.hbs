@@ -92,6 +92,9 @@
     {{/let}}
   {{/each}}
 
+  <div class="form__line">
+  </div>
+
   <div class="form__row">
     <button type="submit" class="form__button" disabled={{or @model.isSaving (and (not this.dirty))}}>
       {{#if @model.isSaving}}
