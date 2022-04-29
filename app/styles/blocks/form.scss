@@ -17,6 +17,7 @@
   }
 
   &__button {
+    display: inline-block;
     box-sizing: border-box;
     border: 0;
     border-radius: $radius;

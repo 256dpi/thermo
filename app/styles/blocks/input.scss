@@ -67,6 +67,27 @@ $ember-power-select-highlighted-background: black;
     color: #333;
   }
 
+  &__file {
+    a {
+      margin: 5px 0;
+      color: $blue;
+    }
+
+    img,
+    audio,
+    video,
+    iframe {
+      display: block;
+      margin: 5px 0;
+      max-height: 300px;
+      min-width: 600px;
+      object-fit: contain;
+      background-color: black;
+      border-radius: $radius;
+      border: 0;
+    }
+  }
+
   &__hint {
     margin-top: 5px;
     color: #999;

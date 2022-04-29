@@ -27,12 +27,14 @@ type bar struct {
 var blueprint = thermo.Blueprint{
 	Title: "Example",
 	Backend: thermo.Backend{
-		BaseURL:   "http://0.0.0.0:8000",
-		AuthPath:  "auth",
-		AuthScope: "foo",
-		DataPath:  "api",
-		WatchPath: "api/watch",
-		ClientID:  "main-key",
+		BaseURL:      "http://0.0.0.0:8000",
+		AuthPath:     "auth",
+		AuthScope:    "foo",
+		DataPath:     "api",
+		WatchPath:    "api/watch",
+		UploadPath:   "api/upload",
+		DownloadPath: "api/download",
+		ClientID:     "main-key",
 	},
 	Menu: thermo.Menu{
 		Left: []thermo.MenuItem{
@@ -75,6 +77,10 @@ var blueprint = thermo.Blueprint{
 				{
 					Name: "raw",
 					Kind: thermo.KindValue,
+				},
+				{
+					Name: "file",
+					Kind: thermo.KindFile,
 				},
 				{
 					Name: "created",
@@ -230,6 +236,13 @@ var blueprint = thermo.Blueprint{
 				{
 					Label: "Raw",
 					Key:   "raw",
+				},
+				{
+					Label:       "File",
+					Key:         "file",
+					Control:     thermo.ControlFile,
+					PreviewFile: true,
+					AcceptMedia: "image/png",
 				},
 			},
 		},

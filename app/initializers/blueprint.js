@@ -101,6 +101,10 @@ export default {
             }
             return [attribute.name, hasMany(singularize(attribute.type), hasManyOptions)];
           }
+          case 'file':
+            return [attribute.name, attr('file-link')];
+          case 'files':
+            return [attribute.name, attr('file-links')];
           default:
             throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
         }

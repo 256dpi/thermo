@@ -73,6 +73,18 @@
           />
         {{else if (eq field.control "well")}}
           <Inputs::Well @id={{id}} @value={{changeset-get @changeset field.key}} />
+        {{else if (eq field.control "file")}}
+          <Inputs::File
+            @id={{id}}
+            @value={{changeset-get @changeset field.key}}
+            @model={{@changeset}}
+            @key={{field.key}}
+            @changed={{changeset-set @changeset field.key}}
+            @disabled={{field.disabled}}
+            @multiple={{field.multiple}}
+            @preview={{field.previewFile}}
+            @accept={{field.acceptMedia}}
+          />
         {{else}}
           <Inputs::Json
             @id={{id}}

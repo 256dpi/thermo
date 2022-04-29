@@ -72,7 +72,8 @@ func main() {
 	corsOptions := serve.CORSPolicy{
 		AllowedOrigins: []string{"*"},
 		AllowedHeaders: []string{"Origin", "Accept", "Content-Type",
-			"Authorization", "Cache-Control", "X-Requested-With"},
+			"Authorization", "Cache-Control", "X-Requested-With",
+			"Content-Disposition"},
 		AllowedMethods: []string{"GET", "POST", "PATCH", "DELETE"},
 	}
 

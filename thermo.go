@@ -20,12 +20,14 @@ type Blueprint struct {
 
 // Backend describes the backend service.
 type Backend struct {
-	BaseURL   string `json:"baseURL"`
-	AuthPath  string `json:"authPath"`
-	AuthScope string `json:"authScope"`
-	DataPath  string `json:"dataPath"`
-	WatchPath string `json:"watchPath"`
-	ClientID  string `json:"clientID"`
+	BaseURL      string `json:"baseURL"`
+	AuthPath     string `json:"authPath"`
+	AuthScope    string `json:"authScope"`
+	DataPath     string `json:"dataPath"`
+	WatchPath    string `json:"watchPath"`
+	UploadPath   string `json:"uploadPath"`
+	DownloadPath string `json:"downloadPath"`
+	ClientID     string `json:"clientID"`
 }
 
 // Menu describes a menu.
@@ -117,10 +119,12 @@ type Field struct {
 	Step        float64    `json:"step,omitempty"`
 	Options     []Option   `json:"options,omitempty"`
 	Source      Expression `json:"source,omitempty"`
-	Multiple    bool       `json:"multiple,omitempty"`
+	Multiple    bool       `json:"multiple,omitempty"` // file
 	LabelKey    string     `json:"labelKey,omitempty"`
 	EmptyLabel  string     `json:"emptyLabel,omitempty"`
 	AllowEmpty  bool       `json:"allowEmpty,omitempty"`
+	PreviewFile bool       `json:"previewFile,omitempty"` // file
+	AcceptMedia string     `json:"acceptMedia,omitempty"` // file
 }
 
 // Option describes an option.
@@ -137,6 +141,8 @@ const (
 	KindValue     Kind = "value"
 	KindBelongsTo Kind = "belongs-to"
 	KindHasMany   Kind = "has-many"
+	KindFile      Kind = "file"
+	KindFiles     Kind = "files"
 )
 
 // Type describes a field type.
@@ -187,6 +193,7 @@ const (
 	ControlSelect    Control = "select"
 	ControlReference Control = "reference"
 	ControlWell      Control = "well"
+	ControlFile      Control = "file"
 )
 
 // Any describes an arbitrary value.
