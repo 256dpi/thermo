@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/256dpi/fire/blaze"
 	"github.com/256dpi/fire/coal"
 	"github.com/256dpi/fire/stick"
 )
@@ -113,6 +114,7 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 		}
 
 		// get type
+		kind := KindValue
 		var typ Type
 		var def Any
 		switch unwrap(field.Type).Kind() {
@@ -137,13 +139,17 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				typ = TypeDate
+			case reflect.TypeOf(blaze.Link{}):
+				kind = KindFile
+			case reflect.TypeOf(blaze.Links{}):
+				kind = KindFiles
 			}
 		}
 
 		// add attribute
 		list = append(list, Attribute{
 			Name:    Deconflict(field.JSONKey),
-			Kind:    KindValue,
+			Kind:    kind,
 			Type:    typ,
 			Default: def,
 		})
