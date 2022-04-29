@@ -100,6 +100,7 @@ type Column struct {
 type Action struct {
 	Title      string     `json:"title"`
 	Expression Expression `json:"expression"`
+	Disabled   Expression `json:"disabled"`
 }
 
 // Field describes a form field.

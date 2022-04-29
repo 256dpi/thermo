@@ -179,6 +179,14 @@ var blueprint = thermo.Blueprint{
 			},
 			Actions: []thermo.Action{
 				{
+					Title:    "Activate",
+					Disabled: `return this.state;`,
+					Expression: `return async () => {
+						this.state = true;
+						await this.save();
+					}`,
+				},
+				{
 					Title: "Flip",
 					Expression: `return async () => {
 						this.state = !this.state;

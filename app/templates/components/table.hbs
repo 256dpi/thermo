@@ -226,7 +226,7 @@
         {{#if @config.actions.length}}
           <td>
             {{#each @config.actions as |action|}}
-              <button type="button" {{on "click" (fn (evaluate action.expression model))}}>
+              <button type="button" disabled={{evaluate action.disabled model}} {{on "click" (fn (evaluate action.expression model))}}>
                 {{action.title}}
               </button>
             {{/each}}
