@@ -119,8 +119,8 @@ type Field struct {
 	Step        float64    `json:"step,omitempty"`        // number
 	Options     []Option   `json:"options,omitempty"`     // select
 	Source      Expression `json:"source,omitempty"`      // reference
-	Multiple    bool       `json:"multiple,omitempty"`    // file
-	LabelKey    string     `json:"labelKey,omitempty"`    // reference, file
+	Multiple    bool       `json:"multiple,omitempty"`    // reference
+	LabelKey    string     `json:"labelKey,omitempty"`    // reference
 	EmptyLabel  string     `json:"emptyLabel,omitempty"`  // reference
 	AllowEmpty  bool       `json:"allowEmpty,omitempty"`  // reference
 	PreviewFile bool       `json:"previewFile,omitempty"` // file
@@ -142,7 +142,6 @@ const (
 	KindBelongsTo Kind = "belongs-to"
 	KindHasMany   Kind = "has-many"
 	KindFile      Kind = "file"
-	KindFiles     Kind = "files"
 )
 
 // Type describes a field type.

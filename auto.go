@@ -141,8 +141,6 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 				typ = TypeDate
 			case reflect.TypeOf(blaze.Link{}):
 				kind = KindFile
-			case reflect.TypeOf(blaze.Links{}):
-				kind = KindFiles
 			}
 		}
 

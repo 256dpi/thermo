@@ -1,44 +1,40 @@
-{{#if @multiple}}
-  <span>Not supported yet...</span>
-{{else}}
-  {{#if @value}}
-    <div class="input__file">
-      <a href={{file-url @value}} target="_blank" rel="noopener noreferrer">
-        Show
-        {{@value.name}}
-        ({{@value.type}},
-        {{@value.size}}
-        bytes)
-      </a>
+{{#if @value}}
+  <div class="input__file">
+    <a href={{file-url @value}} target="_blank" rel="noopener noreferrer">
+      Show
+      {{@value.name}}
+      ({{@value.type}},
+      {{@value.size}}
+      bytes)
+    </a>
 
-      {{#if @preview}}
-        {{#if (starts-with @value.type "image/")}}
-          <img src={{file-url @value}} alt="" role="presentation" />
-        {{else if (starts-with @value.type "audio/")}}
-          <audio src={{file-url @value}} controls></audio>
-        {{else if (starts-with @value.type "video/")}}
-          <video src={{file-url @value}} controls></video>
-        {{else if (eq @value.type "application/pdf")}}
-          <iframe src={{file-url @value}} title={{@id}}></iframe>
-        {{/if}}
+    {{#if @preview}}
+      {{#if (starts-with @value.type "image/")}}
+        <img src={{file-url @value}} alt="" role="presentation" />
+      {{else if (starts-with @value.type "audio/")}}
+        <audio src={{file-url @value}} controls></audio>
+      {{else if (starts-with @value.type "video/")}}
+        <video src={{file-url @value}} controls></video>
+      {{else if (eq @value.type "application/pdf")}}
+        <iframe src={{file-url @value}} title={{@id}}></iframe>
       {{/if}}
-    </div>
+    {{/if}}
+  </div>
 
-    {{#unless @disabled}}
-      <button type="button" class="form__button" {{on "click" (fn this.files.unset @model @key)}}>
-        Unset
-      </button>
-    {{/unless}}
-  {{else}}
-    {{#unless @disabled}}
-      <FileUpload
-        class="form__button"
-        @name={{@id}}
-        @accept={{@accept}}
-        @onfileadd={{fn this.files.upload @model @key false}}
-      >
-        Upload
-      </FileUpload>
-    {{/unless}}
-  {{/if}}
+  {{#unless @disabled}}
+    <button type="button" class="form__button" {{on "click" (fn this.files.unset @model @key)}}>
+      Unset
+    </button>
+  {{/unless}}
+{{else}}
+  {{#unless @disabled}}
+    <FileUpload
+      class="form__button"
+      @name={{@id}}
+      @accept={{@accept}}
+      @onfileadd={{fn this.files.upload @model @key false}}
+    >
+      Upload
+    </FileUpload>
+  {{/unless}}
 {{/if}}
