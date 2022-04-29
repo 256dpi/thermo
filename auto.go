@@ -281,6 +281,8 @@ func Fields(model coal.Model, only ...string) []Field {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				control = ControlDate
+			case reflect.TypeOf(blaze.Link{}):
+				control = ControlFile
 			}
 		}
 
