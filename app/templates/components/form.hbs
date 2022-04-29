@@ -17,7 +17,7 @@
             @placeholder={{field.placeholder}}
             @redacted={{field.redacted}}
           />
-        {{else if (eq field.control "string")}}
+        {{else if (eq field.control "text")}}
           <Inputs::Text
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
