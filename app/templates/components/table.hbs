@@ -148,7 +148,7 @@
 <table class="table">
   <thead>
     <th width="1">
-      <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} />
+      <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
     </th>
 
     <th width="1">
@@ -171,18 +171,19 @@
           <input
             type="checkbox"
             checked={{model._selected}}
+            aria-label="Select row"
             {{on "click" (event-target-checked (fn this.toggleModel model))}}
           />
         </td>
 
         <td>
-          {{#unless @config.listOnly}}
+          {{#if @config.listOnly}}
+            {{model.id}}
+          {{else}}
             <LinkTo @route="table.edit" @model={{model.id}}>
               {{model.id}}
             </LinkTo>
-          {{else}}
-            {{model.id}}
-          {{/unless}}
+          {{/if}}
         </td>
 
         {{#each @config.columns as |column|}}

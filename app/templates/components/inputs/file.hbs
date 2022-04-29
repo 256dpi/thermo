@@ -10,13 +10,13 @@
 
     {{#if @preview}}
       {{#if (starts-with @value.type "image/")}}
-        <img src={{file-url @value}} alt="" />
+        <img src={{file-url @value}} alt="" role="presentation" />
       {{else if (starts-with @value.type "audio/")}}
         <audio src={{file-url @value}} controls></audio>
       {{else if (starts-with @value.type "video/")}}
         <video src={{file-url @value}} controls></video>
       {{else if (eq @value.type "application/pdf")}}
-        <iframe src={{file-url @value}}></iframe>
+        <iframe src={{file-url @value}} title={{@id}}></iframe>
       {{/if}}
     {{/if}}
   </div>
