@@ -5,6 +5,7 @@ import (
 	"github.com/256dpi/fire/blaze"
 	"github.com/256dpi/fire/flame"
 	"github.com/256dpi/fire/glut"
+	"github.com/256dpi/fire/stick"
 )
 
 // Applications will return the model for managing flame.Application documents.
@@ -29,6 +30,9 @@ func Jobs(live bool) Model {
 	model.Watchable = live
 	model.Immediate = live
 	for i, column := range model.Columns {
+		if stick.Contains([]string{"created-at", "available-at", "started-at", "ended-at", "finished-at"}, column.Key) {
+			model.Columns[i].Format = FormatRelativeDate
+		}
 		if column.Key == "progress" {
 			model.Columns[i].Format = FormatProgress
 		}
