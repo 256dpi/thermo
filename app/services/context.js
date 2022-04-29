@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { singularize, pluralize } from 'ember-inflector';
 import DS from 'ember-data'; // eslint-disable-line
+import moment from 'moment';
 
 export default class extends Service {
   @service blueprint;
@@ -10,6 +11,8 @@ export default class extends Service {
 
   singularize = singularize;
   pluralize = pluralize;
+
+  moment = moment;
 
   promiseObject(promise) {
     return DS.PromiseObject.create({ promise });
