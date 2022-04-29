@@ -2,6 +2,7 @@ package thermo
 
 import (
 	"embed"
+	"encoding/json"
 
 	"github.com/256dpi/ember"
 )
@@ -194,6 +195,15 @@ type Any = interface{}
 // accessed using `this`, the special variable `$` allows access to the context
 // service.
 type Expression string
+
+// Constant creates and expression that returns the provided constant value.
+func Constant(value interface{}) Expression {
+	buf, err := json.Marshal(value)
+	if err != nil {
+		panic(err)
+	}
+	return Expression(`return ` + string(buf) + `;`)
+}
 
 // Build will build an ember app based on the provided blueprint.
 func Build(blueprint Blueprint) (*ember.App, error) {
