@@ -68,9 +68,16 @@ $ember-power-select-highlighted-background: black;
   }
 
   &__file {
-    a {
+    p {
       margin: 5px 0;
-      color: $blue;
+
+      span {
+        color: #999;
+      }
+
+      a {
+        color: $blue;
+      }
     }
 
     img,

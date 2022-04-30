@@ -1,12 +1,14 @@
 {{#if @value}}
   <div class="input__file">
-    <a href={{file-url @value}} target="_blank" rel="noopener noreferrer">
-      Show
-      {{@value.name}}
-      ({{@value.type}},
-      {{@value.size}}
-      bytes)
-    </a>
+    <p>
+      <a href={{file-url @value}} target="_blank" rel="noopener noreferrer">
+        Show
+        {{@value.name}}
+        ({{@value.type}},
+        {{@value.size}}
+        bytes)
+      </a>
+    </p>
 
     {{#if @preview}}
       {{#if (starts-with @value.type "image/")}}
@@ -27,6 +29,14 @@
     </button>
   {{/unless}}
 {{else}}
+  <div class="input__file">
+    <p>
+      <span>
+        No File Uploaded
+      </span>
+    </p>
+  </div>
+
   {{#unless @disabled}}
     <FileUpload
       class="form__button"
