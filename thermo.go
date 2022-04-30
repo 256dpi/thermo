@@ -112,6 +112,7 @@ type Field struct {
 	Hint        string     `json:"hint"`
 	Control     Control    `json:"control"`
 	Disabled    bool       `json:"disabled,omitempty"`
+	Locked      bool       `json:"locked,omitempty"`
 	Placeholder string     `json:"placeholder,omitempty"` // string, text, number, date, undefined
 	Redacted    bool       `json:"redacted,omitempty"`    // string
 	Min         float64    `json:"min,omitempty"`         // number

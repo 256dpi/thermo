@@ -232,6 +232,7 @@ var blueprint = thermo.Blueprint{
 					Label:   "Foo",
 					Key:     "name",
 					Control: thermo.ControlSelect,
+					Locked:  true,
 					Options: []thermo.Option{
 						{Value: "one", Label: "One"},
 						{Value: "two", Label: "Two"},
@@ -239,8 +240,9 @@ var blueprint = thermo.Blueprint{
 					},
 				},
 				{
-					Label: "Raw",
-					Key:   "raw",
+					Label:  "Raw",
+					Key:    "raw",
+					Locked: true,
 				},
 				{
 					Label:       "File",

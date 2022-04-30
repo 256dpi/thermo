@@ -16,6 +16,15 @@ $ember-power-select-highlighted-background: black;
     display: flex;
     margin-bottom: 5px;
     margin-right: 5px;
+    align-items: center;
+
+    svg {
+      margin-left: 7px;
+
+      path {
+        fill: #333;
+      }
+    }
   }
 
   &__string,

@@ -2,18 +2,20 @@
   {{#each @config.fields as |field|}}
     {{#let (guid-for field) as |id|}}
       <div class="form__row {{if (changeset-dirty @changeset field.key) "form__row--dirty"}}">
-        {{#if field.label}}
-          <label class="input__label" for={{id}}>
-            {{field.label}}
-          </label>
-        {{/if}}
+        <label class="input__label" for={{id}}>
+          {{or field.label "Unlabeled"}}
+
+          {{#if field.locked}}
+            <Icons::Lock />
+          {{/if}}
+        </label>
 
         {{#if (eq field.control "string")}}
           <Inputs::String
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
             @redacted={{field.redacted}}
           />
@@ -22,7 +24,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
           />
         {{else if (eq field.control "boolean")}}
@@ -30,14 +32,14 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
           />
         {{else if (eq field.control "number")}}
           <Inputs::Number
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
             @min={{field.min}}
             @max={{field.max}}
@@ -48,7 +50,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
           />
         {{else if (eq field.control "select")}}
@@ -56,7 +58,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @options={{field.options}}
           />
         {{else if (eq field.control "reference")}}
@@ -64,7 +66,7 @@
             @id={{id}}
             @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @collection={{evaluate field.source (or @changeset @model)}}
             @multiple={{field.multiple}}
             @labelKey={{field.labelKey}}
@@ -80,7 +82,7 @@
             @model={{@changeset}}
             @key={{field.key}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @multiple={{field.multiple}}
             @preview={{field.previewFile}}
             @accept={{field.acceptMedia}}
@@ -90,7 +92,7 @@
             @id={{id}}
             @value={{changeset-unwrap (changeset-get @changeset field.key)}}
             @changed={{changeset-set @changeset field.key}}
-            @disabled={{field.disabled}}
+            @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
           />
         {{/if}}
@@ -145,6 +147,12 @@
         {{on "click" @onDelete}}
       >
         Delete
+      </button>
+    {{/if}}
+
+    {{#if this.lockable}}
+      <button type="button" disabled={{not this.locked}} class="form__button" {{on "click" (fn (mut this.locked) false)}}>
+        Unlock
       </button>
     {{/if}}
   </div>

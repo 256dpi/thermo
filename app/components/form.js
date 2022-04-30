@@ -1,10 +1,14 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-// args: model, changeset, onSubmit, onDelete, onCancel, onAbandon
+// args: config, model, changeset, onSubmit, onDelete, onCancel, onAbandon
 export default class extends Component {
   @service router;
+
+  lockable = false;
+  @tracked locked = false;
 
   passThrough = false;
 
@@ -13,6 +17,12 @@ export default class extends Component {
 
     // add listener for route change
     this.router.on('routeWillChange', this, 'routeWillChange');
+
+    // determine lockability
+    if (this.args.config.fields.filter((field) => field.locked).length > 0) {
+      this.lockable = true;
+      this.locked = true;
+    }
   }
 
   get dirty() {
