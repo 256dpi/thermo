@@ -51,6 +51,12 @@ $ember-power-select-highlighted-background: black;
     min-height: 50px;
   }
 
+  &__boolean {
+    filter:grayscale(1);
+    height: 20px;
+    width: 20px;
+  }
+
   &__select {
     width: inherit;
     display: inline-block;
