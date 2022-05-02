@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/256dpi/fire/glut"
 	"github.com/256dpi/lungo"
 	"github.com/256dpi/oauth2/v2"
 	"github.com/256dpi/serve"
@@ -159,10 +160,12 @@ func createHandler(store *coal.Store, bucket *lungo.Bucket) http.Handler {
 
 	// create watcher
 	watcher := spark.NewWatcher(xo.Capture)
-	watcher.Add(itemStream(store))
-	watcher.Add(jobStream(store))
-	watcher.Add(valueStream(store))
-	watcher.Add(fileStream(store))
+	for _, model := range []coal.Model{&Item{}, &axe.Model{}, &glut.Model{}, &blaze.File{}} {
+		watcher.Add(&spark.Stream{
+			Model: model,
+			Store: store,
+		})
+	}
 
 	// create storage
 	fileNotary := heat.NewNotary("example/file", fileSecret)
