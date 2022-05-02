@@ -15,12 +15,29 @@ func Applications() Model {
 
 // Users will return the model for managing flame.User documents.
 func Users() Model {
-	return Auto(&flame.User{}, "user", "Users")
+	model := Auto(&flame.User{}, "user", "Users")
+	for i, field := range model.Fields {
+		if field.Key == "password" {
+			model.Fields[i].Redacted = true
+		}
+	}
+	return model
 }
 
 // Tokens will return the model for managing flame.Token documents.
 func Tokens() Model {
-	return Auto(&flame.Token{}, "token", "Tokens")
+	model := Auto(&flame.Token{}, "token", "Tokens")
+	for i, column := range model.Columns {
+		if stick.Contains([]string{"user", "application"}, column.Key) {
+			model.Columns[i].Label = "name"
+		}
+	}
+	for i, column := range model.Fields {
+		if stick.Contains([]string{"user", "application"}, column.Key) {
+			model.Fields[i].LabelKey = "name"
+		}
+	}
+	return model
 }
 
 // Jobs will return the model for managing axe.Model documents. If live is true
