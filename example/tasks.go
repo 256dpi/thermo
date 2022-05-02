@@ -43,10 +43,10 @@ func incrementTask(store *coal.Store) *axe.Task {
 		Job: &incrementJob{},
 		Handler: func(ctx *axe.Context) error {
 			// get item
-			item := ctx.Job.(*incrementJob).Item
+			itm := ctx.Job.(*incrementJob).Item
 
 			// increment count
-			_, err := store.M(&item{}).Update(ctx, nil, item, bson.M{
+			_, err := store.M(&item{}).Update(ctx, nil, itm, bson.M{
 				"$inc": bson.M{
 					"Count": 1,
 				},
