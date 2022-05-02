@@ -90,7 +90,7 @@
         {{else}}
           <Inputs::Json
             @id={{id}}
-            @value={{changeset-unwrap (changeset-get @changeset field.key)}}
+            @value={{changeset-get @changeset field.key}}
             @changed={{changeset-set @changeset field.key}}
             @disabled={{or field.disabled (and field.locked this.locked)}}
             @placeholder={{field.placeholder}}
