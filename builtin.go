@@ -6,6 +6,7 @@ import (
 	"github.com/256dpi/fire/flame"
 	"github.com/256dpi/fire/glut"
 	"github.com/256dpi/fire/stick"
+	"github.com/samber/lo"
 )
 
 // Applications will return the model for managing flame.Application documents.
@@ -46,6 +47,9 @@ func Jobs(live bool) Model {
 	model := Auto(&axe.Model{}, "job", "Jobs")
 	model.Watchable = live
 	model.Immediate = live
+	model.Columns = lo.Filter(model.Columns, func(column Column, _ int) bool {
+		return column.Key != "events"
+	})
 	for i, column := range model.Columns {
 		if stick.Contains([]string{"created-at", "available-at", "started-at", "ended-at", "finished-at"}, column.Key) {
 			model.Columns[i].Format = FormatRelativeDate
