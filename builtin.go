@@ -29,7 +29,7 @@ func Tokens() Model {
 	model := Auto(&flame.Token{}, "token", "Tokens")
 	for i, column := range model.Columns {
 		if stick.Contains([]string{"user", "application"}, column.Key) {
-			model.Columns[i].Label = "name"
+			model.Columns[i].LabelKey = "name"
 		}
 	}
 	for i, column := range model.Fields {

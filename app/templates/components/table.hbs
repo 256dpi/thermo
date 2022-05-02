@@ -209,11 +209,11 @@
                 <progress value={{value}} max="1"></progress>
               {{else if (eq column.format "belongs-to")}}
                 {{#if value}}
-                  {{get value column.label}}
+                  {{get value column.labelKey}}
                 {{/if}}
               {{else if (eq column.format "has-many")}}
                 {{#each value as |model|}}
-                  {{get model column.label}}
+                  {{get model column.labelKey}}
                 {{/each}}
               {{else if (eq column.format "expression")}}
                 {{evaluate column.expression (if column.key value model)}}

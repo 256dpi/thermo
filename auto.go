@@ -177,10 +177,10 @@ func Columns(model coal.Model, only ...string) []Column {
 		// add to-one and has-one columns
 		if field.ToOne || field.HasOne {
 			list = append(list, Column{
-				Title:  Title(field.Name),
-				Key:    field.RelName,
-				Format: FormatBelongsTo,
-				Label:  "id",
+				Title:    Title(field.Name),
+				Key:      field.RelName,
+				Format:   FormatBelongsTo,
+				LabelKey: "id",
 			})
 
 			continue
@@ -189,10 +189,10 @@ func Columns(model coal.Model, only ...string) []Column {
 		// add to-many and has-many columns
 		if field.ToMany || field.HasMany {
 			list = append(list, Column{
-				Title:  Title(field.Name),
-				Key:    field.RelName,
-				Format: FormatHasMany,
-				Label:  "id",
+				Title:    Title(field.Name),
+				Key:      field.RelName,
+				Format:   FormatHasMany,
+				LabelKey: "id",
 			})
 
 			continue
