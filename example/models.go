@@ -16,6 +16,7 @@ import (
 
 var catalog = coal.NewCatalog(
 	&Item{},
+	&thing{},
 	&flame.Application{},
 	&flame.User{},
 	&flame.Token{},
@@ -38,6 +39,13 @@ func init() {
 		Owner: &Item{},
 		Field: "File",
 		Types: []string{"image/png"},
+	})
+
+	// add thing binding
+	register.Add(&blaze.Binding{
+		Name:  "thing-file",
+		Owner: &thing{},
+		Field: "File",
 	})
 
 	// add system indexes
@@ -79,6 +87,33 @@ func (i *Item) Validate() error {
 	// check file
 	if i.File != nil {
 		err := i.File.Validate(false)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+type thing struct {
+	coal.Base `json:"-" bson:",inline" coal:"things"`
+	String    string       `json:"string"`
+	Boolean   bool         `json:"boolean"`
+	Integer   int          `json:"integer"`
+	Float     float64      `json:"float"`
+	Bytes     []byte       `json:"bytes"`
+	Time      time.Time    `json:"time"`
+	Map       bson.M       `json:"map"`
+	File      *blaze.Link  `json:"file"`
+	One       *coal.ID     `json:"-" coal:"one:things"`
+	Many      []coal.ID    `json:"-" coal:"many:things"`
+	Ones      coal.HasMany `json:"-" coal:"ones:things:one"`
+}
+
+func (t *thing) Validate() error {
+	// check file
+	if t.File != nil {
+		err := t.File.Validate(false)
 		if err != nil {
 			return err
 		}

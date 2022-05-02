@@ -47,6 +47,25 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 	}
 }
 
+func thingController(store *coal.Store, storage *blaze.Storage) *fire.Controller {
+	return &fire.Controller{
+		Model: &thing{},
+		Store: store,
+		Authorizers: fire.L{
+			flame.Callback(true),
+		},
+		Modifiers: fire.L{
+			storage.Modifier(),
+		},
+		Validators: fire.L{
+			fire.RelationshipValidator(&thing{}, catalog),
+		},
+		Decorators: fire.L{
+			storage.Decorator(),
+		},
+	}
+}
+
 func applicationController(store *coal.Store) *fire.Controller {
 	return &fire.Controller{
 		Model: &flame.Application{},
