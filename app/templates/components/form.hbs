@@ -3,8 +3,8 @@
     {{#let (guid-for field) as |id|}}
       <div
         class="form__row
-          {{if field.locked "form__row--locked"}}
-          {{if (changeset-dirty @changeset field.key) "form__row--dirty"}}"
+          {{if field.locked 'form__row--locked'}}
+          {{if (changeset-dirty @changeset field.key) 'form__row--dirty'}}"
       >
         <label class="input__label" for={{id}}>
           {{or field.label "Unlabeled"}}
