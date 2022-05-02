@@ -18,6 +18,7 @@
           @type={{field.control}}
           @id={{id}}
           @key={{field.key}}
+          @model={{@changeset}}
           @value={{changeset-get @changeset field.key}}
           @changed={{changeset-set @changeset field.key}}
           @disabled={{or field.disabled (and field.locked this.locked)}}

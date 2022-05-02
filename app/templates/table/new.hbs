@@ -1,4 +1,4 @@
-{{#with (changeset this.model) as |changeset|}}
+{{#let (changeset this.model) as |changeset|}}
   <Form
     @config={{this.config}}
     @model={{this.model}}
@@ -7,4 +7,4 @@
     @onCancel={{transition "table"}}
     @onAbandon={{confirm "Abandon?"}}
   />
-{{/with}}
+{{/let}}

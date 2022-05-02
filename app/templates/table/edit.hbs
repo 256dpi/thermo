@@ -1,4 +1,4 @@
-{{#with (changeset this.model) as |changeset|}}
+{{#let (changeset this.model) as |changeset|}}
   <Form
     @config={{this.config}}
     @model={{this.model}}
@@ -8,4 +8,4 @@
     @onDelete={{confirm "Sure?" (queue (delete-model this.model) (transition "table"))}}
     @onAbandon={{confirm "Abandon?"}}
   />
-{{/with}}
+{{/let}}
