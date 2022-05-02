@@ -93,7 +93,7 @@ type Column struct {
 	Title      string     `json:"title"`
 	Key        string     `json:"key,omitempty"` // leave empty for model based expression
 	Format     Format     `json:"format,omitempty"`
-	Options    []Option   `json:"options,omitempty"`
+	Options    []Option   `json:"options,omitempty"`    // map
 	LabelKey   string     `json:"labelKey,omitempty"`   // belongs-to, has-many
 	Expression Expression `json:"expression,omitempty"` // expression
 }
