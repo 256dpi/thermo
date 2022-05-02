@@ -1,5 +1,5 @@
 {{#if (eq @type "string")}}
-  <Inputs::String
+  <Controls::String
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}
@@ -8,7 +8,7 @@
     @redacted={{@redacted}}
   />
 {{else if (eq @type "text")}}
-  <Inputs::Text
+  <Controls::Text
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}
@@ -16,9 +16,9 @@
     @placeholder={{@placeholder}}
   />
 {{else if (eq @type "boolean")}}
-  <Inputs::Boolean @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} />
+  <Controls::Boolean @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} />
 {{else if (eq @type "number")}}
-  <Inputs::Number
+  <Controls::Number
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}
@@ -29,7 +29,7 @@
     @step={{@step}}
   />
 {{else if (eq @type "date")}}
-  <Inputs::Date
+  <Controls::Date
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}
@@ -37,9 +37,9 @@
     @placeholder={{@placeholder}}
   />
 {{else if (eq @type "select")}}
-  <Inputs::Select @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} @options={{@options}} />
+  <Controls::Select @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} @options={{@options}} />
 {{else if (eq @type "reference")}}
-  <Inputs::Reference
+  <Controls::Reference
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}
@@ -51,9 +51,9 @@
     @allowEmpty={{@allowEmpty}}
   />
 {{else if (eq @type "well")}}
-  <Inputs::Well @id={{@id}} @value={{@value}} />
+  <Controls::Well @id={{@id}} @value={{@value}} />
 {{else if (eq @type "file")}}
-  <Inputs::File
+  <Controls::File
     @id={{@id}}
     @key={{@key}}
     @value={{@value}}
@@ -65,7 +65,7 @@
     @accept={{@accept}}
   />
 {{else}}
-  <Inputs::Json
+  <Controls::Json
     @id={{@id}}
     @value={{@value}}
     @changed={{@changed}}

@@ -5,7 +5,7 @@
 
   <form class="form" {{on "submit" this.authenticate}}>
     <div class="form__row">
-      <Inputs::String
+      <Controls::String
         @label="Email"
         @value={{this.email}}
         @changed={{fn (mut this.email)}}
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form__row">
-      <Inputs::String
+      <Controls::String
         @label="Password"
         @value={{this.password}}
         @changed={{fn (mut this.password)}}

@@ -131,7 +131,7 @@
           {{/if}}
 
           {{#if (eq filter.condition "boolean")}}
-            <Inputs::Boolean @id={{id}} @value={{get @filter filter.key}} @changed={{fn this.setFilter filter.key}} />
+            <Controls::Boolean @id={{id}} @value={{get @filter filter.key}} @changed={{fn this.setFilter filter.key}} />
           {{/if}}
 
           {{#if (not-eq undefined (get @filter filter.key))}}
