@@ -30,8 +30,6 @@ var register = blaze.NewRegister()
 func init() {
 	// add item indexes
 	catalog.AddIndex(&Item{}, false, 0, "Name")
-	catalog.AddIndex(&Item{}, false, time.Second, "Deleted")
-	catalog.AddIndex(&Item{}, true, 0, "CreateToken")
 
 	// add item file binding
 	register.Add(&blaze.Binding{
@@ -59,17 +57,14 @@ func init() {
 
 // Item represents a general item.
 type Item struct {
-	coal.Base   `json:"-" bson:",inline" coal:"items"`
-	Name        string      `json:"name"`
-	State       bool        `json:"state"`
-	Count       int         `json:"count"`
-	Raw         bson.M      `json:"raw"`
-	File        *blaze.Link `json:"file"`
-	Created     time.Time   `json:"created" coal:"fire-created-timestamp"`
-	Updated     time.Time   `json:"updated" coal:"fire-updated-timestamp"`
-	Deleted     *time.Time  `json:"deleted" coal:"fire-soft-delete"`
-	CreateToken string      `json:"create-token" bson:"create_token" coal:"fire-idempotent-create"`
-	UpdateToken string      `json:"update-token" bson:"update" coal:"fire-consistent-update"`
+	coal.Base `json:"-" bson:",inline" coal:"items"`
+	Name      string      `json:"name"`
+	State     bool        `json:"state"`
+	Count     int         `json:"count"`
+	Raw       bson.M      `json:"raw"`
+	File      *blaze.Link `json:"file"`
+	Created   time.Time   `json:"created" coal:"fire-created-timestamp"`
+	Updated   time.Time   `json:"updated" coal:"fire-updated-timestamp"`
 }
 
 // Validate implements the fire.ValidatableModel interface.

@@ -74,22 +74,6 @@ var blueprint = thermo.Blueprint{
 					Kind: thermo.KindValue,
 					Type: thermo.TypeDate,
 				},
-				{
-					Name: "deleted",
-					Kind: thermo.KindValue,
-					Type: thermo.TypeDate,
-				},
-				{
-					Name: "create-token",
-					Kind: thermo.KindValue,
-					Type: thermo.TypeString,
-					Init: "Date.now().toString()",
-				},
-				{
-					Name: "update-token",
-					Kind: thermo.KindValue,
-					Type: thermo.TypeString,
-				},
 			},
 			Properties: []thermo.Property{
 				{
@@ -163,11 +147,6 @@ var blueprint = thermo.Blueprint{
 					Title:  "Updated",
 					Key:    "updated",
 					Format: thermo.FormatRelativeDate,
-				},
-				{
-					Title:  "Deleted",
-					Key:    "deleted",
-					Format: thermo.FormatAbsoluteDate,
 				},
 			},
 			Actions: []thermo.Action{
