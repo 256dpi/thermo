@@ -1,49 +1,6 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
-    {{#let (guid-for field) as |id|}}
-      <div
-        class="form__row
-          {{if field.locked 'form__row--locked'}}
-          {{if (changeset-dirty @changeset field.key) 'form__row--dirty'}}"
-      >
-        <label class="input__label" for={{id}}>
-          {{or field.label "Unlabeled"}}
-
-          {{#if field.locked}}
-            <Icons::Lock />
-          {{/if}}
-        </label>
-
-        <Inputs::Generic
-          @type={{field.control}}
-          @id={{id}}
-          @key={{field.key}}
-          @model={{@changeset}}
-          @value={{changeset-get @changeset field.key}}
-          @changed={{changeset-set @changeset field.key}}
-          @disabled={{or (evaluate field.disabled @changeset) (and field.locked this.locked)}}
-          @placeholder={{field.placeholder}}
-          @redacted={{field.redacted}}
-          @min={{field.min}}
-          @max={{field.max}}
-          @step={{field.step}}
-          @options={{field.options}}
-          @collection={{evaluate field.source @changeset}}
-          @multiple={{field.multiple}}
-          @labelKey={{field.labelKey}}
-          @emptyLabel={{field.emptyLabel}}
-          @allowEmpty={{field.allowEmpty}}
-          @preview={{field.previewFile}}
-          @accept={{field.acceptMedia}}
-        />
-
-        {{#if field.hint}}
-          <div class="input__hint">
-            {{field.hint}}
-          </div>
-        {{/if}}
-      </div>
-    {{/let}}
+    <FormField @config={{field}} @changeset={{@changeset}} @locked={{this.locked}} />
   {{/each}}
 
   <div class="form__line">
