@@ -36,13 +36,6 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 					},
 				}
 			}),
-			"gen": queue.Action([]string{"POST"}, func(ctx *fire.Context) axe.Blueprint {
-				return axe.Blueprint{
-					Job: &generateJob{
-						Item: ctx.Model.ID(),
-					},
-				}
-			}),
 		},
 	}
 }

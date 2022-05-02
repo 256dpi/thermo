@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"math/rand"
 	"time"
 
@@ -9,7 +8,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 
 	"github.com/256dpi/fire/axe"
-	"github.com/256dpi/fire/blaze"
 	"github.com/256dpi/fire/coal"
 	"github.com/256dpi/fire/glut"
 	"github.com/256dpi/fire/stick"
@@ -40,27 +38,6 @@ func (j *incrementJob) Validate() error {
 	return nil
 }
 
-type generateJob struct {
-	axe.Base `json:"-" axe:"generate"`
-
-	// the item to generate
-	Item coal.ID `json:"item_id"`
-}
-
-func (j *generateJob) Validate() error {
-	// check item
-	if j.Item.IsZero() {
-		return xo.F("missing item")
-	}
-
-	return nil
-}
-
-type periodicJob struct {
-	axe.Base `json:"-" axe:"periodic"`
-	stick.NoValidation
-}
-
 func incrementTask(store *coal.Store) *axe.Task {
 	return &axe.Task{
 		Job: &incrementJob{},
@@ -83,67 +60,9 @@ func incrementTask(store *coal.Store) *axe.Task {
 	}
 }
 
-func generateTask(store *coal.Store, storage *blaze.Storage) *axe.Task {
-	return &axe.Task{
-		Job: &generateJob{},
-		Handler: func(ctx *axe.Context) error {
-			// upload random image
-			claimKey, _, err := storage.Upload(ctx, "", "image/png", func(upload blaze.Upload) (int64, error) {
-				return blaze.UploadFrom(upload, randomImage())
-			})
-			if err != nil {
-				return err
-			}
-
-			// get id
-			id := ctx.Job.(*generateJob).Item
-
-			// use transaction
-			return store.T(ctx, false, func(ctx context.Context) error {
-				// get item
-				var item Item
-				found, err := store.M(&item).Find(ctx, &item, id, true)
-				if err != nil {
-					return err
-				} else if !found {
-					return xo.F("unknown item")
-				}
-
-				// release file if available
-				if item.File != nil {
-					err = storage.Release(ctx, &item, "File")
-					if err != nil {
-						return err
-					}
-				}
-
-				// prepare link
-				item.File = &blaze.Link{
-					ClaimKey: claimKey,
-				}
-
-				// claim file
-				err = storage.Claim(ctx, &item, "File")
-				if err != nil {
-					return err
-				}
-
-				// validate item
-				err = item.Validate()
-				if err != nil {
-					return err
-				}
-
-				// replace item
-				_, err = store.M(&item).Replace(ctx, &item, false)
-				if err != nil {
-					return err
-				}
-
-				return nil
-			})
-		},
-	}
+type periodicJob struct {
+	axe.Base `json:"-" axe:"periodic"`
+	stick.NoValidation
 }
 
 func periodicTask(store *coal.Store) *axe.Task {
