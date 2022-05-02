@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@256dpi/ember-fire@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.3.3.tgz#f0edfd640e59f76dd94b0863b804fd6fbe1d25a6"
-  integrity sha512-OXFIgYWFP0dc6qeSeBLyuM3EIEISCkdETMSex3dJ9iFKGaifpsQ9TeXa4opEPUqqYWzOKw29zFRafxkvdg/LWg==
+"@256dpi/ember-fire@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@256dpi/ember-fire/-/ember-fire-0.3.4.tgz#7ae75c419e46e67a6faed11948be69fb9a1dbe71"
+  integrity sha512-1WgeNd97JARxERSgZksupgly8XJaytU2Z46nWJP8GIcwtU2x6N5RPu8rDPARlntGl4jaJ7TSK8YU6ODMilM5fg==
   dependencies:
     "@glimmer/tracking" "^1.0.4"
     ember-auto-import "^1.11.2"
