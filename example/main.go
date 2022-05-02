@@ -160,7 +160,7 @@ func createHandler(store *coal.Store, bucket *lungo.Bucket) http.Handler {
 
 	// create watcher
 	watcher := spark.NewWatcher(xo.Capture)
-	for _, model := range []coal.Model{&Item{}, &axe.Model{}, &glut.Model{}, &blaze.File{}} {
+	for _, model := range []coal.Model{&item{}, &axe.Model{}, &glut.Model{}, &blaze.File{}} {
 		watcher.Add(&spark.Stream{
 			Model: model,
 			Store: store,

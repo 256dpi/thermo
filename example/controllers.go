@@ -11,7 +11,7 @@ import (
 
 func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage) *fire.Controller {
 	return &fire.Controller{
-		Model:   &Item{},
+		Model:   &item{},
 		Store:   store,
 		Filters: []string{"Name", "State", "Count"},
 		Sorters: []string{"Name", "State", "Count", "Created"},
@@ -23,7 +23,7 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 			fire.TimestampModifier(),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&Item{}, catalog),
+			fire.RelationshipValidator(&item{}, catalog),
 		},
 		Decorators: fire.L{
 			storage.Decorator(),

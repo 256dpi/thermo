@@ -15,7 +15,7 @@ import (
 )
 
 var catalog = coal.NewCatalog(
-	&Item{},
+	&item{},
 	&thing{},
 	&flame.Application{},
 	&flame.User{},
@@ -29,12 +29,12 @@ var register = blaze.NewRegister()
 
 func init() {
 	// add item indexes
-	catalog.AddIndex(&Item{}, false, 0, "Name")
+	catalog.AddIndex(&item{}, false, 0, "Name")
 
 	// add item file binding
 	register.Add(&blaze.Binding{
 		Name:  "item-file",
-		Owner: &Item{},
+		Owner: &item{},
 		Field: "File",
 		Types: []string{"image/png"},
 	})
@@ -55,8 +55,7 @@ func init() {
 	blaze.AddFileIndexes(catalog)
 }
 
-// Item represents a general item.
-type Item struct {
+type item struct {
 	coal.Base `json:"-" bson:",inline" coal:"items"`
 	Name      string      `json:"name"`
 	State     bool        `json:"state"`
@@ -67,8 +66,7 @@ type Item struct {
 	Updated   time.Time   `json:"updated" coal:"fire-updated-timestamp"`
 }
 
-// Validate implements the fire.ValidatableModel interface.
-func (i *Item) Validate() error {
+func (i *item) Validate() error {
 	// check name
 	if utf8.RuneCountInString(i.Name) < 1 {
 		return xo.SF("missing name")
