@@ -1,7 +1,11 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
     {{#let (guid-for field) as |id|}}
-      <div class="form__row {{if field.locked "form__row--locked"}} {{if (changeset-dirty @changeset field.key) "form__row--dirty"}}">
+      <div
+        class="form__row
+          {{if field.locked "form__row--locked"}}
+          {{if (changeset-dirty @changeset field.key) "form__row--dirty"}}"
+      >
         <label class="input__label" for={{id}}>
           {{or field.label "Unlabeled"}}
 
@@ -10,92 +14,27 @@
           {{/if}}
         </label>
 
-        {{#if (eq field.control "string")}}
-          <Inputs::String
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @placeholder={{field.placeholder}}
-            @redacted={{field.redacted}}
-          />
-        {{else if (eq field.control "text")}}
-          <Inputs::Text
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @placeholder={{field.placeholder}}
-          />
-        {{else if (eq field.control "boolean")}}
-          <Inputs::Boolean
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-          />
-        {{else if (eq field.control "number")}}
-          <Inputs::Number
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @placeholder={{field.placeholder}}
-            @min={{field.min}}
-            @max={{field.max}}
-            @step={{field.step}}
-          />
-        {{else if (eq field.control "date")}}
-          <Inputs::Date
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @placeholder={{field.placeholder}}
-          />
-        {{else if (eq field.control "select")}}
-          <Inputs::Select
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @options={{field.options}}
-          />
-        {{else if (eq field.control "reference")}}
-          <Inputs::Reference
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @collection={{evaluate field.source (or @changeset @model)}}
-            @multiple={{field.multiple}}
-            @labelKey={{field.labelKey}}
-            @emptyLabel={{field.emptyLabel}}
-            @allowEmpty={{field.allowEmpty}}
-          />
-        {{else if (eq field.control "well")}}
-          <Inputs::Well @id={{id}} @value={{changeset-get @changeset field.key}} />
-        {{else if (eq field.control "file")}}
-          <Inputs::File
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @model={{@changeset}}
-            @key={{field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @multiple={{field.multiple}}
-            @preview={{field.previewFile}}
-            @accept={{field.acceptMedia}}
-          />
-        {{else}}
-          <Inputs::Json
-            @id={{id}}
-            @value={{changeset-get @changeset field.key}}
-            @changed={{changeset-set @changeset field.key}}
-            @disabled={{or field.disabled (and field.locked this.locked)}}
-            @placeholder={{field.placeholder}}
-          />
-        {{/if}}
+        <Inputs::Generic
+          @type={{field.control}}
+          @id={{id}}
+          @key={{field.key}}
+          @value={{changeset-get @changeset field.key}}
+          @changed={{changeset-set @changeset field.key}}
+          @disabled={{or field.disabled (and field.locked this.locked)}}
+          @placeholder={{field.placeholder}}
+          @redacted={{field.redacted}}
+          @min={{field.min}}
+          @max={{field.max}}
+          @step={{field.step}}
+          @options={{field.options}}
+          @collection={{evaluate field.source (or @changeset @model)}}
+          @multiple={{field.multiple}}
+          @labelKey={{field.labelKey}}
+          @emptyLabel={{field.emptyLabel}}
+          @allowEmpty={{field.allowEmpty}}
+          @preview={{field.previewFile}}
+          @accept={{field.acceptMedia}}
+        />
 
         {{#if field.hint}}
           <div class="input__hint">
@@ -151,7 +90,12 @@
     {{/if}}
 
     {{#if this.lockable}}
-      <button type="button" disabled={{not this.locked}} class="form__button" {{on "click" (fn (mut this.locked) false)}}>
+      <button
+        type="button"
+        disabled={{not this.locked}}
+        class="form__button"
+        {{on "click" (fn (mut this.locked) false)}}
+      >
         Unlock
       </button>
     {{/if}}

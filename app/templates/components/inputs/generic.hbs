@@ -1,0 +1,75 @@
+{{#if (eq @type "string")}}
+  <Inputs::String
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+    @redacted={{@redacted}}
+  />
+{{else if (eq @type "text")}}
+  <Inputs::Text
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+  />
+{{else if (eq @type "boolean")}}
+  <Inputs::Boolean @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} />
+{{else if (eq @type "number")}}
+  <Inputs::Number
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+    @min={{@min}}
+    @max={{@max}}
+    @step={{@step}}
+  />
+{{else if (eq @type "date")}}
+  <Inputs::Date
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+  />
+{{else if (eq @type "select")}}
+  <Inputs::Select @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} @options={{@options}} />
+{{else if (eq @type "reference")}}
+  <Inputs::Reference
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @collection={{@collection}}
+    @multiple={{@multiple}}
+    @labelKey={{@labelKey}}
+    @emptyLabel={{@emptyLabel}}
+    @allowEmpty={{@allowEmpty}}
+  />
+{{else if (eq @type "well")}}
+  <Inputs::Well @id={{@id}} @value={{@value}} />
+{{else if (eq @type "file")}}
+  <Inputs::File
+    @id={{@id}}
+    @key={{@key}}
+    @value={{@value}}
+    @model={{@changeset}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @multiple={{@multiple}}
+    @preview={{@preview}}
+    @accept={{@accept}}
+  />
+{{else}}
+  <Inputs::Json
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+  />
+{{/if}}
