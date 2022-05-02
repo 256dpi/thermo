@@ -4,7 +4,7 @@ import { A } from '@ember/array';
 
 export default class extends Component {
   get labelKey() {
-    return this.args.labelKey || 'name';
+    return this.args.labelKey || 'id';
   }
 
   get emptyOption() {
