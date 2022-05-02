@@ -21,14 +21,14 @@
           @model={{@changeset}}
           @value={{changeset-get @changeset field.key}}
           @changed={{changeset-set @changeset field.key}}
-          @disabled={{or field.disabled (and field.locked this.locked)}}
+          @disabled={{or (evaluate field.disabled @changeset) (and field.locked this.locked)}}
           @placeholder={{field.placeholder}}
           @redacted={{field.redacted}}
           @min={{field.min}}
           @max={{field.max}}
           @step={{field.step}}
           @options={{field.options}}
-          @collection={{evaluate field.source (or @changeset @model)}}
+          @collection={{evaluate field.source @changeset}}
           @multiple={{field.multiple}}
           @labelKey={{field.labelKey}}
           @emptyLabel={{field.emptyLabel}}

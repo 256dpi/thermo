@@ -111,7 +111,7 @@ type Field struct {
 	Key         string     `json:"key"`
 	Hint        string     `json:"hint"`
 	Control     Control    `json:"control"`
-	Disabled    bool       `json:"disabled,omitempty"`
+	Disabled    Expression `json:"disabled,omitempty"`
 	Locked      bool       `json:"locked,omitempty"`
 	Placeholder string     `json:"placeholder,omitempty"` // string, text, number, date, undefined
 	Redacted    bool       `json:"redacted,omitempty"`    // string

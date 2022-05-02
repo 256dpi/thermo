@@ -185,9 +185,10 @@ var blueprint = thermo.Blueprint{
 					Control: thermo.ControlBoolean,
 				},
 				{
-					Label:   "Count",
-					Key:     "count",
-					Control: thermo.ControlNumber,
+					Label:    "Count",
+					Key:      "count",
+					Control:  thermo.ControlNumber,
+					Disabled: `return this.state`,
 				},
 				{
 					Label:   "Foo",
