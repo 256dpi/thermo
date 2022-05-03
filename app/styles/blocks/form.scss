@@ -64,6 +64,11 @@
           text-decoration: none;
           font-weight: bold;
         }
+
+        &--dirty {
+          border-left: 3px solid $blue;
+          padding-left: 7px;
+        }
       }
     }
 

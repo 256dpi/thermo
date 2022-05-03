@@ -4,7 +4,7 @@
   <div class="form__array__bar">
     {{#each this.elements as |element index|}}
       <div
-        class="form__array__bar__button {{if (eq index this.selection) 'form__array__bar__button--active'}}"
+        class="form__array__bar__button {{if (eq index this.selection) 'form__array__bar__button--active'}} {{if (gt (get (get this.changesets index) "changes.length") 0) 'form__array__bar__button--dirty'}}"
         role="button"
         {{on "click" (fn this.select index)}}
       >
