@@ -18,7 +18,7 @@ export default class extends Component {
     // add listener for route change
     this.router.on('routeWillChange', this, 'routeWillChange');
 
-    // determine lockability
+    // determine lock-ability
     if (this.args.config.fields.filter((field) => field.locked).length > 0) {
       this.lockable = true;
       this.locked = true;
@@ -27,21 +27,13 @@ export default class extends Component {
 
   get dirty() {
     // determine if dirty
-    if (this.args.changeset) {
-      return this.args.changeset.isDirty;
-    } else {
-      return this.args.model.hasDirtyAttributes;
-    }
+    return this.args.changeset.isDirty;
   }
 
   @action
   reset() {
-    // rollback attributes
-    if (this.args.changeset) {
-      this.args.changeset.rollback();
-    } else {
-      this.args.model.rollbackAttributes();
-    }
+    // rollback changes
+    this.args.changeset.rollback();
   }
 
   @action
@@ -76,14 +68,9 @@ export default class extends Component {
 
     // handle unsaved new models
     if (this.args.model.isNew) {
-      // discard model immediately if true
-      if (this.args.onAbandon === true) {
-        this.args.model.unloadRecord();
-        return;
-      }
-
-      // otherwise ignore if not set
+      // unload model if not set
       if (!this.args.onAbandon) {
+        this.args.model.unloadRecord();
         return;
       }
 
@@ -105,14 +92,9 @@ export default class extends Component {
 
     // handle unsaved changed models
     if (this.dirty) {
-      // rollback ack model immediately if true
-      if (this.args.onAbandon === true) {
-        this.reset();
-        return;
-      }
-
-      // otherwise ignore if not set
+      // reset model if not set
       if (!this.args.onAbandon) {
+        this.reset();
         return;
       }
 

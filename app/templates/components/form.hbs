@@ -7,7 +7,7 @@
   </div>
 
   <div class="form__row">
-    <button type="submit" class="form__button" disabled={{or @model.isSaving (and (not this.dirty))}}>
+    <button type="submit" class="form__button" disabled={{or @model.isSaving (not this.dirty)}}>
       {{#if @model.isSaving}}
         Saving...
       {{else}}
