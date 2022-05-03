@@ -52,6 +52,7 @@ $ember-power-select-highlighted-background: black;
   }
 
   &__boolean {
+    display: block;
     filter: grayscale(1);
     height: 20px;
     width: 20px;
