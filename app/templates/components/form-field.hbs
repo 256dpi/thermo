@@ -16,7 +16,7 @@
       <FormArray
         @form={{@form}}
         @elements={{changeset-get @changeset @config.key}}
-        @changed={{changeset-set @changeset @config.key}}
+        @changed={{queue (changeset-set @changeset @config.key) @changed}}
         @factory={{this.createElement}}
         @itemName={{@config.itemName}}
         as |formArray|
