@@ -31,6 +31,7 @@
     "ember-flatpickr": "^3.0.1",
     "ember-moment": "^8.0.2",
     "ember-power-select": "^4.0.5",
+    "ember-render-helpers": "^0.2.0",
     "ember-simple-auth": "^4.0.0",
     "ember-truth-helpers": "^3.0.0",
     "normalize.css": "~4.1.1",
