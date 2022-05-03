@@ -1,7 +1,7 @@
 <textarea
   id={{@id}}
   class="input__text"
-  value={{changeset-unwrap this.value}}
+  value={{json-pretty (changeset-unwrap @value)}}
   disabled={{@disabled}}
   placeholder={{@placeholder}}
   {{on "change" this.changed}}
