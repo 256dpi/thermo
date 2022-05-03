@@ -227,6 +227,19 @@ var blueprint = thermo.Blueprint{
 							Key:     "scale",
 							Control: thermo.ControlNumber,
 						},
+						{
+							Label:    "Toggles",
+							Key:      "toggles",
+							Control:  thermo.ControlArray,
+							ItemName: "Toggle",
+							ItemFields: []thermo.Field{
+								{
+									Label:   "State",
+									Key:     "state",
+									Control: thermo.ControlBoolean,
+								},
+							},
+						},
 					},
 					ItemFactory: `return { name: "Hello" }`,
 				},

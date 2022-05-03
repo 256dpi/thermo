@@ -55,9 +55,14 @@ func init() {
 	blaze.AddFileIndexes(catalog)
 }
 
+type toggle struct {
+	State bool `json:"state"`
+}
+
 type subItem struct {
-	Name  string  `json:"name"`
-	Scale float64 `json:"scale"`
+	Name    string   `json:"name"`
+	Scale   float64  `json:"scale"`
+	Toggles []toggle `json:"toggles"`
 }
 
 type item struct {
