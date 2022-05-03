@@ -1,6 +1,6 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
-    <FormField @config={{field}} @changeset={{@changeset}} @locked={{this.locked}} />
+    <FormField @form={{this}} @config={{field}} @changeset={{@changeset}} @changed={{noop}} />
   {{/each}}
 
   <div class="form__line">

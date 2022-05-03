@@ -1,0 +1,31 @@
+{{did-update this.reset @elements}}
+
+<div class="form__array">
+  <div class="form__array__bar">
+    {{#each this.elements as |element index|}}
+      <div
+        class="form__array__bar__button {{if (eq index this.selection) 'form__array__bar__button--active'}}"
+        role="button"
+        {{on "click" (fn this.select index)}}
+      >
+        {{concat @itemName " " index}}
+      </div>
+    {{/each}}
+
+    <div class="form__array__bar__button" role="button" {{on "click" this.add}}>
+      Add
+    </div>
+
+    {{#if this.selected}}
+      <div class="form__array__bar__button" role="button" {{on "click" (fn this.remove)}}>
+        Remove
+      </div>
+    {{/if}}
+  </div>
+
+  {{#if this.selected}}
+    <div class="form__array__content">
+      {{yield this}}
+    </div>
+  {{/if}}
+</div>

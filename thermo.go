@@ -126,6 +126,9 @@ type Field struct {
 	AllowEmpty  bool       `json:"allowEmpty,omitempty"`  // reference
 	PreviewFile bool       `json:"previewFile,omitempty"` // file
 	AcceptMedia string     `json:"acceptMedia,omitempty"` // file
+	ItemName    string     `json:"itemName,omitempty"`    // array
+	ItemFields  []Field    `json:"itemFields,omitempty"`  // array
+	ItemFactory Expression `json:"itemFactory,omitempty"` // array
 }
 
 // Option describes an option.
@@ -195,6 +198,7 @@ const (
 	ControlReference Control = "reference"
 	ControlWell      Control = "well"
 	ControlFile      Control = "file"
+	ControlArray     Control = "array"
 )
 
 // Any describes an arbitrary value.

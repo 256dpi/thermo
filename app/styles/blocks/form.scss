@@ -42,6 +42,36 @@
     }
   }
 
+  &__array {
+    border: 1px solid #ddd;
+    border-radius: $radius;
+
+    &__bar {
+      background-color: #eee;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+
+      &__button {
+        cursor: pointer;
+        margin-right: 10px;
+
+        &:hover {
+          color: #999;
+        }
+
+        &--active {
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &__content {
+      padding: 15px 20px 10px 20px;
+    }
+  }
+
   &__error {
     color: red;
   }

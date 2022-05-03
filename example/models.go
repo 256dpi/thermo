@@ -55,12 +55,18 @@ func init() {
 	blaze.AddFileIndexes(catalog)
 }
 
+type subItem struct {
+	Name  string  `json:"name"`
+	Scale float64 `json:"scale"`
+}
+
 type item struct {
 	coal.Base `json:"-" bson:",inline" coal:"items"`
 	Name      string      `json:"name"`
 	State     bool        `json:"state"`
 	Count     int         `json:"count"`
 	Raw       bson.M      `json:"raw"`
+	SubItems  []subItem   `json:"sub-items"`
 	File      *blaze.Link `json:"file"`
 	Created   time.Time   `json:"created" coal:"fire-created-timestamp"`
 	Updated   time.Time   `json:"updated" coal:"fire-updated-timestamp"`

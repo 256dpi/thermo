@@ -61,6 +61,10 @@ var blueprint = thermo.Blueprint{
 					Kind: thermo.KindValue,
 				},
 				{
+					Name: "subItems",
+					Kind: thermo.KindValue,
+				},
+				{
 					Name: "file",
 					Kind: thermo.KindFile,
 				},
@@ -206,6 +210,25 @@ var blueprint = thermo.Blueprint{
 					Label:  "Raw",
 					Key:    "raw",
 					Locked: true,
+				},
+				{
+					Label:    "Sub Items",
+					Key:      "subItems",
+					Control:  thermo.ControlArray,
+					ItemName: "Sub Item",
+					ItemFields: []thermo.Field{
+						{
+							Label:   "Name",
+							Key:     "name",
+							Control: thermo.ControlString,
+						},
+						{
+							Label:   "Scale",
+							Key:     "scale",
+							Control: thermo.ControlNumber,
+						},
+					},
+					ItemFactory: `return { name: "Hello" }`,
 				},
 				{
 					Label:       "File",
