@@ -1,4 +1,30 @@
 .dialog {
-  width: 500px;
+  width: 300px;
   margin: 25vh auto 0;
+
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
+
+  &__row {
+    margin: 20px 0;
+  }
+
+  &__button {
+    text-align: center;
+
+    button {
+      border: 0;
+      background: 0;
+      padding: 0;
+      color: $color;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
 }

@@ -1,10 +1,10 @@
 <div class="dialog">
-  <h1>
+  <h1 class="dialog__title">
     {{this.blueprint.title}}
   </h1>
 
-  <form class="form" {{on "submit" this.authenticate}}>
-    <div class="form__row">
+  <form class="" {{on "submit" this.authenticate}}>
+    <div class="dialog__row">
       <Controls::String
         @label="Email"
         @value={{this.email}}
@@ -13,7 +13,7 @@
       />
     </div>
 
-    <div class="form__row">
+    <div class="dialog__row">
       <Controls::String
         @label="Password"
         @value={{this.password}}
@@ -23,8 +23,8 @@
       />
     </div>
 
-    <div class="form__row">
-      <button class="form__button" type="submit">
+    <div class="dialog__button">
+      <button type="submit">
         Sign In
       </button>
     </div>
