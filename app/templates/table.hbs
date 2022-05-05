@@ -1,21 +1,13 @@
-<h1>
-  {{this.model.title}}
-</h1>
-
-<ul class="sub-nav">
-  <li class="sub-nav__item">
-    <LinkTo @route="table.index">
-      List
-    </LinkTo>
-  </li>
+<h1 class="content__title">
+  <LinkTo @route="table.index">
+    {{this.model.title}}
+  </LinkTo>
 
   {{#unless this.model.listOnly}}
-    <li class="sub-nav__item">
-      <LinkTo @route="table.new">
-        New
-      </LinkTo>
-    </li>
+    <LinkTo class="content__title__button" @route="table.new">
+      New
+    </LinkTo>
   {{/unless}}
-</ul>
+</h1>
 
 {{outlet}}

@@ -1,11 +1,7 @@
 <div class="toolbar">
   <div class="toolbar__group">
-    <div>
-      Data
-    </div>
-
     <button type="button" {{on "click" @refresh}}>
-      Refresh
+      Refresh Data
     </button>
   </div>
 
@@ -120,12 +116,12 @@
 </div>
 
 {{#if (gt @config.filters.length 0)}}
-  <div class="filters">
+  <div class="toolbar">
     {{#each @config.filters as |filter|}}
       {{#let (guid-for filter) as |id|}}
-        <div class="filters__group">
+        <div class="toolbar__group">
           {{#if filter.title}}
-            <label class="input__label" for={{id}}>
+            <label for={{id}}>
               {{filter.title}}
             </label>
           {{/if}}
@@ -147,21 +143,23 @@
 
 <table class="table">
   <thead>
-    <th width="1">
-      <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
-    </th>
+    <tr>
+      <th width="1">
+        <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
+      </th>
 
-    <th width="1">
-      ID
-    </th>
+      <th width="1">
+        ID
+      </th>
 
-    {{#each @config.columns as |column|}}
-      <th>{{column.title}}</th>
-    {{/each}}
+      {{#each @config.columns as |column|}}
+        <th>{{column.title}}</th>
+      {{/each}}
 
-    {{#if @config.actions.length}}
-      <th>Actions</th>
-    {{/if}}
+      {{#if @config.actions.length}}
+        <th>Actions</th>
+      {{/if}}
+    </tr>
   </thead>
 
   <tbody>

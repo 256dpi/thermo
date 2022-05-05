@@ -1,3 +1,26 @@
 .content {
-  padding: 20px 30px;
+  padding: 50px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-bottom: 50px;
+    font-size: 24px;
+    font-weight: bold;
+
+    a:hover {
+      opacity: 0.75;
+      text-decoration: none;
+    }
+
+    &__button {
+      font-weight: 500;
+      font-size: 16px;
+      padding: 3px 8px;
+      border: 1.5px solid $black;
+      margin-left: 25px;
+      border-radius: $radius;
+    }
+  }
 }

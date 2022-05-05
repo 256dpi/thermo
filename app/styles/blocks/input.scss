@@ -1,28 +1,37 @@
 // https://github.com/cibernox/ember-power-select/blob/master/app/styles/ember-power-select/variables.scss
 $ember-power-select-default-border-radius: $radius;
-$ember-power-select-border-color: #ddd;
-$ember-power-select-focus-border-color: black;
-$ember-power-select-highlighted-background: black;
+$ember-power-select-border-color: $shade2;
+$ember-power-select-focus-border-color: $black;
+$ember-power-select-highlighted-background: $color;
+$ember-power-select-trigger-ltr-padding: 10px 16px 10px 10px;
+$ember-power-select-option-padding: 15px;
 
 .ember-power-select-trigger {
   outline: 0;
   padding: 5px;
-  font-family: monospace;
+  font-family: $monospace;
   font-size: 16px;
+}
+
+.ember-power-select-status-icon {
+  right: 15px !important;
+}
+
+.ember-power-select-option {
+  padding: 5px 15px !important;
 }
 
 .input {
   &__label {
-    display: flex;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    align-items: center;
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 500;
 
     svg {
       margin-left: 7px;
 
       path {
-        fill: #333;
+        fill: $black;
       }
     }
   }
@@ -32,18 +41,25 @@ $ember-power-select-highlighted-background: black;
   &__number,
   &__date,
   &__select {
+    display: block;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid $shade2;
     border-radius: $radius;
-    padding: 7px 10px;
-    font-family: monospace;
+    padding: 10px 15px;
+    background-color: white;
+    font-family: $monospace;
     font-size: 16px;
     resize: vertical;
 
     &:focus {
-      border-color: black;
+      border-color: $black;
       outline: 0;
+    }
+
+    &:disabled {
+      color: $black;
+      background-color: $shade1;
     }
   }
 
@@ -74,25 +90,25 @@ $ember-power-select-highlighted-background: black;
   &__well {
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid #eee;
+    border: 1px solid $shade2;
     border-radius: $radius;
-    background-color: #eee;
+    background-color: $shade1;
     padding: 5px;
-    font-family: monospace;
+    font-family: $monospace;
     font-size: 16px;
-    color: #333;
+    color: $black;
   }
 
   &__file {
     p {
-      margin: 5px 0;
+      margin: 7px 0;
 
       span {
-        color: #999;
+        color: $grey;
       }
 
       a {
-        color: $blue;
+        color: $color;
       }
     }
 
@@ -101,19 +117,38 @@ $ember-power-select-highlighted-background: black;
     video,
     iframe {
       display: block;
-      margin: 5px 0;
-      max-height: 300px;
-      min-width: 600px;
+      margin: 7px 0;
+      width: 100%;
+      height: 400px;
       object-fit: contain;
-      background-color: black;
+      background-color: $black;
       border-radius: $radius;
       border: 0;
+    }
+
+    &__button,
+    button {
+      border: 0;
+      background: 0;
+      padding: 0;
+      margin-right: 10px;
+      font-weight: bold;
+      color: $color;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
     }
   }
 
   &__hint {
-    margin-top: 5px;
-    color: #999;
+    margin-top: 7px;
+    color: $grey;
     font-size: 14px;
   }
 }

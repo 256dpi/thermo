@@ -21,13 +21,13 @@
         <iframe src={{file-url @value}} title={{@id}}></iframe>
       {{/if}}
     {{/if}}
-  </div>
 
-  {{#unless @disabled}}
-    <button type="button" class="form__button" {{on "click" (fn this.files.unset @model @key)}}>
-      Unset
-    </button>
-  {{/unless}}
+    {{#unless @disabled}}
+      <button type="button" {{on "click" (fn this.files.unset @model @key)}}>
+        Unset
+      </button>
+    {{/unless}}
+  </div>
 {{else}}
   <div class="input__file">
     <p>
@@ -39,7 +39,7 @@
 
   {{#unless @disabled}}
     <FileUpload
-      class="form__button"
+      class="input__file__button"
       @name={{@id}}
       @accept={{@accept}}
       @onfileadd={{fn this.files.upload @model @key false}}

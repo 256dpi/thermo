@@ -14,7 +14,7 @@ var build embed.FS
 type Blueprint struct {
 	Title   string  `json:"title"`
 	Backend Backend `json:"backend"`
-	Menu    Menu    `json:"menu"`
+	Menus   []Menu  `json:"menus"`
 	Models  []Model `json:"models"`
 }
 
@@ -28,12 +28,15 @@ type Backend struct {
 	UploadPath   string `json:"uploadPath"`
 	DownloadPath string `json:"downloadPath"`
 	ClientID     string `json:"clientID"`
+	UserDataKey  string `json:"userDataKey"`
+	UserModel    string `json:"userModel"`
+	UserNameKey  string `json:"userNameKey"`
 }
 
 // Menu describes a menu.
 type Menu struct {
-	Left  []MenuItem `json:"left"`
-	Right []MenuItem `json:"right"`
+	Title string     `json:"title"`
+	Items []MenuItem `json:"items"`
 }
 
 // MenuItem describes a menu item.

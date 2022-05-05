@@ -1,45 +1,52 @@
 .nav {
-  background-color: #ddd;
+  padding: 50px;
+  background-color: $color;
 
-  &__wrapper {
-    margin: 0 auto;
-    padding: 20px 30px;
-    display: flex;
-    justify-content: space-between;
+  color: $shade1;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+
+    a:hover {
+      opacity: 0.75;
+      text-decoration: none;
+    }
   }
 
-  &__list {
+  &__menu {
     list-style: none;
-    display: flex;
     padding: 0;
     margin: 0;
+    margin-top: 50px;
 
-    &__title {
-      color: black;
-      font-weight: bold;
-
-      a {
-        &:hover {
-          text-decoration: none;
-          color: #333;
-        }
-      }
+    &__head {
+      opacity: 0.5;
+      font-size: 12px;
     }
 
     &__item {
-      color: black;
-      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 16px;
 
       a,
       button {
-        border: 0;
         padding: 0;
+        margin: 0;
+        border: 0;
         background: 0;
+        color: inherit;
         cursor: pointer;
 
         &:hover {
+          opacity: 0.75;
           text-decoration: none;
-          color: #666;
+        }
+
+        &.active {
+          border-left: 2px solid $shade1;
+          padding-left: 10px;
+          margin-left: -12px;
         }
       }
     }

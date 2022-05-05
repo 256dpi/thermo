@@ -4,7 +4,9 @@
   <div class="form__array__bar">
     {{#each this.elements as |element index|}}
       <div
-        class="form__array__bar__button {{if (eq index this.selection) 'form__array__bar__button--active'}} {{if (gt (get (get this.changesets index) "changes.length") 0) 'form__array__bar__button--dirty'}}"
+        class="form__array__bar__button
+          {{if (eq index this.selection) 'form__array__bar__button--active'}}
+          {{if (gt (get (get this.changesets index) 'changes.length') 0) 'form__array__bar__button--dirty'}}"
         role="button"
         {{on "click" (fn this.select index)}}
       >
@@ -12,12 +14,16 @@
       </div>
     {{/each}}
 
-    <div class="form__array__bar__button" role="button" {{on "click" this.add}}>
+    <div class="form__array__bar__button form__array__bar__button--color" role="button" {{on "click" this.add}}>
       Add
     </div>
 
     {{#if this.selected}}
-      <div class="form__array__bar__button" role="button" {{on "click" (fn this.remove)}}>
+      <div
+        class="form__array__bar__button form__array__bar__button--color"
+        role="button"
+        {{on "click" (fn this.remove)}}
+      >
         Remove
       </div>
     {{/if}}

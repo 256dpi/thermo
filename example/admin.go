@@ -19,18 +19,24 @@ var blueprint = thermo.Blueprint{
 		DownloadPath: "api/download",
 		ClientID:     "main-key",
 	},
-	Menu: thermo.Menu{
-		Left: []thermo.MenuItem{
-			{Title: "Items", Model: "item"},
-			{Title: "Thing", Model: "thing"},
+	Menus: []thermo.Menu{
+		{
+			Title: "App",
+			Items: []thermo.MenuItem{
+				{Title: "Items", Model: "item"},
+				{Title: "Thing", Model: "thing"},
+			},
 		},
-		Right: []thermo.MenuItem{
-			{Title: "Applications", Model: "application"},
-			{Title: "Users", Model: "user"},
-			{Title: "Tokens", Model: "token"},
-			{Title: "Jobs", Model: "job"},
-			{Title: "Values", Model: "value"},
-			{Title: "Files", Model: "file"},
+		{
+			Title: "Builtin",
+			Items: []thermo.MenuItem{
+				{Title: "Applications", Model: "application"},
+				{Title: "Users", Model: "user"},
+				{Title: "Tokens", Model: "token"},
+				{Title: "Jobs", Model: "job"},
+				{Title: "Values", Model: "value"},
+				{Title: "Files", Model: "file"},
+			},
 		},
 	},
 	Models: []thermo.Model{

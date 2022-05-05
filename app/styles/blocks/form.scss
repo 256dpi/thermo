@@ -1,53 +1,22 @@
 .form {
-  background-color: white;
-
   &__row {
-    margin: 5px 0 15px -10px;
+    margin: 5px 0 25px -10px;
     padding-left: 10px;
 
     &--dirty {
       padding-left: 7px;
-      border-left: 3px solid $blue;
-    }
-
-    &--locked {
-      border-left-color: $red;
-    }
-  }
-
-  &__line {
-    border-top: 1px solid #aaa;
-    margin: 15px 0;
-  }
-
-  &__button {
-    display: inline-block;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: $radius;
-    padding: 7px 15px;
-    background-color: #eee;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken(#eee, 7);
-    }
-
-    &--warning {
-      background-color: #ffc0c0;
-
-      &:hover {
-        background-color: darken(#ffc0c0, 7);
-      }
+      border-left: 3px solid $color;
     }
   }
 
   &__array {
-    border: 1px solid #ddd;
+    border: 1px solid $shade2;
     border-radius: $radius;
 
     &__bar {
-      background-color: #eee;
+      height: 30px;
+      background-color: $shade1;
+      border-bottom: 1px solid $shade2;
       padding: 10px 20px;
       display: flex;
       align-items: center;
@@ -55,29 +24,31 @@
       &__button {
         cursor: pointer;
         margin-right: 10px;
+        font-weight: 600;
+        padding: 5px 0;
+
+        &--color {
+          color: $color;
+        }
 
         &:hover {
-          color: #999;
+          opacity: 0.75;
         }
 
         &--active {
-          text-decoration: none;
-          font-weight: bold;
+          opacity: 0.5;
         }
 
         &--dirty {
-          border-left: 3px solid $blue;
-          padding-left: 7px;
+          border-bottom: 3px solid $color;
+          padding-bottom: 2px;
         }
       }
     }
 
     &__content {
       padding: 15px 20px 5px 20px;
+      background-color: white;
     }
-  }
-
-  &__error {
-    color: red;
   }
 }

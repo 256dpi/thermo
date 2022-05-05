@@ -1,43 +1,51 @@
 {{page-title this.blueprint.title}}
 
 {{#if this.session.isAuthenticated}}
-  <div class="nav">
-    <nav class="nav__wrapper">
-      <ul class="nav__list">
-        <li class="nav__list__title">
+  <div class="app">
+    <div class="nav">
+      <nav class="nav__wrapper">
+        <div class="nav__title">
           <LinkTo @route="index">
             {{this.blueprint.title}}
           </LinkTo>
-        </li>
+        </div>
 
-        {{#each this.blueprint.menu.left as |item|}}
-          <li class="nav__list__item">
-            <LinkTo @route="table" @model={{item.model}}>
-              {{item.title}}
-            </LinkTo>
-          </li>
-        {{/each}}
-      </ul>
+        {{#each this.blueprint.menus as |menu|}}
+          <ul class="nav__menu">
+            <li class="nav__menu__head">
+              {{menu.title}}
+            </li>
 
-      <ul class="nav__list">
-        {{#each this.blueprint.menu.right as |item|}}
-          <li class="nav__list__item">
-            <LinkTo @route="table" @model={{item.model}}>
-              {{item.title}}
-            </LinkTo>
-          </li>
+            {{#each menu.items as |item|}}
+              <li class="nav__menu__item">
+                <LinkTo @route="table" @model={{item.model}}>
+                  {{item.title}}
+                </LinkTo>
+              </li>
+            {{/each}}
+          </ul>
         {{/each}}
 
-        <li class="nav__list__item">
-          <button type="button" {{on "click" this.logout}}>
-            Sign Out
-          </button>
-        </li>
-      </ul>
-    </nav>
+        <ul class="nav__menu">
+          <li class="nav__menu__head">
+            {{get this.user.model (or this.blueprint.backend.usernameKey "name")}}
+          </li>
+
+          <li class="nav__menu__item">
+            <button type="button" {{on "click" this.logout}}>
+              Sign Out
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="content">
+      {{outlet}}
+    </div>
+  </div>
+{{else}}
+  <div class="content">
+    {{outlet}}
   </div>
 {{/if}}
-
-<div class="content">
-  {{outlet}}
-</div>

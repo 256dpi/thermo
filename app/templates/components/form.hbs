@@ -3,59 +3,51 @@
     <FormField @form={{this}} @config={{field}} @changeset={{@changeset}} @changed={{noop}} />
   {{/each}}
 
-  <div class="form__line">
-  </div>
-
-  <div class="form__row">
-    <button type="submit" class="form__button" disabled={{or @model.isSaving (not this.dirty)}}>
-      {{#if @model.isSaving}}
-        Saving...
-      {{else}}
-        {{#if @model.isNew}}
-          Create
+  <div class="toolbar">
+    <div class="toolbar__group">
+      <button type="submit" disabled={{or @model.isSaving (not this.dirty)}}>
+        {{#if @model.isSaving}}
+          Saving...
         {{else}}
-          Update
+          {{#if @model.isNew}}
+            Create
+          {{else}}
+            Update
+          {{/if}}
         {{/if}}
-      {{/if}}
-    </button>
+      </button>
+    </div>
 
     {{#unless @model.isNew}}
-      <button
-        type="button"
-        class="form__button"
-        disabled={{or (not this.dirty) @model.isSaving}}
-        {{on "click" this.reset}}
-      >
-        Reset
-      </button>
+      <div class="toolbar__group">
+        <button type="button" disabled={{or (not this.dirty) @model.isSaving}} {{on "click" this.reset}}>
+          Reset
+        </button>
+      </div>
     {{/unless}}
 
     {{#if @onCancel}}
-      <button type="button" class="form__button" disabled={{@model.isSaving}} {{on "click" this.cancel}}>
-        Cancel
-      </button>
+      <div class="toolbar__group">
+        <button type="button" disabled={{@model.isSaving}} {{on "click" this.cancel}}>
+          Cancel
+        </button>
+      </div>
     {{/if}}
 
     {{#if @onDelete}}
-      <button
-        class="form__button form__button--warning"
-        type="button"
-        disabled={{@model.isSaving}}
-        {{on "click" @onDelete}}
-      >
-        Delete
-      </button>
+      <div class="toolbar__group">
+        <button type="button" disabled={{@model.isSaving}} {{on "click" @onDelete}}>
+          Delete
+        </button>
+      </div>
     {{/if}}
 
     {{#if this.lockable}}
-      <button
-        type="button"
-        disabled={{not this.locked}}
-        class="form__button"
-        {{on "click" (fn (mut this.locked) false)}}
-      >
-        Unlock
-      </button>
+      <div class="toolbar__group">
+        <button type="button" disabled={{not this.locked}} {{on "click" (fn (mut this.locked) false)}}>
+          Unlock
+        </button>
+      </div>
     {{/if}}
   </div>
 </form>

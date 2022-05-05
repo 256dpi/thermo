@@ -1,24 +1,45 @@
 .toolbar {
+  height: 30px;
   display: flex;
   align-items: center;
-  background-color: #eee;
-  padding: 10px;
+  background-color: $shade1;
+  border: 1px solid $shade2;
+  border-radius: $radius;
+  padding: 10px 20px;
   margin: 10px 0;
 
   &__group {
     display: flex;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 25px;
 
     &:first-child {
       margin-left: 0;
     }
 
     > * {
-      margin-left: 5px;
+      margin-left: 7px;
 
       &:first-child {
         margin-left: 0;
+      }
+    }
+
+    button,
+    select {
+      border: 0;
+      padding: 0;
+      background: none;
+      font-weight: 600;
+      color: $color;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      &:disabled {
+        opacity: 0.5;
       }
     }
   }

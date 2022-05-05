@@ -1,38 +1,126 @@
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 0;
 
   thead {
-    th {
-      text-align: left;
-      padding: 6px 10px;
-      border: 1px solid #999;
-      background-color: #eee;
+    tr {
+      th {
+        height: 30px;
+        text-align: left;
+        padding: 10px 20px;
+        padding-right: 0;
+        background-color: white;
+        font-weight: 600;
+
+        border-bottom: 1px solid #e0e0e0;
+
+        &:first-child {
+          border-left: 1px solid #e0e0e0;
+        }
+
+        &:last-child {
+          padding-right: 20px;
+          border-right: 1px solid #e0e0e0;
+        }
+      }
+
+      &:first-child {
+        th {
+          border-top: 1px solid #e0e0e0;
+
+          &:first-child {
+            border-top-left-radius: $radius;
+          }
+
+          &:last-child {
+            border-top-right-radius: $radius;
+          }
+        }
+      }
     }
   }
 
   tbody {
-    td {
-      border: 1px solid #999;
-      padding: 6px 10px;
+    tr {
+      td {
+        height: 30px;
+        background-color: white;
+        padding: 10px 20px;
+        padding-right: 0;
+        border-bottom: 1px solid #e0e0e0;
 
-      a {
-        color: $blue;
+        &:first-child {
+          border-left: 1px solid #e0e0e0;
+        }
+
+        &:last-child {
+          padding-right: 20px;
+          border-right: 1px solid #e0e0e0;
+        }
+
+        a {
+          color: $color;
+          font-weight: 500;
+
+          &:hover {
+            opacity: 0.75;
+            text-decoration: none;
+          }
+        }
+
+        pre {
+          display: inline-block;
+          margin: 0;
+          padding: 5px 7px;
+          border: 1px solid #ddd;
+          border-radius: $radius;
+          cursor: pointer;
+          font-family: $monospace;
+          font-size: 14px;
+
+          &:hover {
+            border-color: #aaa;
+            background-color: #eee;
+          }
+        }
+
+        progress {
+          filter: grayscale(1);
+        }
+
+        button {
+          border: 0;
+          background: 0;
+          padding: 0;
+          margin-right: 10px;
+          font-weight: bold;
+          color: $color;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.75;
+          }
+
+          &:disabled {
+            opacity: 0.5;
+          }
+        }
       }
 
-      pre {
-        margin: 0;
-        padding: 2px 5px;
-        max-width: 1000px;
-        max-height: 250px;
-        overflow: scroll;
-        border: none;
-        cursor: pointer;
-        background-color: #eee;
+      &:hover {
+        td {
+          background-color: #f5f5f5;
+        }
+      }
 
-        &:hover {
-          background-color: #ddd;
-          border-radius: $radius;
+      &:last-child {
+        td:first-child {
+          border-bottom-left-radius: $radius;
+        }
+
+        td:last-child {
+          border-bottom-right-radius: $radius;
         }
       }
     }

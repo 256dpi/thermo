@@ -1,11 +1,23 @@
 @import 'normalize';
 
-$blue: #0080ff;
+@import 'fonts';
+
+$radius: 3px;
+
+$color: #30518d;
+$black: #212121;
 $red: #ff4040;
-$radius: 2px;
+$shade1: #f5f5f5;
+$shade2: #e0e0e0;
+$grey: #999;
+
+$monospace: 'Fira Mono', monospace;
 
 body {
-  background-color: #fefefe;
+  background-color: #fafafa;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: $black;
 }
 
 a {
@@ -17,9 +29,9 @@ a {
   }
 }
 
+@import 'blocks/app';
 @import 'blocks/content';
 @import 'blocks/dialog';
-@import 'blocks/filters';
 @import 'blocks/form';
 @import 'blocks/input';
 @import 'blocks/nav';
