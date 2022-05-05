@@ -40,7 +40,9 @@ $ember-power-select-option-padding: 15px;
   &__text,
   &__number,
   &__date,
-  &__select {
+  &__select,
+  &__well {
+    height: 42px;
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -64,7 +66,7 @@ $ember-power-select-option-padding: 15px;
   }
 
   &__text {
-    min-height: 50px;
+    min-height: 84px;
   }
 
   &__boolean {
@@ -88,15 +90,7 @@ $ember-power-select-option-padding: 15px;
   }
 
   &__well {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid $shade2;
-    border-radius: $radius;
     background-color: $shade1;
-    padding: 5px;
-    font-family: $monospace;
-    font-size: 16px;
-    color: $black;
   }
 
   &__file {

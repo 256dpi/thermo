@@ -218,6 +218,11 @@ var blueprint = thermo.Blueprint{
 					Locked: true,
 				},
 				{
+					Label:   "Name Again",
+					Key:     "name",
+					Control: thermo.ControlWell,
+				},
+				{
 					Label:    "Sub Items",
 					Key:      "subItems",
 					Control:  thermo.ControlArray,
