@@ -1,6 +1,6 @@
 {{#let (guid-for @config) as |id|}}
   <div class="form__row {{if (changeset-dirty @changeset @config.key) 'form__row--dirty'}}">
-    <label class="input__label" for={{id}}>
+    <label class="form__row__label" for={{id}}>
       {{or @config.label "Unlabeled"}}
 
       {{#if @config.locked}}
@@ -52,7 +52,7 @@
     {{/if}}
 
     {{#if @config.hint}}
-      <div class="input__hint">
+      <div class="form__row__hint">
         {{@config.hint}}
       </div>
     {{/if}}
