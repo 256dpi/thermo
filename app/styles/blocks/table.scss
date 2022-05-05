@@ -69,6 +69,15 @@
           }
         }
 
+        span {
+          border-radius: 14px;
+          background-color: $shade1;
+          border: 1px solid $shade2;
+          font-size: 14px;
+          font-weight: 500;
+          padding: 5px 10px;
+        }
+
         pre {
           display: inline-block;
           margin: 0;

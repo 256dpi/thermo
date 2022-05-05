@@ -193,7 +193,9 @@
                 {{if value "True" "False"}}
               {{else if (eq column.format "map")}}
                 {{#let (find-by "value" value column.options) as |option|}}
-                  {{if option option.label value}}
+                  <span>
+                    {{if option option.label value}}
+                  </span>
                 {{/let}}
               {{else if (eq column.format "absolute-date")}}
                 {{#if value}}
