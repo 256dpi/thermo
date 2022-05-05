@@ -19,11 +19,7 @@
     </div>
 
     {{#if this.selected}}
-      <div
-        class="form__array__bar__button form__array__bar__button--color"
-        role="button"
-        {{on "click" (fn this.remove)}}
-      >
+      <div class="form__array__bar__button form__array__bar__button--color" role="button" {{on "click" this.remove}}>
         Remove
       </div>
     {{/if}}
