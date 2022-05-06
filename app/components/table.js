@@ -1,8 +1,11 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import Pagination from '@256dpi/ember-fire/pagination';
 
 export default class extends Component {
+  @service modal;
+
   get pagination() {
     return new Pagination(this.args.list);
   }
@@ -32,7 +35,10 @@ export default class extends Component {
   }
 
   @action expand(value) {
-    alert(JSON.stringify(value, null, '  '));
+    // show modal
+    this.modal.push('modals/value', {
+      value,
+    });
   }
 
   @action changeSort(sort) {
