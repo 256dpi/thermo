@@ -66,7 +66,10 @@ export default class extends Route {
 
     // return full list if immediate
     if (config.immediate) {
-      return this.store.findAll(config.name);
+      return {
+        config: config,
+        model: this.store.findAll(config.name),
+      };
     }
 
     // decode filter
@@ -99,12 +102,9 @@ export default class extends Route {
       query.sort = params.sort;
     }
 
-    // get models
-    const models = this.store.query(config.name, query);
-
     return {
       config,
-      model: models,
+      model: this.store.query(config.name, query),
     };
   }
 

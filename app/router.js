@@ -9,5 +9,5 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('sign-in');
-  this.route('table', { path: 'table/:name' });
+  this.route('table', { path: ':name' });
 });

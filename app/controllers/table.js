@@ -55,9 +55,19 @@ export default class extends Controller {
     this.route.refresh();
   }
 
-  @action editItem(model) {
+  @action newItem() {
     // get config
     const config = this.config;
+
+    // create model
+    const model = this.store.createRecord(config.name);
+
+    // initialize values
+    config.attributes.forEach((attribute) => {
+      if (attribute.init) {
+        model.set(attribute.name, eval(attribute.init));
+      }
+    });
 
     // show modal
     this.modal.show(
@@ -72,19 +82,9 @@ export default class extends Controller {
     );
   }
 
-  @action newItem() {
+  @action editItem(model) {
     // get config
-    const config = this.model;
-
-    // create model
-    const model = this.store.createRecord(config.name);
-
-    // initialize values
-    config.attributes.forEach((attribute) => {
-      if (attribute.init) {
-        model.set(attribute.name, eval(attribute.init));
-      }
-    });
+    const config = this.config;
 
     // show modal
     this.modal.show(
