@@ -1,10 +1,14 @@
 {{#let (guid-for @config) as |id|}}
-  <div class="form__row {{if (changeset-dirty @changeset @config.key) 'form__row--dirty'}}">
+  <div class="form__row">
     <label class="form__row__label" for={{id}}>
       {{or @config.label "Unlabeled"}}
 
       {{#if @config.locked}}
         <Icons::Lock />
+      {{/if}}
+
+      {{#if (changeset-dirty @changeset @config.key)}}
+        <Icons::Edit/>
       {{/if}}
     </label>
 
