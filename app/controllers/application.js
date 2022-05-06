@@ -6,6 +6,7 @@ export default class extends Controller {
   @service session;
   @service blueprint;
   @service user;
+  @service modal;
 
   @action logout() {
     // invalidate session

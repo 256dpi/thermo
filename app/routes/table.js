@@ -10,6 +10,27 @@ export default class extends Route {
 
   @tracked name = null;
 
+  queryParams = {
+    sort: {
+      refreshModel: true,
+    },
+    filter: {
+      refreshModel: true,
+    },
+    pageSize: {
+      refreshModel: true,
+    },
+    pageNumber: {
+      refreshModel: true,
+    },
+    pageBefore: {
+      refreshModel: true,
+    },
+    pageAfter: {
+      refreshModel: true,
+    },
+  };
+
   beforeModel(transition) {
     // check authentication
     this.session.requireAuthentication(transition, 'sign-in');
@@ -41,7 +62,61 @@ export default class extends Route {
     // store name
     this.name = name;
 
-    return config;
+    /* load models */
+
+    // return full list if immediate
+    if (config.immediate) {
+      return this.store.findAll(config.name);
+    }
+
+    // decode filter
+    let filter;
+    try {
+      filter = JSON.parse(decodeURIComponent(params.filter));
+    } catch (e) {
+      filter = {};
+    }
+
+    // prepare query
+    const query = {
+      filter: filter,
+      page: {
+        size: params.pageSize,
+      },
+    };
+    if (params.pageNumber !== 0) {
+      query.page.number = params.pageNumber;
+    }
+    if (params.pageBefore !== '') {
+      query.page.before = params.pageBefore;
+    }
+    if (params.pageAfter !== '') {
+      query.page.after = params.pageAfter;
+    }
+
+    // add sorting if available
+    if (params.sort) {
+      query.sort = params.sort;
+    }
+
+    // get models
+    const models = this.store.query(config.name, query);
+
+    return {
+      config,
+      model: models,
+    };
+  }
+
+  setupController(controller, data) {
+    // set model
+    controller.set('model', data.model);
+
+    // set config
+    controller.set('config', data.config);
+
+    // set route on controller
+    controller.set('route', this);
   }
 
   deactivate() {

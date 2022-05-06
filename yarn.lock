@@ -1208,7 +1208,7 @@
     ember-cli-version-checker "^5.1.2"
     semver "^7.3.5"
 
-"@embroider/macros@0.41.0":
+"@embroider/macros@0.41.0", "@embroider/macros@^0.41.0":
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.41.0.tgz#3e78b6f388d7229906abf4c75edfff8bb0208aca"
   integrity sha512-QISzwEEfLsskZeL0jyZDs1RoQSotwBWj+4upTogNHuxQP5j/9H3IMG/3QB1gh8GEpbudATb/cS4NDYK3UBxufw==
@@ -5464,6 +5464,17 @@ ember-flatpickr@^3.0.1:
     ember-cli-typescript "^4.1.0"
     flatpickr "^4.6.9"
 
+ember-focus-trap@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/ember-focus-trap/-/ember-focus-trap-0.7.0.tgz#8c3fa66a0d393dad2994db82e2fa227103875fc0"
+  integrity sha512-WHOD8jTcCzsRb0cU8J5SKObrxbdD8rPSWrSUjZ2QYu9dVbaXg6/hZxcN5JrmPY1ArnsRaLMPdOUALYeZTP29og==
+  dependencies:
+    "@embroider/macros" "^0.41.0"
+    ember-auto-import "^1.11.2"
+    ember-cli-babel "^7.26.3"
+    ember-modifier-manager-polyfill "^1.2.0"
+    focus-trap "^6.4.0"
+
 ember-get-config@:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-2.0.0.tgz#3d191a8ac42830f4fd6769597c6179c0cdef6d5b"
@@ -6657,6 +6668,13 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
+
+focus-trap@^6.4.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-6.9.0.tgz#d72a1ba17ac1b500bd857c6b01f072b8cfd97f6e"
+  integrity sha512-Yv3ieSeAPbfjzjU6xIuF1yAGw0kIKO5EkEJL9o/8MYfBcr99cV7dE6rJM4slk1itDHHeEhoNorQVzvEIT1rNsw==
+  dependencies:
+    tabbable "^5.3.1"
 
 follow-redirects@^1.0.0:
   version "1.14.9"
@@ -10855,6 +10873,11 @@ sync-disk-cache@^2.0.0:
     mkdirp "^0.5.0"
     rimraf "^3.0.0"
     username-sync "^1.0.2"
+
+tabbable@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.3.1.tgz#059f2a19b829efce2a0ec05785a47dd3bcd0a25b"
+  integrity sha512-NtO7I7eoAHR+JwwcNsi/PipamtAEebYDnur/k9wM6n238HHy/+1O4+7Zx7e/JaDAbKJPlIFYsfsV/6tPqTOQvg==
 
 table@^6.0.9:
   version "6.8.0"

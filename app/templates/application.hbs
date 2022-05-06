@@ -49,3 +49,24 @@
     {{outlet}}
   </div>
 {{/if}}
+
+{{#each this.modal.modals as |m|}}
+  <div
+    class="modal-wrapper"
+    aria-modal="true"
+    role="dialog"
+    tabindex="-1"
+    {{focus-trap
+      isActive=(eq modal.modals.lastObject m)
+      shouldSelfFocus=true
+      focusTrapOptions=(hash escapeDeactivates=false)
+    }}
+  >
+    {{component
+      m.component
+      data=m.data
+      complete=(action "complete" target=modal)
+      dismiss=(action "dismiss" target=modal)
+    }}
+  </div>
+{{/each}}

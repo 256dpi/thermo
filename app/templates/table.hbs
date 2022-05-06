@@ -1,13 +1,29 @@
 <h1 class="content__title">
-  <LinkTo @route="table.index">
-    {{this.model.title}}
+  <LinkTo @route="table">
+    {{this.config.title}}
   </LinkTo>
 
-  {{#unless this.model.listOnly}}
-    <LinkTo class="content__title__button" @route="table.new">
+  {{#unless this.config.listOnly}}
+    <button type="button" class="content__title__button" {{on "click" this.newItem}}>
       New
-    </LinkTo>
+    </button>
   {{/unless}}
 </h1>
 
-{{outlet}}
+<!-- TODO: Scopes (sub-nav) -->
+
+<Table
+  @config={{this.config}}
+  @list={{this.model}}
+  @sort={{this.sort}}
+  @filter={{this.decodeFilter}}
+  @count={{this.pageSize}}
+  @page={{this.pageNumber}}
+  @refresh={{this.refresh}}
+  @changedSort={{fn (mut this.sort)}}
+  @changedFilter={{this.encodeFilter}}
+  @changedCount={{fn (mut this.pageSize)}}
+  @changedPage={{this.setPageNumber}}
+  @changedCursor={{this.setPageCursor}}
+  @clicked={{this.editItem}}
+/>

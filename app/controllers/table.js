@@ -1,8 +1,12 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class extends Controller {
+  @service modal;
+  @service router;
+
   queryParams = [
     {
       sort: 's',
@@ -49,5 +53,49 @@ export default class extends Controller {
 
   @action refresh() {
     this.route.refresh();
+  }
+
+  @action editItem(model) {
+    // get config
+    const config = this.config;
+
+    // show modal
+    this.modal.show(
+      'modals/new',
+      {
+        config,
+        model,
+      },
+      () => {
+        this.route.refresh();
+      }
+    );
+  }
+
+  @action newItem() {
+    // get config
+    const config = this.model;
+
+    // create model
+    const model = this.store.createRecord(config.name);
+
+    // initialize values
+    config.attributes.forEach((attribute) => {
+      if (attribute.init) {
+        model.set(attribute.name, eval(attribute.init));
+      }
+    });
+
+    // show modal
+    this.modal.show(
+      'modals/new',
+      {
+        config,
+        model,
+      },
+      () => {
+        this.route.refresh();
+      }
+    );
   }
 }

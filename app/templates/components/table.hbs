@@ -178,9 +178,9 @@
           {{#if @config.listOnly}}
             {{model.id}}
           {{else}}
-            <LinkTo @route="table.edit" @model={{model.id}}>
+            <button type="button" {{on "click" (fn @clicked model)}}>
               {{model.id}}
-            </LinkTo>
+            </button>
           {{/if}}
         </td>
 

@@ -1,0 +1,16 @@
+<div class="modal">
+  <h2 class="modal__title">
+    New Item
+  </h2>
+
+  {{#let (changeset @data.model) as |changeset|}}
+    <Form
+      @config={{@data.config}}
+      @model={{@data.model}}
+      @changeset={{changeset}}
+      @onSubmit={{queue (save-model changeset) @complete}}
+      @onCancel={{@dismiss}}
+      @onAbandon={{confirm "Abandon?"}}
+    />
+  {{/let}}
+</div>
