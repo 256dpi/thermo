@@ -42,7 +42,8 @@ var blueprint = thermo.Blueprint{
 	Models: []thermo.Model{
 		{
 			Name:      "item",
-			Title:     "Items",
+			Singular:  "Item",
+			Plural:    "Items",
 			Watchable: true,
 			Attributes: []thermo.Attribute{
 				{
@@ -263,7 +264,7 @@ var blueprint = thermo.Blueprint{
 				},
 			},
 		},
-		thermo.Auto(&thing{}, "thing", "Things"),
+		thermo.Auto(&thing{}, "thing", "Thing", "Things"),
 		thermo.Applications(),
 		thermo.Users(),
 		thermo.Tokens(),

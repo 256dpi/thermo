@@ -48,7 +48,8 @@ type MenuItem struct {
 // Model describes a model.
 type Model struct {
 	Name       string      `json:"name"`
-	Title      string      `json:"title"`
+	Singular   string      `json:"singular"`
+	Plural     string      `json:"plural"`
 	Watchable  bool        `json:"watchable"`
 	Immediate  bool        `json:"immediate"`
 	ListOnly   bool        `json:"listOnly"`

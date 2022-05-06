@@ -1,6 +1,7 @@
 <div class="modal">
   <h2 class="modal__title">
-    New Item
+    New
+    {{@data.config.singular}}
   </h2>
 
   {{#let (changeset @data.model) as |changeset|}}

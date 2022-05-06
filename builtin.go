@@ -11,13 +11,13 @@ import (
 
 // Applications will return the model for managing flame.Application documents.
 func Applications() Model {
-	return Auto(&flame.Application{}, "application", "Applications")
+	return Auto(&flame.Application{}, "application", "Application", "Applications")
 }
 
 // Users will return the model for managing flame.User documents.
 func Users() Model {
 	// prepare model
-	model := Auto(&flame.User{}, "user", "Users")
+	model := Auto(&flame.User{}, "user", "User", "Users")
 
 	// patch fields
 	for i, field := range model.Fields {
@@ -38,7 +38,7 @@ func Tokens() Model {
 	}
 
 	// prepare model
-	model := Auto(&flame.Token{}, "token", "Tokens")
+	model := Auto(&flame.Token{}, "token", "Token", "Tokens")
 
 	// patch columns
 	for i, column := range model.Columns {
@@ -78,7 +78,7 @@ func Jobs(live bool) Model {
 	}
 
 	// prepare model
-	model := Auto(&axe.Model{}, "job", "Jobs")
+	model := Auto(&axe.Model{}, "job", "Job", "Jobs")
 	model.Watchable = live
 	model.Immediate = live
 
@@ -114,7 +114,7 @@ func Jobs(live bool) Model {
 // true it requires permission to watch documents.
 func Values(live bool) Model {
 	// prepare model
-	model := Auto(&glut.Model{}, "value", "Values")
+	model := Auto(&glut.Model{}, "value", "Value", "Values")
 	model.Watchable = live
 	model.Immediate = live
 
@@ -133,7 +133,7 @@ func Files() Model {
 	}
 
 	// prepare model
-	model := Auto(&blaze.File{}, "file", "Files")
+	model := Auto(&blaze.File{}, "file", "File", "Files")
 
 	// patch columns
 	for i, column := range model.Columns {

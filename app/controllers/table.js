@@ -88,7 +88,7 @@ export default class extends Controller {
 
     // show modal
     this.modal.show(
-      'modals/new',
+      'modals/edit',
       {
         config,
         model,

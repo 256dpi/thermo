@@ -53,11 +53,12 @@ func Title(name string) string {
 }
 
 // Auto will generate a Model definition for the provided coal.Model.
-func Auto(model coal.Model, name, title string, modifiers ...func(*Model)) Model {
+func Auto(model coal.Model, name, singular, plural string, modifiers ...func(*Model)) Model {
 	// prepare model
 	m := Model{
 		Name:       name,
-		Title:      title,
+		Singular:   singular,
+		Plural:     plural,
 		Attributes: Attributes(model),
 		Columns:    Columns(model),
 		Fields:     Fields(model),

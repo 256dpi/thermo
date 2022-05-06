@@ -1,6 +1,7 @@
 <div class="modal">
   <h2 class="modal__title">
-    Edit Item
+    Edit
+    {{@data.config.singular}}
   </h2>
 
   {{#let (changeset @data.model) as |changeset|}}
@@ -10,7 +11,7 @@
       @changeset={{changeset}}
       @onSubmit={{queue (save-model changeset) @complete}}
       @onCancel={{@dismiss}}
-      @onDelete={{confirm "Sure?" (queue (delete-model this.model) @complete)}}
+      @onDelete={{confirm "Sure?" (queue (delete-model @data.model) @complete)}}
       @onAbandon={{confirm "Abandon?"}}
     />
   {{/let}}
