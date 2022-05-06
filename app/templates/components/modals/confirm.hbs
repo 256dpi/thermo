@@ -1,14 +1,22 @@
 <div class="modal">
   <h2 class="modal__title">
-    Value
+    Confirm
   </h2>
 
-  <Controls::Json @id="value" @value={{@data.value}} />
+  <p>
+    {{@data.text}}
+  </p>
 
   <div class="toolbar">
     <div class="toolbar__group">
+      <button type="button" {{on "click" @complete}}>
+        OK
+      </button>
+    </div>
+
+    <div class="toolbar__group">
       <button type="button" {{on "click" @dismiss}}>
-        Close
+        Cancel
       </button>
     </div>
   </div>

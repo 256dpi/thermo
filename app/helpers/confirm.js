@@ -1,20 +1,33 @@
-import { helper } from '@ember/component/helper';
+import Helper from '@ember/component/helper';
+import { inject as service } from '@ember/service';
 
-function confirm([msg, confirmed, declined]) {
-  // check callback
-  if (confirmed) {
-    return function () {
-      if (window.confirm(msg)) {
-        confirmed();
-      } else if (declined) {
-        declined();
-      }
-    };
+export default class Confirm extends Helper {
+  @service modal;
+
+  compute([msg, confirmed, declined]) {
+    // check callback
+    if (confirmed) {
+      return () => {
+        this.modal.push(
+          'modals/confirm',
+          {
+            text: msg,
+          },
+          confirmed,
+          declined
+        );
+      };
+    }
+
+    return new Promise((resolve, reject) => {
+      this.modal.push(
+        'modals/confirm',
+        {
+          text: msg,
+        },
+        resolve,
+        reject
+      );
+    });
   }
-
-  return async function () {
-    return window.confirm(msg);
-  };
 }
-
-export default helper(confirm);
