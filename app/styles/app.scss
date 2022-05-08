@@ -29,7 +29,13 @@ a {
   }
 }
 
-@import 'blocks/app';
+.app {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 300px auto;
+}
+
 @import 'blocks/content';
 @import 'blocks/dialog';
 @import 'blocks/form';
