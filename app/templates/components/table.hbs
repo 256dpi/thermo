@@ -1,7 +1,17 @@
 <div class="toolbar">
+  {{#unless @config.listOnly}}
+    <div class="toolbar__group">
+      <button type="button" {{on "click" @createItem}}>
+        Create
+        {{@config.singular}}
+      </button>
+    </div>
+  {{/unless}}
+
   <div class="toolbar__group">
     <button type="button" {{on "click" @refresh}}>
-      Refresh Data
+      Refresh
+      {{@config.plural}}
     </button>
   </div>
 
@@ -178,7 +188,7 @@
           {{#if @config.listOnly}}
             {{model.id}}
           {{else}}
-            <button type="button" {{on "click" (fn @clicked model)}}>
+            <button type="button" {{on "click" (fn @editItem model)}}>
               {{model.id}}
             </button>
           {{/if}}

@@ -1,13 +1,5 @@
 <h1 class="content__title">
-  <LinkTo @route="table">
-    {{this.config.plural}}
-  </LinkTo>
-
-  {{#unless this.config.listOnly}}
-    <button type="button" class="content__title__button" {{on "click" this.newItem}}>
-      New
-    </button>
-  {{/unless}}
+  {{this.config.plural}}
 </h1>
 
 <Table
@@ -23,5 +15,6 @@
   @changedCount={{fn (mut this.pageSize)}}
   @changedPage={{this.setPageNumber}}
   @changedCursor={{this.setPageCursor}}
-  @clicked={{this.editItem}}
+  @createItem={{this.createItem}}
+  @editItem={{this.editItem}}
 />

@@ -55,7 +55,7 @@ export default class extends Controller {
     this.route.refresh();
   }
 
-  @action newItem() {
+  @action createItem() {
     // get config
     const config = this.config;
 
@@ -71,7 +71,7 @@ export default class extends Controller {
 
     // show modal
     this.modal.show(
-      'modals/new',
+      'modals/create',
       {
         config,
         model,
