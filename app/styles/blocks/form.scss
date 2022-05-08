@@ -39,7 +39,6 @@
     &__bar {
       height: 30px;
       background-color: $shade1;
-      border-bottom: 1px solid $shade2;
       padding: 10px 20px;
       display: flex;
       align-items: center;
@@ -79,6 +78,7 @@
     }
 
     &__content {
+      border-top: 1px solid $shade2;
       padding: 15px 20px 5px 20px;
       background-color: white;
     }
