@@ -110,7 +110,6 @@ type thing struct {
 	Boolean   bool         `json:"boolean"`
 	Integer   int          `json:"integer"`
 	Float     float64      `json:"float"`
-	Bytes     []byte       `json:"bytes"`
 	Time      time.Time    `json:"time"`
 	Map       bson.M       `json:"map"`
 	Strings   []string     `json:"strings"`
