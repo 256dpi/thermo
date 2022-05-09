@@ -41,8 +41,9 @@
       &.active {
         color: $black;
         background-color: white;
+        border: 1px solid $shade2;
         padding: 3px 12px;
-        margin: 0 -12px;
+        margin: 0 -13px;
         border-radius: 99px;
       }
 
