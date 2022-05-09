@@ -1,0 +1,17 @@
+<div class="modal">
+  <h2 class="modal__title">
+    Error
+  </h2>
+
+  <p>
+    {{@data.error}}
+  </p>
+
+  <div class="toolbar">
+    <div class="toolbar__group">
+      <button type="button" {{on "click" @dismiss}}>
+        OK
+      </button>
+    </div>
+  </div>
+</div>

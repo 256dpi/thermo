@@ -1,24 +1,28 @@
-import { helper } from '@ember/component/helper';
-
+import Helper from '@ember/component/helper';
+import { inject as service } from '@ember/service';
 import { getError } from '@256dpi/ember-fire/utils';
 
-function deleteModel([model]) {
-  return async () => {
-    try {
-      // destroy record
-      await model.destroyRecord();
+export default class extends Helper {
+  @service modal;
 
-      // unload record
-      model.unloadRecord();
+  compute([model]) {
+    return async () => {
+      try {
+        // destroy record
+        await model.destroyRecord();
 
-      return true;
-    } catch (err) {
-      // handle error
-      alert(getError(err));
+        // unload record
+        model.unloadRecord();
 
-      throw new Error('failed');
-    }
-  };
+        return true;
+      } catch (err) {
+        // handle error
+        this.modal.push('modals/error', {
+          error: getError(err),
+        });
+
+        throw new Error('failed');
+      }
+    };
+  }
 }
-
-export default helper(deleteModel);

@@ -7,6 +7,7 @@ export default class extends Controller {
   @service session;
   @service router;
   @service blueprint;
+  @service modal;
 
   @tracked email = '';
   @tracked password = '';
@@ -22,7 +23,9 @@ export default class extends Controller {
         this.blueprint.backend.authScope
       );
     } catch (error) {
-      alert(error.error || error.responseJSON?.error);
+      this.modal.push('modals/error', {
+        error: error.error || error.responseJSON?.error,
+      });
       return;
     }
 
