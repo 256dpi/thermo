@@ -1,35 +1,35 @@
 {{did-update this.reset @elements}}
 
-<div class="form__array">
-  <div class="form__array__bar">
-    {{#each this.elements as |element index|}}
-      <div
-        class="form__array__bar__button {{if (eq index this.selection) 'form__array__bar__button--active'}}"
-        role="button"
-        {{on "click" (fn this.select index)}}
-      >
+<div class="toolbar">
+  {{#each this.elements as |element index|}}
+    <div class="toolbar__group">
+      <button type="button" class="{{if (eq index this.selection) 'active'}}" {{on "click" (fn this.select index)}}>
         {{concat @itemName " " index}}
 
         {{#if (gt (get (get this.changesets index) "changes.length") 0)}}
           <Icons::Edit />
         {{/if}}
-      </div>
-    {{/each}}
-
-    <div class="form__array__bar__button form__array__bar__button--color" role="button" {{on "click" this.add}}>
-      Add
+      </button>
     </div>
+  {{/each}}
 
-    {{#if this.selected}}
-      <div class="form__array__bar__button form__array__bar__button--color" role="button" {{on "click" this.remove}}>
-        Remove
-      </div>
-    {{/if}}
+  <div class="toolbar__group">
+    <button type="button" role="button" {{on "click" this.add}}>
+      Add
+    </button>
   </div>
 
   {{#if this.selected}}
-    <div class="form__array__content">
-      {{yield this}}
+    <div class="toolbar__group">
+      <button type="button" {{on "click" this.remove}}>
+        Remove
+      </button>
     </div>
   {{/if}}
 </div>
+
+{{#if this.selected}}
+  <div class="toolbar-content">
+    {{yield this}}
+  </div>
+{{/if}}

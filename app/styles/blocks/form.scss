@@ -2,8 +2,7 @@
   min-width: 1000px;
 
   &__row {
-    margin: 5px 0 25px -10px;
-    padding-left: 10px;
+    margin: 5px 0 25px;
 
     &__label {
       display: block;
@@ -29,58 +28,6 @@
       margin-top: 7px;
       color: $grey;
       font-size: 14px;
-    }
-  }
-
-  &__array {
-    border: 1px solid $shade2;
-    border-radius: $radius;
-
-    &__bar {
-      height: 30px;
-      background-color: $shade1;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-
-      &__button {
-        cursor: pointer;
-        margin-right: 10px;
-        font-weight: 600;
-        padding: 5px 0;
-
-        &--color {
-          color: $color;
-        }
-
-        &:hover {
-          opacity: 0.75;
-        }
-
-        &--active {
-          opacity: 0.5;
-        }
-
-        svg {
-          margin-left: 5px;
-
-          path {
-            fill: $black;
-          }
-
-          &.edit {
-            path {
-              fill: red;
-            }
-          }
-        }
-      }
-    }
-
-    &__content {
-      border-top: 1px solid $shade2;
-      padding: 15px 20px 5px 20px;
-      background-color: white;
     }
   }
 }

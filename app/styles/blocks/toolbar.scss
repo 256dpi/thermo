@@ -32,15 +32,44 @@
       background: none;
       font-weight: 600;
       color: $color;
-      cursor: pointer;
 
-      &:hover {
-        opacity: 0.75;
+      &:hover:not([disabled]):not(.active) {
+        background-color: $shade2;
+        padding: 3px 12px;
+        margin: 0 -12px;
+        border-radius: 99px;
+        cursor: pointer;
+      }
+
+      &.active {
+        color: $black;
       }
 
       &:disabled {
         opacity: 0.5;
       }
+
+      svg {
+        margin-left: 5px;
+
+        path {
+          fill: $black;
+        }
+
+        &.edit {
+          path {
+            fill: red;
+          }
+        }
+      }
     }
   }
+}
+
+.toolbar-content {
+  margin: -10px 0 10px;
+  padding: 15px 20px 5px 20px;
+  background-color: white;
+  border: 1px solid $shade2;
+  border-top: 0;
 }
