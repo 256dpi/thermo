@@ -7,19 +7,19 @@ export default class extends Component {
   }
 
   @action changed(index, value) {
-    const list = this.args.value.toArray();
+    const list = this.values;
     list[index] = value;
     this.args.changed(list);
   }
 
   @action add() {
-    const list = this.args.value.toArray();
+    const list = this.values;
     list.pushObject('');
     this.args.changed(list);
   }
 
   @action remove(index) {
-    const list = this.args.value.toArray();
+    const list = this.values;
     list.removeAt(index);
     this.args.changed(list);
   }

@@ -48,9 +48,9 @@ var o,i,a,u,s,c
 e.default=l})),define("thermo/components/controls/strings",["exports","@glimmer/component","@ember/object"],(function(e,t,r){var n
 function l(e,t,r,n,l){var o={}
 return Object.keys(n).forEach((function(e){o[e]=n[e]})),o.enumerable=!!o.enumerable,o.configurable=!!o.configurable,("value"in o||o.initializer)&&(o.writable=!0),o=r.slice().reverse().reduce((function(r,n){return n(e,t,r)||r}),o),l&&void 0!==o.initializer&&(o.value=o.initializer?o.initializer.call(l):void 0,o.initializer=void 0),void 0===o.initializer&&(Object.defineProperty(e,t,o),o=null),o}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
-let o=(l((n=class extends t.default{get values(){return this.args.value?.toArray()||[]}changed(e,t){const r=this.args.value.toArray()
-r[e]=t,this.args.changed(r)}add(){const e=this.args.value.toArray()
-e.pushObject(""),this.args.changed(e)}remove(e){const t=this.args.value.toArray()
+let o=(l((n=class extends t.default{get values(){return this.args.value?.toArray()||[]}changed(e,t){const r=this.values
+r[e]=t,this.args.changed(r)}add(){const e=this.values
+e.pushObject(""),this.args.changed(e)}remove(e){const t=this.values
 t.removeAt(e),this.args.changed(t)}}).prototype,"changed",[r.action],Object.getOwnPropertyDescriptor(n.prototype,"changed"),n.prototype),l(n.prototype,"add",[r.action],Object.getOwnPropertyDescriptor(n.prototype,"add"),n.prototype),l(n.prototype,"remove",[r.action],Object.getOwnPropertyDescriptor(n.prototype,"remove"),n.prototype),n)
 e.default=o})),define("thermo/components/controls/text",["exports","@glimmer/component","@ember/object"],(function(e,t,r){var n
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
@@ -342,4 +342,4 @@ var r=t.default
 e.default=r})),define("thermo/transforms/number",["exports","@ember-data/serializer/-private"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.NumberTransform}})})),define("thermo/transforms/string",["exports","@ember-data/serializer/-private"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.StringTransform}})}))
 define("thermo/transforms/strings",["exports","@ember-data/serializer/transform","@ember/array"],(function(e,t,r){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 class n extends t.default{serialize(e){return e?e.toArray():[]}deserialize(e){return e?(0,r.A)(e):(0,r.A)([])}}e.default=n})),define("thermo/utils/calculate-position",["exports","ember-basic-dropdown/utils/calculate-position"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})})),define("thermo/config/environment",[],(function(){try{var e="thermo/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),r={default:JSON.parse(decodeURIComponent(t))}
-return Object.defineProperty(r,"__esModule",{value:!0}),r}catch(n){throw new Error('Could not read config from meta tag with name "'+e+'".')}})),runningTests||require("thermo/app").default.create({name:"thermo",version:"0.0.0+5b1f55ff"})
+return Object.defineProperty(r,"__esModule",{value:!0}),r}catch(n){throw new Error('Could not read config from meta tag with name "'+e+'".')}})),runningTests||require("thermo/app").default.create({name:"thermo",version:"0.0.0+deaf3ff4"})
