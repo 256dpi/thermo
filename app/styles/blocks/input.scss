@@ -83,24 +83,23 @@ $ember-power-select-option-padding: 15px;
     &__list {
       margin: 7px 0;
     }
+  }
 
-    &__button,
-    button {
-      border: 0;
-      background: 0;
-      padding: 0;
-      margin-right: 10px;
-      font-weight: 600;
-      color: $color;
-      cursor: pointer;
+  &__button {
+    border: 0;
+    background: 0;
+    padding: 0;
+    margin-right: 10px;
+    font-weight: 600;
+    color: $color;
+    cursor: pointer;
 
-      &:hover {
-        opacity: 0.75;
-      }
+    &:hover {
+      opacity: 0.75;
+    }
 
-      &:disabled {
-        opacity: 0.5;
-      }
+    &:disabled {
+      opacity: 0.5;
     }
   }
 }
