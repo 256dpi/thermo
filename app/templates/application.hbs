@@ -55,7 +55,7 @@
     {{focus-trap
       isActive=(eq this.modal.modals.lastObject m)
       shouldSelfFocus=true
-      focusTrapOptions=(hash escapeDeactivates=false)
+      focusTrapOptions=(hash escapeDeactivates=false allowOutsideClick=true)
     }}
   >
     {{component m.component data=m.data complete=this.modal.complete dismiss=this.modal.dismiss}}
