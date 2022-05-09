@@ -259,7 +259,6 @@ var blueprint = thermo.Blueprint{
 					Label:       "File",
 					Key:         "file",
 					Control:     thermo.ControlFile,
-					PreviewFile: true,
 					AcceptMedia: "image/png",
 				},
 			},

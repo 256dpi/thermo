@@ -39,11 +39,16 @@ func init() {
 		Types: []string{"image/png"},
 	})
 
-	// add thing binding
+	// add thing bindings
 	register.Add(&blaze.Binding{
 		Name:  "thing-file",
 		Owner: &thing{},
 		Field: "File",
+	})
+	register.Add(&blaze.Binding{
+		Name:  "thing-files",
+		Owner: &thing{},
+		Field: "Files",
 	})
 
 	// add system indexes
@@ -109,6 +114,7 @@ type thing struct {
 	Time      time.Time    `json:"time"`
 	Map       bson.M       `json:"map"`
 	File      *blaze.Link  `json:"file"`
+	Files     blaze.Links  `json:"files"`
 	One       *coal.ID     `json:"-" coal:"one:things"`
 	Many      []coal.ID    `json:"-" coal:"many:things"`
 	Ones      coal.HasMany `json:"-" coal:"ones:things:one"`

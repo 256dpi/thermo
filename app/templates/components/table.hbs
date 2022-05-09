@@ -229,10 +229,16 @@
                 {{evaluate column.expression (if column.key value model)}}
               {{else if (eq column.format "file")}}
                 {{#if value}}
-                  <a href={{file-url value}} target="_blank" rel="noopener noreferrer">
+                  <button type="button" {{on "click" (fn this.preview value)}}>
                     Show
-                  </a>
+                  </button>
                 {{/if}}
+              {{else if (eq column.format "files")}}
+                {{#each value as |file|}}
+                  <button type="button" {{on "click" (fn this.preview file)}}>
+                    Show
+                  </button>
+                {{/each}}
               {{else}}
                 <pre role="button" {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
               {{/if}}

@@ -1,50 +1,35 @@
-{{#if @value}}
+{{#each this.values as |file|}}
   <div class="input__file">
     <p>
-      <a href={{file-url @value}} target="_blank" rel="noopener noreferrer">
-        Show
-        {{@value.name}}
-        ({{@value.type}},
-        {{@value.size}}
+      <button type="button" {{on "click" (fn this.preview file)}}>
+        {{file.name}}
+        ({{file.type}},
+        {{file.size}}
         bytes)
-      </a>
-    </p>
-
-    {{#if @preview}}
-      {{#if (starts-with @value.type "image/")}}
-        <img src={{file-url @value}} alt="" role="presentation" />
-      {{else if (starts-with @value.type "audio/")}}
-        <audio src={{file-url @value}} controls></audio>
-      {{else if (starts-with @value.type "video/")}}
-        <video src={{file-url @value}} controls></video>
-      {{else if (eq @value.type "application/pdf")}}
-        <iframe src={{file-url @value}} title={{@id}}></iframe>
-      {{/if}}
-    {{/if}}
-
-    {{#unless @disabled}}
-      <button type="button" {{on "click" (fn this.files.unset @model @key)}}>
-        Unset
       </button>
-    {{/unless}}
-  </div>
-{{else}}
-  <div class="input__file">
-    <p>
-      <span>
-        No File Uploaded
-      </span>
+
+      {{#unless @disabled}}
+        {{#if @multiple}}
+          <button type="button" {{on "click" (fn this.files.remove @model @key file)}}>
+            Remove
+          </button>
+        {{else}}
+          <button type="button" {{on "click" (fn this.files.unset @model @key)}}>
+            Remove
+          </button>
+        {{/if}}
+      {{/unless}}
     </p>
   </div>
+{{/each}}
 
-  {{#unless @disabled}}
-    <FileUpload
-      class="input__file__button"
-      @name={{@id}}
-      @accept={{@accept}}
-      @onfileadd={{fn this.files.upload @model @key false}}
-    >
-      Upload
-    </FileUpload>
-  {{/unless}}
+{{#if (and (not @disabled) (or @multiple (not @value)))}}
+  <FileUpload
+    class="input__file__button"
+    @name={{@id}}
+    @accept={{@accept}}
+    @onfileadd={{fn this.files.upload @model @key @multiple}}
+  >
+    Upload
+  </FileUpload>
 {{/if}}

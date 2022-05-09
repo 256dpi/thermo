@@ -128,7 +128,6 @@ type Field struct {
 	LabelKey    string     `json:"labelKey,omitempty"`    // reference
 	EmptyLabel  string     `json:"emptyLabel,omitempty"`  // reference
 	AllowEmpty  bool       `json:"allowEmpty,omitempty"`  // reference
-	PreviewFile bool       `json:"previewFile,omitempty"` // file
 	AcceptMedia string     `json:"acceptMedia,omitempty"` // file
 	ItemName    string     `json:"itemName,omitempty"`    // array
 	ItemFields  []Field    `json:"itemFields,omitempty"`  // array
@@ -150,6 +149,7 @@ const (
 	KindBelongsTo Kind = "belongs-to"
 	KindHasMany   Kind = "has-many"
 	KindFile      Kind = "file"
+	KindFiles     Kind = "files"
 )
 
 // Type describes a field type.
@@ -186,6 +186,7 @@ const (
 	FormatHasMany      Format = "has-many"
 	FormatExpression   Format = "expression"
 	FormatFile         Format = "file"
+	FormatFiles        Format = "files"
 )
 
 // Control describes a form control.

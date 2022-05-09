@@ -1,0 +1,25 @@
+<div class="modal">
+  <h2 class="modal__title">
+    Preview
+  </h2>
+
+  <div class="modal__preview">
+    {{#if (starts-with @data.file.type "image/")}}
+      <img src={{file-url @data.file}} alt="" role="presentation" />
+    {{else if (starts-with @data.file.type "audio/")}}
+      <audio src={{file-url @data.file}} controls></audio>
+    {{else if (starts-with @data.file.type "video/")}}
+      <video src={{file-url @data.file}} controls></video>
+    {{else if (eq @data.file.type "application/pdf")}}
+      <iframe title="Preview" src={{file-url @data.file}}></iframe>
+    {{/if}}
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar__group">
+      <button type="button" {{on "click" @complete}}>
+        Close
+      </button>
+    </div>
+  </div>
+</div>

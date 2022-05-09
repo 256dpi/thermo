@@ -41,6 +41,13 @@ export default class extends Component {
     });
   }
 
+  @action preview(file) {
+    // show modal
+    this.modal.push('modals/preview', {
+      file: file,
+    });
+  }
+
   @action changeSort(sort) {
     // clear cursor
     this.args.changedCursor('after', undefined);

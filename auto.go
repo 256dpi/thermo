@@ -142,6 +142,8 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 				typ = TypeDate
 			case reflect.TypeOf(blaze.Link{}):
 				kind = KindFile
+			case reflect.TypeOf(blaze.Links{}):
+				kind = KindFiles
 			}
 		}
 
@@ -216,6 +218,8 @@ func Columns(model coal.Model, only ...string) []Column {
 				format = FormatAbsoluteDate
 			case reflect.TypeOf(blaze.Link{}):
 				format = FormatFile
+			case reflect.TypeOf(blaze.Links{}):
+				format = FormatFiles
 			}
 		}
 
@@ -271,6 +275,7 @@ func Fields(model coal.Model, only ...string) []Field {
 
 		// get control
 		var control Control
+		var multiple bool
 		switch unwrap(field.Type).Kind() {
 		case reflect.String:
 			control = ControlString
@@ -286,14 +291,18 @@ func Fields(model coal.Model, only ...string) []Field {
 				control = ControlDate
 			case reflect.TypeOf(blaze.Link{}):
 				control = ControlFile
+			case reflect.TypeOf(blaze.Links{}):
+				control = ControlFile
+				multiple = true
 			}
 		}
 
 		// add field
 		list = append(list, Field{
-			Label:   Title(field.Name),
-			Key:     Deconflict(field.JSONKey),
-			Control: control,
+			Label:    Title(field.Name),
+			Key:      Deconflict(field.JSONKey),
+			Control:  control,
+			Multiple: multiple,
 		})
 	}
 

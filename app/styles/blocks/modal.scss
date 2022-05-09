@@ -23,4 +23,30 @@
   &__title {
     margin: 0 0 25px 0;
   }
+
+  &__preview {
+    img,
+    audio,
+    video,
+    iframe {
+      display: block;
+      width: 100%;
+      min-width: 500px;
+      border-radius: $radius;
+      border: 0;
+    }
+
+    img,
+    video,
+    iframe {
+      min-height: 200px;
+      object-fit: contain;
+      background-color: $black;
+    }
+
+    iframe {
+      min-width: 700px;
+      min-height: 500px;
+    }
+  }
 }
