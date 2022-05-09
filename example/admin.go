@@ -24,7 +24,7 @@ var blueprint = thermo.Blueprint{
 			Title: "App",
 			Items: []thermo.MenuItem{
 				{Title: "Items", Model: "item"},
-				{Title: "Thing", Model: "thing"},
+				{Title: "Things", Model: "thing"},
 			},
 		},
 		{
