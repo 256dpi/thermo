@@ -2,6 +2,10 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 export default class extends Component {
+  get values() {
+    return this.args.value?.toArray() || [];
+  }
+
   @action changed(index, value) {
     const list = this.args.value.toArray();
     list[index] = value;
