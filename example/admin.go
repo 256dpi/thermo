@@ -9,6 +9,7 @@ import (
 
 var blueprint = thermo.Blueprint{
 	Title: "Example",
+	Color: "#30518d",
 	Backend: thermo.Backend{
 		BaseURL:      "http://0.0.0.0:8000",
 		AuthPath:     "auth",

@@ -13,6 +13,7 @@ var build embed.FS
 // Blueprint configures a thermo application.
 type Blueprint struct {
 	Title   string  `json:"title"`
+	Color   string  `json:"color"`
 	Backend Backend `json:"backend"`
 	Menus   []Menu  `json:"menus"`
 	Models  []Model `json:"models"`

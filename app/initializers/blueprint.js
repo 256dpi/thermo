@@ -31,6 +31,11 @@ export default {
       app.advanceReadiness();
     }
 
+    // set color
+    if (config.blueprint.color) {
+      document.documentElement.style.setProperty('--color', config.blueprint.color);
+    }
+
     // ensure lists
     for (const model of config.blueprint.models) {
       for (const key of ['attributes', 'properties', 'orders', 'filters', 'columns', 'actions', 'fields']) {
