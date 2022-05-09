@@ -1,6 +1,6 @@
-{{#each this.values as |file|}}
-  <div class="input__file">
-    <p>
+<div class="input__file">
+  {{#each this.values as |file|}}
+    <div class="input__file__list">
       <button type="button" {{on "click" (fn this.preview file)}}>
         {{file.name}}
         ({{file.type}},
@@ -19,17 +19,17 @@
           </button>
         {{/if}}
       {{/unless}}
-    </p>
-  </div>
-{{/each}}
+    </div>
+  {{/each}}
 
-{{#if (and (not @disabled) (or @multiple (not @value)))}}
-  <FileUpload
-    class="input__file__button"
-    @name={{@id}}
-    @accept={{@accept}}
-    @onfileadd={{fn this.files.upload @model @key @multiple}}
-  >
-    Upload
-  </FileUpload>
-{{/if}}
+  {{#if (and (not @disabled) (or @multiple (not @value)))}}
+    <FileUpload
+      class="input__file__button"
+      @name={{@id}}
+      @accept={{@accept}}
+      @onfileadd={{fn this.files.upload @model @key @multiple}}
+    >
+      Upload
+    </FileUpload>
+  {{/if}}
+</div>

@@ -80,16 +80,8 @@ $ember-power-select-option-padding: 15px;
   }
 
   &__file {
-    p {
+    &__list {
       margin: 7px 0;
-
-      span {
-        color: $grey;
-      }
-
-      a {
-        color: $color;
-      }
     }
 
     &__button,
