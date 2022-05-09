@@ -5448,7 +5448,7 @@ ember-file-upload@^4.0.3:
     ember-cli-babel "^7.26.3"
     ember-cli-htmlbars "^5.7.1"
 
-ember-flatpickr@^3.0.1:
+ember-flatpickr@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/ember-flatpickr/-/ember-flatpickr-3.2.2.tgz#3c908f15d681b46b1ebe110cb003cefcba1a676d"
   integrity sha512-22/Zebg4aS/9KQRfHrrE0MVBG+OZon12WFpRPYCezqfUjIcq24Tw1E6yFVvWrNW8b7ZEBrtCzCVs+Bt1q+6SaQ==
