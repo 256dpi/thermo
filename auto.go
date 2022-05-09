@@ -115,7 +115,6 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 		}
 
 		// get type
-		kind := KindValue
 		var typ Type
 		var def Any
 		switch unwrap(field.Type).Kind() {
@@ -143,16 +142,16 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 			case reflect.TypeOf([]string{}):
 				typ = TypeStrings
 			case reflect.TypeOf(blaze.Link{}):
-				kind = KindFile
+				typ = TypeFile
 			case reflect.TypeOf(blaze.Links{}):
-				kind = KindFiles
+				typ = TypeFiles
 			}
 		}
 
 		// add attribute
 		list = append(list, Attribute{
 			Name:    Deconflict(field.JSONKey),
-			Kind:    kind,
+			Kind:    KindValue,
 			Type:    typ,
 			Default: def,
 		})

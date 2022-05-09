@@ -73,7 +73,8 @@ var blueprint = thermo.Blueprint{
 				},
 				{
 					Name: "file",
-					Kind: thermo.KindFile,
+					Kind: thermo.KindValue,
+					Type: thermo.TypeFile,
 				},
 				{
 					Name: "created",

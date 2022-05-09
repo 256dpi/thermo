@@ -148,8 +148,6 @@ const (
 	KindValue     Kind = "value"
 	KindBelongsTo Kind = "belongs-to"
 	KindHasMany   Kind = "has-many"
-	KindFile      Kind = "file"
-	KindFiles     Kind = "files"
 )
 
 // Type describes a field type.
@@ -161,6 +159,8 @@ const (
 	TypeBoolean Type = "boolean"
 	TypeNumber  Type = "number"
 	TypeDate    Type = "date"
+	TypeFile    Type = "file"
+	TypeFiles   Type = "files"
 	TypeStrings Type = "strings"
 )
 
