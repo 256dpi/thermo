@@ -1,7 +1,6 @@
 .nav {
   padding: 50px;
   background-color: $color;
-
   color: $shade1;
 
   &__title {
@@ -17,37 +16,35 @@
   &__menu {
     list-style: none;
     padding: 0;
-    margin: 0;
-    margin-top: 50px;
+    margin: 50px 0 0;
 
     &__head {
       opacity: 0.5;
       font-size: 12px;
+      margin-bottom: 5px;
     }
 
     &__item {
-      margin-top: 10px;
+      display: block;
+      padding: 5px 0;
+      margin: 0;
+      border: 0;
+      background: 0;
       font-size: 16px;
+      color: inherit;
+      cursor: pointer;
 
-      a,
-      button {
-        padding: 0;
-        margin: 0;
-        border: 0;
-        background: 0;
-        color: inherit;
-        cursor: pointer;
+      &:hover {
+        opacity: 0.75;
+        text-decoration: none;
+      }
 
-        &:hover {
-          opacity: 0.75;
-          text-decoration: none;
-        }
-
-        &.active {
-          border-left: 2px solid $shade1;
-          padding-left: 10px;
-          margin-left: -12px;
-        }
+      &.active {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: $radius;
+        margin: 0 -15px 0;
+        padding: 5px 15px;
       }
     }
   }

@@ -11,32 +11,28 @@
         </div>
 
         {{#each this.blueprint.menus as |menu|}}
-          <ul class="nav__menu">
-            <li class="nav__menu__head">
+          <div class="nav__menu">
+            <div class="nav__menu__head">
               {{menu.title}}
-            </li>
+            </div>
 
             {{#each menu.items as |item|}}
-              <li class="nav__menu__item">
-                <LinkTo @route="table" @model={{item.model}}>
-                  {{item.title}}
-                </LinkTo>
-              </li>
+              <LinkTo class="nav__menu__item" @route="table" @model={{item.model}}>
+                {{item.title}}
+              </LinkTo>
             {{/each}}
-          </ul>
+          </div>
         {{/each}}
 
-        <ul class="nav__menu">
-          <li class="nav__menu__head">
+        <div class="nav__menu">
+          <div class="nav__menu__head">
             {{get this.user.model (or this.blueprint.backend.usernameKey "name")}}
-          </li>
+          </div>
 
-          <li class="nav__menu__item">
-            <button type="button" {{on "click" this.logout}}>
-              Sign Out
-            </button>
-          </li>
-        </ul>
+          <button class="nav__menu__item" type="button" {{on "click" this.logout}}>
+            Sign Out
+          </button>
+        </div>
       </nav>
     </div>
 
