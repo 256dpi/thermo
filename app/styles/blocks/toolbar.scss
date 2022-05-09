@@ -5,7 +5,7 @@
   background-color: $shade1;
   border: 1px solid $shade2;
   border-radius: $radius;
-  padding: 10px 20px;
+  padding: 10px 25px;
   margin: 10px 0;
 
   &__group {
@@ -34,15 +34,16 @@
       color: $color;
 
       &:hover:not([disabled]):not(.active) {
-        background-color: $shade2;
-        padding: 3px 12px;
-        margin: 0 -12px;
-        border-radius: 99px;
+        opacity: 0.75;
         cursor: pointer;
       }
 
       &.active {
         color: $black;
+        background-color: white;
+        padding: 3px 12px;
+        margin: 0 -12px;
+        border-radius: 99px;
       }
 
       &:disabled {
@@ -68,8 +69,9 @@
 
 .toolbar-content {
   margin: -10px 0 10px;
-  padding: 15px 20px 5px 20px;
+  padding: 20px 25px 5px;
   background-color: white;
   border: 1px solid $shade2;
+  border-radius: $radius;
   border-top: 0;
 }
