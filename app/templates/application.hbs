@@ -53,16 +53,11 @@
     role="dialog"
     tabindex="-1"
     {{focus-trap
-      isActive=(eq modal.modals.lastObject m)
+      isActive=(eq this.modal.modals.lastObject m)
       shouldSelfFocus=true
       focusTrapOptions=(hash escapeDeactivates=false)
     }}
   >
-    {{component
-      m.component
-      data=m.data
-      complete=(action "complete" target=modal)
-      dismiss=(action "dismiss" target=modal)
-    }}
+    {{component m.component data=m.data complete=this.modal.complete dismiss=this.modal.dismiss}}
   </div>
 {{/each}}
