@@ -1,0 +1,23 @@
+<div class="input__list">
+  {{#each @value as |value index|}}
+    <div class="input__list__item">
+      <Controls::String
+        @id={{@id}}
+        @value={{value}}
+        @changed={{fn this.changed index}}
+        @disabled={{@disabled}}
+        @placeholder={{@placeholder}}
+      />
+
+      <button type="button" class="input__button" {{on "click" (fn this.remove index)}}>
+        Remove
+      </button>
+    </div>
+  {{/each}}
+
+  <div class="input__list__button">
+    <button type="button" class="input__button" {{on "click" this.add}}>
+      Add
+    </button>
+  </div>
+</div>

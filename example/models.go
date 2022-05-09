@@ -113,6 +113,7 @@ type thing struct {
 	Bytes     []byte       `json:"bytes"`
 	Time      time.Time    `json:"time"`
 	Map       bson.M       `json:"map"`
+	Strings   []string     `json:"strings"`
 	File      *blaze.Link  `json:"file"`
 	Files     blaze.Links  `json:"files"`
 	One       *coal.ID     `json:"-" coal:"one:things"`

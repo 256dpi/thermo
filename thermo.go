@@ -161,6 +161,7 @@ const (
 	TypeBoolean Type = "boolean"
 	TypeNumber  Type = "number"
 	TypeDate    Type = "date"
+	TypeStrings Type = "strings"
 )
 
 // Condition describes a filter condition.
@@ -181,6 +182,7 @@ const (
 	FormatMap          Format = "map"
 	FormatAbsoluteDate Format = "absolute-date"
 	FormatRelativeDate Format = "relative-date"
+	FormatStrings      Format = "strings"
 	FormatProgress     Format = "progress"
 	FormatBelongsTo    Format = "belongs-to"
 	FormatHasMany      Format = "has-many"
@@ -199,6 +201,7 @@ const (
 	ControlBoolean   Control = "boolean"
 	ControlNumber    Control = "number"
 	ControlDate      Control = "date"
+	ControlStrings   Control = "strings"
 	ControlSelect    Control = "select"
 	ControlReference Control = "reference"
 	ControlWell      Control = "well"

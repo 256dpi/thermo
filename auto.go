@@ -140,6 +140,8 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				typ = TypeDate
+			case reflect.TypeOf([]string{}):
+				typ = TypeStrings
 			case reflect.TypeOf(blaze.Link{}):
 				kind = KindFile
 			case reflect.TypeOf(blaze.Links{}):
@@ -216,6 +218,8 @@ func Columns(model coal.Model, only ...string) []Column {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				format = FormatAbsoluteDate
+			case reflect.TypeOf([]string{}):
+				format = FormatStrings
 			case reflect.TypeOf(blaze.Link{}):
 				format = FormatFile
 			case reflect.TypeOf(blaze.Links{}):
@@ -289,6 +293,8 @@ func Fields(model coal.Model, only ...string) []Field {
 			switch unwrap(field.Type) {
 			case reflect.TypeOf(time.Time{}):
 				control = ControlDate
+			case reflect.TypeOf([]string{}):
+				control = ControlStrings
 			case reflect.TypeOf(blaze.Link{}):
 				control = ControlFile
 			case reflect.TypeOf(blaze.Links{}):

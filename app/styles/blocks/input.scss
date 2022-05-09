@@ -102,4 +102,23 @@ $ember-power-select-option-padding: 15px;
       opacity: 0.5;
     }
   }
+
+  &__list {
+    &__item {
+      display: flex;
+      margin-top: 5px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      button {
+        margin-left: 15px;
+      }
+    }
+
+    &__button {
+      margin-top: 10px;
+    }
+  }
 }

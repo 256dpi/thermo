@@ -215,6 +215,8 @@
                 {{#if value}}
                   {{moment-from-now value}}
                 {{/if}}
+              {{else if (eq column.format "strings")}}
+                {{join " • " value}}
               {{else if (eq column.format "progress")}}
                 <progress value={{value}} max="1"></progress>
               {{else if (eq column.format "belongs-to")}}

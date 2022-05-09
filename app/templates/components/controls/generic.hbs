@@ -36,6 +36,14 @@
     @disabled={{@disabled}}
     @placeholder={{@placeholder}}
   />
+{{else if (eq @type "strings")}}
+  <Controls::Strings
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+  />
 {{else if (eq @type "select")}}
   <Controls::Select @id={{@id}} @value={{@value}} @changed={{@changed}} @disabled={{@disabled}} @options={{@options}} />
 {{else if (eq @type "reference")}}
