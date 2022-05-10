@@ -1,11 +1,9 @@
-<EmberFlatpickr
+<input
   id={{@id}}
   class="input__date"
+  type="datetime-local"
+  value={{this.value}}
+  disabled={{@disabled}}
   placeholder={{@placeholder}}
-  @date={{or this.value this.now}}
-  @onChange={{this.changed}}
-  @enableTime={{true}}
-  @time_24hr={{true}}
-  @allowInput={{not @disabled}}
-  @disabled={{@disabled}}
+  {{on "change" this.changed}}
 />
