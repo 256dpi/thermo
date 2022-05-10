@@ -19,6 +19,11 @@ export default class extends Component {
       return this.emptyOption;
     }
 
+    // copy array
+    if (this.args.multiple) {
+      return A(this.args.value.toArray());
+    }
+
     return this.args.value;
   }
 
@@ -36,6 +41,7 @@ export default class extends Component {
   }
 
   @action select(value) {
+    // yield value
     if (this.args.changed) {
       this.args.changed(value);
     }
