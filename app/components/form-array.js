@@ -75,7 +75,11 @@ export default class extends Component {
   @action
   select(index) {
     // update selection
-    this.selection = index;
+    if (index === this.selection) {
+      this.selection = undefined;
+    } else {
+      this.selection = index;
+    }
   }
 
   @action
