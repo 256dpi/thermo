@@ -46,6 +46,9 @@ var blueprint = thermo.Blueprint{
 			Singular:  "Item",
 			Plural:    "Items",
 			Watchable: true,
+			Creatable: true,
+			Editable:  true,
+			Deletable: true,
 			Attributes: []thermo.Attribute{
 				{
 					Name: "name",

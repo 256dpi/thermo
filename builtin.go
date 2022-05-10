@@ -39,6 +39,7 @@ func Tokens() Model {
 
 	// prepare model
 	model := Auto(&flame.Token{}, "token", "Token", "Tokens")
+	model.Creatable = false
 
 	// patch columns
 	for i, column := range model.Columns {
@@ -81,6 +82,7 @@ func Jobs(live bool) Model {
 	model := Auto(&axe.Model{}, "job", "Job", "Jobs")
 	model.Watchable = live
 	model.Immediate = live
+	model.Creatable = false
 
 	// filter columns
 	model.Columns = lo.Filter(model.Columns, func(column Column, _ int) bool {
@@ -117,6 +119,7 @@ func Values(live bool) Model {
 	model := Auto(&glut.Model{}, "value", "Value", "Values")
 	model.Watchable = live
 	model.Immediate = live
+	model.Creatable = false
 
 	return model
 }
@@ -134,6 +137,7 @@ func Files() Model {
 
 	// prepare model
 	model := Auto(&blaze.File{}, "file", "File", "Files")
+	model.Creatable = false
 
 	// patch columns
 	for i, column := range model.Columns {

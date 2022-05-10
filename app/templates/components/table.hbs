@@ -1,12 +1,12 @@
 <div class="toolbar">
-  {{#unless @config.listOnly}}
+  {{#if @config.creatable}}
     <div class="toolbar__group">
       <button type="button" {{on "click" @createItem}}>
         Create
         {{@config.singular}}
       </button>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <div class="toolbar__group">
     <button type="button" {{on "click" @refresh}}>
@@ -118,11 +118,13 @@
     </div>
   {{/if}}
 
-  <div class="toolbar__group">
-    <button type="button" disabled={{not this.selected}} {{on "click" (confirm "Sure?" this.deleteSelected)}}>
-      Delete Selected
-    </button>
-  </div>
+  {{#if @config.deletable}}
+    <div class="toolbar__group">
+      <button type="button" disabled={{not this.selected}} {{on "click" (confirm "Sure?" this.deleteSelected)}}>
+        Delete Selected
+      </button>
+    </div>
+  {{/if}}
 </div>
 
 {{#if (gt @config.filters.length 0)}}
@@ -154,9 +156,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th width="1">
-        <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
-      </th>
+      {{#if @config.deletable}}
+        <th width="1">
+          <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
+        </th>
+      {{/if}}
 
       <th width="1">
         ID
@@ -175,22 +179,24 @@
   <tbody>
     {{#each @list as |model|}}
       <tr>
-        <td>
-          <input
-            type="checkbox"
-            checked={{model._selected}}
-            aria-label="Select row"
-            {{on "click" (event-target-checked (fn this.toggleModel model))}}
-          />
-        </td>
+        {{#if @config.deletable}}
+          <td>
+            <input
+              type="checkbox"
+              checked={{model._selected}}
+              aria-label="Select row"
+              {{on "click" (event-target-checked (fn this.toggleModel model))}}
+            />
+          </td>
+        {{/if}}
 
         <td>
-          {{#if @config.listOnly}}
-            {{model.id}}
-          {{else}}
+          {{#if @config.editable}}
             <button type="button" {{on "click" (fn @editItem model)}}>
               {{model.id}}
             </button>
+          {{else}}
+            {{model.id}}
           {{/if}}
         </td>
 

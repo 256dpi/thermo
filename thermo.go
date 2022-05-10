@@ -53,7 +53,9 @@ type Model struct {
 	Plural     string      `json:"plural"`
 	Watchable  bool        `json:"watchable"`
 	Immediate  bool        `json:"immediate"`
-	ListOnly   bool        `json:"listOnly"`
+	Creatable  bool        `json:"creatable"`
+	Editable   bool        `json:"editable"`
+	Deletable  bool        `json:"deletable"`
 	Attributes []Attribute `json:"attributes"`
 	Properties []Property  `json:"properties"`
 	Orders     []Order     `json:"orders"`
