@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/256dpi/ember v0.4.1
-	github.com/256dpi/fire v0.32.1
+	github.com/256dpi/fire v0.32.3
 	github.com/256dpi/lungo v0.2.12
 	github.com/256dpi/oauth2/v2 v2.2.0
 	github.com/256dpi/serve v0.8.0
@@ -18,12 +18,13 @@ require (
 	github.com/256dpi/jsonapi/v2 v2.3.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20200907205600-7a23bdc65eef // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/getsentry/sentry-go v0.7.0 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
+	github.com/golang-jwt/jwt/v4 v4.3.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
+	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/klauspost/compress v1.9.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
