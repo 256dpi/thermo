@@ -5,6 +5,7 @@ $ember-power-select-focus-border-color: $black;
 $ember-power-select-highlighted-background: $color;
 $ember-power-select-trigger-ltr-padding: 10px 16px 10px 10px;
 $ember-power-select-option-padding: 15px;
+$ember-power-select-multiple-option-border-color: $shade2;
 
 .ember-power-select-trigger {
   outline: 0;
@@ -19,6 +20,10 @@ $ember-power-select-option-padding: 15px;
 
 .ember-power-select-option {
   padding: 5px 15px !important;
+}
+
+.ember-power-select-multiple-option {
+  background-color: $shade1 !important;
 }
 
 .input {
