@@ -40,7 +40,7 @@ export default class extends Route {
     return this.blueprint.models.find((model) => model.name === name);
   }
 
-  model(params) {
+  async model(params) {
     // get previous name and config
     let name = this.name;
     let config = this.getConfig(name);
@@ -68,7 +68,7 @@ export default class extends Route {
     if (config.immediate) {
       return {
         config: config,
-        model: this.store.findAll(config.name),
+        model: await this.store.findAll(config.name),
       };
     }
 
@@ -104,7 +104,7 @@ export default class extends Route {
 
     return {
       config,
-      model: this.store.query(config.name, query),
+      model: await this.store.query(config.name, query),
     };
   }
 
