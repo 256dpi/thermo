@@ -122,6 +122,15 @@ var blueprint = thermo.Blueprint{
 					Key:       "state",
 					Condition: thermo.ConditionBoolean,
 				},
+				{
+					Title:     "Name",
+					Key:       "name",
+					Condition: thermo.ConditionSelect,
+					Options: []thermo.Option{
+						{Label: "Foo", Value: "foo"},
+						{Label: "Bar", Value: "bar"},
+					},
+				},
 			},
 			Columns: []thermo.Column{
 				{

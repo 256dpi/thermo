@@ -139,7 +139,20 @@
           {{/if}}
 
           {{#if (eq filter.condition "boolean")}}
-            <Controls::Boolean @id={{id}} @value={{get @filter filter.key}} @changed={{fn this.setFilter filter.key}} />
+            <Controls::Boolean
+              @id={{id}}
+              @value={{get @filter filter.key}}
+              @changed={{fn this.setFilter filter.key}}
+              @raw={{true}}
+            />
+          {{else if (eq filter.condition "select")}}
+            <Controls::Select
+              @id={{@id}}
+              @value={{get @filter filter.key}}
+              @changed={{fn this.setFilter filter.key}}
+              @options={{filter.options}}
+              @raw={{true}}
+            />
           {{/if}}
 
           {{#if (not-eq undefined (get @filter filter.key))}}

@@ -60,7 +60,7 @@ export default class extends Component {
   @action setFilter(key, value) {
     // copy filter
     const ret = {};
-    for (key of Object.keys(this.args.filter)) {
+    for (const key of Object.keys(this.args.filter)) {
       ret[key] = this.args.filter[key];
     }
 

@@ -93,6 +93,7 @@ type Filter struct {
 	Title     string    `json:"title"`
 	Key       string    `json:"key"`
 	Condition Condition `json:"condition"`
+	Options   []Option  `json:"options"` // select
 }
 
 // Column describes a table column.
@@ -173,6 +174,7 @@ type Condition string
 // The available filter conditions.
 const (
 	ConditionBoolean Condition = "boolean"
+	ConditionSelect  Condition = "select"
 )
 
 // Format describes a column format.

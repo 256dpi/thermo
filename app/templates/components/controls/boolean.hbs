@@ -1,6 +1,6 @@
 <input
   id={{@id}}
-  class="input__boolean"
+  class={{unless @raw "input__boolean"}}
   type="checkbox"
   checked={{@value}}
   disabled={{@disabled}}
