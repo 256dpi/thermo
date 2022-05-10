@@ -7,9 +7,13 @@
     font-size: 24px;
     font-weight: 500;
 
-    a:hover {
-      opacity: 0.75;
-      text-decoration: none;
+    a {
+      display: block;
+
+      &:hover {
+        opacity: 0.75;
+        text-decoration: none;
+      }
     }
   }
 
@@ -26,13 +30,15 @@
 
     &__item {
       display: block;
-      padding: 5px 0;
-      margin: 0;
+      width: 100%;
+      margin: 0 -15px 0;
+      padding: 5px 15px;
       border: 0;
       background: 0;
       font-size: 16px;
       color: inherit;
       cursor: pointer;
+      text-align: left;
 
       &:hover {
         opacity: 0.75;
@@ -43,8 +49,6 @@
         opacity: 1;
         background-color: rgba(255, 255, 255, 0.15);
         border-radius: $radius;
-        margin: 0 -15px 0;
-        padding: 5px 15px;
       }
     }
   }
