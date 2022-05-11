@@ -81,6 +81,11 @@ var blueprint = thermo.Blueprint{
 					Type: thermo.TypeFile,
 				},
 				{
+					Name: "color",
+					Kind: thermo.KindValue,
+					Type: thermo.TypeString,
+				},
+				{
 					Name: "created",
 					Kind: thermo.KindValue,
 					Type: thermo.TypeDate,
@@ -162,6 +167,11 @@ var blueprint = thermo.Blueprint{
 					Title:  "File",
 					Key:    "file",
 					Format: thermo.FormatFile,
+				},
+				{
+					Title:  "Color",
+					Key:    "color",
+					Format: thermo.FormatColor,
 				},
 				{
 					Title:  "Created",
@@ -274,6 +284,11 @@ var blueprint = thermo.Blueprint{
 					Key:         "file",
 					Control:     thermo.ControlFile,
 					AcceptMedia: "image/png",
+				},
+				{
+					Label:   "Color",
+					Key:     "color",
+					Control: thermo.ControlColor,
 				},
 			},
 		},

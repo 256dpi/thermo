@@ -32,7 +32,8 @@ $ember-power-select-multiple-option-border-color: $shade2;
   &__number,
   &__date,
   &__select,
-  &__well {
+  &__well,
+  &__color {
     height: 42px;
     display: block;
     width: 100%;
@@ -82,6 +83,11 @@ $ember-power-select-multiple-option-border-color: $shade2;
 
   &__well {
     background-color: $shade1;
+  }
+
+  &__color {
+    width: 75px;
+    height: 50px;
   }
 
   &__file {

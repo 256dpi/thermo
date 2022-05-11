@@ -194,6 +194,7 @@ const (
 	FormatExpression   Format = "expression"
 	FormatFile         Format = "file"
 	FormatFiles        Format = "files"
+	FormatColor        Format = "color"
 )
 
 // Control describes a form control.
@@ -211,6 +212,7 @@ const (
 	ControlReference Control = "reference"
 	ControlWell      Control = "well"
 	ControlFile      Control = "file"
+	ControlColor     Control = "color"
 	ControlArray     Control = "array"
 )
 

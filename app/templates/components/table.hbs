@@ -260,6 +260,8 @@
                     Show
                   </button>
                 {{/each}}
+              {{else if (eq column.format "color")}}
+                <div class="color" style="background-color: {{value}}"></div>
               {{else}}
                 <pre role="button" {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
               {{/if}}

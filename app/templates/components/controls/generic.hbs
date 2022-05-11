@@ -71,6 +71,14 @@
     @multiple={{@multiple}}
     @accept={{@accept}}
   />
+{{else if (eq @type "color")}}
+  <Controls::Color
+    @id={{@id}}
+    @value={{@value}}
+    @changed={{@changed}}
+    @disabled={{@disabled}}
+    @placeholder={{@placeholder}}
+  />
 {{else}}
   <Controls::Json
     @id={{@id}}
