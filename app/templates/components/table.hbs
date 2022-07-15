@@ -243,7 +243,8 @@
                   {{get value column.labelKey}}
                 {{/if}}
               {{else if (eq column.format "has-many")}}
-                {{#each value as |model|}}
+                {{#each value as |model index|}}
+                  {{if (gt index 0 ) " • "}}
                   {{get model column.labelKey}}
                 {{/each}}
               {{else if (eq column.format "expression")}}
