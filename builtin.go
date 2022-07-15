@@ -11,13 +11,13 @@ import (
 
 // Applications will return the model for managing flame.Application documents.
 func Applications() Model {
-	return Auto(&flame.Application{}, "application", "Application", "Applications")
+	return Auto(&flame.Application{}, "application", "Application", "Applications", nil)
 }
 
 // Users will return the model for managing flame.User documents.
 func Users() Model {
 	// prepare model
-	model := Auto(&flame.User{}, "user", "User", "Users")
+	model := Auto(&flame.User{}, "user", "User", "Users", nil)
 
 	// patch fields
 	for i, field := range model.Fields {
@@ -38,7 +38,10 @@ func Tokens() Model {
 	}
 
 	// prepare model
-	model := Auto(&flame.Token{}, "token", "Token", "Tokens")
+	model := Auto(&flame.Token{}, "token", "Token", "Tokens", LabelKeys{
+		&flame.Application{}: "Name",
+		&flame.User{}:        "Name",
+	})
 	model.Creatable = false
 
 	// patch columns
@@ -79,7 +82,7 @@ func Jobs(live bool) Model {
 	}
 
 	// prepare model
-	model := Auto(&axe.Model{}, "job", "Job", "Jobs")
+	model := Auto(&axe.Model{}, "job", "Job", "Jobs", nil)
 	model.Watchable = live
 	model.Immediate = live
 	model.Creatable = false
@@ -116,7 +119,7 @@ func Jobs(live bool) Model {
 // true it requires permission to watch documents.
 func Values(live bool) Model {
 	// prepare model
-	model := Auto(&glut.Model{}, "value", "Value", "Values")
+	model := Auto(&glut.Model{}, "value", "Value", "Values", nil)
 	model.Watchable = live
 	model.Immediate = live
 	model.Creatable = false
@@ -136,7 +139,7 @@ func Files() Model {
 	}
 
 	// prepare model
-	model := Auto(&blaze.File{}, "file", "File", "Files")
+	model := Auto(&blaze.File{}, "file", "File", "Files", nil)
 	model.Creatable = false
 
 	// patch columns

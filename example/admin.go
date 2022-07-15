@@ -292,7 +292,9 @@ var blueprint = thermo.Blueprint{
 				},
 			},
 		},
-		thermo.Auto(&thing{}, "thing", "Thing", "Things"),
+		thermo.Auto(&thing{}, "thing", "Thing", "Things", thermo.LabelKeys{
+			&thing{}: "String",
+		}),
 		thermo.Applications(),
 		thermo.Users(),
 		thermo.Tokens(),

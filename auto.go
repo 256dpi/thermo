@@ -52,8 +52,26 @@ func Title(name string) string {
 	return builder.String()
 }
 
+// LabelKeys is a mapping of models to label keys.
+type LabelKeys map[coal.Model]string
+
+// Get will return the label key for the specified relationship type name.
+func (lk LabelKeys) Get(name string) string {
+	// check model
+	for model, label := range lk {
+		meta := coal.GetMeta(model)
+		if meta.PluralName == name {
+			if field := meta.Fields[label]; field != nil {
+				return field.JSONKey
+			}
+		}
+	}
+
+	return "id"
+}
+
 // Auto will generate a Model definition for the provided coal.Model.
-func Auto(model coal.Model, name, singular, plural string, modifiers ...func(*Model)) Model {
+func Auto(model coal.Model, name, singular, plural string, labelKeys LabelKeys, modifiers ...func(*Model)) Model {
 	// prepare model
 	m := Model{
 		Name:       name,
@@ -63,8 +81,8 @@ func Auto(model coal.Model, name, singular, plural string, modifiers ...func(*Mo
 		Editable:   true,
 		Deletable:  true,
 		Attributes: Attributes(model),
-		Columns:    Columns(model),
-		Fields:     Fields(model),
+		Columns:    Columns(model, labelKeys),
+		Fields:     Fields(model, labelKeys),
 	}
 
 	// run modifiers
@@ -164,7 +182,7 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 }
 
 // Columns will return a list of columns for the provided coal.Model.
-func Columns(model coal.Model, only ...string) []Column {
+func Columns(model coal.Model, labelKeys LabelKeys, only ...string) []Column {
 	// get meta
 	meta := coal.GetMeta(model)
 
@@ -187,7 +205,7 @@ func Columns(model coal.Model, only ...string) []Column {
 				Title:    Title(field.Name),
 				Key:      field.RelName,
 				Format:   FormatBelongsTo,
-				LabelKey: "id",
+				LabelKey: labelKeys.Get(field.RelType),
 			})
 
 			continue
@@ -199,7 +217,7 @@ func Columns(model coal.Model, only ...string) []Column {
 				Title:    Title(field.Name),
 				Key:      field.RelName,
 				Format:   FormatHasMany,
-				LabelKey: "id",
+				LabelKey: labelKeys.Get(field.RelType),
 			})
 
 			continue
@@ -241,7 +259,7 @@ func Columns(model coal.Model, only ...string) []Column {
 }
 
 // Fields will return a list of fields for the provided coal.Model.
-func Fields(model coal.Model, only ...string) []Field {
+func Fields(model coal.Model, labelKeys LabelKeys, only ...string) []Field {
 	// get meta
 	meta := coal.GetMeta(model)
 
@@ -273,6 +291,7 @@ func Fields(model coal.Model, only ...string) []Field {
 					`return $.store.findAll($.singularize('` + field.RelType + `'))`,
 				),
 				Multiple:   field.ToMany,
+				LabelKey:   labelKeys.Get(field.RelType),
 				AllowEmpty: field.Optional,
 			})
 
