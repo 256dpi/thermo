@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class extends Controller {
+  @service store;
   @service modal;
   @service router;
 

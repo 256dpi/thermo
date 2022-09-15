@@ -23,13 +23,15 @@
   {{/each}}
 
   {{#if (and (not @disabled) (or @multiple (not @value)))}}
-    <FileUpload
-      class="input__button"
-      @name={{@id}}
-      @accept={{@accept}}
-      @onfileadd={{fn this.files.upload @model @key @multiple}}
-    >
-      Upload
-    </FileUpload>
+    {{#let (file-queue name="upload" onFileAdded=(fn this.files.upload @model @key @mutiple)) as |queue|}}
+      <input
+        type="file"
+        id={{@id}}
+        class="input__button"
+        accept={{@accept}}
+        multiple={{@multiple}}
+        {{queue.selectFile}}
+      />
+    {{/let}}
   {{/if}}
 </div>

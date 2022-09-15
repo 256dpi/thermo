@@ -66,8 +66,7 @@ export default class extends Service {
     });
   }
 
-  @action
-  complete(data) {
+  @action complete(data) {
     // pop top modals
     let modal = this.modals.popObject();
 
@@ -77,8 +76,7 @@ export default class extends Service {
     }
   }
 
-  @action
-  dismiss() {
+  @action dismiss() {
     // pop top modals
     let modal = this.modals.popObject();
 

@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { copy } from '@ember/object/internals';
 import { A } from '@ember/array';
 import { Changeset } from 'ember-changeset';
+import { copy } from 'ember-copy';
 
 export default class extends Component {
   @tracked elements = null;
@@ -34,8 +34,7 @@ export default class extends Component {
     this.changesets = A(this.elements.map((element) => new Changeset(element)));
   }
 
-  @action
-  reset() {
+  @action reset() {
     // re-prepare if invalidated
     if (!this.elements) {
       this.prepare();
@@ -56,8 +55,7 @@ export default class extends Component {
     }
   }
 
-  @action
-  add() {
+  @action add() {
     // create element
     const element = this.args.factory();
 
@@ -72,8 +70,7 @@ export default class extends Component {
     this.compile();
   }
 
-  @action
-  select(index) {
+  @action select(index) {
     // update selection
     if (index === this.selection) {
       this.selection = undefined;
@@ -82,14 +79,12 @@ export default class extends Component {
     }
   }
 
-  @action
-  changed() {
+  @action changed() {
     // compile
     this.compile();
   }
 
-  @action
-  remove() {
+  @action remove() {
     // remove element and changeset
     this.elements.removeAt(this.selection);
     this.changesets.removeAt(this.selection);

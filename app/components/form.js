@@ -32,8 +32,7 @@ export default class extends Component {
     return this.args.changeset.isDirty;
   }
 
-  @action
-  reset() {
+  @action reset() {
     // rollback changes
     this.args.changeset.rollback();
 
@@ -43,8 +42,7 @@ export default class extends Component {
     }
   }
 
-  @action
-  cancel() {
+  @action cancel() {
     // handle unsaved new models
     if (this.args.model.isNew) {
       this.args.model.unloadRecord();
@@ -56,6 +54,8 @@ export default class extends Component {
     // call callback
     this.args.onCancel();
   }
+
+  @action noop() {}
 
   routeWillChange(transition) {
     // check pass through
