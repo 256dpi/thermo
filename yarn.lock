@@ -5173,7 +5173,7 @@ ember-cli-typescript@^3.1.4:
     stagehand "^1.0.0"
     walk-sync "^2.0.0"
 
-ember-cli-typescript@^4.0.0, ember-cli-typescript@^4.1.0, ember-cli-typescript@^4.2.0, ember-cli-typescript@^4.2.1:
+ember-cli-typescript@^4.1.0, ember-cli-typescript@^4.2.0, ember-cli-typescript@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-4.2.1.tgz#54d08fc90318cc986f3ea562f93ce58a6cc4c24d"
   integrity sha512-0iKTZ+/wH6UB/VTWKvGuXlmwiE8HSIGcxHamwNhEC5x1mN3z8RfvsFZdQWYUzIWFN2Tek0gmepGRPTwWdBYl/A==
@@ -5389,13 +5389,6 @@ ember-cookies@^0.5.0:
   dependencies:
     ember-cli-babel "^7.1.0"
     ember-getowner-polyfill "^1.1.0 || ^2.0.0"
-
-ember-copy@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ember-copy/-/ember-copy-2.0.1.tgz#13192b12a250324bb4a8b4547a680b113f4e3041"
-  integrity sha512-N/XFvZszrzyyX4IcNoeK4mJvIItNuONumhPLqi64T8NDjJkxBj4Pq61rvMkJx/9eZ8alzE4I8vYKOLxT0FvRuQ==
-  dependencies:
-    ember-cli-babel "^7.22.1"
 
 ember-data@~4.4.0:
   version "4.4.1"
@@ -5615,14 +5608,6 @@ ember-qunit@^5.1.5:
     resolve-package-path "^3.1.0"
     silent-error "^1.1.1"
     validate-peer-dependencies "^1.2.0"
-
-ember-render-helpers@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ember-render-helpers/-/ember-render-helpers-0.2.0.tgz#5f7af8ee74ae29f85e0d156b2775edff23f6de21"
-  integrity sha512-MnqGS8BnY3GJ+n5RZVVRqCwKjfXXMr5quKyqNu1vxft8oslOJuZ1f1dOesQouD+6LwD4Y9tWRVKNw+LOqM9ocw==
-  dependencies:
-    ember-cli-babel "^7.23.0"
-    ember-cli-typescript "^4.0.0"
 
 ember-resolver@^8.0.3:
   version "8.0.3"
