@@ -9,7 +9,7 @@ import (
 	"github.com/256dpi/fire/glut"
 )
 
-func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage) *fire.Controller {
+func itemController(store *coal.Store, queue *axe.Queue, bucket *blaze.Bucket) *fire.Controller {
 	return &fire.Controller{
 		Model:   &item{},
 		Store:   store,
@@ -19,14 +19,14 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 			flame.Callback(true),
 		},
 		Modifiers: fire.L{
-			storage.Modifier(),
-			fire.TimestampModifier(),
+			bucket.Modifier(),
+			fire.TimestampModifier("Created", "Updated"),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&item{}, catalog),
+			fire.RelationshipValidator(&item{}, models.All()),
 		},
 		Decorators: fire.L{
-			storage.Decorator(),
+			bucket.Decorator(),
 		},
 		ResourceActions: fire.M{
 			"add": queue.Action([]string{"POST"}, func(ctx *fire.Context) axe.Blueprint {
@@ -40,7 +40,7 @@ func itemController(store *coal.Store, queue *axe.Queue, storage *blaze.Storage)
 	}
 }
 
-func thingController(store *coal.Store, storage *blaze.Storage) *fire.Controller {
+func thingController(store *coal.Store, bucket *blaze.Bucket) *fire.Controller {
 	return &fire.Controller{
 		Model: &thing{},
 		Store: store,
@@ -48,13 +48,13 @@ func thingController(store *coal.Store, storage *blaze.Storage) *fire.Controller
 			flame.Callback(true),
 		},
 		Modifiers: fire.L{
-			storage.Modifier(),
+			bucket.Modifier(),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&thing{}, catalog),
+			fire.RelationshipValidator(&thing{}, models.All()),
 		},
 		Decorators: fire.L{
-			storage.Decorator(),
+			bucket.Decorator(),
 		},
 	}
 }
@@ -67,7 +67,7 @@ func applicationController(store *coal.Store) *fire.Controller {
 			flame.Callback(true),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&flame.Application{}, catalog),
+			fire.RelationshipValidator(&flame.Application{}, models.All()),
 		},
 	}
 }
@@ -80,7 +80,7 @@ func userController(store *coal.Store) *fire.Controller {
 			flame.Callback(true),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&flame.User{}, catalog),
+			fire.RelationshipValidator(&flame.User{}, models.All()),
 		},
 	}
 }
@@ -93,7 +93,7 @@ func tokenController(store *coal.Store) *fire.Controller {
 			flame.Callback(true),
 		},
 		Validators: fire.L{
-			fire.RelationshipValidator(&flame.Token{}, catalog),
+			fire.RelationshipValidator(&flame.Token{}, models.All()),
 		},
 	}
 }

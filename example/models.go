@@ -14,7 +14,7 @@ import (
 	"github.com/256dpi/fire/glut"
 )
 
-var catalog = coal.NewCatalog(
+var models = coal.NewRegistry(
 	&item{},
 	&thing{},
 	&flame.Application{},
@@ -25,39 +25,31 @@ var catalog = coal.NewCatalog(
 	&blaze.File{},
 )
 
-var register = blaze.NewRegister()
+var bindings = blaze.NewRegistry()
 
 func init() {
 	// add item indexes
-	catalog.AddIndex(&item{}, false, 0, "Name")
+	coal.AddIndex(&item{}, false, 0, "Name")
 
 	// add item file binding
-	register.Add(&blaze.Binding{
+	bindings.Add(&blaze.Binding{
 		Name:  "item-file",
-		Owner: &item{},
+		Model: &item{},
 		Field: "File",
 		Types: []string{"image/png"},
 	})
 
 	// add thing bindings
-	register.Add(&blaze.Binding{
+	bindings.Add(&blaze.Binding{
 		Name:  "thing-file",
-		Owner: &thing{},
+		Model: &thing{},
 		Field: "File",
 	})
-	register.Add(&blaze.Binding{
+	bindings.Add(&blaze.Binding{
 		Name:  "thing-files",
-		Owner: &thing{},
+		Model: &thing{},
 		Field: "Files",
 	})
-
-	// add system indexes
-	flame.AddApplicationIndexes(catalog)
-	flame.AddUserIndexes(catalog)
-	flame.AddTokenIndexes(catalog, time.Minute)
-	axe.AddModelIndexes(catalog, time.Second)
-	glut.AddModelIndexes(catalog, time.Minute)
-	blaze.AddFileIndexes(catalog)
 }
 
 type toggle struct {
