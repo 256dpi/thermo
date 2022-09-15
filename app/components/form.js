@@ -12,8 +12,6 @@ export default class extends Component {
 
   passThrough = false;
 
-  invalidators = [];
-
   constructor() {
     super(...arguments);
 
@@ -35,11 +33,6 @@ export default class extends Component {
   @action reset() {
     // rollback changes
     this.args.changeset.rollback();
-
-    // invalidate
-    for (const invalidator of this.invalidators) {
-      invalidator();
-    }
   }
 
   @action cancel() {

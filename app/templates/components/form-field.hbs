@@ -14,7 +14,6 @@
 
     {{#if (eq @config.control "array")}}
       <FormArray
-        @form={{@form}}
         @items={{changeset-array @changeset @config.key}}
         @factory={{this.createElement}}
         @itemName={{@config.itemName}}

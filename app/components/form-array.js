@@ -5,18 +5,9 @@ import { action } from '@ember/object';
 export default class extends Component {
   @tracked selection = null;
 
-  constructor() {
-    super(...arguments);
-
-    // unset select when invalidated
-    this.args.form.invalidators.push(() => {
-      this.selection = undefined;
-    });
-  }
-
   get item() {
     // retrieve selected item
-    if (typeof this.selection === 'number') {
+    if (typeof this.selection === 'number' && this.args.items?.length) {
       return this.args.items.objectAt(this.selection);
     } else {
       return null;
