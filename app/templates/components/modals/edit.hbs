@@ -12,7 +12,6 @@
       @onSubmit={{queue (save-model changeset) @complete}}
       @onCancel={{@dismiss}}
       @onDelete={{confirm "Sure?" (queue (delete-model @data.model) @complete)}}
-      @onAbandon={{confirm "Abandon?"}}
     />
   {{/let}}
 </div>
