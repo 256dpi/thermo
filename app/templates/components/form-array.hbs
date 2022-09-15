@@ -4,7 +4,7 @@
       <button type="button" class="{{if (eq index this.selection) 'active'}}" {{on "click" (fn this.select index)}}>
         {{concat @itemName " " index}}
 
-        {{#if (gt (get item "changes.length") 0)}}
+        {{#if (changeset-dirty item)}}
           <Icons::Edit />
         {{/if}}
       </button>

@@ -1,7 +1,7 @@
 import Transform from '@ember-data/serializer/transform';
 import { A } from '@ember/array';
 
-export default class FileLinksTransform extends Transform {
+export default class extends Transform {
   serialize(values) {
     // check null
     if (!values) {
