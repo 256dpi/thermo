@@ -17,18 +17,18 @@ export default class extends Component {
   get item() {
     // retrieve selected item
     if (typeof this.selection === 'number') {
-      return this.args.array.objectAt(this.selection);
+      return this.args.items.objectAt(this.selection);
     } else {
       return null;
     }
   }
 
   @action add() {
-    // add new item to array
-    this.args.array.addObject(this.args.factory());
+    // add new item
+    this.args.items.addObject(this.args.factory());
 
     // update selection
-    this.selection = this.args.array.length - 1;
+    this.selection = this.args.items.length - 1;
   }
 
   @action select(index) {
@@ -42,12 +42,12 @@ export default class extends Component {
 
   @action remove() {
     // remove item
-    this.args.array.removeAt(this.selection);
+    this.args.items.removeAt(this.selection);
 
     // update selection
     if (this.selection > 0) {
       this.selection--;
-    } else if (this.args.array.length > 0) {
+    } else if (this.args.items.length > 0) {
       this.selection = 0;
     } else {
       this.selection = undefined;

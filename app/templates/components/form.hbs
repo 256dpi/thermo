@@ -1,6 +1,6 @@
 <form class="form" {{on "submit" (prevent-default @onSubmit)}}>
   {{#each @config.fields as |field|}}
-    <FormField @form={{this}} @config={{field}} @changeset={{@changeset}} @changed={{this.noop}} />
+    <FormField @form={{this}} @config={{field}} @changeset={{@changeset}} />
   {{/each}}
 
   <div class="toolbar">

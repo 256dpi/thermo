@@ -15,13 +15,13 @@
     {{#if (eq @config.control "array")}}
       <FormArray
         @form={{@form}}
-        @array={{changeset-array @changeset @config.key}}
+        @items={{changeset-array @changeset @config.key}}
         @factory={{this.createElement}}
         @itemName={{@config.itemName}}
         as |item|
       >
         {{#each @config.itemFields as |field|}}
-          <FormField @form={{@form}} @config={{field}} @changeset={{item}} @changed={{@changed}} />
+          <FormField @form={{@form}} @config={{field}} @changeset={{item}} />
         {{/each}}
       </FormArray>
     {{else}}
@@ -31,7 +31,7 @@
         @key={{@config.key}}
         @model={{@changeset}}
         @value={{changeset-get @changeset @config.key}}
-        @changed={{queue (changeset-set @changeset @config.key) @changed}}
+        @changed={{changeset-set @changeset @config.key}}
         @disabled={{or (evaluate @config.disabled @changeset) (and @config.locked @form.locked)}}
         @placeholder={{@config.placeholder}}
         @redacted={{@config.redacted}}
