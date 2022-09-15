@@ -1,12 +1,10 @@
-{{did-update this.reset @elements}}
-
 <div class="toolbar">
-  {{#each this.elements as |element index|}}
+  {{#each @array as |element index|}}
     <div class="toolbar__group">
       <button type="button" class="{{if (eq index this.selection) 'active'}}" {{on "click" (fn this.select index)}}>
         {{concat @itemName " " index}}
 
-        {{#if (gt (get (get this.changesets index) "changes.length") 0)}}
+        {{#if (gt (get element "changes.length") 0)}}
           <Icons::Edit />
         {{/if}}
       </button>
@@ -19,7 +17,7 @@
     </button>
   </div>
 
-  {{#if this.selected}}
+  {{#if this.item}}
     <div class="toolbar__group">
       <button type="button" {{on "click" this.remove}}>
         Remove
@@ -28,8 +26,8 @@
   {{/if}}
 </div>
 
-{{#if this.selected}}
+{{#if this.item}}
   <div class="toolbar-content">
-    {{yield this}}
+    {{yield this.item}}
   </div>
 {{/if}}

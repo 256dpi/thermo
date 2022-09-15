@@ -15,19 +15,13 @@
     {{#if (eq @config.control "array")}}
       <FormArray
         @form={{@form}}
-        @elements={{changeset-get @changeset @config.key}}
-        @changed={{queue (changeset-set @changeset @config.key) @changed}}
+        @array={{changeset-array @changeset @config.key}}
         @factory={{this.createElement}}
         @itemName={{@config.itemName}}
-        as |formArray|
+        as |item|
       >
         {{#each @config.itemFields as |field|}}
-          <FormField
-            @form={{@form}}
-            @config={{field}}
-            @changeset={{formArray.changeset}}
-            @changed={{formArray.changed}}
-          />
+          <FormField @form={{@form}} @config={{field}} @changeset={{item}} @changed={{@changed}} />
         {{/each}}
       </FormArray>
     {{else}}
