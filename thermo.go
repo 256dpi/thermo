@@ -3,8 +3,10 @@ package thermo
 import (
 	"embed"
 	"encoding/json"
+	"strings"
 
 	"github.com/256dpi/ember"
+	"github.com/256dpi/serve"
 )
 
 //go:embed build
@@ -257,4 +259,27 @@ func MustBuild(blueprint Blueprint) *ember.App {
 	}
 
 	return app
+}
+
+// CSP returns a basic content security policy.
+func CSP(baseURL string) serve.ContentPolicy {
+	// get websocket base url
+	wsBaseURL := strings.Replace(baseURL, "http://", "ws://", 1)
+	wsBaseURL = strings.Replace(wsBaseURL, "https://", "wss://", 1)
+
+	return serve.ContentPolicy{
+		"default-src":             []string{},
+		"base-uri":                []string{"'self'"},
+		"block-all-mixed-content": []string{},
+		"connect-src":             []string{"'self'", baseURL, wsBaseURL},
+		"font-src":                []string{"'self'", "data:"},
+		"form-action":             []string{"'self'", baseURL},
+		"frame-src":               []string{"*"},
+		"frame-ancestors":         []string{"'none'"},
+		"img-src":                 []string{"'self'", "data:", "blob:", baseURL},
+		"manifest-src":            []string{"'self'"},
+		"media-src":               []string{"'self'", "data:", "blob:", baseURL},
+		"script-src":              []string{"'self'", "'unsafe-eval'"},
+		"style-src":               []string{"'self'", "'unsafe-inline'"},
+	}
 }

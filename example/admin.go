@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/256dpi/serve"
+
 	"github.com/256dpi/thermo"
 )
 
@@ -308,12 +310,15 @@ func admin() http.Handler {
 	// build app
 	app := thermo.MustBuild(blueprint)
 
-	// serve blueprint for development
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path == "/thermo.json" {
-			_ = json.NewEncoder(w).Encode(blueprint)
-		} else {
-			app.ServeHTTP(w, r)
-		}
-	})
+	return serve.Compose(
+		serve.ContentSecurity(thermo.CSP("http://0.0.0.0:"+port)),
+		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			// serve blueprint for development
+			if r.URL.Path == "/thermo.json" {
+				_ = json.NewEncoder(w).Encode(blueprint)
+			} else {
+				app.ServeHTTP(w, r)
+			}
+		}),
+	)
 }
