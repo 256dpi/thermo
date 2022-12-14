@@ -16,6 +16,11 @@ func Applications(confidential bool) Model {
 	// prepare model
 	model := Auto(&flame.Application{}, "application", "Application", "Applications", nil)
 
+	// remove secret column
+	model.Columns = lo.Reject(model.Columns, func(c Column, _ int) bool {
+		return c.Key == "secret"
+	})
+
 	// add confidential attribute and column if requested
 	if confidential {
 		model.Attributes = append(model.Attributes, Attribute{
@@ -37,6 +42,11 @@ func Applications(confidential bool) Model {
 func Users() Model {
 	// prepare model
 	model := Auto(&flame.User{}, "user", "User", "Users", nil)
+
+	// remove password column
+	model.Columns = lo.Reject(model.Columns, func(c Column, _ int) bool {
+		return c.Key == "password"
+	})
 
 	// patch fields
 	for i, field := range model.Fields {
