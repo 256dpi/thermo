@@ -69,6 +69,9 @@ func applicationController(store *coal.Store) *fire.Controller {
 		Validators: fire.L{
 			fire.RelationshipValidator(&flame.Application{}, models.All()),
 		},
+		Properties: map[string]string{
+			"IsConfidential": "confidential",
+		},
 	}
 }
 

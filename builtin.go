@@ -10,8 +10,27 @@ import (
 )
 
 // Applications will return the model for managing flame.Application documents.
-func Applications() Model {
-	return Auto(&flame.Application{}, "application", "Application", "Applications", nil)
+// If confidential is true an attribute and column is added for a "confidential"
+// property that maps to "IsConfidential".
+func Applications(confidential bool) Model {
+	// prepare model
+	model := Auto(&flame.Application{}, "application", "Application", "Applications", nil)
+
+	// add confidential attribute and column if requested
+	if confidential {
+		model.Attributes = append(model.Attributes, Attribute{
+			Name: "confidential",
+			Kind: KindValue,
+			Type: TypeBoolean,
+		})
+		model.Columns = append(model.Columns, Column{
+			Title:  "Confidential",
+			Key:    "confidential",
+			Format: FormatBoolean,
+		})
+	}
+
+	return model
 }
 
 // Users will return the model for managing flame.User documents.

@@ -297,7 +297,7 @@ var blueprint = thermo.Blueprint{
 		thermo.Auto(&thing{}, "thing", "Thing", "Things", thermo.LabelKeys{
 			&thing{}: "String",
 		}),
-		thermo.Applications(),
+		thermo.Applications(true),
 		thermo.Users(),
 		thermo.Tokens(),
 		thermo.Jobs(true),
