@@ -1,21 +1,18 @@
 @import "normalize";
-
 @import "fonts";
 
 $radius: 3px;
-
 $color: var(--color, #424242);
 $black: #212121;
 $red: #ff4040;
 $shade1: #f5f5f5;
 $shade2: #e0e0e0;
 $grey: #999;
-
 $monospace: "Fira Mono", monospace;
 
 body {
   background-color: #fafafa;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   color: $black;
 }
@@ -44,5 +41,4 @@ a {
 @import "blocks/nav";
 @import "blocks/table";
 @import "blocks/toolbar";
-
 @import "ember-power-select";

@@ -33,7 +33,7 @@
       font-weight: 600;
       color: $color;
 
-      &:hover:not([disabled]):not(.active) {
+      &:hover:not([disabled], .active) {
         opacity: 0.75;
         cursor: pointer;
       }
