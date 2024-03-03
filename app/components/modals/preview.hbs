@@ -5,7 +5,7 @@
 
   <div class="modal__preview">
     {{#if (starts-with @data.file.type "image/")}}
-      <img src={{file-url @data.file}} alt="" role="presentation" />
+      <img src={{file-url @data.file}} alt="" />
     {{else if (starts-with @data.file.type "audio/")}}
       <audio src={{file-url @data.file}} controls></audio>
     {{else if (starts-with @data.file.type "video/")}}
