@@ -1,6 +1,6 @@
-@import 'normalize';
+@import "normalize";
 
-@import 'fonts';
+@import "fonts";
 
 $radius: 3px;
 
@@ -11,11 +11,11 @@ $shade1: #f5f5f5;
 $shade2: #e0e0e0;
 $grey: #999;
 
-$monospace: 'Fira Mono', monospace;
+$monospace: "Fira Mono", monospace;
 
 body {
   background-color: #fafafa;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   color: $black;
 }
@@ -36,13 +36,13 @@ a {
   grid-template-columns: 300px auto;
 }
 
-@import 'blocks/content';
-@import 'blocks/dialog';
-@import 'blocks/form';
-@import 'blocks/input';
-@import 'blocks/modal';
-@import 'blocks/nav';
-@import 'blocks/table';
-@import 'blocks/toolbar';
+@import "blocks/content";
+@import "blocks/dialog";
+@import "blocks/form";
+@import "blocks/input";
+@import "blocks/modal";
+@import "blocks/nav";
+@import "blocks/table";
+@import "blocks/toolbar";
 
-@import 'ember-power-select';
+@import "ember-power-select";

@@ -16,7 +16,8 @@ function changesetArray([changeset, path]) {
     }, 0);
 
     // determine removals
-    const removals = changeset.data[path]?.length !== changesets.length - virtuals;
+    const removals =
+      changeset.data[path]?.length !== changesets.length - virtuals;
 
     // check array
     const pristine = changesets.reduce((state, changeset) => {

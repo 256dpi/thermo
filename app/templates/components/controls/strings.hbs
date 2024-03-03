@@ -10,7 +10,11 @@
       />
 
       {{#unless @disabled}}
-        <button type="button" class="input__button" {{on "click" (fn this.remove index)}}>
+        <button
+          type="button"
+          class="input__button"
+          {{on "click" (fn this.remove index)}}
+        >
           Remove
         </button>
       {{/unless}}

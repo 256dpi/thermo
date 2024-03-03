@@ -31,7 +31,10 @@
         @model={{@changeset}}
         @value={{changeset-get @changeset @config.key}}
         @changed={{changeset-set @changeset @config.key}}
-        @disabled={{or (evaluate @config.disabled @changeset) (and @config.locked @form.locked)}}
+        @disabled={{or
+          (evaluate @config.disabled @changeset)
+          (and @config.locked @form.locked)
+        }}
         @placeholder={{@config.placeholder}}
         @redacted={{@config.redacted}}
         @min={{@config.min}}

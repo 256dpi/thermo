@@ -17,7 +17,11 @@
             </div>
 
             {{#each menu.items as |item|}}
-              <LinkTo class="nav__menu__item" @route="table" @model={{item.model}}>
+              <LinkTo
+                class="nav__menu__item"
+                @route="table"
+                @model={{item.model}}
+              >
                 {{item.title}}
               </LinkTo>
             {{/each}}
@@ -26,10 +30,17 @@
 
         <div class="nav__menu">
           <div class="nav__menu__head">
-            {{get this.user.model (or this.blueprint.backend.usernameKey "name")}}
+            {{get
+              this.user.model
+              (or this.blueprint.backend.usernameKey "name")
+            }}
           </div>
 
-          <button class="nav__menu__item" type="button" {{on "click" this.logout}}>
+          <button
+            class="nav__menu__item"
+            type="button"
+            {{on "click" this.logout}}
+          >
             Sign Out
           </button>
         </div>
@@ -58,6 +69,11 @@
       focusTrapOptions=(hash escapeDeactivates=false)
     }}
   >
-    {{component m.component data=m.data complete=this.modal.complete dismiss=this.modal.dismiss}}
+    {{component
+      m.component
+      data=m.data
+      complete=this.modal.complete
+      dismiss=this.modal.dismiss
+    }}
   </div>
 {{/each}}

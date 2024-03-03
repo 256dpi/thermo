@@ -16,7 +16,10 @@ export default class extends Component {
 
   @action changed(e) {
     // convert local datetime string
-    const value = moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).toDate();
+    const value = moment(
+      e.target.value,
+      moment.HTML5_FMT.DATETIME_LOCAL
+    ).toDate();
 
     // skip if not changed
     if (this.value && value && this.value - value === 0) {

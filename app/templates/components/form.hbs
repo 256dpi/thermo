@@ -20,7 +20,11 @@
 
     {{#unless @model.isNew}}
       <div class="toolbar__group">
-        <button type="button" disabled={{or (not this.dirty) @model.isSaving}} {{on "click" this.reset}}>
+        <button
+          type="button"
+          disabled={{or (not this.dirty) @model.isSaving}}
+          {{on "click" this.reset}}
+        >
           Reset
         </button>
       </div>
@@ -28,7 +32,11 @@
 
     {{#if @onCancel}}
       <div class="toolbar__group">
-        <button type="button" disabled={{@model.isSaving}} {{on "click" this.cancel}}>
+        <button
+          type="button"
+          disabled={{@model.isSaving}}
+          {{on "click" this.cancel}}
+        >
           Cancel
         </button>
       </div>
@@ -36,7 +44,11 @@
 
     {{#if @onDelete}}
       <div class="toolbar__group">
-        <button type="button" disabled={{@model.isSaving}} {{on "click" @onDelete}}>
+        <button
+          type="button"
+          disabled={{@model.isSaving}}
+          {{on "click" @onDelete}}
+        >
           Delete
         </button>
       </div>
@@ -44,7 +56,11 @@
 
     {{#if this.lockable}}
       <div class="toolbar__group">
-        <button type="button" disabled={{not this.locked}} {{on "click" (fn (mut this.locked) false)}}>
+        <button
+          type="button"
+          disabled={{not this.locked}}
+          {{on "click" (fn (mut this.locked) false)}}
+        >
           Unlock
         </button>
       </div>

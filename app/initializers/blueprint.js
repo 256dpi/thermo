@@ -33,12 +33,23 @@ export default {
 
     // set color
     if (config.blueprint.color) {
-      document.documentElement.style.setProperty('--color', config.blueprint.color);
+      document.documentElement.style.setProperty(
+        '--color',
+        config.blueprint.color
+      );
     }
 
     // ensure lists
     for (const model of config.blueprint.models) {
-      for (const key of ['attributes', 'properties', 'orders', 'filters', 'columns', 'actions', 'fields']) {
+      for (const key of [
+        'attributes',
+        'properties',
+        'orders',
+        'filters',
+        'columns',
+        'actions',
+        'fields',
+      ]) {
         model[key] ||= [];
       }
     }
@@ -48,7 +59,9 @@ export default {
     config.blueprint.models.forEach((model) => {
       model.attributes.forEach((attribute) => {
         if (attribute.kind === 'has-many' && attribute.inverse) {
-          reverseInverses[`${singularize(attribute.type)}#${attribute.inverse}`] = attribute.name;
+          reverseInverses[
+            `${singularize(attribute.type)}#${attribute.inverse}`
+          ] = attribute.name;
         }
       });
     });
@@ -87,27 +100,41 @@ export default {
             if (attribute.inverse) {
               belongsToOptions['inverse'] = attribute.inverse;
             } else {
-              const reverseInverse = reverseInverses[`${model.name}#${attribute.name}`];
+              const reverseInverse =
+                reverseInverses[`${model.name}#${attribute.name}`];
               if (reverseInverse) {
                 belongsToOptions['inverse'] = reverseInverse;
               }
             }
-            return [attribute.name, belongsTo(singularize(attribute.type), belongsToOptions)];
+            return [
+              attribute.name,
+              belongsTo(singularize(attribute.type), belongsToOptions),
+            ];
           }
           case 'has-many': {
             const hasManyOptions = { inverse: null };
             if (attribute.inverse) {
               hasManyOptions['inverse'] = attribute.inverse;
             } else {
-              const reverseInverse = reverseInverses[`${model.name}#${attribute.name}`];
+              const reverseInverse =
+                reverseInverses[`${model.name}#${attribute.name}`];
               if (reverseInverse) {
                 hasManyOptions['inverse'] = reverseInverse;
               }
             }
-            return [attribute.name, hasMany(singularize(attribute.type), hasManyOptions)];
+            return [
+              attribute.name,
+              hasMany(singularize(attribute.type), hasManyOptions),
+            ];
           }
           default:
-            throw new Error('unexpected attribute type "' + attribute.type + '" for "' + attribute.name + '"');
+            throw new Error(
+              'unexpected attribute type "' +
+                attribute.type +
+                '" for "' +
+                attribute.name +
+                '"'
+            );
         }
       });
 
@@ -124,7 +151,9 @@ export default {
 
       return {
         name: model.name,
-        class: Model.extend(Object.fromEntries(header.concat(attributes, properties))),
+        class: Model.extend(
+          Object.fromEntries(header.concat(attributes, properties))
+        ),
       };
     });
 

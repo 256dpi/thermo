@@ -1,7 +1,11 @@
 <div class="toolbar">
   {{#each @items as |item index|}}
     <div class="toolbar__group">
-      <button type="button" class="{{if (eq index this.selection) 'active'}}" {{on "click" (fn this.select index)}}>
+      <button
+        type="button"
+        class="{{if (eq index this.selection) 'active'}}"
+        {{on "click" (fn this.select index)}}
+      >
         {{concat @itemName " " index}}
 
         {{#if (changeset-dirty item)}}

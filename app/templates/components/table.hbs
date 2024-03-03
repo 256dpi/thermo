@@ -25,8 +25,14 @@
         <option value="">Natural</option>
 
         {{#each @config.orders as |order|}}
-          <option selected={{eq order.name @sort}} value={{order.name}}>{{order.title}} ↑</option>
-          <option selected={{eq (concat "-" order.name) @sort}} value="-{{order.name}}">{{order.title}} ↓</option>
+          <option
+            selected={{eq order.name @sort}}
+            value={{order.name}}
+          >{{order.title}} ↑</option>
+          <option
+            selected={{eq (concat "-" order.name) @sort}}
+            value="-{{order.name}}"
+          >{{order.title}} ↓</option>
         {{/each}}
       </select>
     </div>
@@ -52,11 +58,19 @@
         Page
       </div>
 
-      <button type="button" {{on "click" (fn this.changePage 1 0)}} disabled={{lte this.currentPage 1}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changePage 1 0)}}
+        disabled={{lte this.currentPage 1}}
+      >
         First
       </button>
 
-      <button type="button" {{on "click" (fn this.changePage this.currentPage -1)}} disabled={{lte this.currentPage 1}}>
+      <button
+        type="button"
+        {{on "click" (fn this.changePage this.currentPage -1)}}
+        disabled={{lte this.currentPage 1}}
+      >
         Previous
       </button>
 
@@ -120,7 +134,11 @@
 
   {{#if @config.deletable}}
     <div class="toolbar__group">
-      <button type="button" disabled={{not this.selected}} {{on "click" (confirm "Sure?" this.deleteSelected)}}>
+      <button
+        type="button"
+        disabled={{not this.selected}}
+        {{on "click" (confirm "Sure?" this.deleteSelected)}}
+      >
         Delete Selected
       </button>
     </div>
@@ -156,7 +174,10 @@
           {{/if}}
 
           {{#if (not-eq undefined (get @filter filter.key))}}
-            <button type="button" {{on "click" (fn this.setFilter filter.key undefined)}}>
+            <button
+              type="button"
+              {{on "click" (fn this.setFilter filter.key undefined)}}
+            >
               Remove
             </button>
           {{/if}}
@@ -171,7 +192,11 @@
     <tr>
       {{#if @config.deletable}}
         <th width="1">
-          <input type="checkbox" {{on "click" (event-target-checked this.toggleAll)}} aria-label="Select all rows" />
+          <input
+            type="checkbox"
+            {{on "click" (event-target-checked this.toggleAll)}}
+            aria-label="Select all rows"
+          />
         </th>
       {{/if}}
 
@@ -264,7 +289,10 @@
               {{else if (eq column.format "color")}}
                 <div class="color" style="background-color: {{value}}"></div>
               {{else}}
-                <pre role="button" {{on "click" (fn this.expand value)}}>{{json-excerpt value}}</pre>
+                <pre
+                  role="button"
+                  {{on "click" (fn this.expand value)}}
+                >{{json-excerpt value}}</pre>
               {{/if}}
             {{/let}}
           </td>
