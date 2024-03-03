@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { singularize, pluralize } from 'ember-inflector';
 import DS from 'ember-data'; // eslint-disable-line
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const cache = {};
 

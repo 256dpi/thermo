@@ -13,34 +13,19 @@
       </button>
 
       {{#unless @disabled}}
-        {{#if @multiple}}
-          <button
-            type="button"
-            class="input__button"
-            {{on "click" (fn this.files.remove @model @key file)}}
-          >
-            Remove
-          </button>
-        {{else}}
-          <button
-            type="button"
-            class="input__button"
-            {{on "click" (fn this.files.unset @model @key)}}
-          >
-            Remove
-          </button>
-        {{/if}}
+        <button
+          type="button"
+          class="input__button"
+          {{on "click" (fn this.remove file)}}
+        >
+          Remove
+        </button>
       {{/unless}}
     </div>
   {{/each}}
 
   {{#if (and (not @disabled) (or @multiple (not @value)))}}
-    {{#let
-      (file-queue
-        name="upload" onFileAdded=(fn this.files.upload @model @key @mutiple)
-      )
-      as |queue|
-    }}
+    {{#let (file-queue name=(guid-for this) onFileAdded=this.add) as |queue|}}
       <input
         type="file"
         id={{@id}}

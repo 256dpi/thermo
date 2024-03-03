@@ -1,3 +1,3 @@
-import FileLink from '@256dpi/ember-fire/transforms/file-link';
+import File from '@256dpi/ember-fire/transforms/file';
 
-export default FileLink;
+export default File;

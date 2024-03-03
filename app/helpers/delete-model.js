@@ -11,9 +11,6 @@ export default class extends Helper {
         // destroy record
         await model.destroyRecord();
 
-        // unload record
-        model.unloadRecord();
-
         return true;
       } catch (err) {
         // handle error

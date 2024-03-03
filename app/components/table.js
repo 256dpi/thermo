@@ -107,10 +107,8 @@ export default class extends Component {
 
   @action deleteSelected() {
     // delete selected models
-    for (let model of this.selected.toArray()) {
-      model.destroyRecord().then(() => {
-        model.unloadRecord();
-      });
+    for (let model of this.selected.slice()) {
+      model.destroyRecord();
     }
   }
 }
