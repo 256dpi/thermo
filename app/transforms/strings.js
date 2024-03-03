@@ -8,7 +8,7 @@ export default class extends Transform {
       return [];
     }
 
-    return values.toArray();
+    return values.slice();
   }
 
   deserialize(values) {

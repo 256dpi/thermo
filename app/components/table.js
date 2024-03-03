@@ -95,7 +95,7 @@ export default class extends Component {
 
   @action toggleAll(on) {
     // toggle model selection
-    for (let model of this.args.list.toArray()) {
+    for (let model of this.args.list.slice()) {
       model._selected = on;
     }
   }

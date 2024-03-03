@@ -21,7 +21,7 @@ export default class extends Component {
 
     // copy array
     if (this.args.multiple) {
-      return A(this.args.value.toArray());
+      return A(this.args.value.slice());
     }
 
     return this.args.value;
@@ -35,7 +35,7 @@ export default class extends Component {
 
     // prepare options
     const options = A([this.emptyOption]);
-    options.pushObjects(this.args.collection.toArray());
+    options.pushObjects(this.args.collection.slice());
 
     return options;
   }
