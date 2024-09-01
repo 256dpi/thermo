@@ -10,6 +10,7 @@ export default class extends Service {
   @service blueprint;
   @service store;
   @service user;
+  @service modal;
 
   singularize = singularize;
   pluralize = pluralize;
