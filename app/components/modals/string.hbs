@@ -1,9 +1,9 @@
 <div class="modal">
   <h2 class="modal__title">
-    {{or @data.title "Value"}}
+    {{or @data.title "String"}}
   </h2>
 
-  <Controls::Json @id="value" @value={{@data.value}} />
+  <Controls::Text @id="value" @value={{@data.value}} />
 
   <div class="toolbar">
     <div class="toolbar__group">
