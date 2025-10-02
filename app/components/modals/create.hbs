@@ -9,7 +9,7 @@
       @config={{@data.config}}
       @model={{@data.model}}
       @changeset={{changeset}}
-      @onSubmit={{queue (save-model changeset) @complete}}
+      @onSubmit={{queue (save-model changeset @data.config) @complete}}
       @onCancel={{@dismiss}}
     />
   {{/let}}
