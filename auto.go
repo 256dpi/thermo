@@ -2,13 +2,12 @@ package thermo
 
 import (
 	"reflect"
-	"regexp"
-	"strings"
 	"time"
 
 	"github.com/256dpi/fire/blaze"
 	"github.com/256dpi/fire/coal"
 	"github.com/256dpi/fire/stick"
+	"github.com/gobuffalo/flect"
 )
 
 func unwrap(typ reflect.Type) reflect.Type {
@@ -20,7 +19,7 @@ func unwrap(typ reflect.Type) reflect.Type {
 	return typ
 }
 
-// Deconflict will return a model key that is conflict safe. It will use an
+// Deconflict will return a model key that is conflict safe. It will use a
 // titelized version of the key for conflicting keys.
 func Deconflict(name string) string {
 	// check reserved
@@ -33,23 +32,14 @@ func Deconflict(name string) string {
 	return name
 }
 
-var titleRegexp = regexp.MustCompile(`[A-Z0-9]+[^A-Z0-9]*`)
-
 // Title will convert a camel case name to a spaced title.
 func Title(name string) string {
-	// split
-	segments := titleRegexp.FindAllString(name, -1)
+	return flect.Titleize(name)
+}
 
-	// build
-	var builder strings.Builder
-	for i, s := range segments {
-		if i > 0 && (len(s) > 1 || len(segments[i-1]) > 1) {
-			builder.WriteString(" ")
-		}
-		builder.WriteString(s)
-	}
-
-	return builder.String()
+// Singularize will convert a plura term to a singular term.
+func Singularize(name string) string {
+	return flect.Singularize(name)
 }
 
 // LabelKeys is a mapping of models to label keys.
@@ -324,7 +314,7 @@ func fieldForItemField(field coal.ItemField) Field {
 			Label:      Title(field.Name),
 			Key:        Deconflict(field.JSONKey),
 			Control:    ControlArray,
-			ItemName:   Title(field.Name),
+			ItemName:   Singularize(Title(field.Name)),
 			ItemFields: itemFields,
 		}
 	}

@@ -9,6 +9,7 @@ require (
 	github.com/256dpi/oauth2/v2 v2.2.0
 	github.com/256dpi/serve v0.8.2
 	github.com/256dpi/xo v0.4.5
+	github.com/gobuffalo/flect v1.0.3
 	github.com/samber/lo v1.39.0
 	github.com/stretchr/testify v1.8.4
 	go.mongodb.org/mongo-driver v1.14.0

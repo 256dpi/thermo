@@ -44,7 +44,7 @@ func TestTitle(t *testing.T) {
 	assert.Equal(t, "Redirect URIs", Title("RedirectURIs"))
 	assert.Equal(t, "PDF", Title("PDF"))
 	assert.Equal(t, "MD5", Title("MD5"))
-	assert.Equal(t, "Some 3", Title("Some3"))
+	assert.Equal(t, "Some3", Title("Some3"))
 }
 
 func TestAuto(t *testing.T) {
@@ -176,7 +176,7 @@ func TestAuto(t *testing.T) {
 					Label:    "Sub Items",
 					Key:      "sub-items",
 					Control:  "array",
-					ItemName: "Sub Items",
+					ItemName: "Sub Item",
 					ItemFields: []Field{
 						{
 							Label:   "Name",
@@ -192,7 +192,7 @@ func TestAuto(t *testing.T) {
 							Label:    "Toggles",
 							Key:      "toggles",
 							Control:  "array",
-							ItemName: "Toggles",
+							ItemName: "Toggle",
 							ItemFields: []Field{
 								{
 									Label:   "State",
