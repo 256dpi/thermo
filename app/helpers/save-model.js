@@ -7,12 +7,14 @@ function applyChangesets(array, config) {
     return;
   }
   return array.map((item) => {
-    let obj = {};
+    let obj = {
+      id: item['id'],
+    };
     for (let field of config.itemFields) {
       if (field.control === 'array') {
-        obj[field.key] = applyChangesets(item.get(field.key), field);
+        obj[field.key] = applyChangesets(item[field.key], field);
       } else {
-        obj[field.key] = item.get(field.key);
+        obj[field.key] = item[field.key];
       }
     }
     return obj;
@@ -22,13 +24,15 @@ function applyChangesets(array, config) {
 export default class extends Helper {
   @service modal;
 
+  // TODO: Take from changeset, but apply to model?
+
   compute([model, config]) {
     return async () => {
       try {
         // recursively execute nested changesets
         for (let field of config.fields) {
           if (field.control === 'array') {
-            model[field.key] = applyChangesets(model.get(field.key), field);
+            model[field.key] = applyChangesets(model[field.key], field);
           }
         }
 
@@ -38,7 +42,11 @@ export default class extends Helper {
         return true;
       } catch (err) {
         // rollback model
-        model.rollbackAttributes();
+        try {
+          model.rollbackAttributes();
+        } catch (e) {
+          // ignore
+        }
 
         // handle error
         this.modal.push('modals/error', {
