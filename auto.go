@@ -298,40 +298,68 @@ func Fields(model coal.Model, labelKeys LabelKeys, only ...string) []Field {
 			continue
 		}
 
-		// get control
-		var control Control
-		var multiple bool
-		switch unwrap(field.Type).Kind() {
-		case reflect.String:
-			control = ControlString
-		case reflect.Bool:
-			control = ControlBoolean
-		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
-			reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
-			reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
-			control = ControlNumber
-		default:
-			switch unwrap(field.Type) {
-			case reflect.TypeOf(time.Time{}):
-				control = ControlDate
-			case reflect.TypeOf([]string{}):
-				control = ControlStrings
-			case reflect.TypeOf(blaze.Link{}):
-				control = ControlFile
-			case reflect.TypeOf(blaze.Links{}):
-				control = ControlFile
-				multiple = true
-			}
-		}
-
-		// add field
-		list = append(list, Field{
-			Label:    Title(field.Name),
-			Key:      Deconflict(field.JSONKey),
-			Control:  control,
-			Multiple: multiple,
-		})
+		// add generic field
+		list = append(list, fieldForItemField(field.ItemField))
 	}
 
 	return list
+}
+
+func fieldForItemField(field coal.ItemField) Field {
+	// handle lists
+	if field.Kind == reflect.Slice && field.ItemMeta != nil {
+		// collect item fields
+		var itemFields []Field
+		for _, itemField := range field.ItemMeta.OrderedFields {
+			// skip inaccessible fields
+			if itemField.JSONKey == "" {
+				continue
+			}
+
+			// add generic field
+			itemFields = append(itemFields, fieldForItemField(*itemField))
+		}
+
+		return Field{
+			Label:      Title(field.Name),
+			Key:        Deconflict(field.JSONKey),
+			Control:    ControlArray,
+			ItemName:   Title(field.Name),
+			ItemFields: itemFields,
+		}
+	}
+
+	// get control
+	var control Control
+	var multiple bool
+	switch unwrap(field.Type).Kind() {
+	case reflect.String:
+		control = ControlString
+	case reflect.Bool:
+		control = ControlBoolean
+	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32,
+		reflect.Int64, reflect.Uint, reflect.Uint8, reflect.Uint16,
+		reflect.Uint32, reflect.Uint64, reflect.Float32, reflect.Float64:
+		control = ControlNumber
+	default:
+		switch unwrap(field.Type) {
+		case reflect.TypeOf(time.Time{}):
+			control = ControlDate
+		case reflect.TypeOf([]string{}):
+			control = ControlStrings
+		case reflect.TypeOf(blaze.Link{}):
+			control = ControlFile
+		case reflect.TypeOf(blaze.Links{}):
+			control = ControlFile
+			multiple = true
+		}
+	}
+
+	// add field
+	return Field{
+		Label:    Title(field.Name),
+		Key:      Deconflict(field.JSONKey),
+		Control:  control,
+		Multiple: multiple,
+	}
 }

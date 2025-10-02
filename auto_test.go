@@ -12,27 +12,29 @@ import (
 )
 
 type toggle struct {
+	coal.ItemBase
 	State bool `json:"state"`
 }
 
 type subItem struct {
-	Name    string   `json:"name"`
-	Scale   float64  `json:"scale"`
-	Toggles []toggle `json:"toggles"`
+	coal.ItemBase
+	Name               string   `json:"name"`
+	Scale              float64  `json:"scale"`
+	Toggles            []toggle `json:"toggles"`
 	stick.NoValidation `json:"-" bson:"-"`
 }
 
 type item struct {
-	coal.Base `json:"-" bson:",inline" coal:"items"`
-	Name      string      `json:"name"`
-	State     bool        `json:"state"`
-	Count     int         `json:"count"`
-	Raw       bson.M      `json:"raw"`
-	SubItems  []subItem   `json:"sub-items"`
-	File      *blaze.Link `json:"file"`
-	Color     string      `json:"color"`
-	Created   time.Time   `json:"created" coal:"fire-created-timestamp"`
-	Updated   time.Time   `json:"updated" coal:"fire-updated-timestamp"`
+	coal.Base          `json:"-" bson:",inline" coal:"items"`
+	Name               string              `json:"name"`
+	State              bool                `json:"state"`
+	Count              int                 `json:"count"`
+	Raw                bson.M              `json:"raw"`
+	SubItems           coal.List[*subItem] `json:"sub-items"`
+	File               *blaze.Link         `json:"file"`
+	Color              string              `json:"color"`
+	Created            time.Time           `json:"created" coal:"fire-created-timestamp"`
+	Updated            time.Time           `json:"updated" coal:"fire-updated-timestamp"`
 	stick.NoValidation `json:"-" bson:"-"`
 }
 
@@ -171,8 +173,35 @@ func TestAuto(t *testing.T) {
 					Key:   "raw",
 				},
 				{
-					Label: "Sub Items",
-					Key:   "sub-items",
+					Label:    "Sub Items",
+					Key:      "sub-items",
+					Control:  "array",
+					ItemName: "Sub Items",
+					ItemFields: []Field{
+						{
+							Label:   "Name",
+							Key:     "name",
+							Control: "string",
+						},
+						{
+							Label:   "Scale",
+							Key:     "scale",
+							Control: "number",
+						},
+						{
+							Label:    "Toggles",
+							Key:      "toggles",
+							Control:  "array",
+							ItemName: "Toggles",
+							ItemFields: []Field{
+								{
+									Label:   "State",
+									Key:     "state",
+									Control: "boolean",
+								},
+							},
+						},
+					},
 				},
 				{
 					Label:   "File",
