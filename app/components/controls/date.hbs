@@ -1,9 +1,22 @@
-<input
-  id={{@id}}
-  class="input__date"
-  type="datetime-local"
-  value={{this.value}}
-  disabled={{@disabled}}
-  placeholder={{@placeholder}}
-  {{on "change" this.changed}}
-/>
+<div class="input__list__item">
+  <input
+    id={{@id}}
+    class="input__date"
+    type="datetime-local"
+    value={{this.value}}
+    disabled={{@disabled}}
+    placeholder={{@placeholder}}
+    {{on "change" this.changed}}
+  />
+
+  {{#unless @disabled}}
+    <button
+      type="button"
+      class="input__button"
+      disabled={{not @value}}
+      {{on "click" this.clear}}
+    >
+      Clear
+    </button>
+  {{/unless}}
+</div>

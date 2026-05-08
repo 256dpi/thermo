@@ -89,6 +89,11 @@ var blueprint = thermo.Blueprint{
 					Type: thermo.TypeString,
 				},
 				{
+					Name: "scheduled",
+					Kind: thermo.KindValue,
+					Type: thermo.TypeDate,
+				},
+				{
 					Name: "created",
 					Kind: thermo.KindValue,
 					Type: thermo.TypeDate,
@@ -292,6 +297,11 @@ var blueprint = thermo.Blueprint{
 					Label:   "Color",
 					Key:     "color",
 					Control: thermo.ControlColor,
+				},
+				{
+					Label:   "Scheduled",
+					Key:     "scheduled",
+					Control: thermo.ControlDate,
 				},
 			},
 		},

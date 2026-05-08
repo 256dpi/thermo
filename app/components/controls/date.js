@@ -15,18 +15,32 @@ export default class extends Component {
   }
 
   @action changed(e) {
-    // convert local datetime string
-    const value = moment(
-      e.target.value,
-      moment.HTML5_FMT.DATETIME_LOCAL
-    ).toDate();
+    // handle cleared input
+    let value;
+    if (e.target.value === '') {
+      value = null;
+    } else {
+      value = moment(
+        e.target.value,
+        moment.HTML5_FMT.DATETIME_LOCAL
+      ).toDate();
+    }
 
     // skip if not changed
+    if (!this.value && !value) {
+      return;
+    }
     if (this.value && value && this.value - value === 0) {
       return;
     }
 
     // yield value
     this.args.changed(value);
+  }
+
+  @action clear() {
+    if (this.args.value) {
+      this.args.changed(null);
+    }
   }
 }

@@ -71,6 +71,7 @@ type item struct {
 	SubItems  []subItem   `json:"sub-items"`
 	File      *blaze.Link `json:"file"`
 	Color     string      `json:"color"`
+	Scheduled *time.Time  `json:"scheduled"`
 	Created   time.Time   `json:"created" coal:"fire-created-timestamp"`
 	Updated   time.Time   `json:"updated" coal:"fire-updated-timestamp"`
 }
