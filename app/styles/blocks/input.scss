@@ -32,8 +32,7 @@ $ember-power-select-multiple-option-border-color: $shade2;
   &__number,
   &__date,
   &__select,
-  &__well,
-  &__color {
+  &__well {
     height: 42px;
     display: block;
     width: 100%;
@@ -86,8 +85,71 @@ $ember-power-select-multiple-option-border-color: $shade2;
   }
 
   &__color {
-    width: 75px;
-    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__swatch {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid $shade2;
+      border-radius: $radius;
+      background-color: white;
+      cursor: pointer;
+      box-sizing: border-box;
+      overflow: hidden;
+      appearance: none;
+
+      &::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      &::-webkit-color-swatch {
+        border: 0;
+        border-radius: 0;
+      }
+
+      &::-moz-color-swatch {
+        border: 0;
+        border-radius: 0;
+      }
+
+      &:focus {
+        border-color: $black;
+        outline: 0;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+
+    &__hex {
+      flex: 0 0 auto;
+      width: 130px;
+      height: 42px;
+      box-sizing: border-box;
+      border: 1px solid $shade2;
+      border-radius: $radius;
+      padding: 10px 15px;
+      background-color: white;
+      font-family: $monospace;
+      font-size: 16px;
+      text-transform: lowercase;
+
+      &:focus {
+        border-color: $black;
+        outline: 0;
+      }
+
+      &:disabled {
+        color: $black;
+        background-color: $shade1;
+      }
+    }
   }
 
   &__file {

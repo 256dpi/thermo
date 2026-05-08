@@ -1,9 +1,22 @@
-<input
-  id={{@id}}
-  class="input__color"
-  type="color"
-  value={{@value}}
-  disabled={{@disabled}}
-  placeholder={{@placeholder}}
-  {{on "change" this.changed}}
-/>
+<div class="input__color">
+  <input
+    id={{@id}}
+    class="input__color__swatch"
+    type="color"
+    value={{or @value "#000000"}}
+    disabled={{@disabled}}
+    {{on "input" this.changed}}
+  />
+
+  <input
+    class="input__color__hex"
+    type="text"
+    aria-label="Hex"
+    value={{@value}}
+    disabled={{@disabled}}
+    placeholder={{or @placeholder "#000000"}}
+    spellcheck="false"
+    maxlength="7"
+    {{on "change" this.hexChanged}}
+  />
+</div>
