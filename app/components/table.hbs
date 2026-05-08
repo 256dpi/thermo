@@ -165,13 +165,10 @@
 
     {{#each @config.filters as |filter|}}
       {{#let
-        (guid-for filter)
-        (not-eq undefined (get @filter filter.key))
+        (guid-for filter) (not-eq undefined (get @filter filter.key))
         as |id active|
       }}
-        <div
-          class="toolbar__group {{if active 'toolbar__group--active'}}"
-        >
+        <div class="toolbar__group {{if active 'toolbar__group--active'}}">
           {{#if filter.title}}
             <label for={{id}}>
               {{filter.title}}

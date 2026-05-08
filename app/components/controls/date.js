@@ -20,10 +20,7 @@ export default class extends Component {
     if (e.target.value === '') {
       value = null;
     } else {
-      value = moment(
-        e.target.value,
-        moment.HTML5_FMT.DATETIME_LOCAL
-      ).toDate();
+      value = moment(e.target.value, moment.HTML5_FMT.DATETIME_LOCAL).toDate();
     }
 
     // skip if not changed

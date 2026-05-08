@@ -7,10 +7,7 @@
 
       <div class="dashboard__group__items">
         {{#each menu.items as |item|}}
-          {{#let
-            (find-by "name" item.model this.blueprint.models)
-            as |config|
-          }}
+          {{#let (find-by "name" item.model this.blueprint.models) as |config|}}
             {{#if config}}
               <DashboardCard @config={{config}} />
             {{/if}}
