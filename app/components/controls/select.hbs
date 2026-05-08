@@ -4,6 +4,12 @@
   disabled={{@disabled}}
   {{on "change" this.changed}}
 >
+  {{#if @allowEmpty}}
+    <option value="" selected={{not @value}}>
+      {{or @emptyLabel "Any"}}
+    </option>
+  {{/if}}
+
   {{#each @options as |opt|}}
     <option value={{opt.value}} selected={{eq @value opt.value}}>
       {{opt.label}}

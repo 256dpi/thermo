@@ -189,8 +189,9 @@
             <Controls::Select
               @id={{@id}}
               @value={{get @filter filter.key}}
-              @changed={{fn this.setFilter filter.key}}
+              @changed={{fn this.setSelectFilter filter.key}}
               @options={{filter.options}}
+              @allowEmpty={{true}}
               @raw={{true}}
             />
           {{else if (eq filter.condition "string")}}
@@ -219,6 +220,7 @@
               @value={{get @filter filter.key}}
               @changed={{fn this.setExistsFilter filter.key}}
               @options={{this.existsOptions}}
+              @allowEmpty={{true}}
               @raw={{true}}
             />
           {{/if}}

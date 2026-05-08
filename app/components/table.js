@@ -94,7 +94,6 @@ export default class extends Component {
 
   get existsOptions() {
     return [
-      { value: '', label: 'Any' },
       { value: 'set', label: 'Set' },
       { value: 'unset', label: 'Unset' },
     ];
@@ -106,6 +105,10 @@ export default class extends Component {
 
   @action setReferenceFilter(key, model) {
     this.setFilter(key, model && model.id ? model.id : undefined);
+  }
+
+  @action setSelectFilter(key, value) {
+    this.setFilter(key, value === '' ? undefined : value);
   }
 
   @action setExistsFilter(key, value) {
