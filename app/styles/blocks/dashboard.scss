@@ -1,0 +1,67 @@
+.dashboard {
+  &__group {
+    margin-bottom: 50px;
+
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+  }
+
+  &__card {
+    background-color: white;
+    border: 1px solid $shade2;
+    border-radius: $radius;
+    padding: 20px;
+
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: inherit;
+
+      &:hover {
+        opacity: 0.75;
+        text-decoration: none;
+      }
+
+      &__label {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      &__value {
+        font-family: $monospace;
+        font-size: 14px;
+        color: $grey;
+      }
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid $shade1;
+      color: inherit;
+
+      &:hover {
+        text-decoration: none;
+        opacity: 0.75;
+      }
+
+      &__label {
+        flex: 1;
+        font-size: 14px;
+      }
+
+      &__value {
+        font-family: $monospace;
+        font-size: 14px;
+        color: $grey;
+      }
+    }
+  }
+}

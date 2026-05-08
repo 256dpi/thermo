@@ -1,0 +1,34 @@
+<div class="dashboard__card">
+  <LinkTo
+    class="dashboard__card__title"
+    @route="table"
+    @model={{@config.name}}
+  >
+    <span class="dashboard__card__title__label">
+      {{@config.plural}}
+    </span>
+
+    <span class="dashboard__card__title__value">
+      {{if (eq this.totalCount null) "…" this.totalCount}}
+    </span>
+  </LinkTo>
+
+  {{#each this.scopes as |scope|}}
+    <LinkTo
+      class="dashboard__card__row"
+      @route="table"
+      @model={{@config.name}}
+      @query={{hash f=scope.encoded}}
+    >
+      <span class="dashboard__card__row__label">
+        {{scope.title}}
+      </span>
+
+      <span class="dashboard__card__row__value">
+        {{#let (get this.scopeCounts scope.title) as |c|}}
+          {{if (eq c undefined) "…" c}}
+        {{/let}}
+      </span>
+    </LinkTo>
+  {{/each}}
+</div>

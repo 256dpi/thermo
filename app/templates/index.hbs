@@ -1,3 +1,22 @@
-<h1 class="content__title">
-  Dashboard
-</h1>
+<div class="dashboard">
+  {{#each this.blueprint.menus as |menu|}}
+    <div class="dashboard__group">
+      <h1 class="content__title">
+        {{menu.title}}
+      </h1>
+
+      <div class="dashboard__group__items">
+        {{#each menu.items as |item|}}
+          {{#let
+            (find-by "name" item.model this.blueprint.models)
+            as |config|
+          }}
+            {{#if config}}
+              <DashboardCard @config={{config}} />
+            {{/if}}
+          {{/let}}
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</div>
