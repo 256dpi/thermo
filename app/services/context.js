@@ -4,8 +4,6 @@ import { singularize, pluralize } from 'ember-inflector';
 import DS from 'ember-data'; // eslint-disable-line
 import moment from 'moment-timezone';
 
-const cache = {};
-
 export default class extends Service {
   @service blueprint;
   @service store;
@@ -17,6 +15,8 @@ export default class extends Service {
 
   moment = moment;
 
+  cache = new Map();
+
   promiseObject(promise) {
     return DS.PromiseObject.create({ promise });
   }
@@ -27,10 +27,10 @@ export default class extends Service {
 
   evaluate(expression, object) {
     // get function
-    let fn = cache[expression];
+    let fn = this.cache.get(expression);
     if (!fn) {
       fn = new Function('$', expression);
-      cache[expression] = fn;
+      this.cache.set(expression, fn);
     }
 
     // call function

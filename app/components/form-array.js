@@ -25,7 +25,7 @@ export default class extends Component {
   @action select(index) {
     // update selection
     if (index === this.selection) {
-      this.selection = undefined;
+      this.selection = null;
     } else {
       this.selection = index;
     }
@@ -41,7 +41,7 @@ export default class extends Component {
     } else if (this.args.items.length > 0) {
       this.selection = 0;
     } else {
-      this.selection = undefined;
+      this.selection = null;
     }
   }
 }

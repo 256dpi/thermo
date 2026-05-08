@@ -80,7 +80,7 @@ export default {
                 attribute.name,
                 attr(attribute.type, {
                   defaultValue() {
-                    return copy(attribute.default, true);
+                    return copy(attribute.default);
                   },
                 }),
               ];
@@ -89,7 +89,7 @@ export default {
                 attribute.name,
                 attr({
                   defaultValue() {
-                    return copy(attribute.default, true);
+                    return copy(attribute.default);
                   },
                 }),
               ];
