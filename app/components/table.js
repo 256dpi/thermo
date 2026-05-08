@@ -57,6 +57,18 @@ export default class extends Component {
     this.args.changedSort(sort);
   }
 
+  @action cycleSort(key) {
+    let next;
+    if (this.args.sort === key) {
+      next = '-' + key;
+    } else if (this.args.sort === '-' + key) {
+      next = '';
+    } else {
+      next = key;
+    }
+    this.changeSort(next);
+  }
+
   @action setFilter(key, value) {
     // copy filter
     const ret = {};

@@ -205,7 +205,26 @@
       </th>
 
       {{#each @config.columns as |column|}}
-        <th>{{column.title}}</th>
+        {{#let (find-by "name" column.key @config.orders) as |order|}}
+          <th>
+            {{#if order}}
+              <button
+                type="button"
+                class="table__sort"
+                {{on "click" (fn this.cycleSort column.key)}}
+              >
+                {{column.title}}
+                {{#if (eq @sort column.key)}}
+                  ↑
+                {{else if (eq @sort (concat "-" column.key))}}
+                  ↓
+                {{/if}}
+              </button>
+            {{else}}
+              {{column.title}}
+            {{/if}}
+          </th>
+        {{/let}}
       {{/each}}
 
       {{#if @config.actions.length}}

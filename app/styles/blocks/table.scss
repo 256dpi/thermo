@@ -3,6 +3,19 @@
   border-collapse: separate;
   border-spacing: 0 0;
 
+  &__sort {
+    border: 0;
+    background: 0;
+    padding: 0;
+    font: inherit;
+    color: $color;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
   thead {
     tr {
       th {
