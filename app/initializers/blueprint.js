@@ -129,8 +129,8 @@ export default {
           }
           default:
             throw new Error(
-              'unexpected attribute type "' +
-                attribute.type +
+              'unexpected attribute kind "' +
+                attribute.kind +
                 '" for "' +
                 attribute.name +
                 '"'

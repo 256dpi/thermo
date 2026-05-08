@@ -79,7 +79,7 @@ func main() {
 	handler := serve.Compose(
 		serve.Recover(xo.Capture),
 		serve.Throttle(100),
-		serve.Timeout(time.Minute),
+		serve.Runtime(0, time.Minute),
 		serve.Limit(serve.MustByteSize("8M")),
 		serve.CORS(corsOptions),
 		flame.TokenMigrator(true),

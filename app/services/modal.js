@@ -11,7 +11,7 @@ export default class extends Service {
 
     // add event listener
     window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && this.active) {
         this.dismiss();
       }
     });

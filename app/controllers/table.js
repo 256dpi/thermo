@@ -7,6 +7,7 @@ export default class extends Controller {
   @service store;
   @service modal;
   @service router;
+  @service context;
 
   queryParams = [
     {
@@ -66,7 +67,7 @@ export default class extends Controller {
     // initialize values
     config.attributes.forEach((attribute) => {
       if (attribute.init) {
-        model.set(attribute.name, eval(attribute.init));
+        model.set(attribute.name, this.context.evaluate(attribute.init, model));
       }
     });
 

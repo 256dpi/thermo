@@ -126,7 +126,7 @@ export default class extends Route {
     const config = this.getConfig(name);
 
     // unsubscribe if watchable
-    if (config.watchable) {
+    if (config && config.watchable) {
       this.watch.unsubscribe(pluralize(name), {});
     }
   }

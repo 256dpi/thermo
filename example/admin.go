@@ -56,6 +56,7 @@ var blueprint = thermo.Blueprint{
 					Name: "name",
 					Kind: thermo.KindValue,
 					Type: thermo.TypeString,
+					Init: `return "Item " + $.moment().format("YYYY-MM-DD HH:mm:ss");`,
 				},
 				{
 					Name:    "state",
