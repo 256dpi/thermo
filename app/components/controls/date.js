@@ -43,4 +43,8 @@ export default class extends Component {
       this.args.changed(null);
     }
   }
+
+  @action now() {
+    this.args.changed(new Date());
+  }
 }

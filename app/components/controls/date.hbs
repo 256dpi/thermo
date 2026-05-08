@@ -13,6 +13,14 @@
     <button
       type="button"
       class="input__button"
+      {{on "click" this.now}}
+    >
+      Now
+    </button>
+
+    <button
+      type="button"
+      class="input__button"
       disabled={{not @value}}
       {{on "click" this.clear}}
     >
