@@ -145,8 +145,24 @@
   {{/if}}
 </div>
 
-{{#if (gt @config.filters.length 0)}}
+{{#if (or (gt @config.scopes.length 0) (gt @config.filters.length 0))}}
   <div class="toolbar">
+    {{#if (gt @config.scopes.length 0)}}
+      <div class="toolbar__group">
+        {{#each @config.scopes as |scope|}}
+          <button
+            type="button"
+            class="toolbar__scope
+              {{if (scope-active scope @filter) 'toolbar__scope--active'}}"
+            {{on "click" (fn this.setScope scope)}}
+          >
+            {{scope.title}}
+          </button>
+        {{/each}}
+        <span class="toolbar__divider">|</span>
+      </div>
+    {{/if}}
+
     {{#each @config.filters as |filter|}}
       {{#let
         (guid-for filter)

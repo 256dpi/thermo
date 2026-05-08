@@ -129,6 +129,16 @@ var blueprint = thermo.Blueprint{
 					Name:  "created",
 				},
 			},
+			Scopes: []thermo.Scope{
+				{
+					Title:  "Active",
+					Filter: map[string]thermo.Any{"state": true},
+				},
+				{
+					Title:  "Inactive",
+					Filter: map[string]thermo.Any{"state": false},
+				},
+			},
 			Filters: []thermo.Filter{
 				{
 					Title:     "State",

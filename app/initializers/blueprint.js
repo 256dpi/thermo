@@ -46,6 +46,7 @@ export default {
         'properties',
         'orders',
         'filters',
+        'scopes',
         'columns',
         'actions',
         'fields',

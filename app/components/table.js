@@ -69,6 +69,29 @@ export default class extends Component {
     this.changeSort(next);
   }
 
+  @action setScope(scope) {
+    // determine if scope is currently active
+    const target = (scope && scope.filter) || {};
+    const current = this.args.filter || {};
+    const targetKeys = Object.keys(target);
+    let same = targetKeys.length === Object.keys(current).length;
+    if (same) {
+      for (const k of targetKeys) {
+        if (current[k] !== target[k]) {
+          same = false;
+          break;
+        }
+      }
+    }
+
+    // clear cursor
+    this.args.changedCursor('after', undefined);
+    this.args.changedCursor('before', undefined);
+
+    // toggle off when active, otherwise apply
+    this.args.changedFilter(same ? {} : { ...target });
+  }
+
   @action setFilter(key, value) {
     // copy filter
     const ret = {};

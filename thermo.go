@@ -62,6 +62,7 @@ type Model struct {
 	Properties []Property  `json:"properties"`
 	Orders     []Order     `json:"orders"`
 	Filters    []Filter    `json:"filters"`
+	Scopes     []Scope     `json:"scopes"`
 	Columns    []Column    `json:"columns"`
 	Actions    []Action    `json:"actions"`
 	Fields     []Field     `json:"fields"`
@@ -96,6 +97,12 @@ type Filter struct {
 	Key       string    `json:"key"`
 	Condition Condition `json:"condition"`
 	Options   []Option  `json:"options"` // select
+}
+
+// Scope describes a preset filter that can be applied with a single click.
+type Scope struct {
+	Title  string         `json:"title"`
+	Filter map[string]Any `json:"filter"`
 }
 
 // Column describes a table column.
