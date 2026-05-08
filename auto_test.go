@@ -12,12 +12,12 @@ import (
 )
 
 type toggle struct {
-	coal.ItemBase
-	State bool `json:"state"`
+	coal.ItemBase `bson:",inline"`
+	State         bool `json:"state"`
 }
 
 type subItem struct {
-	coal.ItemBase
+	coal.ItemBase      `bson:",inline"`
 	Name               string   `json:"name"`
 	Scale              float64  `json:"scale"`
 	Toggles            []toggle `json:"toggles"`
