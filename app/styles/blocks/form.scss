@@ -22,6 +22,24 @@
           }
         }
       }
+
+      &__reset {
+        margin-left: 5px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        vertical-align: middle;
+
+        svg {
+          margin-left: 0;
+          display: block;
+        }
+
+        &:hover svg.edit path {
+          fill: $black;
+        }
+      }
     }
 
     &__hint {

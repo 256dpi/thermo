@@ -1,6 +1,9 @@
 {{#let (guid-for @config) as |id|}}
   <div class="form__row">
-    <label class="form__row__label" for={{id}}>
+    <label
+      class="form__row__label"
+      for={{unless (eq @config.control "boolean") id}}
+    >
       {{or @config.label "Unlabeled"}}
 
       {{#if @config.locked}}
@@ -8,7 +11,14 @@
       {{/if}}
 
       {{#if (changeset-dirty @changeset @config.key)}}
-        <Icons::Edit />
+        <button
+          type="button"
+          class="form__row__label__reset"
+          title="Reset"
+          {{on "click" this.reset}}
+        >
+          <Icons::Edit />
+        </button>
       {{/if}}
     </label>
 

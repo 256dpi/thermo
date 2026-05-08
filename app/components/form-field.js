@@ -13,4 +13,12 @@ export default class extends Component {
       return {};
     }
   }
+
+  @action reset(event) {
+    // prevent label from focusing the input
+    event.preventDefault();
+
+    // rollback this field
+    this.args.changeset.rollbackProperty(this.args.config.key);
+  }
 }
