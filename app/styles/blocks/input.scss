@@ -62,9 +62,43 @@ $ember-power-select-multiple-option-border-color: $shade2;
 
   &__boolean {
     display: block;
-    filter: grayscale(1);
+    box-sizing: border-box;
     height: 20px;
     width: 20px;
+    margin: 0;
+    border: 1px solid $shade2;
+    border-radius: $radius;
+    background-color: white;
+    cursor: pointer;
+    appearance: none;
+
+    &:hover {
+      border-color: $color;
+    }
+
+    &:focus {
+      border-color: $black;
+      outline: 0;
+    }
+
+    &:checked {
+      border-color: $color;
+      background-color: $color;
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpolyline points='2.5,6.5 5,9 9.5,3.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 14px 14px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $shade1;
+
+      &:checked {
+        background-color: $shade2;
+        border-color: $shade2;
+      }
+    }
   }
 
   &__select {
