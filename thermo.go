@@ -74,7 +74,7 @@ type Attribute struct {
 	Kind    Kind       `json:"kind"`
 	Type    Type       `json:"type,omitempty"`
 	Inverse string     `json:"inverse,omitempty"` // belongs-to, has-many
-	Default Any        `json:"default,omitempty"`
+	Default any        `json:"default,omitempty"`
 	Init    Expression `json:"init,omitempty"`
 }
 
@@ -102,7 +102,7 @@ type Filter struct {
 // Scope describes a preset filter that can be applied with a single click.
 type Scope struct {
 	Title  string         `json:"title"`
-	Filter map[string]Any `json:"filter"`
+	Filter map[string]any `json:"filter"`
 }
 
 // Column describes a table column.
@@ -224,9 +224,6 @@ const (
 	ControlColor     Control = "color"
 	ControlArray     Control = "array"
 )
-
-// Any describes an arbitrary value.
-type Any = interface{}
 
 // Expression describes a javascript expression. The current value can be
 // accessed using `this`, the special variable `$` allows access to the context

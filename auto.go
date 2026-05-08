@@ -127,7 +127,7 @@ func Attributes(model coal.Model, only ...string) []Attribute {
 
 		// get type
 		var typ Type
-		var def Any
+		var def any
 		switch unwrap(field.Type).Kind() {
 		case reflect.String:
 			typ = TypeString
