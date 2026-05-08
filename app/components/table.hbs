@@ -148,8 +148,14 @@
 {{#if (gt @config.filters.length 0)}}
   <div class="toolbar">
     {{#each @config.filters as |filter|}}
-      {{#let (guid-for filter) as |id|}}
-        <div class="toolbar__group">
+      {{#let
+        (guid-for filter)
+        (not-eq undefined (get @filter filter.key))
+        as |id active|
+      }}
+        <div
+          class="toolbar__group {{if active 'toolbar__group--active'}}"
+        >
           {{#if filter.title}}
             <label for={{id}}>
               {{filter.title}}
@@ -173,12 +179,13 @@
             />
           {{/if}}
 
-          {{#if (not-eq undefined (get @filter filter.key))}}
+          {{#if active}}
             <button
               type="button"
+              aria-label="Remove filter"
               {{on "click" (fn this.setFilter filter.key undefined)}}
             >
-              Remove
+              ✕
             </button>
           {{/if}}
         </div>
