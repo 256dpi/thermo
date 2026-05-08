@@ -92,6 +92,26 @@ export default class extends Component {
     this.args.changedFilter(same ? {} : { ...target });
   }
 
+  get existsOptions() {
+    return [
+      { value: '', label: 'Any' },
+      { value: 'set', label: 'Set' },
+      { value: 'unset', label: 'Unset' },
+    ];
+  }
+
+  @action setStringFilter(key, value) {
+    this.setFilter(key, value && value.length > 0 ? value : undefined);
+  }
+
+  @action setReferenceFilter(key, model) {
+    this.setFilter(key, model && model.id ? model.id : undefined);
+  }
+
+  @action setExistsFilter(key, value) {
+    this.setFilter(key, value === '' ? undefined : value);
+  }
+
   @action setFilter(key, value) {
     // copy filter
     const ret = {};

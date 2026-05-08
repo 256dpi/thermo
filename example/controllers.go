@@ -1,6 +1,8 @@
 package main
 
 import (
+	"go.mongodb.org/mongo-driver/bson"
+
 	"github.com/256dpi/fire"
 	"github.com/256dpi/fire/axe"
 	"github.com/256dpi/fire/blaze"
@@ -13,7 +15,21 @@ func itemController(store *coal.Store, queue *axe.Queue, bucket *blaze.Bucket) *
 	return &fire.Controller{
 		Model:   &item{},
 		Store:   store,
-		Filters: []string{"Name", "State", "Count"},
+		Filters: []string{"Name", "State", "Count", "Scheduled"},
+		FilterHandlers: map[string]fire.FilterHandler{
+			"Scheduled": func(_ *fire.Context, values []string) (bson.M, error) {
+				if len(values) != 1 {
+					return nil, nil
+				}
+				switch values[0] {
+				case "set":
+					return bson.M{"Scheduled": bson.M{"$ne": nil}}, nil
+				case "unset":
+					return bson.M{"Scheduled": nil}, nil
+				}
+				return nil, nil
+			},
+		},
 		Sorters: []string{"Name", "State", "Count", "Created"},
 		Authorizers: fire.L{
 			flame.Callback(true),

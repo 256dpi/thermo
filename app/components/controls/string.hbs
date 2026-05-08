@@ -1,6 +1,6 @@
 <input
   id={{@id}}
-  class="input__string"
+  class={{unless @raw "input__string"}}
   type={{if @redacted "password" "text"}}
   value={{@value}}
   disabled={{@disabled}}

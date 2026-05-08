@@ -193,6 +193,34 @@
               @options={{filter.options}}
               @raw={{true}}
             />
+          {{else if (eq filter.condition "string")}}
+            <Controls::String
+              @id={{id}}
+              @value={{get @filter filter.key}}
+              @changed={{fn this.setStringFilter filter.key}}
+              @placeholder={{filter.title}}
+              @raw={{true}}
+            />
+          {{else if (eq filter.condition "reference")}}
+            {{#let (evaluate filter.source) as |collection|}}
+              <Controls::Reference
+                @id={{id}}
+                @value={{find-by "id" (get @filter filter.key) collection}}
+                @changed={{fn this.setReferenceFilter filter.key}}
+                @collection={{collection}}
+                @labelKey={{filter.labelKey}}
+                @allowEmpty={{true}}
+                @emptyLabel="Any"
+              />
+            {{/let}}
+          {{else if (eq filter.condition "exists")}}
+            <Controls::Select
+              @id={{id}}
+              @value={{get @filter filter.key}}
+              @changed={{fn this.setExistsFilter filter.key}}
+              @options={{this.existsOptions}}
+              @raw={{true}}
+            />
           {{/if}}
 
           {{#if active}}

@@ -42,6 +42,23 @@
       }
     }
 
+    input[type="text"],
+    input[type="password"] {
+      border: 1px solid $shade2;
+      border-radius: $radius;
+      background-color: white;
+      padding: 4px 10px;
+      font-family: $monospace;
+      font-size: 14px;
+      field-sizing: content;
+      min-width: 6ch;
+
+      &:focus {
+        border-color: $black;
+        outline: 0;
+      }
+    }
+
     button,
     select {
       border: 0;

@@ -154,6 +154,16 @@ var blueprint = thermo.Blueprint{
 						{Label: "Bar", Value: "bar"},
 					},
 				},
+				{
+					Title:     "Search",
+					Key:       "name",
+					Condition: thermo.ConditionString,
+				},
+				{
+					Title:     "Scheduled",
+					Key:       "scheduled",
+					Condition: thermo.ConditionExists,
+				},
 			},
 			Columns: []thermo.Column{
 				{

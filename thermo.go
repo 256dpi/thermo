@@ -93,10 +93,12 @@ type Order struct {
 
 // Filter describes a list filter.
 type Filter struct {
-	Title     string    `json:"title"`
-	Key       string    `json:"key"`
-	Condition Condition `json:"condition"`
-	Options   []Option  `json:"options"` // select
+	Title     string     `json:"title"`
+	Key       string     `json:"key"`
+	Condition Condition  `json:"condition"`
+	Options   []Option   `json:"options"`            // select
+	Source    Expression `json:"source,omitempty"`   // reference
+	LabelKey  string     `json:"labelKey,omitempty"` // reference
 }
 
 // Scope describes a preset filter that can be applied with a single click.
@@ -182,8 +184,11 @@ type Condition string
 
 // The available filter conditions.
 const (
-	ConditionBoolean Condition = "boolean"
-	ConditionSelect  Condition = "select"
+	ConditionBoolean   Condition = "boolean"
+	ConditionSelect    Condition = "select"
+	ConditionString    Condition = "string"
+	ConditionReference Condition = "reference"
+	ConditionExists    Condition = "exists"
 )
 
 // Format describes a column format.
