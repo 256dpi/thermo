@@ -35,7 +35,7 @@ export default {
     if (config.blueprint.color) {
       document.documentElement.style.setProperty(
         '--color',
-        config.blueprint.color
+        config.blueprint.color,
       );
     }
 
@@ -134,7 +134,7 @@ export default {
                 attribute.kind +
                 '" for "' +
                 attribute.name +
-                '"'
+                '"',
             );
         }
       });
@@ -153,7 +153,7 @@ export default {
       return {
         name: model.name,
         class: Model.extend(
-          Object.fromEntries(header.concat(attributes, properties))
+          Object.fromEntries(header.concat(attributes, properties)),
         ),
       };
     });

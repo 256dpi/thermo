@@ -14,7 +14,7 @@ export default class Confirm extends Helper {
             text: msg,
           },
           confirmed,
-          declined
+          declined,
         );
       };
     }
@@ -26,7 +26,7 @@ export default class Confirm extends Helper {
           text: msg,
         },
         resolve,
-        reject
+        reject,
       );
     });
   }

@@ -20,7 +20,7 @@ export default class extends Controller {
         'authenticator:oauth2',
         this.email,
         this.password,
-        this.blueprint.backend.authScope
+        this.blueprint.backend.authScope,
       );
     } catch (error) {
       this.modal.push('modals/error', {

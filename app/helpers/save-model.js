@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 import { inject as service } from '@ember/service';
-import { getError } from '@256dpi/ember-fire/utils';
+import { getError } from 'thermo/lib/utils';
 
 function applyChangesets(array, config) {
   if (!array || !config) {

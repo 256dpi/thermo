@@ -4,8 +4,8 @@ import { inject as service } from '@ember/service';
 export default class extends Route {
   @service session;
 
-  beforeModel(transition) {
-    // check authentication
-    this.session.requireAuthentication(transition, 'sign-in');
+  async beforeModel() {
+    // setup session, the index and table routes require authentication
+    await this.session.setup();
   }
 }

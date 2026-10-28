@@ -80,7 +80,7 @@ export default class extends Controller {
       },
       () => {
         this.route.refresh();
-      }
+      },
     );
   }
 
@@ -97,7 +97,7 @@ export default class extends Controller {
       },
       () => {
         this.route.refresh();
-      }
+      },
     );
   }
 }

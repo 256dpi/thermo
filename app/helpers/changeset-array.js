@@ -76,7 +76,7 @@ function changesetArray([changeset, path]) {
   changesets = A(
     (changeset.get(path) || []).map((item) => {
       return wrap(item, false);
-    })
+    }),
   );
 
   return ArrayProxy.create({
@@ -88,7 +88,7 @@ function changesetArray([changeset, path]) {
         remove,
         insert.map((item) => {
           return wrap(item, true);
-        })
+        }),
       );
 
       // update parent

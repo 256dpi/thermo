@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import Pagination from '@256dpi/ember-fire/pagination';
+import Pagination from 'thermo/lib/pagination';
 
 export default class extends Component {
   @service modal;
