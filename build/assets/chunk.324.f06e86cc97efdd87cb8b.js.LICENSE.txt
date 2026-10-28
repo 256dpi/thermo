@@ -1,13 +1,5 @@
 /*!
- * @overview RSVP - a tiny implementation of Promises/A+.
- * @copyright Copyright (c) 2016 Yehuda Katz, Tom Dale, Stefan Penner and contributors
- * @license   Licensed under MIT license
- *            See https://raw.githubusercontent.com/tildeio/rsvp.js/master/LICENSE
- * @version   4.8.4+ff10049b
- */
-
-/*!
-* focus-trap 6.9.4
+* focus-trap 7.8.0
 * @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
 */
 
@@ -38,4 +30,4 @@ and limitations under the License.
 
 //! moment.js locale configuration
 
-//! version : 0.5.45
+//! version : 0.5.48
